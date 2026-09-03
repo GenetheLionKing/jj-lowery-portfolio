@@ -62,7 +62,7 @@ styles/
   case-study.css
   diagrams.css
   resume.css              Screen and print résumé styles
-public/images/           Professional portrait at profile.jpg
+public/images/           Professional portrait at profile_smile.jpg
 scripts/preview.mjs       Dependency-free local export preview
 docs/verification.md      Version 0.1 review record
 ```
@@ -87,7 +87,7 @@ The BGM formula explanation distinguishes a projected shortfall from total unspe
 
 ## Profile photograph
 
-The supplied **`public/images/profile.jpg`** is a 1080 × 1080 photograph, displayed without filters or changes to the original file. To replace it, use the same filename and restart development or rebuild. `ProfileImage` detects the file at build/render time; a neutral monogram remains available if the file is absent. There is no third-party portrait source.
+The supplied **`public/images/profile_smile.jpg`** is a 1254 × 1254 photograph, displayed without filters or changes to the original file. To replace it, use the same filename and restart development or rebuild. `ProfileImage` detects the file at build/render time; a neutral monogram remains available if the file is absent. There is no third-party portrait source.
 
 The existing rectangular frame is retained on desktop and tablet, with a centered `object-fit: cover` crop that preserves the photograph’s full height and trims roughly 7% from each side. The square mobile frame shows the full photograph. Hair, glasses, ears, chin, and the natural shoulder line remain visible. The original dark background anchors the image; warm-paper index and registration marks retain the editorial frame details without crossing the face. No bleed or typography overlap is applied.
 

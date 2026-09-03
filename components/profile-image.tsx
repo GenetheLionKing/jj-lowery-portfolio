@@ -2,10 +2,10 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 
-/** Add public/images/profile.jpg and rebuild; no code change is required. */
+/** Add public/images/profile_smile.jpg and rebuild; no code change is required. */
 export function ProfileImage({ className = "" }: { className?: string }) {
   const hasPortrait = existsSync(
-    path.join(process.cwd(), "public/images/profile.jpg"),
+    path.join(process.cwd(), "public/images/profile_smile.jpg"),
   );
 
   return (
@@ -15,7 +15,7 @@ export function ProfileImage({ className = "" }: { className?: string }) {
       >
         {hasPortrait ? (
           <Image
-            src="/images/profile.jpg"
+            src="/images/profile_smile.jpg"
             alt="Professional portrait of James “JJ” Lowery"
             fill
             priority

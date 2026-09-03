@@ -55,7 +55,7 @@ ESLint is pinned to 9.39.5 to match the React, import, and accessibility plugins
 
 ## Portrait integration follow-up
 
-The supplied 1080 × 1080 photograph at `public/images/profile.jpg` now replaces the fallback in the production export. The original JPEG is unchanged. It contains no EXIF or GPS metadata.
+The current 1254 × 1254 smiling photograph at `public/images/profile_smile.jpg` replaces the fallback in the production export. The supplied JPEG is unchanged. The smiling portrait was checked in the existing desktop and mobile frame without changing the portrait treatment.
 
 The photograph stays inside the established frame. The desktop/tablet ratio of 4:4.65 preserves the complete source height and crops approximately 7% at either side; the square mobile frame shows the complete source. Centered positioning preserves the hair, glasses, ears, chin, and natural shoulder line. The existing dark photographic background provides the contrast; no filters, image bleed, cutout, or typography overlap is needed.
 
