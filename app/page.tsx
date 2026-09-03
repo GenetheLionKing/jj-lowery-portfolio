@@ -295,12 +295,16 @@ export default function Home() {
                 Applications Analyst, and related systems-focused opportunities.
               </p>
             </div>
-            <div className="contact-details">
-              <p>
-                {profile.name}
-                <br />
-                {profile.location} · Remote
-              </p>
+            <div className="contact-actions">
+              <a
+                className="button button-dark"
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Connect on LinkedIn <span aria-hidden="true">↗</span>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
             </div>
           </div>
         </div>

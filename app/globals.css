@@ -894,11 +894,8 @@
     max-width: 440px;
     color: #676052;
   }
-  .contact-details {
+  .contact-actions {
     padding-bottom: 6px;
-  }
-  .contact-layout .contact-details > p {
-    line-height: 1.8;
   }
   .not-found {
     padding-block: 110px;
@@ -1109,7 +1106,7 @@
       grid-template-columns: 1fr;
       gap: 44px;
     }
-    .contact-details {
+    .contact-actions {
       max-width: 420px;
     }
     .footer-inner {
