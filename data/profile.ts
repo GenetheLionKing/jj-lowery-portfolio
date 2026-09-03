@@ -19,8 +19,8 @@ export const navigation = [
   { label: "Capabilities", href: "/#capabilities" },
   { label: "Experience", href: "/#experience" },
   { label: "About", href: "/#about" },
-  { label: "Résumé", href: "/resume/" },
   { label: "LinkedIn", href: profile.linkedin, external: true },
+  { label: "Résumé", href: "/resume/" },
 ];
 
 export const capabilities = [
