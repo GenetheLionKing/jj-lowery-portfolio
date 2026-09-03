@@ -1,6 +1,7 @@
 export const profile = {
   name: "James “JJ” Lowery",
   location: "Tucson, Arizona",
+  linkedin: "https://www.linkedin.com/in/jamesjoelowery/",
   headline:
     "I turn messy processes and disconnected information into clear, reliable systems.",
   description:
@@ -19,6 +20,7 @@ export const navigation = [
   { label: "Experience", href: "/#experience" },
   { label: "About", href: "/#about" },
   { label: "Résumé", href: "/resume/" },
+  { label: "LinkedIn", href: profile.linkedin, external: true },
 ];
 
 export const capabilities = [

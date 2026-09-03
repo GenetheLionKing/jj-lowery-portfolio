@@ -39,7 +39,7 @@ A rendered text contrast check against solid ancestor backgrounds identified sev
 - The performance figures are explicitly helper measurements. No additional implementation details or production data were introduced.
 - No private Vector source code or other project source code was accessed or copied.
 - The résumé contains the supplied Pima Community College degree only.
-- No LinkedIn URL, invented professional profile, or public-domain placeholder was added.
+- The LinkedIn URL was supplied by the site owner. No invented professional profile or public-domain placeholder was added.
 - No deployment, domain, hosting project, analytics, database, CMS, authentication, or external service was configured.
 
 ## Review items
@@ -68,3 +68,9 @@ Desktop (1440px), tablet (768px), mobile (390px), and narrow mobile (320px) hero
 Email and phone fields were removed from the shared profile data, homepage, and résumé. The shared footer’s “Let’s connect” link was removed. A contact form is deferred.
 
 The source and all 51 files in the production export were scanned: neither personal contact detail remains. The rendered homepage and résumé contain no email or telephone links. Desktop (1440px) and mobile (390px) contact and résumé layouts were visually reviewed with no horizontal overflow. Browser console review found no warnings or errors. Lint, TypeScript, production build, and whitespace checks pass. No deployment or push was performed.
+
+## LinkedIn navigation follow-up
+
+The supplied LinkedIn profile is linked from the shared main menu and footer using HTTPS. Both links open in a new tab with `noopener noreferrer` and an accessible new-tab label. Their URLs and attributes were verified in all five exported routes.
+
+Desktop and mobile menu/footer layouts were visually inspected. Navigation moves below the wordmark at small tablet widths and uses two rows on narrow phones. Responsive checks from 320px to 1440px found no horizontal page overflow after adjustment. Lint, TypeScript, production build, and whitespace checks pass; browser logs contain no warnings or errors. No deployment or push was performed.

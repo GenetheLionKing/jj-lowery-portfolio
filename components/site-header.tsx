@@ -18,10 +18,15 @@ export function SiteHeader() {
             <Link
               key={item.label}
               href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
               className={item.label === "Résumé" ? "nav-resume" : undefined}
             >
               {item.label}
               {item.label === "Résumé" && <span aria-hidden="true"> ↗</span>}
+              {item.external && (
+                <span className="sr-only"> (opens in a new tab)</span>
+              )}
             </Link>
           ))}
         </nav>
