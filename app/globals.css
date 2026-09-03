@@ -896,30 +896,6 @@
   .contact-details {
     padding-bottom: 6px;
   }
-  .contact-details a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 18px;
-    width: fit-content;
-    max-width: 100%;
-    gap: 18px;
-  }
-  .contact-details a:hover {
-    color: var(--accent);
-  }
-  .contact-details .contact-email {
-    border-bottom: 1px solid #b6a394;
-    padding-bottom: 15px;
-    margin-bottom: 17px;
-    font-size: clamp(1rem, 1.8vw, 1.5rem);
-    letter-spacing: -0.03em;
-    width: 100%;
-  }
-  .contact-email > span {
-    font-size: 28px;
-    flex-shrink: 0;
-  }
   .contact-layout .contact-details > p {
     line-height: 1.8;
   }
@@ -1134,9 +1110,6 @@
     }
     .contact-details {
       max-width: 420px;
-    }
-    .contact-details .contact-email {
-      font-size: 23px;
     }
     .footer-inner {
       flex-wrap: wrap;
@@ -1428,13 +1401,6 @@
     .contact-layout h2 {
       font-size: 46px;
     }
-    .contact-details .contact-email {
-      font-size: 20px;
-      gap: 8px;
-    }
-    .contact-email > span {
-      font-size: 22px;
-    }
     .contact-layout > div > p {
       margin-top: 20px;
       font-size: 13px;
@@ -1467,9 +1433,6 @@
     }
     .hero-actions .text-link {
       font-size: 12px;
-    }
-    .contact-details .contact-email {
-      font-size: 17px;
     }
   }
 }

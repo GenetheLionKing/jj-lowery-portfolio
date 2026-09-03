@@ -1,8 +1,5 @@
 export const profile = {
   name: "James “JJ” Lowery",
-  email: "jamesjoelowery@gmail.com",
-  phone: "520-440-6158",
-  phoneHref: "tel:+15204406158",
   location: "Tucson, Arizona",
   headline:
     "I turn messy processes and disconnected information into clear, reliable systems.",

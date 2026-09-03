@@ -81,6 +81,8 @@ Trailing slashes allow direct static directory routing. The Work, Capabilities, 
 
 Update professional details in `data/profile.ts`. Case-study summaries, metadata, skills, and the seven narrative sections live in `data/case-studies.ts`; the shared template renders Skills Demonstrated as section eight. Content blocks support prose, evidence lists, decision rules, comparisons, formulas, process flows, metric callouts, and semantic system diagrams.
 
+Personal email and phone details are omitted from the public profile data, website, and résumé. The footer contact link has been removed. A contact form is deferred; no form or delivery service is configured.
+
 Content uses only the professional facts supplied for this project. No private Vector repository or source code was accessed or copied. The diagrams were authored specifically for this public portfolio. Income modeling is presented as requirements and acceptance criteria, without claiming a completed rollout. Performance timings are helper measurements, not end-to-end request latency. Company-wide BGM use is evidence of adoption, not proof of an unprovided ROI metric.
 
 The BGM formula explanation distinguishes a projected shortfall from total unspent budget: a shortfall produces an incremental correction; total remaining budget divided by days left produces a total daily target. Review this terminology against the original worksheet before publishing.

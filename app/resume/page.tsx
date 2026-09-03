@@ -35,8 +35,6 @@ export default function ResumePage() {
           </p>
           <address>
             <span>Tucson, AZ | Remote</span>
-            <a href={profile.phoneHref}>{profile.phone}</a>
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
           </address>
         </header>
         <section className="resume-section">

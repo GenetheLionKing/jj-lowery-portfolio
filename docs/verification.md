@@ -62,3 +62,9 @@ The photograph stays inside the established frame. The desktop/tablet ratio of 4
 The surrounding composition and labels remain intact. The index and registration mark now also render with the real photo, using warm-paper color. A fluid inset keeps the small index within the dark margin at narrower widths. Image alternative text and responsive sizing hints were updated.
 
 Desktop (1440px), tablet (768px), mobile (390px), and narrow mobile (320px) hero layouts were visually inspected. The portrait loads at its expected intrinsic dimensions; no placeholder, distortion, or horizontal page overflow was observed. Lint, TypeScript, and the production build pass. No deployment or push was performed.
+
+## Public contact removal follow-up
+
+Email and phone fields were removed from the shared profile data, homepage, and résumé. The shared footer’s “Let’s connect” link was removed. A contact form is deferred.
+
+The source and all 51 files in the production export were scanned: neither personal contact detail remains. The rendered homepage and résumé contain no email or telephone links. Desktop (1440px) and mobile (390px) contact and résumé layouts were visually reviewed with no horizontal overflow. Browser console review found no warnings or errors. Lint, TypeScript, production build, and whitespace checks pass. No deployment or push was performed.

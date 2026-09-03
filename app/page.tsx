@@ -296,11 +296,6 @@ export default function Home() {
               </p>
             </div>
             <div className="contact-details">
-              <a href={`mailto:${profile.email}`} className="contact-email">
-                {profile.email}
-                <span aria-hidden="true">↗</span>
-              </a>
-              <a href={profile.phoneHref}>{profile.phone}</a>
               <p>
                 {profile.name}
                 <br />
