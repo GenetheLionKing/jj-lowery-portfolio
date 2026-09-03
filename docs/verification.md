@@ -44,7 +44,7 @@ A rendered text contrast check against solid ancestor backgrounds identified sev
 
 ## Review items
 
-1. Add the real portrait at `public/images/profile.jpg` and rebuild. The intentional neutral monogram is the only visible placeholder. Review the crop; adjust `--portrait-position` if needed.
+1. The supplied portrait has now been integrated and reviewed; see the portrait integration follow-up below.
 2. Review the BGM formula terminology against the original worksheet. The explanation distinguishes a projected shortfall (incremental increase) from total unspent budget (total daily target).
 3. Review the résumé’s native print/PDF pagination in the preferred browser.
 4. A canonical origin, sitemap, and absolute social image URLs remain deferred until a public URL is chosen.
@@ -52,3 +52,13 @@ A rendered text contrast check against solid ancestor backgrounds identified sev
 ## Tooling note
 
 ESLint is pinned to 9.39.5 to match the React, import, and accessibility plugins included with `eslint-config-next` 16.3.4. ESLint 10 was incompatible with those rules during validation. The registry marks the ESLint 9 line deprecated; it is development tooling only. Upgrade the lint stack together when its plugins support the newer major version.
+
+## Portrait integration follow-up
+
+The supplied 1080 × 1080 photograph at `public/images/profile.jpg` now replaces the fallback in the production export. The original JPEG is unchanged. It contains no EXIF or GPS metadata.
+
+The photograph stays inside the established frame. The desktop/tablet ratio of 4:4.65 preserves the complete source height and crops approximately 7% at either side; the square mobile frame shows the complete source. Centered positioning preserves the hair, glasses, ears, chin, and natural shoulder line. The existing dark photographic background provides the contrast; no filters, image bleed, cutout, or typography overlap is needed.
+
+The surrounding composition and labels remain intact. The index and registration mark now also render with the real photo, using warm-paper color. A fluid inset keeps the small index within the dark margin at narrower widths. Image alternative text and responsive sizing hints were updated.
+
+Desktop (1440px), tablet (768px), mobile (390px), and narrow mobile (320px) hero layouts were visually inspected. The portrait loads at its expected intrinsic dimensions; no placeholder, distortion, or horizontal page overflow was observed. Lint, TypeScript, and the production build pass. No deployment or push was performed.

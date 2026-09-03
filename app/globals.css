@@ -17,7 +17,7 @@
     --dark: #272b27;
     --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-    --portrait-position: 50% 35%;
+    --portrait-position: 50% 50%;
   }
 }
 
@@ -336,6 +336,7 @@
     position: relative;
   }
   .portrait-frame {
+    --portrait-mark: var(--ink);
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 4.65;
@@ -343,7 +344,18 @@
     border-radius: 3px;
     background: #d4d1c6;
   }
+  .portrait-frame--photo {
+    --portrait-mark: var(--paper);
+    background: #111414;
+  }
+  .portrait-frame--photo .portrait-index {
+    /* Keep the index in the dark margin as the portrait frame narrows. */
+    top: clamp(12px, 5%, 23px);
+    left: clamp(12px, 5%, 23px);
+    font-size: 9px;
+  }
   .portrait-photo {
+    /* Full source height on desktop/tablet; the square mobile frame is uncropped. */
     object-fit: cover;
     object-position: var(--portrait-position);
   }
@@ -388,6 +400,8 @@
     position: absolute;
     top: 23px;
     left: 23px;
+    color: var(--portrait-mark);
+    pointer-events: none;
   }
   .portrait-placeholder-label {
     position: absolute;
@@ -401,13 +415,14 @@
     bottom: 27px;
     width: 15px;
     height: 15px;
+    pointer-events: none;
   }
   .portrait-registration::before,
   .portrait-registration::after {
     content: "";
     width: 15px;
     height: 1px;
-    background: var(--ink);
+    background: var(--portrait-mark);
     position: absolute;
     top: 7px;
   }

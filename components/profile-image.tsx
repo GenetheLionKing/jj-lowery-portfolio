@@ -10,15 +10,17 @@ export function ProfileImage({ className = "" }: { className?: string }) {
 
   return (
     <figure className={`profile-figure ${className}`}>
-      <div className="portrait-frame">
+      <div
+        className={`portrait-frame${hasPortrait ? " portrait-frame--photo" : ""}`}
+      >
         {hasPortrait ? (
           <Image
             src="/images/profile.jpg"
-            alt="James “JJ” Lowery"
+            alt="Professional portrait of James “JJ” Lowery"
             fill
             priority
             unoptimized
-            sizes="(max-width: 700px) 88vw, 36vw"
+            sizes="(max-width: 359px) calc(100vw - 99px), (max-width: 600px) calc(100vw - 107px), (max-width: 1100px) calc(37.6vw - 24px), (max-width: 1432px) calc(37vw - 41px), 489px"
             className="portrait-photo"
           />
         ) : (
@@ -27,18 +29,18 @@ export function ProfileImage({ className = "" }: { className?: string }) {
             role="img"
             aria-label="Neutral placeholder for James “JJ” Lowery’s professional portrait"
           >
-            <span className="portrait-index micro" aria-hidden="true">
-              JJ / 01
-            </span>
             <span className="portrait-monogram" aria-hidden="true">
               jj.
             </span>
-            <span className="portrait-registration" aria-hidden="true" />
             <span className="portrait-placeholder-label micro">
               Portrait forthcoming
             </span>
           </div>
         )}
+        <span className="portrait-index micro" aria-hidden="true">
+          JJ / 01
+        </span>
+        <span className="portrait-registration" aria-hidden="true" />
       </div>
       <figcaption>
         <span>James “JJ” Lowery</span>

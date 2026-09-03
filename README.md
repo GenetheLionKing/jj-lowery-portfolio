@@ -62,7 +62,7 @@ styles/
   case-study.css
   diagrams.css
   resume.css              Screen and print résumé styles
-public/images/           Drop the professional portrait here
+public/images/           Professional portrait at profile.jpg
 scripts/preview.mjs       Dependency-free local export preview
 docs/verification.md      Version 0.1 review record
 ```
@@ -85,11 +85,13 @@ Content uses only the professional facts supplied for this project. No private V
 
 The BGM formula explanation distinguishes a projected shortfall from total unspent budget: a shortfall produces an incremental correction; total remaining budget divided by days left produces a total daily target. Review this terminology against the original worksheet before publishing.
 
-## Adding the profile photograph
+## Profile photograph
 
-Add **`public/images/profile.jpg`**, then restart development or rebuild. `ProfileImage` detects the file at build/render time and replaces the neutral monogram composition automatically. There is no request for a missing image and no third-party portrait source.
+The supplied **`public/images/profile.jpg`** is a 1080 × 1080 photograph, displayed without filters or changes to the original file. To replace it, use the same filename and restart development or rebuild. `ProfileImage` detects the file at build/render time; a neutral monogram remains available if the file is absent. There is no third-party portrait source.
 
-Use a professional portrait with enough room around the face for the responsive crop, ideally at least 1000 pixels wide. The shared frame uses `object-fit: cover`; adjust `--portrait-position` in `app/globals.css` if the subject needs a different focal point. The default is `50% 35%`. The image has descriptive alternative text and adapts to desktop and mobile. Strip any private EXIF/location metadata from the photograph before placing it in this public repository.
+The existing rectangular frame is retained on desktop and tablet, with a centered `object-fit: cover` crop that preserves the photograph’s full height and trims roughly 7% from each side. The square mobile frame shows the full photograph. Hair, glasses, ears, chin, and the natural shoulder line remain visible. The original dark background anchors the image; warm-paper index and registration marks retain the editorial frame details without crossing the face. No bleed or typography overlap is applied.
+
+The crop is controlled by `--portrait-position` in `app/globals.css`, currently `50% 50%`. Separate mobile positioning is unnecessary for this square source. The component retains descriptive alternative text and responsive sizing hints. When replacing the image, use a sufficiently large original and review its crop at desktop and mobile widths.
 
 ## Accessibility and design
 
