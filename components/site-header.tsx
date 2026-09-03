@@ -15,30 +15,24 @@ export function SiteHeader() {
           JJ LOWERY<span className="brand-period">.</span>
         </Link>
         <nav aria-label="Main navigation">
-          {navigation.map((item) =>
-            item.label === "Résumé" ? (
-              <span className="nav-actions" key={item.label}>
-                <ThemeToggle />
-                <Link href={item.href} className="nav-resume">
-                  {item.label}<span aria-hidden="true"> ↗</span>
-                </Link>
-              </span>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener noreferrer" : undefined}
-              >
-                {item.label}
-                {item.external && (
-                  <span className="sr-only"> (opens in a new tab)</span>
-                )}
-              </Link>
-            ),
-          )}
+          {navigation.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+              className={item.label === "Résumé" ? "nav-resume" : undefined}
+            >
+              {item.label}
+              {item.label === "Résumé" && <span aria-hidden="true"> ↗</span>}
+              {item.external && (
+                <span className="sr-only"> (opens in a new tab)</span>
+              )}
+            </Link>
+          ))}
         </nav>
       </div>
+      <ThemeToggle />
     </header>
   );
 }
