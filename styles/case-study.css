@@ -57,7 +57,7 @@
 .case-hero .income-layers > div {
   display: block;
   border-bottom: none;
-  border-top: 1px solid #c4b8ab;
+  border-top: 1px solid var(--income-line);
 }
 .case-hero .income-layers dt {
   flex-direction: column;
@@ -132,7 +132,7 @@
 }
 .case-sidebar a .micro {
   font-size: 8px;
-  color: #656b5f;
+  color: var(--case-detail);
 }
 .case-sidebar li a:hover {
   color: var(--accent);
@@ -207,7 +207,7 @@
   padding: 25px;
 }
 .comparison > div:last-child {
-  background: #e7eadf;
+  background: var(--comparison-surface);
   border-left: 1px solid var(--line);
 }
 .comparison .micro {
@@ -257,16 +257,16 @@
 .formulas {
   margin-top: 30px;
   padding: 28px;
-  background: #e8e9e1;
+  background: var(--formula-surface);
 }
 .formulas > div + div {
   padding-top: 25px;
-  border-top: 1px solid #cccfc2;
+  border-top: 1px solid var(--formula-line);
   margin-top: 25px;
 }
 .formulas h3 {
   font-size: 9px;
-  color: #5e6753;
+  color: var(--formula-label);
 }
 .formulas div > p {
   font-family: var(--mono);
@@ -277,11 +277,11 @@
 }
 .formulas .formula-note {
   font-size: 12px;
-  color: #636959;
+  color: var(--formula-note);
   line-height: 1.7;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #cccfc2;
+  border-top: 1px solid var(--formula-line);
 }
 .next-study {
   padding-block: 65px 70px;

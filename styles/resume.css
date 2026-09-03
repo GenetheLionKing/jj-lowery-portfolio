@@ -102,7 +102,7 @@
 .resume-skills li:not(:last-child)::after {
   content: "·";
   padding-inline: 6px;
-  color: #888b7c;
+  color: var(--separator);
 }
 .resume-projects {
   display: grid;

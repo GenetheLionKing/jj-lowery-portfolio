@@ -10,7 +10,9 @@ Version 0.1 of James “JJ” Lowery’s professional Systems Analyst / Business
 - ESLint with Next.js accessibility, Core Web Vitals, and TypeScript rules
 - System sans-serif and monospace fonts; no font service or remote assets
 
-Only Next.js, React, and React DOM are runtime dependencies. Pages and diagrams are Server Components. The résumé’s print button is the only authored Client Component. Next.js includes its normal routing runtime; no animation or UI library is used.
+Only Next.js, React, and React DOM are runtime dependencies. Pages and diagrams are Server Components. The theme toggle and résumé print button are small Client Components. Next.js includes its normal routing runtime; no animation, theme, or UI library is used.
+
+Dark is the default theme. A small inline head script applies the saved `jj-lowery-theme` localStorage preference before the body renders; unavailable or invalid storage falls back to dark. The compact navigation toggle changes the root theme attribute and saves the choice across routes and visits. Color tokens and toggle styles live in `styles/theme.css`. Dark tokens apply only to screen media, keeping the existing résumé print styles light in either theme.
 
 ## Local setup
 

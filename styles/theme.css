@@ -1,0 +1,148 @@
+/* Declare order here as well because the build inlines imports before globals. */
+@layer tokens, base, layout, components, responsive, accessibility;
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+    --on-dark: #f4f2ec;
+    --line-strong: #96958a;
+    --budget-panel: #dedfd6;
+    --budget-surface: #e0e3d8;
+    --budget-ink: #343e32;
+    --budget-muted: #4f5b44;
+    --budget-arrow: #59674d;
+    --diagram-line: #b7bcad;
+    --budget-line: #a3ab98;
+    --budget-rule: #929d83;
+    --income-panel: #e7dcd2;
+    --income-surface: #e9dfd5;
+    --income-ink: #423c35;
+    --income-muted: #675340;
+    --income-line: #c4b8ab;
+    --detail: #7c7d71;
+    --support-surface: #e7e9df;
+    --support-line: #d6d9cb;
+    --rule: #c8c6ba;
+    --contact-surface: #e8d9cc;
+    --contact-line: #d9c8b9;
+    --contact-muted: #676052;
+    --case-detail: #656b5f;
+    --comparison-surface: #e7eadf;
+    --formula-surface: #e8e9e1;
+    --formula-line: #cccfc2;
+    --formula-label: #5e6753;
+    --formula-note: #636959;
+    --flow-arrow: #85897c;
+    --principle-surface: #e9e8df;
+    --skill-ink: #54594d;
+    --separator: #888b7c;
+    --placeholder-surface: #dcd9d0;
+    --placeholder-line: #b4b3a8;
+    --placeholder-monogram: #a3a498;
+    --placeholder-label: #575b50;
+    --portrait-surface: #d4d1c6;
+  }
+
+  /* Screen-only dark tokens keep print light, regardless of the saved theme. */
+  @media screen {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper: #1c1d1a;
+      --surface: #242520;
+      --white: #282923;
+      --ink: #f1eee5;
+      --muted: #b8b5aa;
+      --line: #45463d;
+      --accent: #e9926d;
+      --line-strong: #706d64;
+      --budget-panel: #2a2e28;
+      --budget-surface: #30352d;
+      --budget-ink: #e8ebdf;
+      --budget-muted: #bfc8b3;
+      --budget-arrow: #b5c0a7;
+      --diagram-line: #545d4b;
+      --budget-line: #626e57;
+      --budget-rule: #738166;
+      --income-panel: #342c27;
+      --income-surface: #3a3029;
+      --income-ink: #f0e5db;
+      --income-muted: #cfbbaa;
+      --income-line: #756252;
+      --detail: #b4b0a5;
+      --support-surface: #292f27;
+      --support-line: #414a3b;
+      --rule: #47463f;
+      --contact-surface: #332923;
+      --contact-line: #564338;
+      --contact-muted: #c9bbad;
+      --case-detail: #b4bcaa;
+      --comparison-surface: #2e352a;
+      --formula-surface: #2a3027;
+      --formula-line: #4d5544;
+      --formula-label: #c0cbb4;
+      --formula-note: #b7c1ac;
+      --flow-arrow: #a8afa0;
+      --principle-surface: #302f29;
+      --skill-ink: #c6c9bc;
+      --separator: #999c8c;
+      --placeholder-surface: #302f2a;
+      --placeholder-line: #66665a;
+      --placeholder-monogram: #797b6c;
+      --placeholder-label: #b6beab;
+      --portrait-surface: #302f2a;
+    }
+  }
+}
+
+@layer layout {
+  .nav-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    padding: 3px;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.18s ease;
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+  }
+  .theme-toggle svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+  .theme-to-dark,
+  :root[data-theme="light"] .theme-to-light {
+    display: none;
+  }
+  :root[data-theme="light"] .theme-to-dark {
+    display: inline;
+  }
+}
+
+@layer responsive {
+  @media (max-width: 600px) {
+    .site-header .header-inner nav {
+      column-gap: 3px;
+    }
+    .nav-actions {
+      gap: 4px;
+    }
+  }
+  @media (max-width: 380px) {
+    .site-header .header-inner nav {
+      grid-template-columns: 1fr 1fr max-content;
+    }
+  }
+}
