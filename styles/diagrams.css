@@ -1,0 +1,544 @@
+.system-diagram {
+  border-radius: 4px;
+  padding: 34px;
+}
+.diagram-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 9px;
+}
+.diagram-caption > span:last-child {
+  white-space: nowrap;
+}
+.diagram-foot {
+  margin-top: 33px;
+  padding-top: 16px;
+  border-top: 1px solid #b7bcad;
+  font-size: 8px;
+}
+.budget-diagram {
+  background: #e0e3d8;
+  color: #343e32;
+}
+.budget-visual {
+  margin-top: 38px;
+}
+.budget-input {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-bottom: 31px;
+  font-size: 12px;
+}
+.budget-input > .micro {
+  padding: 5px 9px;
+  border: 1px solid #a3ab98;
+  font-size: 8px;
+}
+.budget-loop {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.budget-loop li {
+  position: relative;
+  border-block: 1px solid #929d83;
+  padding: 18px 0 16px;
+}
+.budget-loop li > .micro {
+  display: block;
+  margin-bottom: 16px;
+  color: #4f5b44;
+  font-size: 8px;
+}
+.budget-loop strong {
+  font-size: 16px;
+  font-weight: 500;
+}
+.loop-arrow {
+  position: absolute;
+  top: 15px;
+  right: 17px;
+  font-size: 17px;
+  color: #59674d;
+}
+.feedback-line {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  font-family: var(--mono);
+  font-size: 9px;
+  margin-top: 19px;
+  color: #4f5b44;
+}
+.feedback-line span:last-child {
+  font-size: 20px;
+  line-height: 1;
+}
+.income-diagram {
+  background: #e9dfd5;
+  color: #423c35;
+}
+.income-layers {
+  margin-top: 25px;
+}
+.income-layers > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-block: 20px;
+  border-bottom: 1px solid #c4b8ab;
+}
+.income-layers dt {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+.income-layers dt > span {
+  font-size: 8px;
+  color: #675340;
+  letter-spacing: 0;
+}
+.income-layers dd {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.income-layers dd small {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #675340;
+}
+.income-diagram .diagram-foot {
+  border: none;
+  padding-top: 0;
+  color: #675340;
+}
+.performance-diagram {
+  background: var(--dark);
+  color: #edf0e6;
+}
+.performance-diagram .diagram-caption {
+  color: #c4c8bc;
+}
+.performance-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-top: 39px;
+}
+.performance-numbers > div {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.performance-numbers > div > .micro {
+  font-size: 9px;
+  color: #c3c8b8;
+}
+.performance-numbers strong {
+  font-weight: 500;
+  font-size: clamp(2.5rem, 4.1vw, 4.3rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.performance-numbers strong > span {
+  font-size: 0.29em;
+  font-weight: 400;
+  color: #a5ad99;
+  letter-spacing: 0;
+}
+.performance-numbers .after-number strong {
+  color: #e9926d;
+}
+.performance-arrow {
+  font-size: 46px;
+  color: #b2bba7;
+  padding-top: 28px;
+}
+.performance-bars {
+  display: grid;
+  gap: 10px;
+  margin-block: 34px 29px;
+}
+.performance-bars > div:first-child {
+  height: 8px;
+  background: #738167;
+  border-radius: 1px;
+}
+.performance-bars > div:last-child {
+  height: 8px;
+  background: #e9926d;
+  width: 0.371%;
+  min-width: 2px;
+}
+.performance-result {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #c2c9b8;
+  font-size: 12px;
+}
+.performance-result strong {
+  font-size: 24px;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  color: #edf0e6;
+  margin-right: 5px;
+}
+.performance-diagram .diagram-foot {
+  border-color: #58634d;
+  color: #c3cbb7;
+}
+.compact {
+  padding: 20px 0;
+  background: transparent;
+}
+.compact .diagram-caption {
+  font-size: 8px;
+}
+.compact .budget-loop strong {
+  font-size: 13px;
+}
+.compact .budget-loop li {
+  padding-bottom: 14px;
+}
+.compact .loop-arrow {
+  right: 13px;
+  font-size: 13px;
+}
+.compact .income-layers dt {
+  font-size: 17px;
+  gap: 12px;
+}
+.compact .income-layers dd {
+  font-size: 10px;
+}
+.compact .income-layers > div {
+  gap: 12px;
+  padding-block: 21px;
+}
+.compact .performance-numbers {
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 30px;
+}
+.compact .performance-numbers strong {
+  font-size: clamp(2rem, 3vw, 3.1rem);
+}
+.compact .performance-arrow {
+  font-size: 33px;
+}
+.compact .performance-result {
+  font-size: 10px;
+}
+.compact .performance-result strong {
+  font-size: 21px;
+}
+.compact .diagram-foot {
+  margin-top: 28px;
+  font-size: 7px;
+  letter-spacing: 0.055em;
+}
+.process-flow {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.process-flow > li {
+  display: flex;
+  position: relative;
+  gap: 17px;
+  padding: 23px 22px 23px 0;
+  border-top: 1px solid var(--line);
+}
+.process-flow > li > div {
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  align-items: baseline;
+  gap: 24px;
+  width: 100%;
+}
+.process-flow .step-index {
+  color: var(--accent);
+  padding-top: 3px;
+}
+.process-flow strong {
+  font-size: 16px;
+  font-weight: 500;
+}
+.process-flow p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-top: 0;
+}
+.flow-arrow {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  color: #85897c;
+  font-size: 17px;
+}
+.principle {
+  background: #e9e8df;
+  border-left: 3px solid var(--accent);
+  padding: 28px 30px;
+  margin-top: 30px;
+}
+.principle > span {
+  color: var(--accent);
+}
+.principle > p {
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+  margin-top: 13px;
+}
+.metric-callouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+.metric-callouts > div {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 22px 0;
+  border-block: 1px solid var(--line);
+  gap: 6px;
+}
+.metric-callouts dt {
+  font-size: 12px;
+  color: var(--muted);
+}
+.metric-callouts dd {
+  font-size: 37px;
+  letter-spacing: -0.05em;
+  line-height: 1.2;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  list-style: none;
+  padding: 0;
+  margin: 25px 0 0;
+}
+.skill-tags li {
+  font-size: 12px;
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: #54594d;
+}
+@media (max-width: 1100px) and (min-width: 851px) {
+  .compact .performance-numbers {
+    gap: 12px;
+  }
+  .compact .performance-arrow {
+    display: none;
+  }
+  .compact .performance-numbers strong {
+    font-size: 31px;
+  }
+  .compact .performance-result {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .compact .diagram-caption {
+    font-size: 7px;
+  }
+  .compact .income-layers dt {
+    font-size: 15px;
+  }
+  .compact .budget-loop strong {
+    font-size: 11px;
+  }
+  .compact .loop-arrow {
+    right: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .system-diagram {
+    padding: 22px 20px;
+  }
+  .diagram-caption {
+    font-size: 7px;
+    gap: 12px;
+  }
+  .diagram-foot {
+    font-size: 7px;
+    margin-top: 24px;
+  }
+  .budget-visual {
+    margin-top: 28px;
+  }
+  .budget-input {
+    font-size: 11px;
+    margin-bottom: 23px;
+  }
+  .budget-loop strong {
+    font-size: 11px;
+  }
+  .budget-loop li {
+    padding-block: 15px;
+  }
+  .budget-loop li > .micro {
+    font-size: 7px;
+  }
+  .loop-arrow {
+    right: 8px;
+    font-size: 12px;
+    top: 12px;
+  }
+  .feedback-line {
+    font-size: 7px;
+    gap: 8px;
+  }
+  .income-layers > div {
+    gap: 15px;
+    padding-block: 15px;
+  }
+  .income-layers dt {
+    gap: 9px;
+    font-size: 16px;
+  }
+  .income-layers dd {
+    font-size: 11px;
+  }
+  .income-layers dd small {
+    font-size: 10px;
+  }
+  .performance-numbers {
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .performance-numbers strong {
+    font-size: 29px;
+  }
+  .performance-arrow {
+    font-size: 25px;
+    padding-top: 20px;
+  }
+  .performance-numbers > div {
+    gap: 10px;
+  }
+  .performance-numbers > div > .micro {
+    font-size: 8px;
+  }
+  .performance-result {
+    font-size: 9px;
+  }
+  .performance-result strong {
+    font-size: 21px;
+    margin-right: 3px;
+  }
+  .performance-bars {
+    margin-block: 27px 22px;
+  }
+  .compact {
+    padding: 16px 2px;
+  }
+  .compact .diagram-caption {
+    font-size: 7px;
+  }
+  .compact .budget-loop strong {
+    font-size: 11px;
+  }
+  .compact .loop-arrow {
+    right: 9px;
+    font-size: 11px;
+  }
+  .compact .income-layers dt {
+    font-size: 15px;
+    gap: 8px;
+  }
+  .compact .income-layers dd {
+    font-size: 9px;
+  }
+  .compact .income-layers > div {
+    gap: 10px;
+    padding-block: 18px;
+  }
+  .compact .performance-numbers {
+    gap: 10px;
+  }
+  .compact .performance-numbers strong {
+    font-size: 30px;
+  }
+  .compact .performance-arrow {
+    font-size: 26px;
+  }
+  .compact .performance-result {
+    font-size: 9px;
+  }
+  .compact .performance-result strong {
+    font-size: 20px;
+  }
+  .compact .diagram-foot {
+    font-size: 6px;
+  }
+  .process-flow {
+    grid-template-columns: 1fr;
+    margin-block: 24px;
+  }
+  .process-flow > li {
+    padding-block: 20px;
+  }
+  .process-flow > li > div {
+    display: block;
+  }
+  .process-flow p {
+    margin-top: 6px;
+  }
+  .principle {
+    padding: 24px;
+  }
+  .principle > p {
+    font-size: 22px;
+  }
+  .metric-callouts {
+    gap: 15px;
+  }
+  .metric-callouts dd {
+    font-size: 30px;
+  }
+  .metric-callouts dt {
+    font-size: 11px;
+  }
+}
+.system-diagram .diagram-caption,
+.system-diagram .diagram-foot {
+  font-size: 9px;
+}
+@media (max-width: 600px) {
+  .system-diagram .diagram-caption,
+  .system-diagram .diagram-foot {
+    font-size: 8px;
+    line-height: 1.7;
+  }
+  .system-diagram .income-layers dd {
+    font-size: 11px;
+  }
+  .system-diagram .budget-loop li > .micro,
+  .system-diagram .budget-input > .micro {
+    font-size: 9px;
+  }
+  .system-diagram .feedback-line {
+    font-size: 9px;
+  }
+}
