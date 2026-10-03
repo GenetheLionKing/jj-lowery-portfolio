@@ -5,7 +5,7 @@ export const profile = {
   headline:
     "I turn messy processes and disconnected information into clear, reliable systems.",
   description:
-    "I analyze how work, data, and software actually behave—then translate that understanding into better workflows, explicit business rules, automation, decision-support systems, and verifiable improvements.",
+    "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
   summary:
     "Systems-oriented business and technology professional with 10+ years of experience turning ambiguous operational problems into structured workflows, decision-support systems, automation, and reliable application behavior. Experience spans executive operations, business ownership, requirements and business-rule definition, process improvement, data/reporting systems, root-cause analysis, regression testing, and production change validation. Built systems used in daily business operations and currently develops a transactional personal-finance application through AI-assisted, Git-based workflows.",
   about: [
@@ -16,8 +16,6 @@ export const profile = {
 
 export const navigation = [
   { label: "Work", href: "/#work" },
-  { label: "Capabilities", href: "/#capabilities" },
-  { label: "Experience", href: "/#experience" },
   { label: "About", href: "/#about" },
   { label: "LinkedIn", href: profile.linkedin, external: true },
   { label: "Résumé", href: "/resume/" },

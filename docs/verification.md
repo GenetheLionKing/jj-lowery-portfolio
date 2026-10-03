@@ -1,3 +1,5 @@
+> Historical v0.1 record. Credential and deployment wording below is not evidence for publication. See [redesign verification](redesign-verification.md) for the current review.
+
 # Version 0.1 verification
 
 Repository: `jj-lowery-portfolio`
@@ -8,17 +10,17 @@ Review environment: local production export, Codex in-app Chromium browser
 
 ## Engineering checks
 
-| Check | Result |
-| --- | --- |
-| `pnpm lint` | Pass, zero errors or warnings |
-| `pnpm typecheck` | Pass, including generated App Router types |
-| `pnpm build` | Pass, all five requested routes statically generated |
-| `git diff --check` | Pass |
-| Exported links and assets | 96 link occurrences checked; local pages, fragments, and assets resolve |
-| Heading structure | One H1 per page; no skipped heading levels or duplicate IDs |
-| Metadata | Unique page titles/descriptions and social metadata present |
-| Remote assets | None referenced by the exported pages |
-| Source scan | No credential files, secret patterns, lorem ipsum, or accidental placeholder text found |
+| Check                     | Result                                                                                  |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `pnpm lint`               | Pass, zero errors or warnings                                                           |
+| `pnpm typecheck`          | Pass, including generated App Router types                                              |
+| `pnpm build`              | Pass, all five requested routes statically generated                                    |
+| `git diff --check`        | Pass                                                                                    |
+| Exported links and assets | 96 link occurrences checked; local pages, fragments, and assets resolve                 |
+| Heading structure         | One H1 per page; no skipped heading levels or duplicate IDs                             |
+| Metadata                  | Unique page titles/descriptions and social metadata present                             |
+| Remote assets             | None referenced by the exported pages                                                   |
+| Source scan               | No credential files, secret patterns, lorem ipsum, or accidental placeholder text found |
 
 ## Browser review
 

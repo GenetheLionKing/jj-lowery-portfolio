@@ -41,10 +41,13 @@ export default async function WorkPage({
   const { slug } = await params;
   const index = caseStudies.findIndex((study) => study.slug === slug);
   if (index === -1) notFound();
-  return (
-    <CaseStudyPage
-      study={caseStudies[index]}
-      nextStudy={caseStudies[(index + 1) % caseStudies.length]}
-    />
+  const selectedStudies = caseStudies.filter(
+    (study) => study.company === "Vector",
   );
+  const selectedIndex = selectedStudies.findIndex(
+    (study) => study.slug === slug,
+  );
+  const nextStudy =
+    selectedStudies[(selectedIndex + 1) % selectedStudies.length];
+  return <CaseStudyPage study={caseStudies[index]} nextStudy={nextStudy} />;
 }

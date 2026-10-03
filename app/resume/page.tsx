@@ -59,17 +59,19 @@ export default function ResumePage() {
         <section className="resume-section">
           <h2>Selected systems work</h2>
           <div className="resume-projects">
-            {caseStudies.map((study) => (
-              <div key={study.slug}>
-                <h3>
-                  <Link href={`/work/${study.slug}/`}>
-                    {study.title} <span aria-hidden="true">↗</span>
-                  </Link>
-                </h3>
-                <p className="resume-company">{study.company}</p>
-                <p>{study.summary}</p>
-              </div>
-            ))}
+            {caseStudies
+              .filter((study) => study.company === "Vector")
+              .map((study) => (
+                <div key={study.slug}>
+                  <h3>
+                    <Link href={`/work/${study.slug}/`}>
+                      {study.title} <span aria-hidden="true">↗</span>
+                    </Link>
+                  </h3>
+                  <p className="resume-company">{study.company}</p>
+                  <p>{study.summary}</p>
+                </div>
+              ))}
           </div>
         </section>
         <section className="resume-section">
@@ -84,16 +86,6 @@ export default function ResumePage() {
                 <span>{role.dates}</span>
               </div>
             ))}
-          </div>
-        </section>
-        <section className="resume-section">
-          <h2>Education</h2>
-          <div className="resume-education">
-            <div>
-              <h3>Pima Community College</h3>
-              <p>Associate of Arts, Business/Commerce</p>
-            </div>
-            <span>2009</span>
           </div>
         </section>
       </article>
