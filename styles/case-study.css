@@ -308,16 +308,17 @@
 .next-study .container > a:not(.text-link) > span:first-child {
   max-width: 900px;
 }
-.next-study .container > a:not(.text-link) > span:last-child {
+.next-study .container > a:not(.text-link) > .arrow-icon {
   color: var(--accent);
-  font-size: 60px;
-  transition: transform 0.2s;
+  width: 60px;
+  height: 60px;
+  transition: translate 0.2s;
 }
 .next-study .container > a:hover {
   color: var(--accent);
 }
-.next-study .container > a:hover > span:last-child {
-  transform: translate(3px, -3px);
+.next-study .container > a:hover > .arrow-icon {
+  translate: 3px -3px;
 }
 .next-study .text-link {
   color: var(--muted);
@@ -497,7 +498,8 @@
     font-size: 29px;
     gap: 25px;
   }
-  .next-study .container > a:not(.text-link) > span:last-child {
-    font-size: 35px;
+  .next-study .container > a:not(.text-link) > .arrow-icon {
+    width: 35px;
+    height: 35px;
   }
 }

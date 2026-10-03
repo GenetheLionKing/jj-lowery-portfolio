@@ -50,6 +50,8 @@ Existing Vector source qualifications remain: the income work is a conceptual mo
 
 ## Consistent cold-cache comparison
 
+These measurements were captured at `5a7934a`, before the subsequent case-study arrow selector fix. That focused CSS adjustment received a fresh aggregate check and 16 route/width browser checks; the homepage content and image assets did not change. No new exact-head performance measurement is implied.
+
 Three sequential fresh-profile Lighthouse runs for each saved production export, identical loopback gzip level-6 server and Mac. Lighthouse 13.5.0, Chrome 154.0.0.0; mobile 412×823 CSS pixels, DPR 1.75, simulated slow 4G (150ms RTT, 1638.4Kbps), CPU multiplier 4. Storage reset stays enabled. Performance and accessibility categories were selected consistently; page content/code was not removed for measurement. The saved first-pass export has the same tree as the base merge commit.
 
 Medians (KB = 1,000 bytes, transfer includes response headers):
@@ -72,6 +74,8 @@ The second pass carries a larger transparent portrait and three project images, 
 Interaction resource review observed one normal Next RSC fetch of 14,465 uncompressed bytes after the Work anchor; it was data, not additional JavaScript. Hover and theme actions did not add a script request. Uncompressed local preview is not representative of gzip hosting. No remote fonts, tracking, hero content gate, animation package, WebGL, or video were added.
 
 ## Reproduction, publication and rollback
+
+Atlas's independent screenshot/source review identified one arrow-selector mismatch. The correction targets `.arrow-icon`, sets 60px desktop / 35px mobile dimensions and the accent color, and uses the individual CSS `translate` property so the hover movement composes with the SVG's inline rotation. `pnpm check` and `git diff --check` passed again. All four case-study routes at 320/390/768/1440px passed focused sizing/color/hover/overflow checks. Reduced-motion transition was `0s`; keyboard focus retained its 3px outline and Enter followed the expected case URL. Actual viewport screenshots were inspected: [desktop arrow](design-review/next-arrow-desktop.webp), [mobile arrow](design-review/next-arrow-mobile.webp). Raw results are in `review/next-arrow-checks.json`.
 
 Local production preview: `http://127.0.0.1:3106/`. The adjacent isolated `review-tools/` contains exact layout/accessibility/functional scripts, the same-compression server, and the three-run benchmark driver. Outputs are in `review/layout-results.json`, `accessibility-results.json`, `functional-checks.json`, `internal-links.json`, `interaction-requests.json`, `baseline-compressed/`, and `after-compressed/`, plus screenshots and `resume-print.pdf`. Tools are not application dependencies.
 
