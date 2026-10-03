@@ -4,38 +4,38 @@
 @layer tokens {
   :root {
     color-scheme: light;
-    --on-dark: #f4f2ec;
-    --line-strong: #96958a;
-    --budget-panel: #dedfd6;
-    --budget-surface: #e0e3d8;
-    --budget-ink: #343e32;
-    --budget-muted: #4f5b44;
-    --budget-arrow: #59674d;
-    --diagram-line: #b7bcad;
-    --budget-line: #a3ab98;
-    --budget-rule: #929d83;
-    --income-panel: #e7dcd2;
-    --income-surface: #e9dfd5;
-    --income-ink: #423c35;
-    --income-muted: #675340;
-    --income-line: #c4b8ab;
-    --detail: #7c7d71;
-    --support-surface: #e7e9df;
-    --support-line: #d6d9cb;
-    --rule: #c8c6ba;
-    --contact-surface: #e8d9cc;
-    --contact-line: #d9c8b9;
-    --contact-muted: #676052;
-    --case-detail: #656b5f;
-    --comparison-surface: #e7eadf;
-    --formula-surface: #e8e9e1;
-    --formula-line: #cccfc2;
-    --formula-label: #5e6753;
-    --formula-note: #636959;
-    --flow-arrow: #85897c;
-    --principle-surface: #e9e8df;
-    --skill-ink: #54594d;
-    --separator: #888b7c;
+    --on-dark: #f5f8fa;
+    --line-strong: #82939e;
+    --budget-panel: #eaf0f4;
+    --budget-surface: #edf3f7;
+    --budget-ink: #24333d;
+    --budget-muted: #4b6272;
+    --budget-arrow: #4b6272;
+    --diagram-line: #b5c7d3;
+    --budget-line: #a6bccb;
+    --budget-rule: #829dab;
+    --income-panel: #e8f0f6;
+    --income-surface: #ecf2f7;
+    --income-ink: #243644;
+    --income-muted: #4e6475;
+    --income-line: #b6c9d8;
+    --detail: #667785;
+    --support-surface: #edf3f7;
+    --support-line: #c8d6e0;
+    --rule: #c6d1d9;
+    --contact-surface: #e8f0f6;
+    --contact-line: #bed0dd;
+    --contact-muted: #516575;
+    --case-detail: #5c7180;
+    --comparison-surface: #edf3f7;
+    --formula-surface: #edf3f7;
+    --formula-line: #c2d0d9;
+    --formula-label: #536979;
+    --formula-note: #536979;
+    --flow-arrow: #6c8292;
+    --principle-surface: #edf3f7;
+    --skill-ink: #526778;
+    --separator: #687c8b;
     --placeholder-surface: #dcd9d0;
     --placeholder-line: #b4b3a8;
     --placeholder-monogram: #a3a498;
@@ -45,15 +45,15 @@
 
   /* Screen-only dark tokens keep print light, regardless of the saved theme. */
   @media screen {
-    :root:not([data-theme="light"]) {
+    :root[data-theme="dark"] {
       color-scheme: dark;
-      --paper: #1c1d1a;
-      --surface: #242520;
-      --white: #282923;
-      --ink: #f1eee5;
-      --muted: #b8b5aa;
-      --line: #45463d;
-      --accent: #e9926d;
+      --paper: #141a1e;
+      --surface: #202a31;
+      --white: #192228;
+      --ink: #f5f8fa;
+      --muted: #b7c3cb;
+      --line: #35434d;
+      --accent: #84d9f4;
       --line-strong: #706d64;
       --budget-panel: #2a2e28;
       --budget-surface: #30352d;
@@ -95,20 +95,12 @@
 }
 
 @layer layout {
-  .site-header {
-    position: relative;
-  }
-  .site-header > .theme-toggle {
-    position: absolute;
-    top: 6px;
-    right: 12px;
-  }
   .theme-toggle {
     display: inline-grid;
     place-items: center;
-    width: 30px;
-    height: 30px;
-    padding: 6px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
     border: 0;
     border-radius: 2px;
     background: transparent;
@@ -130,37 +122,5 @@
   }
   :root[data-theme="light"] .theme-to-dark {
     display: inline;
-  }
-}
-
-@layer accessibility {
-  .site-header > .theme-toggle:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-}
-
-@layer responsive {
-  @media (max-width: 1100px) {
-    .site-header > .theme-toggle {
-      top: 0;
-    }
-  }
-  @media (max-width: 750px) {
-    .site-header > .theme-toggle {
-      top: 27.5px;
-      right: 32px;
-    }
-  }
-  @media (max-width: 600px) {
-    .site-header > .theme-toggle {
-      top: 20.5px;
-      right: 20px;
-    }
-  }
-  @media (max-width: 359px) {
-    .site-header > .theme-toggle {
-      right: 16px;
-    }
   }
 }

@@ -8,3 +8,6 @@ out/
 !.env.example
 .vercel/
 coverage/
+
+# Local design review exports and raw audit reports
+review/

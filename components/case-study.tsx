@@ -102,6 +102,11 @@ export function CaseStudyPage({
         </div>
         <h1>{study.title}</h1>
         <p className="case-subtitle">{study.subtitle}</p>
+        {study.company === "Vector" && (
+          <p className="case-method">
+            My personal-finance app, developed with AI assistance.
+          </p>
+        )}
         <SystemDiagram kind={study.diagram} />
         <dl className="case-metadata">
           {study.metadata.map((item) => (
