@@ -1,12 +1,19 @@
 import Link from "next/link";
+import { SiteNavigation, SocialLinks } from "@/components/site-navigation";
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
-        <Link prefetch={false} href="/" aria-label="JJ Lowery — home">
+        <Link
+          prefetch={false}
+          className="footer-brand"
+          href="/"
+          aria-label="JJ Lowery — home"
+        >
           JJ Lowery<span className="brand-period">.</span>
         </Link>
-        <p>Tucson, Arizona</p>
+        <SiteNavigation label="Footer navigation" />
+        <SocialLinks label="Footer social profiles" />
       </div>
     </footer>
   );

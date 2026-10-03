@@ -1,5 +1,7 @@
 # Split-portrait redesign: pre-merge verification
 
+Historical first-pass snapshot, superseded by `second-pass-verification.md`. Its design description and measurements apply only to PR #1.
+
 Review date: 2026-10-03. Base: `15e97b9275ade94688871ec83f66c9c9edd515e1`. Branch: `redesign/split-portrait-local`. The original checkout at `/Users/jameslowery/projects/jj-lowery-portfolio` was clean and remains unchanged; implementation used a separate worktree.
 
 ## Design and content

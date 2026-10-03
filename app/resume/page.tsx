@@ -1,3 +1,4 @@
+import { ArrowIcon } from "@/components/icons";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PrintButton } from "@/components/print-button";
@@ -20,7 +21,7 @@ export default function ResumePage() {
     <div className="container resume-page">
       <div className="resume-toolbar">
         <Link href="/" className="text-link">
-          <span aria-hidden="true">←</span> Back to portfolio
+          <ArrowIcon direction="left" /> Back to portfolio
         </Link>
         <PrintButton />
       </div>
@@ -65,7 +66,7 @@ export default function ResumePage() {
                 <div key={study.slug}>
                   <h3>
                     <Link href={`/work/${study.slug}/`}>
-                      {study.title} <span aria-hidden="true">↗</span>
+                      {study.title} <ArrowIcon />
                     </Link>
                   </h3>
                   <p className="resume-company">{study.company}</p>
