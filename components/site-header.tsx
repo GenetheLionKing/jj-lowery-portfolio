@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { navigation } from "@/data/profile";
+import { SiteNavigation, SocialLinks } from "@/components/site-navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
-
 export function SiteHeader() {
   return (
     <header className="site-header">
@@ -14,23 +13,9 @@ export function SiteHeader() {
         >
           JJ Lowery<span className="brand-period">.</span>
         </Link>
-        <div className="header-controls">
-          <nav aria-label="Main navigation">
-            {navigation.map((item) => (
-              <Link
-                prefetch={false}
-                key={item.label}
-                href={item.href}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener noreferrer" : undefined}
-              >
-                {item.label}
-                {item.external && (
-                  <span className="sr-only"> (opens in a new tab)</span>
-                )}
-              </Link>
-            ))}
-          </nav>
+        <SiteNavigation label="Main navigation" />
+        <div className="header-social">
+          <SocialLinks label="Social profiles" />
           <ThemeToggle />
         </div>
       </div>

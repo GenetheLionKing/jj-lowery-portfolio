@@ -34,13 +34,82 @@ export type CaseStudy = {
   subtitle: string;
   summary: string;
   category: string;
-  diagram: DiagramKind;
+  diagram?: DiagramKind;
+  image?: { src: string; alt: string };
   metadata: { label: string; value: string }[];
   skills: string[];
   sections: CaseSection[];
 };
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "portfolio-design",
+    number: "04",
+    company: "Personal project",
+    title: "Designing and Building This Portfolio",
+    subtitle: "A simple website for showing my systems work.",
+    summary:
+      "An image-led portfolio built with AI assistance, static pages, responsive assets, and accessibility checks.",
+    category: "Website design & development",
+    image: {
+      src: "/images/work/portfolio.webp",
+      alt: "JJ Lowery’s portfolio homepage",
+    },
+    metadata: [
+      { label: "Project", value: "My personal portfolio" },
+      { label: "Stack", value: "Next.js, React, TypeScript, plain CSS" },
+      { label: "Delivery", value: "Static export with responsive images" },
+      { label: "Method", value: "AI-assisted design and development" },
+    ],
+    skills: [
+      "Requirements",
+      "UI design",
+      "AI-assisted development",
+      "Accessibility",
+      "Performance testing",
+      "Change validation",
+    ],
+    sections: [
+      {
+        id: "brief",
+        title: "The brief",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "Show what I do in plain language. Give each work sample an image, a title, and a short description. Make the site quick to load and easy to use on a phone.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "design",
+        title: "The design",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "The homepage pairs systems analysis with practical software development. A clean portrait sits between those two roles. Three work cards link to the supporting detail, and the same navigation appears at the top and bottom.",
+              "The layout uses system fonts, a consistent spacing scale, neutral surfaces, and a small amount of color. The portrait uses the original photo’s pixels with its background removed. No graphics cover the face.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "delivery",
+        title: "The build and checks",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "The site uses statically exported pages, responsive images, and plain CSS. Reading and navigation work without JavaScript. The only application controls that need JavaScript are the theme switch and résumé print button.",
+              "Changes are checked for desktop and mobile layout, keyboard access, reduced motion, contrast, printing, and loading performance. A GitHub pull request and Vercel preview provide a review step before publication. Development is AI-assisted; I define the requirements and review the result.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
   {
     slug: "bgm-budget-pacing",
     number: "01",
@@ -471,7 +540,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Production shape", value: "Approximately 1,004 rows" },
       {
         label: "Measured result",
-        value: "11,136.6 ms → 41.3 ms · helper time",
+        value: "11,136.6 ms to 41.3 ms · helper time",
       },
       {
         label: "Safety boundary",

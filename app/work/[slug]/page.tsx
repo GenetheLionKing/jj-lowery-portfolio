@@ -42,7 +42,7 @@ export default async function WorkPage({
   const index = caseStudies.findIndex((study) => study.slug === slug);
   if (index === -1) notFound();
   const selectedStudies = caseStudies.filter(
-    (study) => study.company === "Vector",
+    (study) => study.company !== "Boldly Grow Media",
   );
   const selectedIndex = selectedStudies.findIndex(
     (study) => study.slug === slug,

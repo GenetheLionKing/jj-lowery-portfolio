@@ -1,3 +1,4 @@
+import { ArrowIcon } from "@/components/icons";
 import type { DiagramKind } from "@/data/case-studies";
 
 export function ProcessFlow({
@@ -20,7 +21,7 @@ export function ProcessFlow({
           </div>
           {index < steps.length - 1 && (
             <span className="flow-arrow" aria-hidden="true">
-              ↓
+              <ArrowIcon direction="down" />
             </span>
           )}
         </li>
@@ -100,7 +101,7 @@ export function SystemDiagram({
                   <strong>{step}</strong>
                   {index < 4 && (
                     <span className="loop-arrow" aria-hidden="true">
-                      →
+                      <ArrowIcon direction="right" />
                     </span>
                   )}
                 </li>
@@ -109,7 +110,7 @@ export function SystemDiagram({
           </ol>
           <div className="feedback-line">
             <span>Actual spend informs the next decision</span>
-            <span aria-hidden="true">↵</span>
+            <ArrowIcon direction="left" />
           </div>
         </div>
         <p className="diagram-foot micro">

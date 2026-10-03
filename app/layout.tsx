@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   creator: profile.name,
   applicationName: "JJ Lowery Portfolio",
   openGraph: {
-    title: "JJ Lowery — Clear thinking. Reliable systems.",
+    title: "JJ Lowery — Systems analysis & software development",
     description: profile.description,
     type: "website",
     locale: "en_US",

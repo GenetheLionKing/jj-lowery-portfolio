@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { ArrowIcon } from "@/components/icons";
 import type { CaseStudy, ContentBlock } from "@/data/case-studies";
 import {
   MetricCallouts,
@@ -59,7 +61,7 @@ function Block({ block }: { block: ContentBlock }) {
             <div key={rule.when}>
               <dt>{rule.when}</dt>
               <dd>
-                <span aria-hidden="true">↳</span>
+                <ArrowIcon direction="right" />
                 {rule.then}
               </dd>
             </div>
@@ -92,7 +94,7 @@ export function CaseStudyPage({
     <>
       <div className="case-hero container">
         <Link href="/#work" className="text-link back-link">
-          <span aria-hidden="true">←</span> All selected work
+          <ArrowIcon direction="left" /> All selected work
         </Link>
         <div className="case-hero-top">
           <p className="eyebrow">
@@ -107,7 +109,17 @@ export function CaseStudyPage({
             My personal-finance app, developed with AI assistance.
           </p>
         )}
-        <SystemDiagram kind={study.diagram} />
+        {study.diagram && <SystemDiagram kind={study.diagram} />}
+        {study.image && (
+          <Image
+            unoptimized
+            className="case-project-image"
+            src={study.image.src}
+            alt={study.image.alt}
+            width="640"
+            height="480"
+          />
+        )}
         <dl className="case-metadata">
           {study.metadata.map((item) => (
             <div key={item.label}>
@@ -154,7 +166,9 @@ export function CaseStudyPage({
           ))}
           <section className="case-section" id="skills">
             <div className="case-section-heading">
-              <span className="micro">08</span>
+              <span className="micro">
+                {String(study.sections.length + 1).padStart(2, "0")}
+              </span>
               <h2>Skills Demonstrated</h2>
             </div>
             <SkillTags skills={study.skills} />
@@ -168,7 +182,7 @@ export function CaseStudyPage({
           </span>
           <Link href={`/work/${nextStudy.slug}/`}>
             <span>{nextStudy.title}</span>
-            <span aria-hidden="true">↗</span>
+            <ArrowIcon />
           </Link>
           <Link href="/#work" className="text-link">
             Back to selected work

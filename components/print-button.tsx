@@ -1,5 +1,7 @@
 "use client";
 
+import { ArrowIcon } from "@/components/icons";
+
 export function PrintButton() {
   return (
     <button
@@ -7,7 +9,7 @@ export function PrintButton() {
       type="button"
       onClick={() => window.print()}
     >
-      Print / save as PDF <span aria-hidden="true">↗</span>
+      Print / save as PDF <ArrowIcon />
     </button>
   );
 }

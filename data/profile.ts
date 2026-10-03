@@ -3,7 +3,7 @@ export const profile = {
   location: "Tucson, Arizona",
   linkedin: "https://www.linkedin.com/in/jamesjoelowery/",
   headline:
-    "I turn messy processes and disconnected information into clear, reliable systems.",
+    "I turn business problems into clear requirements, workflows, and rules.",
   description:
     "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
   summary:
@@ -15,10 +15,19 @@ export const profile = {
 };
 
 export const navigation = [
-  { label: "Work", href: "/#work" },
   { label: "About", href: "/#about" },
-  { label: "LinkedIn", href: profile.linkedin, external: true },
+  { label: "Work", href: "/#work" },
   { label: "Résumé", href: "/resume/" },
+  { label: "Contact", href: profile.linkedin, external: true },
+];
+
+export const socialLinks: {
+  label: "X" | "LinkedIn" | "Instagram";
+  href: string;
+}[] = [
+  { label: "X", href: "https://x.com/JJ_incredible" },
+  { label: "LinkedIn", href: profile.linkedin },
+  { label: "Instagram", href: "https://www.instagram.com/jj_incredible/" },
 ];
 
 export const capabilities = [

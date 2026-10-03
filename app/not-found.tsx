@@ -1,3 +1,4 @@
+import { ArrowIcon } from "@/components/icons";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -7,7 +8,7 @@ export default function NotFound() {
       <h1>This path doesn’t lead to a page.</h1>
       <p>The work is still here. Let’s get you back to it.</p>
       <Link className="button button-dark" href="/#work">
-        Explore selected work <span aria-hidden="true">↗</span>
+        Explore selected work <ArrowIcon />
       </Link>
     </section>
   );
