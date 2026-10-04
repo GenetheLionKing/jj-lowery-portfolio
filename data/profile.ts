@@ -14,11 +14,15 @@ export const profile = {
   ],
 };
 
-export const navigation = [
-  { label: "About", href: "/#about" },
-  { label: "Work", href: "/#work" },
+export const navigation: {
+  label: string;
+  href: string;
+  external?: boolean;
+}[] = [
+  { label: "About", href: "/about/" },
+  { label: "Portfolio", href: "/portfolio/" },
   { label: "Résumé", href: "/resume/" },
-  { label: "Contact", href: profile.linkedin, external: true },
+  { label: "Contact", href: "/contact/" },
 ];
 
 export const socialLinks: {

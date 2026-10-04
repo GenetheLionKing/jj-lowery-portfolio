@@ -1,29 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
 import { ProfileImage } from "@/components/profile-image";
-const selectedWork = [
-  {
-    title: "Vector income planning",
-    subtitle: "Conceptual model & requirements",
-    href: "/work/vector-income-architecture/",
-    image: "/images/work/vector-income.webp",
-    alt: "Vector’s envelope-planning interface",
-  },
-  {
-    title: "Vector performance",
-    subtitle: "Investigation & validation",
-    href: "/work/vector-performance-investigation/",
-    image: "/images/work/vector-validation.webp",
-    alt: "Vector’s review and validation artwork",
-  },
-  {
-    title: "Personal portfolio",
-    subtitle: "Website design & development",
-    href: "/work/portfolio-design/",
-    image: "/images/work/portfolio.webp",
-    alt: "The design of JJ Lowery’s portfolio",
-  },
-];
+import { SelectedWorkGrid } from "@/components/selected-work-grid";
 export default function Home() {
   return (
     <>
@@ -54,32 +30,7 @@ export default function Home() {
           <h2 id="work-title" className="work-heading">
             <span>Selected work</span>
           </h2>
-          <div className="work-grid">
-            {selectedWork.map((work) => (
-              <Link
-                key={work.href}
-                className="work-card"
-                href={work.href}
-                prefetch={false}
-              >
-                <div className="work-image">
-                  <Image
-                    unoptimized
-                    src={work.image}
-                    alt={work.alt}
-                    width="640"
-                    height="480"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="work-caption">
-                  <h3>{work.title}</h3>
-                  <p>{work.subtitle}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <SelectedWorkGrid />
         </div>
       </section>
     </>

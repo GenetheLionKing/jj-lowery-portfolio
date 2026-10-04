@@ -3,6 +3,7 @@
 @import url("../styles/case-study.css");
 @import url("../styles/resume.css");
 @import url("../styles/theme.css");
+@import url("../styles/pages.css");
 @layer tokens {
   :root {
     --paper: #fff;
@@ -365,7 +366,7 @@
   .work-caption {
     padding: 16px 12px 12px;
   }
-  .work-caption h3 {
+  .work-caption :is(h2, h3) {
     font-size: 17px;
     line-height: 1.4;
     font-weight: 550;
@@ -430,7 +431,7 @@
     .work-caption {
       padding: 12px 8px;
     }
-    .work-caption h3 {
+    .work-caption :is(h2, h3) {
       font-size: 16px;
     }
     .work-caption p {
@@ -520,7 +521,7 @@
     .work-caption {
       padding: 16px 12px 12px;
     }
-    .work-caption h3 {
+    .work-caption :is(h2, h3) {
       font-size: 18px;
     }
     .work-caption p {
