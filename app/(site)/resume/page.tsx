@@ -2,8 +2,8 @@ import { ArrowIcon } from "@/components/icons";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PrintButton } from "@/components/print-button";
-import { experience, profile, skillGroups } from "@/data/profile";
-import { caseStudies } from "@/data/case-studies";
+import { getPublicContent } from "@/content/public";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Résumé — Systems Analyst & Business Systems Analyst",
@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ResumePage() {
+export default async function ResumePage() {
+  const { resume, cases } = await getPublicContent();
+  if (!resume) notFound();
+  const { experience, skillGroups } = resume;
   return (
     <div className="container resume-page">
       <div className="resume-toolbar">
@@ -29,18 +32,17 @@ export default function ResumePage() {
         <header className="resume-header">
           <p className="eyebrow">Résumé / James (JJ) Lowery</p>
           <h1>
-            JAMES (JJ) LOWERY<span>.</span>
+            {resume.name}
+            <span>.</span>
           </h1>
-          <p className="resume-role">
-            SYSTEMS ANALYST | BUSINESS SYSTEMS ANALYST
-          </p>
+          <p className="resume-role">{resume.role}</p>
           <address>
-            <span>Tucson, AZ | Remote</span>
+            <span>{resume.location}</span>
           </address>
         </header>
         <section className="resume-section">
           <h2>Professional summary</h2>
-          <p>{profile.summary}</p>
+          <p>{resume.summary}</p>
         </section>
         <section className="resume-section">
           <h2>Core skills</h2>
@@ -60,8 +62,8 @@ export default function ResumePage() {
         <section className="resume-section">
           <h2>Selected systems work</h2>
           <div className="resume-projects">
-            {caseStudies
-              .filter((study) => study.company === "Vector")
+            {cases
+              .filter((study) => resume.selectedProjects.includes(study.slug))
               .map((study) => (
                 <div key={study.slug}>
                   <h3>

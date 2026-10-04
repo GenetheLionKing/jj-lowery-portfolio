@@ -88,7 +88,7 @@ export function CaseStudyPage({
   nextStudy,
 }: {
   study: CaseStudy;
-  nextStudy: CaseStudy;
+  nextStudy?: CaseStudy;
 }) {
   return (
     <>
@@ -175,20 +175,22 @@ export function CaseStudyPage({
           </section>
         </article>
       </div>
-      <div className="next-study">
-        <div className="container">
-          <span className="micro">
-            Continue exploring / Case study {nextStudy.number}
-          </span>
-          <Link href={`/work/${nextStudy.slug}/`}>
-            <span>{nextStudy.title}</span>
-            <ArrowIcon />
-          </Link>
-          <Link href="/#work" className="text-link">
-            Back to selected work
-          </Link>
+      {nextStudy && (
+        <div className="next-study">
+          <div className="container">
+            <span className="micro">
+              Continue exploring / Case study {nextStudy.number}
+            </span>
+            <Link href={`/work/${nextStudy.slug}/`}>
+              <span>{nextStudy.title}</span>
+              <ArrowIcon />
+            </Link>
+            <Link href="/#work" className="text-link">
+              Back to selected work
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

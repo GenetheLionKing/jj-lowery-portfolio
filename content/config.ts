@@ -1,0 +1,19 @@
+export type SanityPublicConfig = { projectId: string; dataset: string };
+export function getSanityPublicConfig(
+  env: Record<string, string | undefined> = process.env,
+): SanityPublicConfig | null {
+  const projectId = env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim();
+  const dataset = env.NEXT_PUBLIC_SANITY_DATASET?.trim();
+  if (!projectId && !dataset) return null;
+  if (
+    !projectId ||
+    !dataset ||
+    !/^[a-z0-9]{1,64}$/.test(projectId) ||
+    !/^[a-z0-9][a-z0-9_-]{0,63}$/.test(dataset)
+  ) {
+    throw new Error(
+      "Set both valid public Sanity project and dataset identifiers; partial configuration cannot use seed fallback.",
+    );
+  }
+  return { projectId, dataset };
+}

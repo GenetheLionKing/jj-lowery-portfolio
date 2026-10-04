@@ -1,6 +1,9 @@
 import { ProfileImage } from "@/components/profile-image";
 import { SelectedWorkGrid } from "@/components/selected-work-grid";
-export default function Home() {
+import { getPublicContent } from "@/content/public";
+import { selectedCases } from "@/content/catalog";
+export default async function Home() {
+  const { cases } = await getPublicContent();
   return (
     <>
       <section id="about" className="hero" aria-labelledby="hero-title">
@@ -30,7 +33,7 @@ export default function Home() {
           <h2 id="work-title" className="work-heading">
             <span>Selected work</span>
           </h2>
-          <SelectedWorkGrid />
+          <SelectedWorkGrid cases={selectedCases(cases).slice(0, 3)} />
         </div>
       </section>
     </>
