@@ -18,15 +18,16 @@ PORT=3110 pnpm preview
 
 Open [127.0.0.1:3110](http://127.0.0.1:3110). Preview binds only to loopback and serves the production export in `out/`. `pnpm dev` remains available. Set `NEXT_TELEMETRY_DISABLED=1` to disable local Next build/development telemetry.
 
-| Command               | Purpose                                              |
-| --------------------- | ---------------------------------------------------- |
-| `pnpm lint`           | ESLint, zero warnings                                |
-| `pnpm typecheck`      | App Router types and TypeScript                      |
-| `pnpm build`          | Production static export                             |
-| `pnpm check`          | All three required checks                            |
-| `pnpm preview`        | Local production-export preview                      |
-| `pnpm assets:build`   | Rebuild the current portrait and work images         |
-| `pnpm portrait:build` | Rebuild the retained first-pass portrait derivatives |
+| Command                  | Purpose                                                |
+| ------------------------ | ------------------------------------------------------ |
+| `pnpm lint`              | ESLint, zero warnings                                  |
+| `pnpm typecheck`         | App Router types and TypeScript                        |
+| `pnpm build`             | Production static export                               |
+| `pnpm check`             | All three required checks                              |
+| `pnpm preview`           | Local production-export preview                        |
+| `pnpm assets:build`      | Rebuild retained second-pass portraits and work images |
+| `pnpm portrait:build`    | Rebuild the retained first-pass portrait derivatives   |
+| `pnpm portrait:shoulder` | Rebuild the approved complete-shoulder portrait        |
 
 ## Routes and content
 
@@ -46,7 +47,9 @@ Professional facts live in `data/profile.ts`; supporting evidence lives in `data
 
 ## Images and design
 
-`public/images/profile_smile.jpg` is the unchanged 1254px owner photograph. `assets/portrait-matte.png` supplies only a background-removal mask; the pipeline combines it with the original photograph's RGB pixels. No generated face pixels or face-overlay artwork are used. `pnpm assets:build` uses Sharp already supplied by Next to create 320/640/960px transparent WebP and PNG derivatives. A native `picture`/`srcset` selects the portrait, with intrinsic dimensions and high-priority loading.
+`assets/portrait-shoulder-approved.png` is the owner-approved version 2 portrait, with expanded shoulder contours, genuine transparency and unchanged original head pixels. `pnpm portrait:shoulder` validates its exact fingerprint and creates uncropped 320/640/960/1280px WebP and lossless PNG derivatives using Sharp already supplied by Next. The native `picture`/`srcset` keeps the full 1640×1294 aspect ratio, intrinsic dimensions and high-priority loading. Framing retains the previous portrait height where space permits.
+
+`public/images/profile_smile.jpg`, `profile_serious.jpg`, the original matte and prior derivatives remain as source/history. The retained `portrait:build` and `assets:build` commands reproduce the earlier versions, rather than the newly approved portrait. See [portrait verification](docs/portrait-verification.md) for asset provenance, responsive framing and checks.
 
 The Vector envelope image and validation artwork are existing public project marketing assets, copied into `assets/`. The envelope thumbnail illustrates the project; it does not claim that the conceptual income proposal is implemented. The validation illustration is not a screenshot or benchmark result. The portfolio thumbnail is an actual rendered screenshot of this site. The pipeline produces 640×480 WebP work images.
 
@@ -56,7 +59,7 @@ The second pass takes the broad composition of the owner's Adham Dannaway refere
 
 The existing Vercel project is `jj-lowery-portfolio` in `genethelionkings-projects`. The Git production branch is `main`; feature branches receive previews. Verify the actual commit status, deployment metadata, and live domain for each release. The configured production runtime is Node 24.x.
 
-The published redesign was explicitly authorized and reviewed. The owner subsequently authorized fixing the mobile hero spacing, pushing the About / Portfolio / Contact expansion, and opening a draft PR for normal Vercel Preview review. Keep this revision unmerged pending Atlas readiness confirmation and the current review decision. No hosting account, DNS, plan, permissions, or project settings need to change.
+The redesign and About / Portfolio / Contact expansion were reviewed, approved and published through PRs #2 and #3. The owner subsequently approved the corrected version 2 portrait and explicitly requested publication. Use a narrow PR with passing checks and normal merge. No hosting account, DNS, plan, permissions, or project settings need to change.
 
 See [second-pass verification](docs/second-pass-verification.md) and the [desktop](docs/design-review/home-desktop.webp) / [mobile](docs/design-review/home-mobile.webp) review screenshots. `docs/redesign-verification.md` records the superseded first pass; `docs/verification.md` records historical v0.1 checks.
 

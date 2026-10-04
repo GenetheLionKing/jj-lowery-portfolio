@@ -28,13 +28,13 @@
   }
   .about-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
-    gap: 96px;
+    grid-template-columns: minmax(0, 1fr) calc(360px * 1640 / 1294);
+    gap: 64px;
     align-items: center;
     max-width: 1000px;
   }
   .about-page .profile-figure {
-    width: 360px;
+    width: calc(360px * 1640 / 1294);
     align-self: center;
   }
   .about-page .portrait-photo {
@@ -107,14 +107,25 @@
 @layer responsive {
   @media (max-width: 900px) {
     .about-layout {
-      grid-template-columns: minmax(0, 1fr) 280px;
-      gap: 40px;
+      grid-template-columns: minmax(0, 1fr) calc(280px * 1640 / 1294);
+      gap: 32px;
     }
     .about-page .profile-figure {
-      width: 280px;
+      width: calc(280px * 1640 / 1294);
     }
     .contact-layout {
       gap: 40px;
+    }
+  }
+  @media (max-width: 750px) {
+    .about-layout {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .about-page .profile-figure {
+      width: min(280px, 100%);
+      grid-row: 1;
+      justify-self: center;
     }
   }
   @media (max-width: 650px) {
@@ -133,7 +144,7 @@
       gap: 28px;
     }
     .about-page .profile-figure {
-      width: 220px;
+      width: min(280px, 100%);
       grid-row: 1;
       justify-self: center;
     }

@@ -10,6 +10,7 @@
     "check": "npm run lint && npm run typecheck && npm run build",
     "preview": "node scripts/preview.mjs",
     "portrait:build": "node scripts/portrait.mjs",
+    "portrait:shoulder": "node scripts/portrait-shoulder.mjs",
     "assets:build": "node scripts/portrait-clean.mjs"
   },
   "dependencies": {
