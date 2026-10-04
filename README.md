@@ -18,22 +18,22 @@ PORT=3110 pnpm preview
 
 Open [127.0.0.1:3110](http://127.0.0.1:3110). Preview binds only to loopback and serves the production export in `out/`. `pnpm dev` remains available. Set `NEXT_TELEMETRY_DISABLED=1` to disable local Next build/development telemetry.
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm lint` | ESLint, zero warnings |
-| `pnpm typecheck` | App Router types and TypeScript |
-| `pnpm build` | Production static export |
-| `pnpm check` | All three required checks |
-| `pnpm preview` | Local production-export preview |
-| `pnpm assets:build` | Rebuild the current portrait and work images |
+| Command               | Purpose                                              |
+| --------------------- | ---------------------------------------------------- |
+| `pnpm lint`           | ESLint, zero warnings                                |
+| `pnpm typecheck`      | App Router types and TypeScript                      |
+| `pnpm build`          | Production static export                             |
+| `pnpm check`          | All three required checks                            |
+| `pnpm preview`        | Local production-export preview                      |
+| `pnpm assets:build`   | Rebuild the current portrait and work images         |
 | `pnpm portrait:build` | Rebuild the retained first-pass portrait derivatives |
 
 ## Routes and content
 
 - `/`: analyst/builder hero and selected work
-- `/about/`: concise public-source background and résumé link (local draft)
-- `/portfolio/`: the same three selected work cards (local draft)
-- `/contact/`: owner-confirmed LinkedIn, X, and Instagram links (local draft)
+- `/about/`: concise public-source background and résumé link (review draft)
+- `/portfolio/`: the same three selected work cards (review draft)
+- `/contact/`: owner-confirmed LinkedIn, X, and Instagram links (review draft)
 - `/work/vector-income-architecture/`: conceptual income model and requirements
 - `/work/vector-performance-investigation/`: investigation with qualified helper measurements
 - `/work/portfolio-design/`: this portfolio's actual design and development
@@ -56,7 +56,7 @@ The second pass takes the broad composition of the owner's Adham Dannaway refere
 
 The existing Vercel project is `jj-lowery-portfolio` in `genethelionkings-projects`. The Git production branch is `main`; feature branches receive previews. Verify the actual commit status, deployment metadata, and live domain for each release. The configured production runtime is Node 24.x.
 
-The published redesign was explicitly authorized and reviewed. **The About / Portfolio / Contact expansion is local preparation only.** Do not push this draft, open a PR, trigger external CI/Preview, deploy, merge, or publish under the current scope. Earlier release authorization does not authorize this new revision. No hosting account, DNS, plan, permissions, or project settings need to change.
+The published redesign was explicitly authorized and reviewed. The owner subsequently authorized fixing the mobile hero spacing, pushing the About / Portfolio / Contact expansion, and opening a draft PR for normal Vercel Preview review. Keep this revision unmerged pending Atlas readiness confirmation and the current review decision. No hosting account, DNS, plan, permissions, or project settings need to change.
 
 See [second-pass verification](docs/second-pass-verification.md) and the [desktop](docs/design-review/home-desktop.webp) / [mobile](docs/design-review/home-mobile.webp) review screenshots. `docs/redesign-verification.md` records the superseded first pass; `docs/verification.md` records historical v0.1 checks.
 
