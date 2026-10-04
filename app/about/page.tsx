@@ -38,7 +38,7 @@ export default function AboutPage() {
             View résumé <ArrowIcon />
           </Link>
         </div>
-        <ProfileImage sizes="(max-width: 650px) 220px, (max-width: 900px) 280px, 360px" />
+        <ProfileImage sizes="(max-width: 750px) 280px, (max-width: 900px) 355px, 457px" />
       </div>
     </section>
   );
