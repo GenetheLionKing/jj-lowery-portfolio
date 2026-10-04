@@ -3,6 +3,7 @@
 @import url("../styles/case-study.css");
 @import url("../styles/resume.css");
 @import url("../styles/theme.css");
+@import url("../styles/pages.css");
 @layer tokens {
   :root {
     --paper: #fff;
@@ -365,7 +366,7 @@
   .work-caption {
     padding: 16px 12px 12px;
   }
-  .work-caption h3 {
+  .work-caption :is(h2, h3) {
     font-size: 17px;
     line-height: 1.4;
     font-weight: 550;
@@ -430,7 +431,7 @@
     .work-caption {
       padding: 12px 8px;
     }
-    .work-caption h3 {
+    .work-caption :is(h2, h3) {
       font-size: 16px;
     }
     .work-caption p {
@@ -520,7 +521,7 @@
     .work-caption {
       padding: 16px 12px 12px;
     }
-    .work-caption h3 {
+    .work-caption :is(h2, h3) {
       font-size: 18px;
     }
     .work-caption p {
@@ -586,8 +587,9 @@
   }
   @container hero-shell (max-width: 750px) {
     .hero-stage {
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      width: calc(100% - 48px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
       min-height: 0;
       padding-block: 24px 32px;
     }
@@ -601,6 +603,7 @@
       padding: 0;
       grid-row: 2;
       align-self: start;
+      text-align: center;
     }
     .competency-analysis {
       grid-column: 1;
@@ -612,6 +615,8 @@
       font-size: clamp(2.2rem, 9cqi, 3.5rem);
     }
     .competency p {
+      max-width: 24ch;
+      margin-inline: auto;
       font-size: 13px;
       line-height: 1.6;
       margin-top: 12px;
