@@ -1,4 +1,4 @@
-/** Existing public assets only. No private draft-media uploader in this milestone. */
+/** Existing public assets; uploaded Sanity assets are also public, even on drafts. */
 export const publicMedia = {
   portrait: {
     src: "/images/profile-shoulder-640.webp",

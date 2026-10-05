@@ -34,13 +34,6 @@ export default async function AboutPage() {
                 <p key={p}>{p}</p>
               ))}
             </div>
-            <Link
-              href="/resume/"
-              prefetch={false}
-              className="text-link page-link"
-            >
-              View résumé <ArrowIcon />
-            </Link>
           </div>
           <ProfileImage sizes="(max-width: 750px) 280px, (max-width: 900px) 355px, 457px" />
         </div>

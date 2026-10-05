@@ -16,6 +16,7 @@ export type CatalogItem = {
   mainImage?: Article["mainImage"];
   tags: string[];
   label: string;
+  publishedAt?: string;
 };
 export function learnItems(
   cases: PublishingCase[],
@@ -111,15 +112,26 @@ export function aboutGallery(
 }
 
 export function blogItems(articles: Article[]): CatalogItem[] {
-  return articles.map((item) => ({
-    kind: "article" as const,
-    slug: item.slug,
-    title: item.title,
-    summary: item.summary,
-    href: contentHref("article", item.slug),
-    image: item.image,
-    mainImage: item.mainImage,
-    tags: item.tags,
-    label: item.format === "guide" ? "Guide" : "Article",
-  }));
+  return [...articles]
+    .sort((a, b) => {
+      const date =
+        (b.publishedAt ? Date.parse(b.publishedAt) : -Infinity) -
+        (a.publishedAt ? Date.parse(a.publishedAt) : -Infinity);
+      if (date && !Number.isNaN(date)) return date;
+      const order = (a.order ?? Infinity) - (b.order ?? Infinity);
+      if (order && !Number.isNaN(order)) return order;
+      return a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0;
+    })
+    .map((item) => ({
+      kind: "article" as const,
+      publishedAt: item.publishedAt,
+      slug: item.slug,
+      title: item.title,
+      summary: item.summary,
+      href: contentHref("article", item.slug),
+      image: item.image,
+      mainImage: item.mainImage,
+      tags: item.tags,
+      label: item.format === "guide" ? "Guide" : "Article",
+    }));
 }

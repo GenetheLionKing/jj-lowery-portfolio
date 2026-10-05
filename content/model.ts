@@ -142,6 +142,7 @@ export const articleSchema = z.object({
   learn: z.boolean().default(true),
   featured: z.boolean().default(false),
   publishedAt: z.iso.datetime({ offset: true }).optional(),
+  order: z.number().finite().optional(),
   format: z.enum(["article", "guide"]).default("article"),
   ...seo,
 });

@@ -15,7 +15,7 @@ The **Tags & placement** field controls distribution:
 | `about-gallery` | About's linked image-only gallery, when a main image exists |
 | `home`          | Selected structured cases on Home                           |
 
-Published ordinary articles remain in Blog when placement tags are removed. Visitor-facing topic/type filters are absent. Resources remain a separate optional reference type. About and Résumé have dedicated singleton editors; Résumé is hidden from shared navigation but keeps its direct URL, About link and print behavior.
+Published ordinary articles remain in Blog when placement tags are removed. Visitor-facing topic/type filters are absent. Resources remain a separate optional reference type. About and Résumé have dedicated singleton editors; Résumé is hidden from shared navigation but keeps its direct URL, singleton editor and print behavior.
 
 The About gallery uses a tagged published post's main image, title as its accessible link label and canonical URL. It contains no visible captions or arrows. Draft, unpublished and image-less posts do not appear. JJ still needs to choose personal posts/photos; no childhood history or new personal assets were invented. The gallery fixture screenshots use an existing portrait and a clearly labeled local mock post only.
 

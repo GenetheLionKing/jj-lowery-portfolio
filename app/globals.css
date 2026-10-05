@@ -6,6 +6,7 @@
 @import url("../styles/theme.css");
 @import url("../styles/pages.css");
 @import url("../styles/publishing.css");
+@import url("../styles/index-editorial.css");
 @layer tokens {
   :root {
     --paper: #fff;

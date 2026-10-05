@@ -320,3 +320,52 @@ test("query-projected null images do not reject image-less unified or legacy pos
     assert.equal(content.cases[0].mainImage, undefined);
   }
 });
+
+test("Blog selects latest published date, with display-order and canonical-slug ties, never draft records", () => {
+  const make = (slug: string, publishedAt?: string, order?: number) => ({
+    ...seedArticles[0],
+    slug,
+    publishedAt,
+    order,
+  });
+  const records = [
+    make("undated-last", undefined, 20),
+    make("older", "2026-01-01T00:00:00Z", 0),
+    make("newest-b", "2026-02-01T00:00:00Z", 2),
+    make("newest-a", "2026-02-01T00:00:00Z", 2),
+    make("newest-priority", "2026-02-01T00:00:00Z", 1),
+    make("undated-first", undefined, 1),
+  ];
+  const content = decodePublishedContent([
+    ...records.map((record) => ({
+      ...record,
+      _type: "post",
+      kind: "article",
+      _id: `post-${record.slug}`,
+    })),
+    {
+      ...make("private-newest", "2027-01-01T00:00:00Z"),
+      _type: "post",
+      kind: "article",
+      _id: "drafts.private-newest",
+    },
+  ]);
+  const items = blogItems(content.articles);
+  assert.deepEqual(
+    items.map((item) => item.slug),
+    [
+      "newest-priority",
+      "newest-a",
+      "newest-b",
+      "older",
+      "undated-first",
+      "undated-last",
+    ],
+  );
+  assert.deepEqual(blogItems([...content.articles].reverse()), items);
+  const [featured, ...remaining] = items;
+  assert.equal(featured.href, "/blog/newest-priority/");
+  assert.ok(!remaining.some((item) => item.href === featured.href));
+  assert.equal(remaining.length, 5);
+  assert.deepEqual(blogItems([]), []);
+});

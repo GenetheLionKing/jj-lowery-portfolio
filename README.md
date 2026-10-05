@@ -55,7 +55,7 @@ See [publishing verification](docs/publishing-verification.md) for screenshots, 
 - `/work/bgm-budget-pacing/`: retained historical URL, not promoted by selected work or résumé
 - `/resume/`: HTML résumé and one-page Letter print layout
 
-The header and footer repeat About, Portfolio, Learn, Blog and Contact. Résumé navigation is hidden by request; the direct page, About link and print layout remain. Homepage anchors `/#about` and `/#work` remain usable. `content/public.ts` supplies published content to App pages; `content/detail.ts` supplies server-only static props for detail routes. Separate X, LinkedIn and Instagram icons use the owner's confirmed public URLs. The existing light/dark preference remains.
+The header and footer repeat About, Portfolio, Learn, Blog and Contact. Résumé navigation is hidden by request; the direct page, singleton editor and print layout remain. Homepage anchors `/#about` and `/#work` remain usable. `content/public.ts` supplies published content to App pages; `content/detail.ts` supplies server-only static props for detail routes. Separate X, LinkedIn and Instagram icons use the owner's confirmed public URLs. The existing light/dark preference remains.
 
 Original professional facts live in `data/profile.ts`; supporting evidence lives in `data/case-studies.ts`. A single Post editor supports ordinary writing and optional structured case layouts. Placement tags (`about-gallery`, `learn`, `portfolio`, `home`) control listings without duplicating a post or changing its URL. Topic tags are editorial metadata. About thumbnails use the post's main image and link to its canonical detail page; missing images and drafts are omitted. No personal-story posts/photos have been selected yet, so this Preview does not fabricate a gallery.
 
@@ -80,3 +80,5 @@ The redesign, About / Portfolio / Contact expansion and corrected version 2 port
 See [second-pass verification](docs/second-pass-verification.md) and the [desktop](docs/design-review/home-desktop.webp) / [mobile](docs/design-review/home-mobile.webp) review screenshots. `docs/redesign-verification.md` records the superseded first pass; `docs/verification.md` records historical v0.1 checks.
 
 See [local page verification](docs/local-pages-verification.md) for this draft’s copy sources, checks, local screenshots, and review gaps.
+
+The latest [whole-site design review](docs/publishing-design-review.md) covers the split index heroes, featured Blog layout and About résumé CTA removal. [Cloud handoff](docs/cloud-handoff.md) records tools, access and mandatory safe Mac synchronization.
