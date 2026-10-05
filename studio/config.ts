@@ -2,6 +2,8 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import type { SanityPublicConfig } from "../content/config";
 import { schemaTypes } from "./schema";
+import { ArticlePreview } from "./article-preview";
+import { EditAsArticle } from "./edit-as-article";
 
 const singletonTypes = new Set(["about", "resume"]);
 export function createStudioConfig(config: SanityPublicConfig) {
@@ -12,6 +14,13 @@ export function createStudioConfig(config: SanityPublicConfig) {
     basePath: "/studio",
     plugins: [
       structureTool({
+        defaultDocumentNode: (S, { schemaType }) =>
+          schemaType === "post"
+            ? S.document().views([
+                S.view.form(),
+                S.view.component(ArticlePreview).title("Preview"),
+              ])
+            : S.document(),
         structure: (S) =>
           S.list()
             .title("Publish")
@@ -43,7 +52,9 @@ export function createStudioConfig(config: SanityPublicConfig) {
           ? actions.filter(
               ({ action }) => action !== "duplicate" && action !== "delete",
             )
-          : actions,
+          : context.schemaType === "post"
+            ? [...actions, EditAsArticle]
+            : actions,
     },
   });
 }

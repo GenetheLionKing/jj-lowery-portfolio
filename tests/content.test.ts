@@ -269,6 +269,8 @@ test("unsafe rich text links, foreign images and duplicate/reserved section anch
   ])
     assert.equal(isSafeLink(href), true);
   const article = structuredClone(seedArticles[0]);
+  assert.equal(article.body[0]._type, "block");
+  if (article.body[0]._type !== "block") throw Error("Expected prose fixture");
   article.body[0].markDefs = [
     { _type: "link", _key: "bad", href: "javascript:alert(1)" },
   ];

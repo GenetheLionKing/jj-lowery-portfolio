@@ -1,13 +1,14 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
-import { CaseStudyPage } from "@/components/case-study";
+import { ReadingArticlePage } from "@/components/reading-article";
 import { PostMetadata } from "@/components/post-metadata";
 import { loadDetailContent, serializableProps } from "@/content/detail";
-import { selectedCases } from "@/content/catalog";
+import {
+  caseArticle,
+  recentArticles,
+  type RecentArticle,
+} from "@/content/article";
 import type { PublishingCase } from "@/content/model";
-type Props = {
-  study: PublishingCase;
-  nextStudy?: Pick<PublishingCase, "number" | "title" | "slug">;
-};
+type Props = { study: PublishingCase; recent: RecentArticle[] };
 export const getStaticPaths: GetStaticPaths = async () => {
   const { cases } = await loadDetailContent();
   return {
@@ -16,35 +17,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const { cases } = await loadDetailContent();
+  const { cases, articles } = await loadDetailContent();
   const study = cases.find((item) => item.slug === params?.slug);
   if (!study) return { notFound: true, revalidate: 60 };
-  const selected = selectedCases(cases);
-  const index = selected.findIndex((item) => item.slug === study.slug);
-  const nextStudy =
-    selected.length > 1 ? selected[(index + 1) % selected.length] : undefined;
   return {
     props: serializableProps({
       study,
-      nextStudy: nextStudy
-        ? {
-            slug: nextStudy.slug,
-            title: nextStudy.title,
-            number: nextStudy.number,
-          }
-        : undefined,
+      recent: recentArticles(cases, articles, `/work/${study.slug}/`),
     }),
     revalidate: 60,
   };
 };
-export default function WorkPage({ study, nextStudy }: Props) {
+export default function WorkPage({ study, recent }: Props) {
   return (
     <>
       <PostMetadata
         title={study.seoTitle ?? study.title}
         description={study.seoDescription ?? study.summary}
       />
-      <CaseStudyPage study={study} nextStudy={nextStudy} />
+      <ReadingArticlePage article={caseArticle(study)} recent={recent} />
     </>
   );
 }

@@ -30,7 +30,8 @@ function postItems(
       image: item.thumbnail,
       mainImage: item.mainImage,
       tags: item.tags,
-      label: "Case study",
+      label: "Article",
+      publishedAt: item.publishedAt,
       order: item.order,
     })),
     ...articles.map((item) => ({
@@ -38,11 +39,23 @@ function postItems(
       slug: item.slug,
       title: item.title,
       summary: item.summary,
-      href: contentHref("article", item.slug),
+      href:
+        item.destination === "external"
+          ? item.externalUrl!
+          : item.destination === "custom"
+            ? item.customPage!
+            : contentHref("article", item.slug),
       image: item.image,
       mainImage: item.mainImage,
       tags: item.tags,
-      label: item.format === "guide" ? "Guide" : "Article",
+      label:
+        item.destination === "external"
+          ? "External link"
+          : item.destination === "custom"
+            ? "Page"
+            : item.format === "guide"
+              ? "Guide"
+              : "Article",
       order: item.order,
       publishedAt: item.publishedAt,
     })),

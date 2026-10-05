@@ -26,6 +26,7 @@ function validateModel(value: unknown, schema: ZodType) {
 }
 import { mediaKeys, publicMedia, topicLabels } from "../content/media";
 import { isSafeLink, isPublicImageAssetRef } from "../content/urls";
+import { nativePostData } from "../content/native-post";
 
 const string = (
   name: string,
@@ -122,7 +123,7 @@ const tags = defineField({
   name: "tags",
   title: "Tags & placement",
   description:
-    "Choose each page independently. Only published Posts appear on selected pages. Both layouts can appear on the homepage. Topic tags do not place a post. Uncheck a page to remove only that listing, then publish to update the public site.",
+    "Choose each page independently. Only published Posts appear on selected pages. Articles and link cards can appear on the homepage. Topic tags do not place a post. Uncheck a page to remove only that listing, then publish to update the public site.",
   type: "array",
   of: [{ type: "string" }],
   options: {
@@ -387,6 +388,16 @@ const originalTypes = [
         validation: (rule) => rule.required().max(300),
         of: [
           {
+            type: "image",
+            title: "Image",
+            options: { accept: "image/jpeg,image/png,image/webp" },
+            fields: [
+              string("alt", "Alternative text"),
+              paragraph("caption", "Caption (optional)", false),
+            ],
+          },
+          { type: "systemDiagram" },
+          {
             type: "block",
             styles: [
               { title: "Paragraph", value: "normal" },
@@ -485,6 +496,13 @@ const articleOnly = articleFields.filter(
     field.name !== "learn",
 );
 export const schemaTypes = [
+  defineType({
+    name: "systemDiagram",
+    title: "Existing system illustration",
+    type: "object",
+    fields: [diagram("kind", "Illustration")],
+    preview: { select: { title: "kind" } },
+  }),
   ...originalTypes.filter(
     (item) => item.name !== "article" && item.name !== "caseStudy",
   ),
@@ -492,7 +510,24 @@ export const schemaTypes = [
     name: "post",
     title: "Post",
     type: "document",
-    initialValue: { kind: "article", format: "article", tags: [] },
+    initialValue: {
+      kind: "article",
+      destination: "article",
+      format: "article",
+      tags: [],
+    },
+    fieldsets: [
+      {
+        name: "archive",
+        title: "Archived source (existing Posts)",
+        options: { collapsible: true, collapsed: true },
+      },
+      {
+        name: "options",
+        title: "Display & search options",
+        options: { collapsible: true, collapsed: true },
+      },
+    ],
     validation: (rule) =>
       rule.custom((value) => {
         const doc = value as Record<string, unknown> | undefined;
@@ -506,36 +541,77 @@ export const schemaTypes = [
           (!isPublicImageAssetRef(image.asset?._ref) || !image.alt?.trim())
         )
           return "Main image requires JPG, PNG or WebP up to 20000px and alternative text";
-        return validateModel(
-          {
-            ...doc,
-            mainImage: undefined,
-            image: doc.kind === "article" ? doc.artwork : doc.image,
-          },
-          doc.kind === "caseStudy" ? caseSchema : articleSchema,
-        );
+        try {
+          return validateModel(
+            nativePostData(doc, {
+              projectId: "validation",
+              dataset: "portfolio",
+            }),
+            doc.kind === "caseStudy" ? caseSchema : articleSchema,
+          );
+        } catch (error) {
+          return error instanceof Error ? error.message : "Invalid image";
+        }
       }),
     fields: [
       defineField({
         name: "kind",
-        title: "Post layout",
+        title: "URL type",
         type: "string",
+        hidden: true,
+        readOnly: true,
         options: {
           list: [
-            { title: "Blog post", value: "article" },
-            { title: "Structured case study", value: "caseStudy" },
+            { title: "Article", value: "article" },
+            { title: "Existing work URL", value: "caseStudy" },
           ],
         },
         initialValue: "article",
         description:
           "Both layouts can appear on any selected page using Tags & placement; the case layout is optional. Existing cases retain their /work/ URLs. Choose before publishing and keep the layout to preserve the URL.",
-        readOnly: ({ document }) =>
-          /^(drafts\.)?case-/.test(String(document?._id)),
+
         validation: (rule) => rule.required(),
       }),
       slug,
       string("title", "Title"),
-      paragraph("summary", "Short description"),
+      paragraph("summary", "Subtitle / short description"),
+      defineField({
+        name: "destination",
+        title: "Destination",
+        type: "string",
+        initialValue: "article",
+        options: {
+          layout: "radio",
+          list: [
+            { title: "Article", value: "article" },
+            { title: "External link", value: "external" },
+            { title: "Existing custom page", value: "custom" },
+          ],
+        },
+        hidden: ({ document }) => document?.kind === "caseStudy",
+        description:
+          "Article is the default. Link cards point to an explicit destination; they do not create another article or a new custom page.",
+      }),
+      defineField({
+        name: "externalUrl",
+        title: "External HTTPS URL",
+        type: "url",
+        hidden: ({ document }) => document?.destination !== "external",
+      }),
+      defineField({
+        name: "customPage",
+        title: "Existing custom page",
+        type: "string",
+        options: {
+          list: [
+            { title: "Homepage", value: "/" },
+            { title: "About", value: "/about/" },
+            { title: "Résumé", value: "/resume/" },
+            { title: "Contact", value: "/contact/" },
+          ],
+        },
+        hidden: ({ document }) => document?.destination !== "custom",
+      }),
       defineField({
         name: "mainImage",
         title: "Main image",
@@ -545,26 +621,55 @@ export const schemaTypes = [
           "Optional. Overrides existing artwork on cards and detail pages. About gallery requires this image. Add alternative text. Uploaded assets are public, including draft attachments.",
         fields: [string("alt", "Alternative text")],
       }),
-      ...editorial,
+      {
+        ...articleFields.find((field) => field.name === "body")!,
+        validation: undefined,
+        hidden: ({ document }: { document?: Record<string, unknown> }) =>
+          (!!document?.destination && document.destination !== "article") ||
+          (document?.kind === "caseStudy" && !document?.body),
+      },
+      {
+        ...caseFields.find((field) => field.name === "subtitle")!,
+        hidden: ({ document }: { document?: Record<string, unknown> }) =>
+          document?.kind !== "caseStudy",
+      },
+      ...editorial.map((field) => ({
+        ...field,
+        ...(field.name !== "tags" ? { fieldset: "options" } : {}),
+      })),
       // Keep imported legacy metadata valid; tags control public placement.
       ...["featured", "learn"].map((name) =>
         defineField({ name, type: "boolean", hidden: true, readOnly: true }),
       ),
-      ...articleOnly.map((field) => ({
-        ...field,
-        ...(field.name === "image"
-          ? { name: "artwork", title: "Existing card artwork (optional)" }
-          : {}),
-        validation: undefined,
-        hidden: ({ document }: { document?: Record<string, unknown> }) =>
-          document?.kind === "caseStudy",
-      })),
-      ...caseOnly.map((field) => ({
-        ...field,
-        validation: undefined,
-        hidden: ({ document }: { document?: Record<string, unknown> }) =>
-          document?.kind !== "caseStudy",
-      })),
+      ...articleOnly
+        .filter((field) => field.name !== "body")
+        .map((field) => ({
+          ...field,
+          ...(field.name === "image"
+            ? {
+                name: "artwork",
+                title: "Existing artwork (optional)",
+                fieldset: "options",
+              }
+            : {}),
+          ...(field.name === "format" ? { fieldset: "options" } : {}),
+          validation: undefined,
+          hidden: ({ document }: { document?: Record<string, unknown> }) =>
+            field.name === "body"
+              ? (!!document?.destination &&
+                  document.destination !== "article") ||
+                (document?.kind === "caseStudy" && !document?.body)
+              : document?.kind === "caseStudy",
+        })),
+      ...caseOnly
+        .filter((field) => field.name !== "subtitle")
+        .map((field) => ({
+          ...field,
+          fieldset: "archive",
+          validation: undefined,
+          hidden: ({ document }: { document?: Record<string, unknown> }) =>
+            document?.kind !== "caseStudy",
+        })),
     ],
     preview: {
       select: { title: "title", subtitle: "kind", media: "mainImage" },
