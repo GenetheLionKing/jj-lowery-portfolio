@@ -96,6 +96,7 @@ export const caseSchema = z.object({
       (sections) => new Set(sections.map((s) => s.id)).size === sections.length,
       "Section anchors must be unique",
     ),
+  order: z.number().finite().optional(),
   cardTitle: text,
   cardSubtitle: text,
   thumbnail: media.optional(),

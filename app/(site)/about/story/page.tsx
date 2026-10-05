@@ -1,3 +1,4 @@
+import { EditorialPage } from "@/components/editorial-page";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,22 +12,18 @@ export default async function StoryPage() {
   const { about } = await getPublicContent();
   if (!about || !about.story.length) notFound();
   return (
-    <article className="container article-page">
-      <Link prefetch={false} href="/about/" className="text-link back-link">
-        ← About JJ
-      </Link>
-      <header className="article-heading">
-        <p className="eyebrow">My story</p>
-        <h1>{about.storyTitle}</h1>
-      </header>
-      <div className="article-body">
-        {about.story.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
+    <EditorialPage
+      title={about.storyTitle}
+      label="My story"
+      backHref="/about/"
+      backLabel="About JJ"
+    >
+      {about.story.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
       <Link className="text-link page-link" href="/portfolio/" prefetch={false}>
         Explore the work →
       </Link>
-    </article>
+    </EditorialPage>
   );
 }

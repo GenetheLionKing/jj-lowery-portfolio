@@ -9,7 +9,7 @@ import {
 import type { SanityPublicConfig } from "./config";
 
 export const publishedQuery =
-  '*[_type in ["about", "resume", "post", "caseStudy", "article", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc){..., "mainImage": select(defined(mainImage.asset) => {"src": mainImage.asset->url, "alt": mainImage.alt, "width": mainImage.asset->metadata.dimensions.width, "height": mainImage.asset->metadata.dimensions.height}, defined(mainImage.src) => mainImage)}';
+  '*[_type in ["about", "resume", "post", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc){..., "mainImage": select(defined(mainImage.asset) => {"src": mainImage.asset->url, "alt": mainImage.alt, "width": mainImage.asset->metadata.dimensions.width, "height": mainImage.asset->metadata.dimensions.height}, defined(mainImage.src) => mainImage)}';
 
 const permanentCaseSlugs: Record<string, string> = {
   "case-vector-income-architecture": "vector-income-architecture",
@@ -65,7 +65,7 @@ export function decodePublishedContent(input: unknown): PublicContent {
       if (seen.has(`case:${study.slug}`))
         throw new Error("Duplicate published case URL");
       seen.add(`case:${study.slug}`);
-      content.cases.push(study);
+      if (doc._type === "post") content.cases.push(study);
     }
     if (
       doc._type === "article" ||
@@ -78,7 +78,7 @@ export function decodePublishedContent(input: unknown): PublicContent {
       if (seen.has(`article:${article.slug}`))
         throw new Error("Duplicate published article URL");
       seen.add(`article:${article.slug}`);
-      content.articles.push(article);
+      if (doc._type === "post") content.articles.push(article);
     }
     if (doc._type === "resource")
       content.resources.push(resourceSchema.parse(data));

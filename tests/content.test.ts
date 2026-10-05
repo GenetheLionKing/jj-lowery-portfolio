@@ -14,6 +14,7 @@ import { migrationDocuments } from "../content/migration";
 import { isSafeLink, isPublicImageAssetRef } from "../content/urls";
 import { articleSchema, caseSchema } from "../content/model";
 import {
+  homeItems,
   aboutGallery,
   portfolioItems,
   blogItems,
@@ -44,13 +45,15 @@ test("draft and release records cannot enter the public model, even in an unexpe
     { ...seedResume, _type: "resume", _id: "versions.release.resume" },
     {
       ...seedArticles[0],
-      _type: "article",
+      _type: "post",
+      kind: "article",
       _id: "drafts.secret",
       title: "PRIVATE DRAFT",
     },
     {
       ...seedCases[0],
-      _type: "caseStudy",
+      _type: "post",
+      kind: "caseStudy",
       _id: "case-vector-income-architecture",
       slug: "unexpected-new-url",
     },
@@ -93,7 +96,7 @@ test("partial or unsafe configuration cannot switch to repository fallback", () 
   );
 });
 
-test("review seeds are allowed locally and in Preview but never in unconfigured Production", () => {
+test("unconfigured local/Preview configuration is permitted while Production requires explicit CMS identifiers", () => {
   assert.equal(getSanityPublicConfig({ NODE_ENV: "production" }), null);
   assert.equal(getSanityPublicConfig({ VERCEL_ENV: "preview" }), null);
   assert.throws(
@@ -124,7 +127,14 @@ test("mock transport observes token-free published reads, and errors fail closed
       60,
     );
     return Response.json({
-      result: [{ ...seedArticles[0], _type: "article", _id: "article-one" }],
+      result: [
+        {
+          ...seedArticles[0],
+          _type: "post",
+          kind: "article",
+          _id: "article-one",
+        },
+      ],
     });
   };
   assert.equal(
@@ -207,14 +217,14 @@ test("unsafe rich text links, foreign images and duplicate/reserved section anch
   );
 });
 
-test("Learn is a distinct curated mix and does not feature the advertising case", () => {
+test("Learn includes explicitly tagged posts without resources or advertising case", () => {
   const items = learnItems(
     seedContent.cases,
     seedContent.articles,
     seedContent.resources,
   );
-  assert.equal(items.length, 8);
-  assert.equal(new Set(items.map((item) => item.kind)).size, 3);
+  assert.equal(items.length, 5);
+  assert.equal(new Set(items.map((item) => item.kind)).size, 2);
   assert.ok(!items.some((item) => item.slug === "bgm-budget-pacing"));
   assert.ok(seedArticles.every((article) => !article.publishedAt));
 });
@@ -222,7 +232,7 @@ test("Learn is a distinct curated mix and does not feature the advertising case"
 test("one authored post uses placement tags across surfaces and retains one canonical URL", () => {
   const base = {
     ...seedArticles[0],
-    tags: ["portfolio", "learn", "about-gallery"],
+    tags: ["portfolio", "learn", "about-gallery", "blog", "home"],
     mainImage: {
       src: "/images/profile-320.webp",
       alt: "JJ Lowery",
@@ -249,7 +259,8 @@ test("one authored post uses placement tags across surfaces and retains one cano
     { ...base, tags: [], _id: "new-post", _type: "post", kind: "article" },
   ]);
   assert.equal(removed.articles.length, 1);
-  assert.equal(blogItems(removed.articles)[0].href, href);
+  assert.deepEqual(blogItems(removed.articles), []);
+  assert.deepEqual(homeItems([], removed.articles), []);
   assert.deepEqual(portfolioItems([], removed.articles), []);
   assert.deepEqual(learnItems([], removed.articles, []), []);
   assert.deepEqual(aboutGallery(removed.articles), []);
@@ -271,7 +282,13 @@ test("one authored post uses placement tags across surfaces and retains one cano
 });
 test("unified case post retains its existing canonical work URL and complete source text", () => {
   const migrated = decodePublishedContent(migrationDocuments());
-  assert.deepEqual(migrated.cases, seedCases);
+  assert.deepEqual(
+    migrated.cases.map(({ order, ...study }) => {
+      assert.equal(typeof order, "number");
+      return study;
+    }),
+    seedCases,
+  );
 });
 
 test("native public image uploads match published image format and dimension limits", () => {
@@ -293,7 +310,7 @@ test("native public image uploads match published image format and dimension lim
 });
 
 test("query-projected null images do not reject image-less unified or legacy posts", () => {
-  for (const type of ["post", "article"]) {
+  for (const type of ["post"]) {
     const content = decodePublishedContent([
       {
         ...seedArticles[0],
@@ -306,7 +323,7 @@ test("query-projected null images do not reject image-less unified or legacy pos
     assert.equal(content.articles.length, 1);
     assert.equal(content.articles[0].mainImage, undefined);
   }
-  for (const type of ["post", "caseStudy"]) {
+  for (const type of ["post"]) {
     const content = decodePublishedContent([
       {
         ...seedCases[0],
@@ -321,10 +338,11 @@ test("query-projected null images do not reject image-less unified or legacy pos
   }
 });
 
-test("Blog selects latest published date, with display-order and canonical-slug ties, never draft records", () => {
+test("Blog honors explicit placement and display order, then date and canonical slug, never draft records", () => {
   const make = (slug: string, publishedAt?: string, order?: number) => ({
     ...seedArticles[0],
     slug,
+    tags: ["blog"],
     publishedAt,
     order,
   });
@@ -354,18 +372,120 @@ test("Blog selects latest published date, with display-order and canonical-slug 
   assert.deepEqual(
     items.map((item) => item.slug),
     [
+      "older",
       "newest-priority",
+      "undated-first",
       "newest-a",
       "newest-b",
-      "older",
-      "undated-first",
       "undated-last",
     ],
   );
   assert.deepEqual(blogItems([...content.articles].reverse()), items);
   const [featured, ...remaining] = items;
-  assert.equal(featured.href, "/blog/newest-priority/");
+  assert.equal(featured.href, "/blog/older/");
   assert.ok(!remaining.some((item) => item.href === featured.href));
   assert.equal(remaining.length, 5);
   assert.deepEqual(blogItems([]), []);
+});
+
+test("each placement is independent for both layouts and survives removal from another page", () => {
+  for (const kind of ["article", "caseStudy"] as const) {
+    const source = kind === "article" ? seedArticles[0] : seedCases[0];
+    const read = (tags: string[], id = "test-post") =>
+      decodePublishedContent([
+        { ...source, tags, _id: id, _type: "post", kind },
+      ]);
+    const surfaces = (c: ReturnType<typeof read>) => ({
+      home: homeItems(c.cases, c.articles),
+      portfolio: portfolioItems(c.cases, c.articles),
+      learn: learnItems(c.cases, c.articles, c.resources),
+      blog: blogItems(c.articles, c.cases),
+    });
+    const canonical = `/${kind === "article" ? "blog" : "work"}/${source.slug}/`;
+    for (const selected of ["home", "portfolio", "learn", "blog"] as const) {
+      const items = surfaces(read([selected]));
+      for (const [page, entries] of Object.entries(items)) {
+        assert.equal(entries.length, page === selected ? 1 : 0);
+        if (entries.length) assert.equal(entries[0].href, canonical);
+      }
+    }
+    for (const entries of Object.values(
+      surfaces(read(["home", "portfolio", "learn", "blog"])),
+    )) {
+      assert.equal(entries[0].href, canonical);
+    }
+    const removed = surfaces(read(["home", "learn", "blog"]));
+    assert.equal(removed.portfolio.length, 0);
+    for (const page of ["home", "learn", "blog"] as const)
+      assert.equal(removed[page][0].href, canonical);
+    for (const privateId of [
+      "drafts.test-post",
+      "versions.release.test-post",
+    ]) {
+      for (const entries of Object.values(
+        surfaces(read(["home", "portfolio", "learn", "blog"], privateId)),
+      ))
+        assert.deepEqual(entries, []);
+    }
+    for (const entries of Object.values(surfaces(decodePublishedContent([]))))
+      assert.deepEqual(entries, []);
+    for (const entries of Object.values(
+      surfaces(read(["performance", "design"])),
+    ))
+      assert.deepEqual(entries, []);
+  }
+});
+test("home shows all explicitly selected published Post layouts in editor display order", () => {
+  const content = decodePublishedContent([
+    {
+      ...seedCases[0],
+      tags: ["home"],
+      order: 20,
+      _type: "post",
+      kind: "caseStudy",
+      _id: "case-first",
+    },
+    {
+      ...seedArticles[0],
+      tags: ["home"],
+      order: 10,
+      _type: "post",
+      kind: "article",
+      _id: "post-first",
+    },
+    {
+      ...seedCases[1],
+      tags: [],
+      featured: true,
+      order: 0,
+      _type: "post",
+      kind: "caseStudy",
+      _id: "not-selected",
+    },
+  ]);
+  const cards = homeItems(content.cases, content.articles);
+  assert.deepEqual(
+    cards.map((c) => c.kind),
+    ["article", "caseStudy"],
+  );
+  assert.deepEqual(homeItems([], []), []);
+});
+test("legacy records and resources cannot bypass the unified published Post placement model", () => {
+  const content = decodePublishedContent([
+    {
+      ...seedCases[0],
+      tags: ["home", "learn", "blog", "portfolio"],
+      _type: "caseStudy",
+      _id: "old-case",
+    },
+    {
+      ...seedArticles[0],
+      tags: ["home", "learn", "blog", "portfolio"],
+      _type: "article",
+      _id: "old-article",
+    },
+  ]);
+  assert.deepEqual(content.cases, []);
+  assert.deepEqual(content.articles, []);
+  assert.deepEqual(learnItems([], [], seedContent.resources), []);
 });

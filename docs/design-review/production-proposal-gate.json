@@ -1,0 +1,35 @@
+{
+  "environment": "production",
+  "results": [
+    {
+      "path": "/design-review/about/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/design-review/about/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/design-review/about/story/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/design-review/about/story/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/design-review/article/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/design-review/article/",
+      "method": "HEAD",
+      "status": 404
+    }
+  ]
+}

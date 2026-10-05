@@ -1,0 +1,85 @@
+{
+  "method": "Lighthouse 13.5 default mobile simulated throttling; Chrome 154; fresh Chrome profile per run; cold cache; sequential alternating released and candidate local production servers; configured same published CMS; 3 runs each. No browser or build concurrent with timing. Local lab results, not deployed field data.",
+  "runs": [
+    {
+      "name": "released",
+      "run": 1,
+      "score": 98,
+      "LCP": 2495.3561,
+      "CLS": 0,
+      "TBT": 15.5,
+      "bytes": 245973,
+      "js": 148119
+    },
+    {
+      "name": "candidate",
+      "run": 1,
+      "score": 98,
+      "LCP": 2479.9463,
+      "CLS": 0,
+      "TBT": 12.5,
+      "bytes": 245713,
+      "js": 148119
+    },
+    {
+      "name": "released",
+      "run": 2,
+      "score": 98,
+      "LCP": 2483.0783,
+      "CLS": 0,
+      "TBT": 13.5,
+      "bytes": 245971,
+      "js": 148119
+    },
+    {
+      "name": "candidate",
+      "run": 2,
+      "score": 98,
+      "LCP": 2480.5071,
+      "CLS": 0,
+      "TBT": 13,
+      "bytes": 245713,
+      "js": 148119
+    },
+    {
+      "name": "released",
+      "run": 3,
+      "score": 98,
+      "LCP": 2481.3525,
+      "CLS": 0,
+      "TBT": 13,
+      "bytes": 245971,
+      "js": 148119
+    },
+    {
+      "name": "candidate",
+      "run": 3,
+      "score": 98,
+      "LCP": 2481.3898,
+      "CLS": 0,
+      "TBT": 13,
+      "bytes": 245715,
+      "js": 148119
+    }
+  ],
+  "medians": {
+    "released": {
+      "score": 98,
+      "LCP": 2483.0783,
+      "CLS": 0,
+      "TBT": 13.5,
+      "bytes": 245971,
+      "js": 148119
+    },
+    "candidate": {
+      "score": 98,
+      "LCP": 2480.5071,
+      "CLS": 0,
+      "TBT": 13,
+      "bytes": 245713,
+      "js": 148119
+    }
+  },
+  "heroTransferBytes": 36950,
+  "noNewClientComponentsOrInteractionPackages": true
+}

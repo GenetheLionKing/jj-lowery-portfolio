@@ -12,6 +12,9 @@ const manifest = JSON.parse(
 const articleRoutes = Object.keys(manifest.routes).filter((route) =>
   /^\/blog\/[^/]+\/?$/.test(route),
 );
+const caseRoutes = Object.keys(manifest.routes).filter((route) =>
+  /^\/work\/[^/]+\/?$/.test(route),
+);
 const socket = createServer();
 await new Promise((resolve) => socket.listen(0, "127.0.0.1", resolve));
 const port = socket.address().port;
@@ -69,14 +72,7 @@ try {
       );
     }
   }
-  for (const route of [
-    ...articleRoutes,
-    "/work/vector-income-architecture/",
-    "/work/vector-performance-investigation/",
-    "/work/portfolio-design/",
-    "/work/bgm-budget-pacing/",
-    "/resume/",
-  ]) {
+  for (const route of [...articleRoutes, ...caseRoutes, "/resume/"]) {
     const response = await fetch(base + route);
     assert.equal(response.status, 200, route);
     assert.match(visibleHtml(await response.text()), /<h1\b/, route);
