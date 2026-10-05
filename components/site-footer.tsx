@@ -13,9 +13,6 @@ export function SiteFooter() {
           JJ Lowery<span className="brand-period">.</span>
         </Link>
         <SiteNavigation label="Footer navigation" />
-        <Link prefetch={false} className="footer-writing" href="/blog/">
-          Writing
-        </Link>
         <SocialLinks label="Footer social profiles" />
       </div>
     </footer>

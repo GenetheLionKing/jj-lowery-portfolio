@@ -50,7 +50,7 @@ const cards: Record<
     cardTitle: "Vector income planning",
     cardSubtitle: "Conceptual model & requirements",
     thumbnail: "vector-income",
-    tags: ["business-rules", "workflows"],
+    tags: ["learn", "business-rules", "workflows"],
     featured: true,
     learn: true,
   },
@@ -58,7 +58,7 @@ const cards: Record<
     cardTitle: "Vector performance",
     cardSubtitle: "Investigation & validation",
     thumbnail: "vector-validation",
-    tags: ["performance", "validation"],
+    tags: ["learn", "performance", "validation"],
     featured: true,
     learn: true,
   },
@@ -83,6 +83,10 @@ export const seedCases = Object.keys(cards).map((slug) =>
   caseSchema.parse({
     ...caseStudies.find((study) => study.slug === slug),
     ...cards[slug],
+    tags: [
+      ...cards[slug].tags,
+      ...(cards[slug].featured ? ["portfolio", "home"] : []),
+    ],
   }),
 );
 
@@ -117,23 +121,6 @@ export const seedAbout = aboutSchema.parse({
       copy: "Guitars and amps share my workspace.",
     },
   ],
-  featureLinks: [
-    {
-      kind: "caseStudy",
-      slug: "vector-income-architecture",
-      label: "A clearer model",
-    },
-    {
-      kind: "caseStudy",
-      slug: "vector-performance-investigation",
-      label: "Follow the evidence",
-    },
-    {
-      kind: "caseStudy",
-      slug: "portfolio-design",
-      label: "Make it easy to use",
-    },
-  ],
   builds: ["vector-income-architecture", "portfolio-design"],
   storyLinkLabel: "Read the longer story",
 });
@@ -157,7 +144,7 @@ export const seedArticles = [
     summary:
       "Separate what happened, what is expected and what a plan is allowed to use.",
     image: "vector-income",
-    tags: ["business-rules", "workflows"],
+    tags: ["learn", "business-rules", "workflows"],
     learn: true,
     featured: true,
     format: "guide",
@@ -201,7 +188,7 @@ export const seedArticles = [
     summary:
       "A passing small test is evidence about that test—not every future workload.",
     image: "vector-validation",
-    tags: ["performance", "validation"],
+    tags: ["learn", "performance", "validation"],
     learn: true,
     featured: true,
     format: "article",
@@ -236,7 +223,7 @@ export const seedArticles = [
     summary:
       "Keep a detected pattern, a recommendation and permission to act separate.",
     image: "portfolio",
-    tags: ["business-rules", "validation"],
+    tags: ["learn", "business-rules", "validation"],
     learn: true,
     featured: false,
     format: "article",

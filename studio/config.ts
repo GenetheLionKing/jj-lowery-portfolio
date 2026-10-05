@@ -23,9 +23,8 @@ export function createStudioConfig(config: SanityPublicConfig) {
                 .title("Résumé")
                 .child(S.document().schemaType("resume").documentId("resume")),
               S.divider(),
-              S.documentTypeListItem("article").title("Articles / Blog"),
-              S.documentTypeListItem("caseStudy").title(
-                "Case studies / Portfolio",
+              S.documentTypeListItem("post").title(
+                "Posts — Blog, Learn & Portfolio",
               ),
               S.documentTypeListItem("resource").title("Resources / Learn"),
             ]),

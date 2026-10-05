@@ -1,64 +1,65 @@
 # Publishing Preview review
 
-This is a code and design Preview, not an operational CMS or a Production release. Sanity project/dataset setup, JJ's authenticated owner session, trusted origins and public environment identifiers remain separately gated. No project, account, membership, token, environment variable, deployment hook or Production setting was created or changed.
+This is a draft PR/Preview, not an operational CMS or Production release. No CMS account, project, dataset, membership, token, environment setting, hook or Production configuration was changed. [The setup bundle](publishing-setup.md) lists the remaining owner actions.
 
-## Behavior and content
+## Result
 
-- About and Résumé are editable singleton schemas. Articles, Case Studies and Resources are separate types, with topics, order and optional search metadata. Native slug fields provide generation and uniqueness validation; the four existing case URLs are locked and canonicalized in the public reader.
-- Learn groups writing, work examples and useful references. Topic/type links work without JavaScript. Blog lists articles independently of Learn curation. Portfolio and Home use the same featured case records.
-- About adds a small linked work strip, evidence-based strengths and current-build sections, original lightweight systems/guitar line drawings and a longer-story link. Guitar interest comes from JJ's direct report; no duration or skill rating is claimed. Personal photo/video proposals remain for later review.
-- Three original article proposals are visibly labeled Preview writing. No publication dates or history are invented. Their qualifications distinguish conceptual requirements, helper-only synthetic measurements and design principles from implemented features or end-to-end results.
-- The generated NDJSON publishes only existing public About, Résumé and four cases. Expanded About, articles and curated resources use `drafts.*` IDs. Generation is local only; import is a separate authenticated, explicitly invoked action.
+Blog is in the shared desktop, mobile and footer navigation. Résumé is hidden there while retaining `/resume/`, its About link, singleton editor and one-page print behavior. The four existing case-detail pages now use a split image-led hero, restrained reading typography and section hierarchy; their original evidence, AI-assisted development and helper-only benchmark qualifications remain intact. No credentials or metrics were invented.
 
-## Architecture and safety
+One **Post** editor provides common fields plus an optional structured case layout. Placement tags distribute published posts to Portfolio, Learn and About's gallery; selected structured cases can also appear on Home. Ordinary articles remain in Blog without placement tags. Every entry keeps one canonical URL, including the original `/work/*` URLs. Visitor-facing topic/type filters and the isolated Writing link are removed.
 
-The existing Next 16.3.4 / React 19.2.8 / TypeScript / pnpm 10.30.3 stack remains. Export-only output changes to cached Next pages with 60-second ISR, allowing new URLs and edits without a deployment hook. Filtered indexes render on request with a cached content fetch. Newly requested article/case URLs use static ISR generation. The owner should expect a revalidation interval plus a subsequent request, not instant publication propagation.
+About's gallery contains equal landscape image links with restrained framing, no visible captions or arrows. The source is each tagged published post's main image and canonical URL. Draft, unpublished and image-less posts are excluded. The default gallery is intentionally empty pending JJ's personal post/photo selection. **Gallery fixture screenshots show an existing portrait attached to a local mock post for layout verification only**; no childhood history or new personal media was invented. The live Adham About composition was visually inspected as a reference; no assets, copy or code were copied. The supplied Library reference could not be materialized locally; no Library attachment identity is claimed for deliverables.
 
-The server-only reader explicitly requests the published perspective, sends no API token and filters draft/release IDs defensively. Configured missing/unpublished content stays missing; failed configuration or transport does not switch to repository seed. Normal ISR may retain its last successful cache during an upstream outage. Studio uses Sanity's native authenticated session and project permissions. Only JJ's editing membership is intended; actual project membership and unauthenticated write rejection still require real setup verification.
+## Architecture and security review
 
-Studio is loaded only when configured, on its own route. The unconfigured page honestly says editing is unavailable. Public pages and the setup screen make no external font or analytics requests in the verified browser runs. No website write API, private draft preview token or public robot token exists. Initial imagery is selected from already-public assets; standard Sanity asset URLs are public even for private drafts, so no private-media uploader is included. See [the setup bundle](publishing-setup.md) and [Sanity's security guidance](https://www.sanity.io/docs/content-lake/keeping-your-data-safe).
+Next 16.3.4, React 19.2.8, TypeScript, pnpm, system fonts and plain CSS remain. Indexes use cached App Router rendering. Article/case detail routes use native Pages Router blocking ISR with 60-second revalidation. This targeted choice fixes the empty no-JavaScript missing/unpublished HTML regression: both GET and HEAD return correct 404 status, and GET contains readable navigation, main heading and recovery link. There is no separate existence gate or framework patch.
 
-## Local verification
+The published reader uses no API token and excludes draft/release IDs. Configured empty/unpublished records do not resurrect seed; failures do not fall back to seed. Missing Production configuration fails rather than publishing Preview seed. Normal ISR may preserve the last successful page during an upstream outage. Native main-image uploads validate public asset formats/dimensions and alternative text. The editor warns that Sanity asset URLs are public even on draft posts. Singleton UI controls are conveniences; actual access restrictions require backend membership configuration.
 
-`pnpm check` includes zero-warning ESLint, TypeScript, eight meaningful content tests and a production build. Tests cover original case-field preservation, native-slug migration, draft/release exclusion, missing-record behavior, partial configuration, published/token-free transport, unsafe links/images and duplicate/reserved case anchors. Mock transport evidence is explicitly local; it is not a real CMS authorization test. Local Studio schema extraction passes with placeholder IDs and makes no real project write.
+A fresh independent code/security review found no remaining blockers in the reviewed code after configuration, duplicate schema-field, native asset validation and nullable-image decoding fixes. It independently passed all 15 content/Studio tests and checked that public initial detail chunks do not contain the server query, reader or Production configuration guard. Real owner authentication, membership and mutation rejection are still untested.
 
-Chrome 154 rendered all 16 routes at 320, 390, 768 and 1440px in both themes (128 checks). Revised Learn, performance, Contact and Studio received another 32 targeted checks. There were no layout overflows, broken images, console exceptions or error overlays. Actual desktop/mobile screenshots were inspected, and Learn's resource rows were revised to avoid excessive blank card space.
+## Verification
 
-Keyboard skip links pass on all 15 public routes. All 15 public routes pass 200% CSS zoom. All 16 routes remain readable with JavaScript disabled; ordinary navigation and the combined Learn topic/type filters work. Theme persistence, reduced motion and Portable Text numbered lists pass. Twenty axe scans (10 routes, both themes) report zero violations, including contrast checks. These automated checks do not replace an assistive-technology review.
+`pnpm check` passes zero-warning ESLint, TypeScript, 15 content/actual-Studio tests, production build and built HTTP route regression checks. Tests cover preservation of original public source fields, draft/release isolation, canonical URLs, tag add/remove behavior and ordinary Blog defaults, absent images, safe links/assets, native schema validators, migration and configuration/transport failures. Local Studio schema extraction passes using placeholder IDs without project access.
 
-The résumé button calls print, and the generated PDF contains one 612×792-point Letter page. [Print review PDF](publishing-review/resume-print.pdf).
+Chrome 154 checks cover 16 routes at 320, 390, 768 and 1440px in light/dark themes (128 combinations), with a subsequent targeted budget check after correcting crowded diagram labels. No overflow, broken image, external asset request, console exception or error overlay was found. Actual desktop/mobile screenshots were inspected. Keyboard skip/focus passes all 15 public routes; all pass 200% CSS zoom. All 16 routes remain readable without JavaScript, including unavailable article/case/global 404s. Theme persistence, reduced motion and Portable Text numbered lists pass. Twenty-eight axe scans across 14 routes and both themes report zero violations, including contrast. Automated checks do not replace a human assistive-technology review.
 
-The approved portrait source and derivatives are untouched. Source SHA-256 remains `efece57a797797c1229d196e8eb651d2b3ffd4515e93f61d6882538484abb083`.
+The résumé print button works; [the generated PDF](publishing-review/resume-print.pdf) has one Letter page. Approved portrait source and derivatives remain untouched; source SHA-256 is `efece57a797797c1229d196e8eb651d2b3ffd4515e93f61d6882538484abb083`.
 
-The safe-area candidate adds viewport-fit coverage, the dark masthead canvas/theme color and inset padding. No Safari automation or OS permission change occurred. Physical iPhone Safari safe-area behavior remains unverified.
+A local mock published transport exercised the **actual built cache transitions**, using a new URL absent at build time and GROQ-like nullable main images. A missing article became readable after 65,980 ms; each warmed About/Learn/Portfolio/Blog view then included it after its own refresh request. Draft content stayed absent. Removing the article produced a readable no-JavaScript 404 after 49,222 ms from that step; removing a warmed case produced one after 3,006 ms. These are cache-age-dependent local observations, not instant propagation promises or real Sanity workflow evidence. [Transition evidence](publishing-review/cache-transitions.json).
 
-**Open release blocker:** nonexistent article/case URLs return HTTP 404 and a readable fallback with JavaScript, but their Next 16.3.4 runtime fallback currently has an empty HTML body without JavaScript. The global unmatched-route 404 has readable HTML. Moving unavailable-content boundaries and selecting static ISR did not resolve the dynamic fallback. This negative browser check remains failed; it must be fixed before claiming complete no-JavaScript unavailable-content behavior or releasing the CMS branch. Existing/published content, filters and ordinary navigation pass their no-JavaScript checks.
+No Safari automation or OS permission changes occurred. Physical iPhone Safari safe-area behavior remains unverified.
 
 ## Performance
 
-Three alternating cold-cache Lighthouse 13.5 mobile runs per version used Chrome 154 on this Mac, the same system fonts and portrait, and matched gzip level 6 localhost delivery. Baseline is the released PR #4 export; the candidate is a snapshot of the production Next server's cached homepage HTML with its real assets. Default simulated mobile throttling uses 150 ms RTT, 1638.4 Kbps throughput and 4× CPU slowdown. One Chrome process ran at a time.
+| Median                      | Released baseline | Final Preview |
+| --------------------------- | ----------------: | ------------: |
+| Performance                 |                98 |            98 |
+| Accessibility               |               100 |           100 |
+| LCP                         |           2.328 s |       2.412 s |
+| CLS                         |                 0 |             0 |
+| TBT                         |           10.5 ms |        7.5 ms |
+| Initial transfer            |         239,187 B |     242,924 B |
+| Initial JavaScript transfer |         144,656 B |     146,673 B |
+| Hero image transfer         |          36,868 B |      36,868 B |
 
-| Median                      | Released baseline | Publishing candidate |
-| --------------------------- | ----------------: | -------------------: |
-| Performance                 |                98 |                   97 |
-| Accessibility               |               100 |                  100 |
-| LCP                         |           2.320 s |              2.505 s |
-| CLS                         |                 0 |                    0 |
-| TBT                         |           13.5 ms |                14 ms |
-| Initial transfer            |         239,187 B |            242,216 B |
-| Initial JavaScript transfer |         144,656 B |            146,222 B |
-| Hero image transfer         |          36,868 B |             36,868 B |
+Final median LCP is 2.412 seconds, within the proposed 2.5-second lab target; individual candidate runs span 2.406–2.476 seconds. CLS is zero and median TBT is 7.5 ms.
 
-The 500 KB homepage, 150 KB hero and 200 KB initial-JS budgets pass. Added public application interaction code is zero; filters use normal links. Median LCP is about 5 ms above the proposed 2.5-second goal, and individual candidate runs ranged 2.495–2.510 seconds. Report this result as measured, not a guaranteed pass. Cached-page lab results do not measure live Sanity fetch latency, cache misses, real publication propagation, Vercel geography or field performance. The configured CMS and deployed Preview still need that verification.
+Three alternating cold-cache Lighthouse 13.5 mobile runs per version used Chrome 154 on this Mac, one browser at a time. The baseline is the released PR #4 export; the candidate is the final production server's cached homepage HTML and real assets. Both use matched gzip level 6 localhost delivery, default simulated mobile throttling (150 ms RTT, 1638.4 Kbps, 4× CPU slowdown) and the same portrait/system fonts. [Per-run evidence](publishing-review/performance-summary.json).
 
-## Review artifacts and remaining gate
+The 500 KB initial homepage, 150 KB hero and 200 KB initial-JS transfer budgets pass. Public placement links add no custom interaction code. These cached-homepage lab measurements do not cover new personal photos, live CMS latency, cache misses, Vercel geography, real publication timing or field performance. Report actual LCP results against the proposed 2.5-second target; do not treat them as a guarantee.
 
-- About: [desktop](publishing-review/about-light-1440.webp), [mobile](publishing-review/about-light-390.webp), [dark desktop](publishing-review/about-dark-1440.webp), [dark mobile](publishing-review/about-dark-390.webp).
+## Review artifacts and remaining work
+
+- About: [desktop](publishing-review/about-light-1440.webp), [mobile](publishing-review/about-light-390.webp).
+- Income case: [desktop hero](publishing-review/income-hero-light-1440.webp), [mobile hero](publishing-review/income-hero-light-390.webp), [full desktop](publishing-review/income-light-1440.webp).
+- Performance case: [desktop](publishing-review/performance-hero-light-1440.webp), [mobile](publishing-review/performance-hero-light-390.webp).
+- Portfolio case: [desktop](publishing-review/design-hero-light-1440.webp), [mobile](publishing-review/design-hero-light-390.webp).
+- Budget case: [desktop](publishing-review/budget-hero-light-1440.webp), [mobile](publishing-review/budget-hero-light-390.webp).
 - Learn: [desktop](publishing-review/learn-light-1440.webp), [mobile](publishing-review/learn-light-390.webp).
-- Writing: [desktop](publishing-review/writing-light-1440.webp), [mobile](publishing-review/writing-light-390.webp).
-- Article: [desktop](publishing-review/article-light-1440.webp), [mobile](publishing-review/article-light-390.webp).
-- Setup screen: [desktop](publishing-review/studio-light-1440.webp), [mobile](publishing-review/studio-light-390.webp).
+- Blog: [desktop](publishing-review/writing-light-1440.webp), [mobile](publishing-review/writing-light-390.webp).
+- **Local mock gallery fixture only**: [desktop](publishing-review/gallery-local-fixture-light-1440.webp), [mobile](publishing-review/gallery-local-fixture-light-390.webp).
 
-Local production preview: `http://127.0.0.1:3130/`. Raw local audit files, generated NDJSON and extracted schema are in ignored `review/`; portable screenshots/PDF and compact performance evidence are in `docs/publishing-review/`.
+Dark-theme versions accompany these files. Verified local preview: `http://127.0.0.1:3130/`. Raw audits, generated NDJSON and extracted schema are in ignored `review/`; portable screenshots/PDF and compact audit evidence are in `docs/publishing-review/`.
 
-Real login, save/reopen, anonymous draft isolation, publish/update/unpublish, non-member write rejection and site-update timing remain **blocked by separately authorized CMS setup**. No mocked editor, empty “coming soon” page or local test is presented as proof that those actions work. Contact delivery and GA4 remain deferred. Vector repositories are untouched. This branch must remain a draft PR/Preview until setup, owner-workflow verification and explicit release authorization are complete.
+Vercel Preview is access-protected; unauthenticated requests lead to sign-in. Exact-head deployment metadata can be verified without bypassing protection, but rendered remote Preview review needs an authorized signed-in browser. CMS project/setup, real owner login/save/publish/update/unpublish, anonymous draft isolation and non-member write rejection remain pending separate setup authorization. Contact delivery and analytics remain deferred. Vector repositories and Production remain unchanged. Keep this PR draft until the owner workflow, setup and release gates are completed.

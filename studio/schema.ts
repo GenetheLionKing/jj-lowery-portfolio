@@ -25,7 +25,7 @@ function validateModel(value: unknown, schema: ZodType) {
         .join("; ");
 }
 import { mediaKeys, publicMedia, topicLabels } from "../content/media";
-import { isSafeLink } from "../content/urls";
+import { isSafeLink, isPublicImageAssetRef } from "../content/urls";
 
 const string = (
   name: string,
@@ -120,13 +120,21 @@ const slug = defineField({
 });
 const tags = defineField({
   name: "tags",
-  title: "Topics",
+  title: "Tags & placement",
+  description:
+    "All ordinary posts appear in Blog. Add placement tags to also show the same post in Learn, Portfolio or the About photo strip. Removing a tag removes only that listing.",
   type: "array",
   of: [
     {
       type: "string",
       options: {
-        list: Object.entries(topicLabels).map(([value, title]) => ({
+        list: Object.entries({
+          "about-gallery": "Show under About hero (image only)",
+          learn: "Show in Learn",
+          portfolio: "Show in Portfolio",
+          home: "Show on homepage (case studies)",
+          ...topicLabels,
+        }).map(([value, title]) => ({
           value,
           title,
         })),
@@ -216,7 +224,7 @@ const caseBlocks = [
   ]),
 ];
 
-export const schemaTypes = [
+const originalTypes = [
   ...caseBlocks,
   defineType({
     name: "about",
@@ -244,21 +252,6 @@ export const schemaTypes = [
         "life",
         "Outside the work",
         [string("title", "Title"), paragraph("copy", "Text")],
-        6,
-      ),
-      objects(
-        "featureLinks",
-        "Small story strip",
-        [
-          defineField({
-            name: "kind",
-            type: "string",
-            options: { list: ["caseStudy", "article"] },
-            validation: (rule) => rule.required(),
-          }),
-          string("slug", "Published URL slug"),
-          string("label", "Short label", false),
-        ],
         6,
       ),
       textArray("builds", "Current builds — case-study URL slugs", 6),
@@ -466,5 +459,116 @@ export const schemaTypes = [
       }),
       ...editorial,
     ],
+  }),
+];
+
+const caseFields = originalTypes.find(
+  (item) => item.name === "caseStudy",
+)!.fields!;
+const articleFields = originalTypes.find(
+  (item) => item.name === "article",
+)!.fields!;
+const commonNames = new Set([
+  "slug",
+  "title",
+  "summary",
+  "order",
+  "tags",
+  "seoTitle",
+  "seoDescription",
+]);
+const caseOnly = caseFields.filter(
+  (field) =>
+    !commonNames.has(field.name) &&
+    field.name !== "featured" &&
+    field.name !== "learn",
+);
+const articleOnly = articleFields.filter(
+  (field) =>
+    !commonNames.has(field.name) &&
+    field.name !== "featured" &&
+    field.name !== "learn",
+);
+export const schemaTypes = [
+  ...originalTypes.filter(
+    (item) => item.name !== "article" && item.name !== "caseStudy",
+  ),
+  defineType({
+    name: "post",
+    title: "Post",
+    type: "document",
+    initialValue: { kind: "article", format: "article", tags: [] },
+    validation: (rule) =>
+      rule.custom((value) => {
+        const doc = value as Record<string, unknown> | undefined;
+        if (doc?.kind !== "article" && doc?.kind !== "caseStudy")
+          return "Choose a post layout";
+        // Asset URLs are resolved by the public query; native upload shape is validated here.
+        const image = doc.mainImage as
+          { asset?: { _ref?: string }; alt?: string } | undefined;
+        if (
+          image &&
+          (!isPublicImageAssetRef(image.asset?._ref) || !image.alt?.trim())
+        )
+          return "Main image requires JPG, PNG or WebP up to 20000px and alternative text";
+        return validateModel(
+          {
+            ...doc,
+            mainImage: undefined,
+            image: doc.kind === "article" ? doc.artwork : doc.image,
+          },
+          doc.kind === "caseStudy" ? caseSchema : articleSchema,
+        );
+      }),
+    fields: [
+      defineField({
+        name: "kind",
+        title: "Post layout",
+        type: "string",
+        options: {
+          list: [
+            { title: "Blog post", value: "article" },
+            { title: "Structured case study", value: "caseStudy" },
+          ],
+        },
+        initialValue: "article",
+        description:
+          "A blog post can appear in Portfolio using its tags; the case layout is optional. Existing cases retain their /work/ URLs. Choose before publishing and keep the layout to preserve the URL.",
+        readOnly: ({ document }) =>
+          /^(drafts\.)?case-/.test(String(document?._id)),
+        validation: (rule) => rule.required(),
+      }),
+      slug,
+      string("title", "Title"),
+      paragraph("summary", "Short description"),
+      defineField({
+        name: "mainImage",
+        title: "Main image",
+        type: "image",
+        options: { accept: "image/jpeg,image/png,image/webp" },
+        description:
+          "Public images only. Standard Sanity image URLs are public, including images attached to drafts. About gallery displays this image and links to the post; no visible caption.",
+        fields: [string("alt", "Alternative text")],
+      }),
+      ...editorial,
+      ...articleOnly.map((field) => ({
+        ...field,
+        ...(field.name === "image"
+          ? { name: "artwork", title: "Existing card artwork (optional)" }
+          : {}),
+        validation: undefined,
+        hidden: ({ document }: { document?: Record<string, unknown> }) =>
+          document?.kind === "caseStudy",
+      })),
+      ...caseOnly.map((field) => ({
+        ...field,
+        validation: undefined,
+        hidden: ({ document }: { document?: Record<string, unknown> }) =>
+          document?.kind !== "caseStudy",
+      })),
+    ],
+    preview: {
+      select: { title: "title", subtitle: "kind", media: "mainImage" },
+    },
   }),
 ];

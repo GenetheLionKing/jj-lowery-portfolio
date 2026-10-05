@@ -41,3 +41,12 @@ export const topicLabels: Record<string, string> = {
 export function topicLabel(topic: string) {
   return topicLabels[topic] ?? topic.replaceAll("-", " ");
 }
+
+export function sizedPublicImage(src: string, width: number) {
+  if (!src.startsWith("https://cdn.sanity.io/images/")) return src;
+  const url = new URL(src);
+  url.searchParams.set("w", String(width));
+  url.searchParams.set("q", "80");
+  url.searchParams.set("auto", "format");
+  return url.toString();
+}

@@ -15,6 +15,19 @@ const media = z.enum([
   "portfolio",
 ]);
 const link = text.refine(isSafeLink, "Use a local path, anchor or HTTPS URL");
+export const postImageSchema = z.object({
+  src: link.refine(
+    (value) =>
+      /^\/images\/[a-z0-9/-]+\.(webp|jpg|png)$/.test(value) ||
+      /^https:\/\/cdn\.sanity\.io\/images\/[a-z0-9]+\/[a-z0-9_-]+\/[a-zA-Z0-9-]+\.(jpg|png|webp)$/.test(
+        value,
+      ),
+    "Use public local or Sanity image assets",
+  ),
+  alt: text,
+  width: z.number().int().positive().max(20000),
+  height: z.number().int().positive().max(20000),
+});
 const pair = z.object({ label: text, value: text });
 const seo = { seoTitle: text.optional(), seoDescription: text.optional() };
 const comparison = z.object({ title: text, items: texts });
@@ -65,6 +78,7 @@ export const caseSchema = z.object({
       alt: text,
     })
     .optional(),
+  mainImage: postImageSchema.optional(),
   metadata: z.array(pair).max(30).default([]),
   skills: texts,
   sections: z
@@ -122,7 +136,8 @@ export const articleSchema = z.object({
   title: text,
   summary: text,
   body: richTextSchema.min(1),
-  image: media,
+  image: media.optional(),
+  mainImage: postImageSchema.optional(),
   tags,
   learn: z.boolean().default(true),
   featured: z.boolean().default(false),
@@ -137,11 +152,6 @@ export const resourceSchema = z.object({
   url: link.refine((v) => v.startsWith("https://")),
   tags,
   ...seo,
-});
-const contentReference = z.object({
-  kind: z.enum(["caseStudy", "article"]),
-  slug,
-  label: text.optional(),
 });
 export const aboutSchema = z.object({
   title: text,
@@ -158,7 +168,6 @@ export const aboutSchema = z.object({
     .array(z.object({ title: text, copy: text }))
     .max(6)
     .default([]),
-  featureLinks: z.array(contentReference).max(6).default([]),
   builds: z.array(slug).max(6).default([]),
   storyLinkLabel: text,
 });

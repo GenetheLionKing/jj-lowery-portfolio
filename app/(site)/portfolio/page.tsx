@@ -1,23 +1,14 @@
 import type { Metadata } from "next";
-import { SelectedWorkGrid } from "@/components/selected-work-grid";
-import { TopicFilters } from "@/components/publishing-catalog";
+import { PortfolioGrid } from "@/components/portfolio-grid";
 import { getPublicContent } from "@/content/public";
-import { selectedCases } from "@/content/catalog";
+import { portfolioItems } from "@/content/catalog";
 export const metadata: Metadata = {
   title: "Portfolio",
-  description:
-    "Selected systems work on Vector and the design and development of JJ Lowery’s portfolio.",
+  description: "Selected systems work on Vector and this site.",
 };
-export default async function PortfolioPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ topic?: string }>;
-}) {
-  const { cases } = await getPublicContent();
-  const { topic = "" } = await searchParams;
-  const studies = selectedCases(cases);
-  const topics = [...new Set(studies.flatMap((s) => s.tags))];
-  const results = studies.filter((s) => !topic || s.tags.includes(topic));
+export default async function PortfolioPage() {
+  const { cases, articles } = await getPublicContent();
+  const items = portfolioItems(cases, articles);
   return (
     <section className="portfolio-page" aria-labelledby="portfolio-title">
       <div className="container">
@@ -27,13 +18,10 @@ export default async function PortfolioPage({
           </h1>
           <p>Selected systems work and this site.</p>
         </header>
-        <TopicFilters base="/portfolio/" topics={topics} selected={topic} />
-        {results.length ? (
-          <SelectedWorkGrid cases={results} headingLevel="h2" />
+        {items.length ? (
+          <PortfolioGrid items={items} />
         ) : (
-          <p className="catalog-empty">
-            No published work in this selection. Choose another topic.
-          </p>
+          <p className="catalog-empty">No published work yet.</p>
         )}
       </div>
     </section>

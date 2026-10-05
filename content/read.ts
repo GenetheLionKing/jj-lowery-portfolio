@@ -9,7 +9,7 @@ import {
 import type { SanityPublicConfig } from "./config";
 
 export const publishedQuery =
-  '*[_type in ["about", "resume", "caseStudy", "article", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc)';
+  '*[_type in ["about", "resume", "post", "caseStudy", "article", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc){..., "mainImage": select(defined(mainImage.asset) => {"src": mainImage.asset->url, "alt": mainImage.alt, "width": mainImage.asset->metadata.dimensions.width, "height": mainImage.asset->metadata.dimensions.height}, defined(mainImage.src) => mainImage)}';
 
 const permanentCaseSlugs: Record<string, string> = {
   "case-vector-income-architecture": "vector-income-architecture",
@@ -36,18 +36,28 @@ export function decodePublishedContent(input: unknown): PublicContent {
       throw new Error("Invalid published record");
     const doc = value as Record<string, unknown>;
     if (typeof doc._id !== "string" || doc._id.includes(".")) continue;
-    const data = {
+    const data: Record<string, unknown> = {
       ...doc,
       slug:
         typeof doc.slug === "object" && doc.slug
           ? (doc.slug as Record<string, unknown>).current
           : doc.slug,
     };
+    if (data.mainImage == null) delete data.mainImage;
+    if (
+      doc._type === "post" &&
+      doc.kind !== "article" &&
+      doc.kind !== "caseStudy"
+    )
+      throw new Error("Invalid published post layout");
     if (doc._type === "about" && doc._id === "about")
       content.about = aboutSchema.parse(data);
     if (doc._type === "resume" && doc._id === "resume")
       content.resume = resumeSchema.parse(data);
-    if (doc._type === "caseStudy") {
+    if (
+      doc._type === "caseStudy" ||
+      (doc._type === "post" && doc.kind === "caseStudy")
+    ) {
       const study = caseSchema.parse({
         ...data,
         slug: permanentCaseSlugs[doc._id] ?? data.slug,
@@ -57,8 +67,14 @@ export function decodePublishedContent(input: unknown): PublicContent {
       seen.add(`case:${study.slug}`);
       content.cases.push(study);
     }
-    if (doc._type === "article") {
-      const article = articleSchema.parse(data);
+    if (
+      doc._type === "article" ||
+      (doc._type === "post" && doc.kind === "article")
+    ) {
+      const article = articleSchema.parse({
+        ...data,
+        image: data.artwork ?? data.image,
+      });
       if (seen.has(`article:${article.slug}`))
         throw new Error("Duplicate published article URL");
       seen.add(`article:${article.slug}`);

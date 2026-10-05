@@ -1,6 +1,7 @@
 @layer tokens, base, layout, components, responsive, accessibility;
 @import url("../styles/diagrams.css");
 @import url("../styles/case-study.css");
+@import url("../styles/case-editorial.css");
 @import url("../styles/resume.css");
 @import url("../styles/theme.css");
 @import url("../styles/pages.css");

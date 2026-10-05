@@ -4,7 +4,14 @@ export function getSanityPublicConfig(
 ): SanityPublicConfig | null {
   const projectId = env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim();
   const dataset = env.NEXT_PUBLIC_SANITY_DATASET?.trim();
-  if (!projectId && !dataset) return null;
+  if (!projectId && !dataset) {
+    if (env.VERCEL_ENV === "production") {
+      throw new Error(
+        "Production publishing requires Sanity project and dataset identifiers; review seed content is unavailable.",
+      );
+    }
+    return null;
+  }
   if (
     !projectId ||
     !dataset ||

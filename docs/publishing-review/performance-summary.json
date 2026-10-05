@@ -2,11 +2,11 @@
   {
     "label": "baseline",
     "run": 1,
-    "performance": 99,
+    "performance": 98,
     "accessibility": 100,
-    "lcpMs": 2250.775125,
+    "lcpMs": 2329.1191,
     "cls": 0,
-    "tbtMs": 21,
+    "tbtMs": 11,
     "transferBytes": 239187,
     "jsTransferBytes": 144656,
     "portrait": [
@@ -77,13 +77,13 @@
   {
     "label": "publishing",
     "run": 1,
-    "performance": 97,
+    "performance": 98,
     "accessibility": 100,
-    "lcpMs": 2510.3512,
+    "lcpMs": 2412.4878,
     "cls": 0,
-    "tbtMs": 14,
-    "transferBytes": 242216,
-    "jsTransferBytes": 146222,
+    "tbtMs": 5,
+    "transferBytes": 242924,
+    "jsTransferBytes": 146673,
     "portrait": [
       {
         "url": "http://127.0.0.1:3142/images/profile-shoulder-640.webp",
@@ -154,9 +154,9 @@
     "run": 2,
     "performance": 98,
     "accessibility": 100,
-    "lcpMs": 2319.732,
+    "lcpMs": 2328.1886,
     "cls": 0,
-    "tbtMs": 4,
+    "tbtMs": 10.5,
     "transferBytes": 239187,
     "jsTransferBytes": 144656,
     "portrait": [
@@ -227,13 +227,13 @@
   {
     "label": "publishing",
     "run": 2,
-    "performance": 97,
+    "performance": 98,
     "accessibility": 100,
-    "lcpMs": 2505.1833,
+    "lcpMs": 2406.4286,
     "cls": 0,
-    "tbtMs": 18.5,
-    "transferBytes": 242216,
-    "jsTransferBytes": 146222,
+    "tbtMs": 7.5,
+    "transferBytes": 242924,
+    "jsTransferBytes": 146673,
     "portrait": [
       {
         "url": "http://127.0.0.1:3142/images/profile-shoulder-640.webp",
@@ -304,9 +304,9 @@
     "run": 3,
     "performance": 98,
     "accessibility": 100,
-    "lcpMs": 2411.1497,
+    "lcpMs": 2327.6083,
     "cls": 0,
-    "tbtMs": 13.5,
+    "tbtMs": 8.5,
     "transferBytes": 239187,
     "jsTransferBytes": 144656,
     "portrait": [
@@ -379,11 +379,11 @@
     "run": 3,
     "performance": 98,
     "accessibility": 100,
-    "lcpMs": 2495.1871,
+    "lcpMs": 2476.3395,
     "cls": 0,
-    "tbtMs": 11,
-    "transferBytes": 242216,
-    "jsTransferBytes": 146222,
+    "tbtMs": 9,
+    "transferBytes": 242924,
+    "jsTransferBytes": 146673,
     "portrait": [
       {
         "url": "http://127.0.0.1:3142/images/profile-shoulder-640.webp",

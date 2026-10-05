@@ -2,46 +2,31 @@ import type { Metadata } from "next";
 import {
   CatalogGrid,
   PreviewWritingNote,
-  TopicFilters,
 } from "@/components/publishing-catalog";
 import { getPublicContent } from "@/content/public";
-import { learnItems } from "@/content/catalog";
+import { blogItems } from "@/content/catalog";
 export const metadata: Metadata = {
-  title: "Writing",
+  title: "Blog",
   description:
     "JJ Lowery’s articles on systems, business rules, practical building and validation.",
 };
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ topic?: string }>;
-}) {
+export default async function BlogPage() {
   const content = await getPublicContent();
-  const { topic = "" } = await searchParams;
-  const items = learnItems(
-    [],
-    content.articles.map((item) => ({ ...item, learn: true })),
-    [],
-  );
-  const topics = [...new Set(items.flatMap((item) => item.tags))];
-  const results = items.filter((item) => !topic || item.tags.includes(topic));
+  const items = blogItems(content.articles);
   return (
     <section className="catalog-page" aria-labelledby="blog-title">
       <div className="container">
         <header className="page-intro">
           <h1 className="page-title" id="blog-title">
-            writing
+            blog
           </h1>
           <p>Small observations about how systems should work.</p>
         </header>
         {content.mode === "seed" && <PreviewWritingNote />}
-        <TopicFilters base="/blog/" topics={topics} selected={topic} />
-        {results.length ? (
-          <CatalogGrid items={results} />
+        {items.length ? (
+          <CatalogGrid items={items} />
         ) : (
-          <p className="catalog-empty">
-            No published articles in this selection.
-          </p>
+          <p className="catalog-empty">No published posts yet.</p>
         )}
       </div>
     </section>

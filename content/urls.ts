@@ -16,3 +16,17 @@ export function isSafeLink(value: string): boolean {
     return false;
   }
 }
+
+export function isPublicImageAssetRef(value: unknown): boolean {
+  if (typeof value !== "string") return false;
+  const match = /^image-[a-zA-Z0-9]+-([0-9]+)x([0-9]+)-(jpg|png|webp)$/.exec(
+    value,
+  );
+  return (
+    !!match &&
+    Number(match[1]) > 0 &&
+    Number(match[2]) > 0 &&
+    Number(match[1]) <= 20000 &&
+    Number(match[2]) <= 20000
+  );
+}

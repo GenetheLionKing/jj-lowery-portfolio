@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowIcon } from "@/components/icons";
 import { ProfileImage } from "@/components/profile-image";
 import { MusicArt, SystemsArt } from "@/components/about-art";
 import { SelectedWorkGrid } from "@/components/selected-work-grid";
 import { getPublicContent } from "@/content/public";
-import { contentHref } from "@/content/catalog";
-import { publicMedia, type PublicMediaKey } from "@/content/media";
+import { AboutGalleryStrip } from "@/components/about-gallery";
+import { aboutGallery } from "@/content/catalog";
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -17,30 +16,7 @@ export const metadata: Metadata = {
 export default async function AboutPage() {
   const { about, cases, articles } = await getPublicContent();
   if (!about) notFound();
-  const features = about.featureLinks.flatMap((ref) => {
-    if (ref.kind === "caseStudy") {
-      const item = cases.find((c) => c.slug === ref.slug);
-      return item
-        ? [
-            {
-              href: contentHref(ref.kind, ref.slug),
-              label: ref.label ?? item.title,
-              image: item.thumbnail as PublicMediaKey | undefined,
-            },
-          ]
-        : [];
-    }
-    const item = articles.find((a) => a.slug === ref.slug);
-    return item
-      ? [
-          {
-            href: contentHref(ref.kind, ref.slug),
-            label: ref.label ?? item.title,
-            image: item.image as PublicMediaKey | undefined,
-          },
-        ]
-      : [];
-  });
+  const features = aboutGallery(articles, cases);
   const builds = about.builds.flatMap((slug) => {
     const study = cases.find((c) => c.slug === slug);
     return study ? [study] : [];
@@ -69,31 +45,7 @@ export default async function AboutPage() {
           <ProfileImage sizes="(max-width: 750px) 280px, (max-width: 900px) 355px, 457px" />
         </div>
       </section>
-      {features.length > 0 && (
-        <nav
-          className="container story-strip"
-          aria-label="Stories from the work"
-        >
-          {features.map((feature) => (
-            <Link key={feature.href} href={feature.href} prefetch={false}>
-              {feature.image && (
-                <Image
-                  unoptimized
-                  src={publicMedia[feature.image].src}
-                  alt=""
-                  width={640}
-                  height={480}
-                  loading="lazy"
-                />
-              )}
-              <span>
-                {feature.label}
-                <ArrowIcon />
-              </span>
-            </Link>
-          ))}
-        </nav>
-      )}
+      <AboutGalleryStrip items={features} />
       {(about.strengths.length > 0 || about.facts.length > 0) && (
         <section className="about-band">
           <div className="container about-section">

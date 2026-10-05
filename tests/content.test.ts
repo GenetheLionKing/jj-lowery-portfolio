@@ -11,9 +11,14 @@ import {
   seedResume,
 } from "../content/seed";
 import { migrationDocuments } from "../content/migration";
-import { isSafeLink } from "../content/urls";
+import { isSafeLink, isPublicImageAssetRef } from "../content/urls";
 import { articleSchema, caseSchema } from "../content/model";
-import { learnItems } from "../content/catalog";
+import {
+  aboutGallery,
+  portfolioItems,
+  blogItems,
+  learnItems,
+} from "../content/catalog";
 
 test("case migration preserves every original public field and qualification", () => {
   for (const original of caseStudies) {
@@ -85,6 +90,23 @@ test("partial or unsafe configuration cannot switch to repository fallback", () 
       NEXT_PUBLIC_SANITY_PROJECT_ID: "example",
       NEXT_PUBLIC_SANITY_DATASET: "../private",
     }),
+  );
+});
+
+test("review seeds are allowed locally and in Preview but never in unconfigured Production", () => {
+  assert.equal(getSanityPublicConfig({ NODE_ENV: "production" }), null);
+  assert.equal(getSanityPublicConfig({ VERCEL_ENV: "preview" }), null);
+  assert.throws(
+    () => getSanityPublicConfig({ VERCEL_ENV: "production" }),
+    /Production publishing requires/,
+  );
+  assert.deepEqual(
+    getSanityPublicConfig({
+      VERCEL_ENV: "production",
+      NEXT_PUBLIC_SANITY_PROJECT_ID: "example",
+      NEXT_PUBLIC_SANITY_DATASET: "portfolio",
+    }),
+    { projectId: "example", dataset: "portfolio" },
   );
 });
 
@@ -195,4 +217,106 @@ test("Learn is a distinct curated mix and does not feature the advertising case"
   assert.equal(new Set(items.map((item) => item.kind)).size, 3);
   assert.ok(!items.some((item) => item.slug === "bgm-budget-pacing"));
   assert.ok(seedArticles.every((article) => !article.publishedAt));
+});
+
+test("one authored post uses placement tags across surfaces and retains one canonical URL", () => {
+  const base = {
+    ...seedArticles[0],
+    tags: ["portfolio", "learn", "about-gallery"],
+    mainImage: {
+      src: "/images/profile-320.webp",
+      alt: "JJ Lowery",
+      width: 320,
+      height: 320,
+    },
+  };
+  const published = decodePublishedContent([
+    {
+      ...base,
+      _id: "new-post",
+      _type: "post",
+      kind: "article",
+      sections: seedCases[0].sections,
+    },
+  ]);
+  assert.equal(published.articles.length, 1);
+  assert.equal(published.cases.length, 0);
+  const href = `/blog/${base.slug}/`;
+  assert.equal(portfolioItems([], published.articles)[0].href, href);
+  assert.equal(learnItems([], published.articles, [])[0].href, href);
+  assert.equal(aboutGallery(published.articles)[0].href, href);
+  const removed = decodePublishedContent([
+    { ...base, tags: [], _id: "new-post", _type: "post", kind: "article" },
+  ]);
+  assert.equal(removed.articles.length, 1);
+  assert.equal(blogItems(removed.articles)[0].href, href);
+  assert.deepEqual(portfolioItems([], removed.articles), []);
+  assert.deepEqual(learnItems([], removed.articles, []), []);
+  assert.deepEqual(aboutGallery(removed.articles), []);
+  assert.deepEqual(aboutGallery([{ ...base, mainImage: undefined }]), []);
+  for (const id of ["drafts.new-post", "versions.release.new-post"]) {
+    const privateContent = decodePublishedContent([
+      { ...base, _id: id, _type: "post", kind: "article" },
+    ]);
+    assert.deepEqual(privateContent.articles, []);
+    assert.deepEqual(aboutGallery(privateContent.articles), []);
+  }
+  const unpublished = decodePublishedContent([]);
+  assert.deepEqual(aboutGallery(unpublished.articles), []);
+  assert.deepEqual(portfolioItems(unpublished.cases, unpublished.articles), []);
+  assert.deepEqual(
+    learnItems(unpublished.cases, unpublished.articles, unpublished.resources),
+    [],
+  );
+});
+test("unified case post retains its existing canonical work URL and complete source text", () => {
+  const migrated = decodePublishedContent(migrationDocuments());
+  assert.deepEqual(migrated.cases, seedCases);
+});
+
+test("native public image uploads match published image format and dimension limits", () => {
+  for (const ref of [
+    "image-abc-800x600-jpg",
+    "image-abc-640x480-png",
+    "image-abc-960x640-webp",
+  ])
+    assert.equal(isPublicImageAssetRef(ref), true);
+  for (const ref of [
+    "image-abc-800x600-gif",
+    "image-abc-800x600-svg",
+    "image-abc-800x600-avif",
+    "image-abc-20001x600-jpg",
+    "image-abc-0x600-jpg",
+    "file-abc-jpg",
+  ])
+    assert.equal(isPublicImageAssetRef(ref), false);
+});
+
+test("query-projected null images do not reject image-less unified or legacy posts", () => {
+  for (const type of ["post", "article"]) {
+    const content = decodePublishedContent([
+      {
+        ...seedArticles[0],
+        _id: "article-null",
+        _type: type,
+        kind: "article",
+        mainImage: null,
+      },
+    ]);
+    assert.equal(content.articles.length, 1);
+    assert.equal(content.articles[0].mainImage, undefined);
+  }
+  for (const type of ["post", "caseStudy"]) {
+    const content = decodePublishedContent([
+      {
+        ...seedCases[0],
+        _id: "case-null",
+        _type: type,
+        kind: "caseStudy",
+        mainImage: null,
+      },
+    ]);
+    assert.equal(content.cases.length, 1);
+    assert.equal(content.cases[0].mainImage, undefined);
+  }
 });
