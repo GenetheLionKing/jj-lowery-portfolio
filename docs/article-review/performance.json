@@ -1,0 +1,195 @@
+{
+  "method": "Lighthouse 13.5 mobile default simulated throttling; Chrome154 fresh profile/cold cache per run; 3 runs on local built production servers; same actual token-free published CMS. Sequential baseline phase then candidate phase, no concurrent browser/build. Local lab data, not field data.",
+  "baselineCommit": "c9bc86c8be413c70471349cefa7b1d9b7d83d151 (identical tree to built PR6 head24ac769)",
+  "candidateCodeCommit": "0122460",
+  "runs": [
+    {
+      "phase": "baseline",
+      "name": "home",
+      "run": 1,
+      "score": 98,
+      "LCP": 2497.2931,
+      "CLS": 0,
+      "TBT": 18.5,
+      "bytes": 245833,
+      "js": 148119
+    },
+    {
+      "phase": "baseline",
+      "name": "income",
+      "run": 1,
+      "score": 99,
+      "LCP": 2183.1677,
+      "CLS": 0,
+      "TBT": 0,
+      "bytes": 172307,
+      "js": 135080
+    },
+    {
+      "phase": "baseline",
+      "name": "home",
+      "run": 2,
+      "score": 98,
+      "LCP": 2479.6301000000003,
+      "CLS": 0,
+      "TBT": 11.5,
+      "bytes": 245788,
+      "js": 148119
+    },
+    {
+      "phase": "baseline",
+      "name": "income",
+      "run": 2,
+      "score": 99,
+      "LCP": 2182.8568,
+      "CLS": 0,
+      "TBT": 0,
+      "bytes": 172302,
+      "js": 135080
+    },
+    {
+      "phase": "baseline",
+      "name": "home",
+      "run": 3,
+      "score": 98,
+      "LCP": 2479.8523000000005,
+      "CLS": 0,
+      "TBT": 12,
+      "bytes": 245788,
+      "js": 148119
+    },
+    {
+      "phase": "baseline",
+      "name": "income",
+      "run": 3,
+      "score": 99,
+      "LCP": 2182.5926,
+      "CLS": 0,
+      "TBT": 0,
+      "bytes": 172302,
+      "js": 135080
+    },
+    {
+      "phase": "candidate",
+      "name": "home",
+      "run": 1,
+      "score": 98,
+      "LCP": 2496.574,
+      "CLS": 0,
+      "TBT": 19,
+      "bytes": 246619,
+      "js": 148125
+    },
+    {
+      "phase": "candidate",
+      "name": "income",
+      "run": 1,
+      "score": 99,
+      "LCP": 2184.7898,
+      "CLS": 0,
+      "TBT": 0,
+      "bytes": 188180,
+      "js": 139498
+    },
+    {
+      "phase": "candidate",
+      "name": "home",
+      "run": 2,
+      "score": 98,
+      "LCP": 2487.0122,
+      "CLS": 0,
+      "TBT": 15,
+      "bytes": 246575,
+      "js": 148125
+    },
+    {
+      "phase": "candidate",
+      "name": "income",
+      "run": 2,
+      "score": 99,
+      "LCP": 2182.7091,
+      "CLS": 0,
+      "TBT": 0,
+      "bytes": 188178,
+      "js": 139498
+    },
+    {
+      "phase": "candidate",
+      "name": "home",
+      "run": 3,
+      "score": 98,
+      "LCP": 2490.8257,
+      "CLS": 0,
+      "TBT": 16.5,
+      "bytes": 246575,
+      "js": 148125
+    },
+    {
+      "phase": "candidate",
+      "name": "income",
+      "run": 3,
+      "score": 99,
+      "LCP": 2181.7236000000003,
+      "CLS": 0,
+      "TBT": 0,
+      "bytes": 188178,
+      "js": 139498
+    }
+  ],
+  "medians": {
+    "baseline": {
+      "home": {
+        "score": 98,
+        "LCP": 2479.8523000000005,
+        "CLS": 0,
+        "TBT": 12,
+        "bytes": 245788,
+        "js": 148119
+      },
+      "income": {
+        "score": 99,
+        "LCP": 2182.8568,
+        "CLS": 0,
+        "TBT": 0,
+        "bytes": 172302,
+        "js": 135080
+      }
+    },
+    "candidate": {
+      "home": {
+        "score": 98,
+        "LCP": 2490.8257,
+        "CLS": 0,
+        "TBT": 16.5,
+        "bytes": 246575,
+        "js": 148125
+      },
+      "income": {
+        "score": 99,
+        "LCP": 2182.7091,
+        "CLS": 0,
+        "TBT": 0,
+        "bytes": 188178,
+        "js": 139498
+      }
+    }
+  },
+  "lighthouseVersion": "13.5.0",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "throttling": {
+    "rttMs": 150,
+    "throughputKbps": 1638.4,
+    "requestLatencyMs": 562.5,
+    "downloadThroughputKbps": 1474.5600000000002,
+    "uploadThroughputKbps": 675,
+    "cpuSlowdownMultiplier": 4
+  },
+  "portraitRequests": [
+    {
+      "url": "http://localhost:3333/images/profile-shoulder-640.webp",
+      "transferSize": 36950,
+      "resourceSize": 36668
+    }
+  ],
+  "additionalInteractionJS": 0
+}

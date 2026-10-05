@@ -31,3 +31,26 @@ Local server: `http://localhost:3333/`.
 - `/studio/` (existing trusted local origin; native login required)
 
 Screenshots and measured verification are in this directory. Reference anatomy: [Adham's ordinary article](https://www.adhamdannaway.com/blog/ui-design/ui-design-tips-14). His custom case/product pages were reference research, not the ordinary article template. No WordPress/Elementor migration, reference artwork/code/copy, new fonts, animation package, analytics or dependencies were added.
+
+## Verification and measured results
+
+- `pnpm check` passes against the configured Production scope: ESLint, generated route types/TypeScript, 27 content/Studio tests, production build and built HTTP route checks. Final Preview build also passes. `git diff --check` passes.
+- 72 actual rendered layouts: 9 routes × 320/390/768/1440 × dark/light. No horizontal overflow, broken images, duplicate IDs, hydration errors or case scaffolding. 18 WCAG2/2.1/2.2 AA axe runs report zero violations. All 9 routes read without JavaScript. Keyboard skip link/focus and reduced motion pass. The 720×500 CSS viewport checks layout equivalent to 1440×1000 at 200%; native browser zoom controls were not exercised. Résumé print generation was checked locally; its PDF remains in ignored `review/resume-print.pdf`.
+- [Measured runs](performance.json): Lighthouse13.5/Chrome154, default mobile simulated throttling, fresh profile/cold cache each run, three sequential runs per route/version. Same actual published CMS and local built servers. Baseline is main `c9bc86c` (identical source tree to the previous built PR6 head); candidate is code `0122460`. Baseline phase precedes candidate phase; runs were not interleaved. No concurrent build or automated browser during timing. These are local lab results, not deployed field measurements.
+
+| Median                 | Baseline home | Candidate home | Baseline income article | Candidate income article |
+| ---------------------- | ------------: | -------------: | ----------------------: | -----------------------: |
+| Lighthouse performance |            98 |             98 |                      99 |                       99 |
+| LCP                    |        2.480s |         2.491s |                  2.183s |                   2.183s |
+| CLS                    |             0 |              0 |                       0 |                        0 |
+| TBT                    |          12ms |         16.5ms |                     0ms |                      0ms |
+| Initial transfer       |      245,788B |       246,575B |                172,302B |                 188,178B |
+| Initial JS transfer    |      148,119B |       148,125B |                135,080B |                 139,498B |
+
+Homepage portrait transfer is36,950B. Homepage meets the proposed500KB total/200KB JS/150KB hero budgets; the article also remains below200KB JS. The article's richer renderer adds4,418B of initial JS; new interaction JS is0. LCP is close to the2.5s target on the homepage, so the local result does not guarantee slower-device/network or deployed field performance.
+
+- [CMS preservation](cms-preservation.json): authenticated read-only audit found no revision or field changes across the four published Posts, existing private temporary Post draft, published About and About draft. No agent content writes. Public queries still exclude draft/release IDs; no new public draft token or grant. Date labels consistently use UTC; no original publication date is inferred from migration creation. An Updated label is the published record's real revision date, including placement edits.
+- Native regular Chrome's already-signed-in local Studio opens the existing performance Post with its document title. The new Form/Preview schema and supplied-draft rendering logic are type-checked/tested, but **native Form→Preview rendering and rich-editor save/reload still require an owner browser check**. Automated Google sign-in/native form inspection are unavailable; executor native screen capture returned “could not create image from rect.” No permissions were granted to work around this.
+- Library delivery was attempted with the current consumer-local prepared upload workflow and all44 confirmed local screenshots. It failed before upload because prepared uploads are unavailable in this executor. **No screenshot was saved to Library; no output Library file IDs exist.** Verified screenshots are committed here instead. Do not claim attachments were delivered.
+
+The draft PR requires visual/native editor review before it is ready to merge. Any later article publication needs approval of that concrete article and its placement choices. About restoration and case unpublishing remain separate, unapplied decisions.
