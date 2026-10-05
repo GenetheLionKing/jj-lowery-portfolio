@@ -59,6 +59,6 @@ No custom interaction JS, font, animation package, tracking or new dependency wa
 
 ## Remaining review limits
 
-This review supports the intended direction; it cannot make an absolute aesthetic or device-behavior guarantee. Physical iPhone Safari safe areas and human assistive-technology review remain unverified. Vercel Preview is access-protected; exact-head READY metadata is verifiable, but signed-in remote rendering requires an authorized browser. CMS setup, owner login/save/publish/update/unpublish and unauthorized-write rejection remain separately gated. No live editor claim, account/settings change, Production merge or Vector edit is included.
+This review supports the intended direction; it cannot make an absolute aesthetic or device-behavior guarantee. Physical iPhone Safari safe areas and human assistive-technology review remain unverified. Vercel Preview is access-protected. The subsequent [Sanity connection review](sanity-connection-review.md) records native owner sign-in, the approved Preview settings/import and actual CMS checks. No Production merge or Vector edit is included.
 
 Local checked preview: `http://127.0.0.1:3130/`. [Cloud handoff and mandatory Mac sync](cloud-handoff.md).

@@ -551,6 +551,10 @@ export const schemaTypes = [
         fields: [string("alt", "Alternative text")],
       }),
       ...editorial,
+      // Keep imported legacy metadata valid; tags control public placement.
+      ...["featured", "learn"].map((name) =>
+        defineField({ name, type: "boolean", hidden: true, readOnly: true }),
+      ),
       ...articleOnly.map((field) => ({
         ...field,
         ...(field.name === "image"

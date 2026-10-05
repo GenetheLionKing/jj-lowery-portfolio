@@ -1,6 +1,6 @@
 # Publishing Preview review
 
-This is a draft PR/Preview, not an operational CMS or Production release. No CMS account, project, dataset, membership, token, environment setting, hook or Production configuration was changed. [The setup bundle](publishing-setup.md) lists the remaining owner actions.
+This document records the code/seed review before CMS setup. The subsequent [Sanity connection review](sanity-connection-review.md) records the owner-approved Preview configuration, six-record import and real editing/lifecycle checks. PR #5 remains draft and Production remains unchanged.
 
 ## Result
 
@@ -62,6 +62,6 @@ The 500 KB initial homepage, 150 KB hero and 200 KB initial-JS transfer budgets 
 
 Dark-theme versions accompany these files. Verified local preview: `http://127.0.0.1:3130/`. Raw audits, generated NDJSON and extracted schema are in ignored `review/`; portable screenshots/PDF and compact audit evidence are in `docs/publishing-review/`.
 
-Vercel Preview is access-protected; unauthenticated requests lead to sign-in. Exact-head deployment metadata can be verified without bypassing protection, but rendered remote Preview review needs an authorized signed-in browser. CMS project/setup, real owner login/save/publish/update/unpublish, anonymous draft isolation and non-member write rejection remain pending separate setup authorization. Contact delivery and analytics remain deferred. Vector repositories and Production remain unchanged. Keep this PR draft until the owner workflow, setup and release gates are completed.
+Vercel Preview is access-protected; unauthenticated requests lead to sign-in. Exact-head deployment metadata can be verified without bypassing protection; JJ subsequently completed native owner sign-in in regular Chrome. See the connection review for completed CMS checks and precise remaining limits. Contact delivery and analytics remain deferred. Vector repositories and Production remain unchanged. Keep this PR draft until a separate release decision.
 
 See the subsequent [whole-site design review](publishing-design-review.md) for the current split Portfolio/Learn heroes, featured Blog layout, removed About résumé CTA, latest screenshots and measurement summary. Earlier gallery screenshots remain explicitly local fixtures.

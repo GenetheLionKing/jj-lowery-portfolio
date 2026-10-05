@@ -1,6 +1,6 @@
 # Publishing Preview: setup and owner workflow
 
-This milestone supplies code, local verification and a draft PR/Preview. CMS account setup and Production release remain separate actions. No account, project, dataset, membership, token, environment setting, hook or Production deployment was changed.
+The draft PR/Preview is now connected to JJ's approved Sanity project `hi61zp16`, public dataset `portfolio`. The two public identifiers apply only to Vercel Preview branch `publishing/sanity-preview`. Six baseline records were imported through JJ's native owner login. See [the connection verification](sanity-connection-review.md) for actual workflow evidence and remaining limits. Production release remains a separate action; the `production` dataset, Production settings and live site were untouched.
 
 ## Authoring model
 
@@ -19,16 +19,16 @@ Published ordinary articles remain in Blog when placement tags are removed. Visi
 
 The About gallery uses a tagged published post's main image, title as its accessible link label and canonical URL. It contains no visible captions or arrows. Draft, unpublished and image-less posts do not appear. JJ still needs to choose personal posts/photos; no childhood history or new personal assets were invented. The gallery fixture screenshots use an existing portrait and a clearly labeled local mock post only.
 
-## Exact setup bundle, for separate approval
+## Owner-approved Preview setup
 
 1. JJ selects or creates a Sanity account, project and **public** dataset. Review the selected plan and terms; no paid plan is assumed or authorized.
 2. Confirm JJ is the sole editing member using real backend membership permissions. Studio's singleton menus and hidden duplicate/delete controls are conveniences, not access controls. No invitation, broad role or shared token is needed.
 3. Configure only actual trusted localhost and stable Preview Studio origins for credentialed CORS. Avoid wildcard credential origins.
 4. Add the non-secret `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` to local/Preview configuration. No public read/write token, draft secret or deployment hook is required.
-5. With JJ's explicitly authorized authenticated session, import the locally generated baseline. Existing public About, Résumé and four cases are published records; expanded About, proposed articles and resources are drafts. Build/deploy never imports or publishes content.
+5. With JJ's explicitly authorized authenticated session, import only the six published baseline records: existing public About, Résumé and four cases. Exclude every ID containing a period from `migrationDocuments()`. The expanded About, proposed articles and resources were **not imported**. Build/deploy never imports or publishes content.
 6. Verify owner login; draft save/reopen; image upload; placement tag add/remove; publish/update/unpublish; canonical URLs and all affected views; singleton editing and résumé print. Separately verify anonymous draft isolation and unauthenticated/non-member write rejection. Measure actual site-refresh timing before describing the editor as operational.
 
-The owner actions are account/plan selection, login, personal photo/post choices and editorial review. Allow roughly 15–30 minutes for those decisions and 30–60 minutes for joint workflow verification once setup is available; these are working estimates, not delivery guarantees. No live editor workflow has been claimed or tested.
+JJ completed native Google login and verified draft save/reopen and publication in the deployed Preview Studio using regular Chrome. The automated browser was rejected by Google; that restriction was respected. Native authenticated CLI checks cover the temporary record's subsequent lifecycle. Personal photo/post choices and editorial review remain JJ's decisions.
 
 ## Architecture and privacy
 
@@ -38,6 +38,6 @@ Public reads explicitly request published content without an API token and exclu
 
 Studio uses native Sanity owner authentication. Its setup screen says editing is unavailable until configured. Main-image upload accepts JPEG, PNG and WebP with validated dimensions and alternative text. Standard Sanity asset URLs are **public even when attached to draft posts**. The editor warns about this; use only images intended for public access. There are no crop/hotspot controls or private-asset promises.
 
-No Production setup, contact delivery, analytics or Vector work is included. Real account configuration, authenticated Preview rendering and physical iPhone Safari safe-area checks remain outstanding.
+No Production setup, contact delivery, analytics or Vector work is included. An independent authenticated non-member session, exact deployed public-cache timing and physical iPhone Safari safe-area checks remain unverified. Local cache measurements use the real configured Sanity dataset and are not field-performance measurements.
 
 Official references: [Sanity data security](https://www.sanity.io/docs/content-lake/keeping-your-data-safe), [published perspectives](https://www.sanity.io/docs/content-lake/perspectives), [embedded Studio](https://www.sanity.io/docs/studio/embedding-sanity-studio), [Pages Router ISR](https://nextjs.org/docs/pages/guides/incremental-static-regeneration).

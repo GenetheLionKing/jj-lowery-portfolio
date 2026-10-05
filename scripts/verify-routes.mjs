@@ -1,9 +1,17 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { createServer } from "node:net";
+import { readFile } from "node:fs/promises";
 import { setTimeout as delay } from "node:timers/promises";
 
 // Tests the built server's real HTTP/HTML, without executing hydration scripts.
+// Published articles vary by dataset; proposed repository articles are not imports.
+const manifest = JSON.parse(
+  await readFile(".next/prerender-manifest.json", "utf8"),
+);
+const articleRoutes = Object.keys(manifest.routes).filter((route) =>
+  /^\/blog\/[^/]+\/?$/.test(route),
+);
 const socket = createServer();
 await new Promise((resolve) => socket.listen(0, "127.0.0.1", resolve));
 const port = socket.address().port;
@@ -54,11 +62,15 @@ try {
       assert.match(html, /This path doesn’t lead to a page\./, route);
       assert.match(html, /<main\b/, route);
       assert.match(html, /href="\/portfolio\/"/, route);
-      assert.match(html, /name="robots" content="noindex(?:, nofollow)?"/, route);
+      assert.match(
+        html,
+        /name="robots" content="noindex(?:, nofollow)?"/,
+        route,
+      );
     }
   }
   for (const route of [
-    "/blog/a-plan-is-not-money/",
+    ...articleRoutes,
     "/work/vector-income-architecture/",
     "/work/vector-performance-investigation/",
     "/work/portfolio-design/",

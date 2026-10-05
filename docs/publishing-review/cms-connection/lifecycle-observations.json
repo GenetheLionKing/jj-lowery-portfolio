@@ -1,0 +1,1178 @@
+[
+  {
+    "stage": "update-and-remove-tags",
+    "elapsedMs": 972,
+    "at": "2026-10-05T03:33:55.505Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": true,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": true,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": true,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "update-and-remove-tags",
+    "elapsedMs": 5997,
+    "at": "2026-10-05T03:34:00.530Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 1214,
+    "at": "2026-10-05T03:34:02.044Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 6228,
+    "at": "2026-10-05T03:34:07.058Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 11239,
+    "at": "2026-10-05T03:34:12.069Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 16250,
+    "at": "2026-10-05T03:34:17.080Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 21271,
+    "at": "2026-10-05T03:34:22.101Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 26293,
+    "at": "2026-10-05T03:34:27.123Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 31321,
+    "at": "2026-10-05T03:34:32.151Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 36339,
+    "at": "2026-10-05T03:34:37.169Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 41354,
+    "at": "2026-10-05T03:34:42.184Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 46378,
+    "at": "2026-10-05T03:34:47.208Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 51404,
+    "at": "2026-10-05T03:34:52.234Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 56443,
+    "at": "2026-10-05T03:34:57.273Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "unpublish",
+    "elapsedMs": 61473,
+    "at": "2026-10-05T03:35:02.303Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 917,
+    "at": "2026-10-05T03:35:03.512Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 5941,
+    "at": "2026-10-05T03:35:08.536Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 10957,
+    "at": "2026-10-05T03:35:13.552Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 15972,
+    "at": "2026-10-05T03:35:18.567Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 20991,
+    "at": "2026-10-05T03:35:23.586Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 26011,
+    "at": "2026-10-05T03:35:28.606Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 31035,
+    "at": "2026-10-05T03:35:33.630Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 36047,
+    "at": "2026-10-05T03:35:38.642Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 41067,
+    "at": "2026-10-05T03:35:43.662Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 46083,
+    "at": "2026-10-05T03:35:48.678Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 51099,
+    "at": "2026-10-05T03:35:53.694Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 56134,
+    "at": "2026-10-05T03:35:58.729Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 404,
+        "present": false,
+        "updated": false,
+        "readable404": true
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "elapsedMs": 61147,
+    "at": "2026-10-05T03:36:03.742Z",
+    "rows": [
+      {
+        "path": "/blog/cms-verification-20261005/",
+        "status": 200,
+        "present": false,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "present": true,
+        "updated": true,
+        "readable404": false
+      },
+      {
+        "path": "/portfolio/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/learn/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      },
+      {
+        "path": "/about/",
+        "status": 200,
+        "present": false,
+        "updated": false,
+        "readable404": false
+      }
+    ]
+  }
+]
