@@ -61,6 +61,46 @@ export const caseBlockSchema = z.discriminatedUnion("type", [
   z.object({ type: z.literal("facts"), items: z.array(pair).max(30) }),
 ]);
 
+const proseBlockSchema = z.object({
+  _type: z.literal("block"),
+  _key: text,
+  style: z.enum(["normal", "h2", "h3", "blockquote"]).default("normal"),
+  listItem: z.enum(["bullet", "number"]).optional(),
+  level: z.number().int().min(1).max(4).optional(),
+  children: z
+    .array(
+      z.object({
+        _type: z.literal("span"),
+        _key: text,
+        text: z.string().max(12000),
+        marks: z.array(text).default([]),
+      }),
+    )
+    .max(200),
+  markDefs: z
+    .array(z.object({ _type: z.literal("link"), _key: text, href: link }))
+    .max(50)
+    .default([]),
+});
+
+export const richTextSchema = z
+  .array(
+    z.discriminatedUnion("_type", [
+      proseBlockSchema,
+      postImageSchema.extend({
+        _type: z.literal("image"),
+        _key: text,
+        caption: z.string().max(12000).nullish(),
+      }),
+      z.object({
+        _type: z.literal("systemDiagram"),
+        _key: text,
+        kind: diagram,
+      }),
+    ]),
+  )
+  .max(300);
+
 export const caseSchema = z.object({
   slug,
   number: text,
@@ -79,6 +119,9 @@ export const caseSchema = z.object({
     })
     .optional(),
   mainImage: postImageSchema.optional(),
+  body: richTextSchema.min(1).optional(),
+  publishedAt: z.iso.datetime({ offset: true }).optional(),
+  updatedAt: z.iso.datetime({ offset: true }).optional(),
   metadata: z.array(pair).max(30).default([]),
   skills: texts,
   sections: z
@@ -106,47 +149,46 @@ export const caseSchema = z.object({
   ...seo,
 });
 
-export const richTextSchema = z
-  .array(
-    z.object({
-      _type: z.literal("block"),
-      _key: text,
-      style: z.enum(["normal", "h2", "h3", "blockquote"]).default("normal"),
-      listItem: z.enum(["bullet", "number"]).optional(),
-      level: z.number().int().min(1).max(4).optional(),
-      children: z
-        .array(
-          z.object({
-            _type: z.literal("span"),
-            _key: text,
-            text: z.string().max(12000),
-            marks: z.array(text).default([]),
-          }),
-        )
-        .max(200),
-      markDefs: z
-        .array(z.object({ _type: z.literal("link"), _key: text, href: link }))
-        .max(50)
-        .default([]),
-    }),
-  )
-  .max(300);
-
-export const articleSchema = z.object({
-  slug,
-  title: text,
-  summary: text,
-  body: richTextSchema.min(1),
-  image: media.optional(),
-  mainImage: postImageSchema.optional(),
-  tags,
-  learn: z.boolean().default(true),
-  featured: z.boolean().default(false),
-  publishedAt: z.iso.datetime({ offset: true }).optional(),
-  order: z.number().finite().optional(),
-  format: z.enum(["article", "guide"]).default("article"),
-  ...seo,
-});
+export const articleSchema = z
+  .object({
+    slug,
+    title: text,
+    summary: text,
+    body: richTextSchema.default([]),
+    destination: z.enum(["article", "external", "custom"]).default("article"),
+    externalUrl: link.refine((v) => v.startsWith("https://")).optional(),
+    customPage: z.enum(["/", "/about/", "/resume/", "/contact/"]).optional(),
+    image: media.optional(),
+    mainImage: postImageSchema.optional(),
+    tags,
+    learn: z.boolean().default(true),
+    featured: z.boolean().default(false),
+    publishedAt: z.iso.datetime({ offset: true }).optional(),
+    updatedAt: z.iso.datetime({ offset: true }).optional(),
+    order: z.number().finite().optional(),
+    format: z.enum(["article", "guide"]).default("article"),
+    ...seo,
+  })
+  .superRefine((value, ctx) => {
+    if (value.destination === "article" && !value.body.length)
+      ctx.addIssue({
+        code: "custom",
+        path: ["body"],
+        message: "Write the article body",
+      });
+    if (value.destination === "external" && !value.externalUrl)
+      ctx.addIssue({
+        code: "custom",
+        path: ["externalUrl"],
+        message: "Choose the external HTTPS destination",
+      });
+    if (value.destination === "custom" && !value.customPage)
+      ctx.addIssue({
+        code: "custom",
+        path: ["customPage"],
+        message: "Choose an existing custom page",
+      });
+  });
 export const resourceSchema = z.object({
   slug,
   title: text,

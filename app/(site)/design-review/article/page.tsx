@@ -1,34 +1,50 @@
-import { EditorialPage } from "@/components/editorial-page";
-/** Neutral layout fixture, never a CMS record, article proposal or public listing. */
+import { ReadingArticlePage } from "@/components/reading-article";
+import type { RichText } from "@/content/model";
+/** Neutral Portable Text fixture. No draft query, CMS record or public listing. */
+const paragraph = (
+  key: string,
+  text: string,
+  style: "normal" | "h2" = "normal",
+): RichText[number] => ({
+  _type: "block",
+  _key: key,
+  style,
+  children: [{ _type: "span", _key: `${key}-span`, text, marks: [] }],
+  markDefs: [],
+});
+const body: RichText = [
+  paragraph(
+    "intro",
+    "This local fixture checks the ordinary article renderer, including an inline image and caption. It is not a proposed article or a CMS record.",
+  ),
+  paragraph("heading", "A clear reading order", "h2"),
+  paragraph(
+    "reading",
+    "The title, subtitle, author and body share a centered reading column. Paragraphs and meaningful headings stay visible without JavaScript.",
+  ),
+  {
+    _type: "image",
+    _key: "inline-image",
+    src: "/images/work/vector-income.webp",
+    width: 640,
+    height: 480,
+    alt: "Vector’s envelope-planning interface",
+    caption:
+      "Existing public artwork, used here to check image placement and captions.",
+  },
+  paragraph(
+    "end",
+    "Images are optional. Publication dates appear only when their history is supplied; this fixture has no date.",
+  ),
+];
 export default function ArticleLayoutReview() {
   return (
-    <EditorialPage
-      title="Article layout review"
-      summary="A reading template for future published posts."
-      label="Layout fixture"
-      backHref="/blog/"
-      backLabel="Blog"
-    >
-      <p>
-        This page exists only to review the article template. It is not a
-        published post and does not appear in Blog, Learn, Portfolio or the
-        homepage.
-      </p>
-      <h2>A clear reading order</h2>
-      <p>
-        The introduction, headings and body share a comfortable reading width.
-        Paragraphs remain visible without JavaScript, and links can be reached
-        with a keyboard.
-      </p>
-      <blockquote>
-        Content should be easy to read before it asks for attention.
-      </blockquote>
-      <h2>Keep useful structure</h2>
-      <ul>
-        <li>Use headings to describe each section.</li>
-        <li>Show a date only when one is supplied.</li>
-        <li>Keep images optional and their alternative text meaningful.</li>
-      </ul>
-    </EditorialPage>
+    <ReadingArticlePage
+      article={{
+        title: "Article layout review",
+        subtitle: "A plain reading template for future Posts.",
+        body,
+      }}
+    />
   );
 }

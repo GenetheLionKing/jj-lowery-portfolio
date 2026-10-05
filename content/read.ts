@@ -9,7 +9,7 @@ import {
 import type { SanityPublicConfig } from "./config";
 
 export const publishedQuery =
-  '*[_type in ["about", "resume", "post", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc){..., "mainImage": select(defined(mainImage.asset) => {"src": mainImage.asset->url, "alt": mainImage.alt, "width": mainImage.asset->metadata.dimensions.width, "height": mainImage.asset->metadata.dimensions.height}, defined(mainImage.src) => mainImage)}';
+  '*[_type in ["about", "resume", "post", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc){..., "mainImage": select(defined(mainImage.asset) => {"src": mainImage.asset->url, "alt": mainImage.alt, "width": mainImage.asset->metadata.dimensions.width, "height": mainImage.asset->metadata.dimensions.height}, defined(mainImage.src) => mainImage), "body": body[]{..., _type == "image" => {"src": asset->url, "alt": alt, "caption": caption, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height}}}';
 
 const permanentCaseSlugs: Record<string, string> = {
   "case-vector-income-architecture": "vector-income-architecture",
@@ -38,12 +38,16 @@ export function decodePublishedContent(input: unknown): PublicContent {
     if (typeof doc._id !== "string" || doc._id.includes(".")) continue;
     const data: Record<string, unknown> = {
       ...doc,
+      ...(typeof doc._updatedAt === "string"
+        ? { updatedAt: doc._updatedAt }
+        : {}),
       slug:
         typeof doc.slug === "object" && doc.slug
           ? (doc.slug as Record<string, unknown>).current
           : doc.slug,
     };
     if (data.mainImage == null) delete data.mainImage;
+    if (data.body == null) delete data.body;
     if (
       doc._type === "post" &&
       doc.kind !== "article" &&
