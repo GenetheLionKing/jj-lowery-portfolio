@@ -1,4 +1,5 @@
 import { test } from "node:test";
+import { runInNewContext } from "node:vm";
 import assert from "node:assert/strict";
 import { caseStudies } from "../data/case-studies";
 import { getSanityPublicConfig } from "../content/config";
@@ -14,12 +15,90 @@ import { migrationDocuments } from "../content/migration";
 import { isSafeLink, isPublicImageAssetRef } from "../content/urls";
 import { articleSchema, caseSchema } from "../content/model";
 import {
+  aboutProposal,
+  isAboutEditorialReview,
+} from "../content/about-proposal";
+import { themeInitScript } from "../data/theme";
+import {
   homeItems,
   aboutGallery,
   portfolioItems,
   blogItems,
   learnItems,
 } from "../content/catalog";
+
+test("dark initializes before paint, honors explicit light and tolerates blocked storage", () => {
+  for (const saved of [null, "dark", "light", "invalid"]) {
+    const document = { documentElement: { dataset: { theme: "dark" } } };
+    runInNewContext(themeInitScript, {
+      document,
+      localStorage: { getItem: () => saved },
+    });
+    assert.equal(
+      document.documentElement.dataset.theme,
+      saved === "light" ? "light" : "dark",
+    );
+  }
+  const document = { documentElement: { dataset: { theme: "dark" } } };
+  runInNewContext(themeInitScript, {
+    document,
+    localStorage: {
+      getItem() {
+        throw new Error("Blocked");
+      },
+    },
+  });
+  assert.equal(document.documentElement.dataset.theme, "dark");
+});
+
+test("About expansion fills only missing sections and preserves authored copy and cleared facts", () => {
+  const compact = {
+    ...seedAbout,
+    title: "My edited title",
+    lead: "My edited lead",
+    introduction: ["My edited introduction"],
+    story: [],
+    strengths: [],
+    life: [],
+    builds: [],
+    facts: [],
+  };
+  const restored = aboutProposal(compact);
+  assert.equal(restored.title, compact.title);
+  assert.equal(restored.lead, compact.lead);
+  assert.deepEqual(restored.introduction, compact.introduction);
+  assert.deepEqual(restored.facts, []);
+  assert.ok(
+    restored.story.length &&
+      restored.strengths.length &&
+      restored.life.length &&
+      restored.builds.length,
+  );
+  const edited = {
+    ...restored,
+    story: ["My existing story"],
+    strengths: [{ title: "My skill", summary: "My copy" }],
+    life: [{ title: "My hobby", copy: "My words" }],
+    builds: ["portfolio-design"],
+  };
+  assert.deepEqual(aboutProposal(edited), edited);
+});
+
+test("About editorial mode cannot activate in Production", () => {
+  assert.equal(
+    isAboutEditorialReview({
+      VERCEL_ENV: "production",
+      NODE_ENV: "development",
+    }),
+    false,
+  );
+  assert.equal(
+    isAboutEditorialReview({ VERCEL_ENV: "preview", NODE_ENV: "production" }),
+    true,
+  );
+  assert.equal(isAboutEditorialReview({ NODE_ENV: "development" }), true);
+  assert.equal(isAboutEditorialReview({ NODE_ENV: "production" }), false);
+});
 
 test("case migration preserves every original public field and qualification", () => {
   for (const original of caseStudies) {

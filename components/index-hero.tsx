@@ -1,12 +1,15 @@
-/** One compact title and short introduction; the work below provides the imagery. */
+import type { ReactNode } from "react";
+/** One stacked title and introduction; optional real featured content follows. */
 export function IndexHero({
   id,
   title,
   lead,
+  children,
 }: {
   id: string;
   title: string;
   lead: string;
+  children?: ReactNode;
 }) {
   return (
     <section className="index-hero" aria-labelledby={id}>
@@ -15,6 +18,7 @@ export function IndexHero({
           {title}
         </h1>
         <p className="index-hero-lead">{lead}</p>
+        {children}
       </div>
     </section>
   );

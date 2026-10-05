@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-05T06:07:49.131Z",
+  "environment": "production",
+  "checks": [
+    {
+      "path": "/design-review/about/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/design-review/about/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/design-review/about/story/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/design-review/about/story/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/design-review/article/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/design-review/article/",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "/about/story/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/about/story/",
+      "method": "HEAD",
+      "status": 404
+    }
+  ],
+  "publishedAboutOnly": true,
+  "serverDarkDefault": true,
+  "contentWrites": false
+}

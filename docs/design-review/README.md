@@ -2,12 +2,17 @@
 
 This draft changes the page layouts and Post placement controls. It does not publish, unpublish, import or overwrite CMS content. The approved portrait and card geometry remain unchanged.
 
+The current corrected screenshots are in [focused-corrections](focused-corrections/). New visitors default to dark before paint; explicit saved light choices remain light. Portfolio, Learn and Blog titles sit above their introductions on one left edge at every viewport. The actual `/about/` and `/about/story/` routes show the expanded restoration in Preview/development, with a visible unpublished notice and `noindex, nofollow`. Production continues to read only published CMS content. The [four-field restoration patch and exact content approval](about-restoration-approval.md) await owner approval; no CMS write has occurred.
+
+The latest required Production `pnpm check` passed, including 22 content/Studio tests. [Focused browser evidence](focused-corrections/browser-checks.json) covers 56 layouts across 320/390/768/1440 in both themes, 14 zero-violation axe checks, new/saved/invalid/blocked-storage first-frame themes, saved-light reload/navigation and seven readable dark-default no-JS pages. [Production HTTP evidence](focused-production-gate.json) confirms the actual About route remains compact and published-only, its unpublished story stays 404, and every review route returns GET/HEAD 404. Whole-page screenshots were visually inspected against all five owner screenshots materialized on this Mac with their Library identities intact.
+
 ## Review routes
 
 - `/portfolio/`, `/learn/`, `/blog/`: real published CMS content, with an explicit placement tag required for each collection.
 - `/`: real published Posts tagged `home`, in Display order, under **Some of my work**. Both Post layouts are eligible. No eligible Posts means no work section. There is no three-card cap or repository fallback.
 - `/work/vector-income-architecture/`, `/work/vector-performance-investigation/`, `/work/portfolio-design/`, `/work/bgm-budget-pacing/`: the existing canonical case-study URLs and full qualified source content.
-- `/design-review/about/` and `/design-review/about/story/`: separately labeled, unpublished About restoration proposals.
+- `/about/` and `/about/story/`: expanded, visibly qualified restoration in Preview/development; published-only content in Production.
+- `/design-review/about/` and `/design-review/about/story/`: alternate links to the same unpublished restoration proposals.
 - `/design-review/article/`: a neutral article-layout fixture. It is not one of the three proposed articles and is never listed as a Post.
 
 All `/design-review/` routes carry `noindex, nofollow` and return GET/HEAD 404 in Production. They do not replace the real About page or write to Sanity.
@@ -15,6 +20,8 @@ All `/design-review/` routes carry `noindex, nofollow` and return GET/HEAD 404 i
 ## Concrete design changes
 
 Learn, Portfolio, Blog and the homepage use the same `PortfolioGrid`. Learn retains Portfolio's image ratio, padding, border, radius, title/subtitle styling and grid gap. The separate CASE STUDY label, long excerpt and Read arrow are removed. Collection headings are compact; the CSS monitor and book/flowchart decoration are removed.
+
+Blog features the first explicitly Blog-placed published Post in Display order, then uses the shared cards for remaining Posts. The title and introduction remain one stacked group above that real feature. Without an eligible Post it retains the compact stacked heading and empty state; neither topic tags nor repository proposals create a feature, and no fallback illustration is added.
 
 Case-study bodies use one 780px reading column, clear section headings and visible evidence. Existing interface screenshots remain direct project artifacts. The abstract validation shield is retained as existing card artwork, but is omitted from the performance detail hero. Explanatory diagrams remain in the body; benchmark qualifications are easier to read. Source claims, numbers, AI-assistance qualifications and conceptual-model boundaries are unchanged. Article and About-story pages use the same editorial component.
 
@@ -32,7 +39,7 @@ The CMS currently contains four published structured-case Posts, not three publi
 
 The original expansion survives in `content/seed.ts` and the migration's proposed About draft. The baseline import deliberately published the compact About record; the proposed expansion was not imported. It was not deleted by cleanup of the previous temporary CMS verification Post.
 
-The review proposal keeps the current published title and introduction, and restores these source-backed fields for editorial review: lead, story title, longer story, three strengths, music note, two current-build references and story-link label. It preserves the cleared facts/At a glance field. The three original optional facts can be considered separately; they are not silently restored. The existing About draft is untouched. Any future restoration must merge only approved fields into the latest draft with a revision guard, preserving edits made since this review.
+The fresh read-only CMS audit confirms the existing About draft still matches published copy, with the facts/At a glance field cleared. The current review restores only four empty source-backed fields: longer story, three strengths, music note and two current-build references. Existing title, introduction, lead, story title/link label and cleared facts remain unchanged. Non-empty authored expansion fields also take precedence. The existing About draft is untouched. The actual Preview About navigation now opens this expansion. Any future restoration must merge only explicitly approved missing fields into the latest draft with a revision guard, preserving edits made since this review.
 
 No proposed article/resource drafts are imported. The identity of the user's requested "three articles" remains unresolved; this PR does not assume the three repository proposals are the intended pieces.
 

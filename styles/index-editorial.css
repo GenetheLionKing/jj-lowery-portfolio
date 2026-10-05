@@ -5,12 +5,12 @@
 }
 .index-hero-layout {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 48px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
 .index-hero-lead {
-  max-width: 32ch;
+  max-width: 48ch;
   color: var(--muted);
   font-size: 20px;
   line-height: 1.55;
@@ -19,6 +19,33 @@
 .index-content {
   border-top: 1px solid var(--line);
   padding-block: 48px 72px;
+}
+.blog-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  margin-top: 28px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.blog-feature-copy h2 {
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-block: 12px;
+}
+.blog-feature-copy > p:last-child {
+  max-width: 48ch;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.blog-feature-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 @media (max-width: 750px) {
   .index-hero {
@@ -33,6 +60,10 @@
   }
   .index-content {
     padding-block: 32px 48px;
+  }
+  .blog-feature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
   }
 }
 /* Shared real post / About story reading template. */

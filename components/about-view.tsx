@@ -54,16 +54,18 @@ export function AboutView({
                 ))}
               </div>
             </div>
-            <div className="about-visual">
-              <dl className="about-facts">
-                {about.facts.map((fact) => (
-                  <div key={fact.label}>
-                    <dt>{fact.label}</dt>
-                    <dd>{fact.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+            {about.facts.length > 0 && (
+              <div className="about-visual">
+                <dl className="about-facts">
+                  {about.facts.map((fact) => (
+                    <div key={fact.label}>
+                      <dt>{fact.label}</dt>
+                      <dd>{fact.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
           </div>
         </section>
       )}
