@@ -630,6 +630,9 @@ export const schemaTypes = [
       },
       {
         ...caseFields.find((field) => field.name === "subtitle")!,
+        // The document validator requires this only for legacy case Posts.
+        // Hidden fields still validate; Articles use summary as their subtitle.
+        validation: undefined,
         hidden: ({ document }: { document?: Record<string, unknown> }) =>
           document?.kind !== "caseStudy",
       },
