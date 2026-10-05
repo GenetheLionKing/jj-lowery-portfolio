@@ -4,5 +4,13 @@
   "existingRecordsUnchanged": true,
   "publishedFixture": false,
   "contentWritesByAgent": false,
-  "remainingFixture": "Owner-created temporary Post draft remains unpublished with home placement only; no agent CMS mutations."
+  "remainingFixture": "Owner-created temporary Post draft remains unpublished with home placement only; no agent CMS mutations.",
+  "existingPerformancePostCheckboxesOwnerConfirmedEnabled": true,
+  "ownerScreenshotMatchesExistingSelections": [
+    "home",
+    "portfolio",
+    "learn",
+    "performance",
+    "validation"
+  ]
 }
