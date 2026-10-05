@@ -60,3 +60,36 @@ test("actual Post validator accepts imported records and rejects unsafe native i
     );
   }
 });
+
+test("hidden legacy subtitle cannot block an Article's visible summary; cases still require their subtitle", () => {
+  const post = schemaTypes.find((type) => type.name === "post")!;
+  const subtitle = post.fields!.find((field) => field.name === "subtitle")! as {
+    hidden: (context: { document: { kind: string } }) => boolean;
+    validation?: unknown;
+  };
+  const hidden = subtitle.hidden;
+  assert.equal(hidden({ document: { kind: "article" } }), true);
+  assert.equal(hidden({ document: { kind: "caseStudy" } }), false);
+  assert.equal(
+    subtitle.validation,
+    undefined,
+    "The hidden legacy field must not carry an unconditional required rule",
+  );
+  let validate: (value: unknown) => unknown = () => false;
+  const rule = {
+    custom(fn: typeof validate) {
+      validate = fn;
+      return rule;
+    },
+  };
+  (post.validation as (rule: unknown) => unknown)(rule);
+  const docs = migrationDocuments().filter((doc) => doc._type === "post");
+  const article = docs.find((doc) => doc.kind === "article")!;
+  assert.ok(article.summary);
+  assert.equal(article.subtitle, undefined);
+  assert.equal(validate(article), true);
+  assert.notEqual(validate({ ...article, summary: undefined }), true);
+  const study = docs.find((doc) => doc.kind === "caseStudy")!;
+  assert.equal(validate(study), true);
+  assert.notEqual(validate({ ...study, subtitle: undefined }), true);
+});
