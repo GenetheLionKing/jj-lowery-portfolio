@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowIcon } from "@/components/icons";
-import type { CaseStudy, ContentBlock } from "@/data/case-studies";
+import type { ContentBlock } from "@/data/case-studies";
+import type { PublishingCase } from "@/content/model";
+import { publicMedia, sizedPublicImage } from "@/content/media";
 import {
   MetricCallouts,
   Principle,
@@ -87,39 +89,65 @@ export function CaseStudyPage({
   study,
   nextStudy,
 }: {
-  study: CaseStudy;
-  nextStudy: CaseStudy;
+  study: PublishingCase;
+  nextStudy?: Pick<PublishingCase, "number" | "title" | "slug">;
 }) {
   return (
     <>
       <div className="case-hero container">
-        <Link href="/#work" className="text-link back-link">
+        <Link
+          prefetch={false}
+          href="/portfolio/"
+          className="text-link back-link"
+        >
           <ArrowIcon direction="left" /> All selected work
         </Link>
-        <div className="case-hero-top">
-          <p className="eyebrow">
-            Case study {study.number} <span>/</span> {study.company}
-          </p>
-          <span className="micro case-category">{study.category}</span>
+        <div className="case-introduction">
+          <div className="case-heading">
+            <p className="eyebrow">
+              {study.company} · {study.category}
+            </p>
+            <h1>{study.title}</h1>
+            <p className="case-subtitle">{study.subtitle}</p>
+            {study.company === "Vector" && (
+              <p className="case-method">
+                My personal-finance app, developed with AI assistance.
+              </p>
+            )}
+          </div>
+          <div className="case-visual">
+            {study.mainImage ? (
+              <Image
+                unoptimized
+                src={sizedPublicImage(study.mainImage.src, 960)}
+                alt={study.mainImage.alt}
+                width={study.mainImage.width}
+                height={study.mainImage.height}
+                priority
+              />
+            ) : study.thumbnail ? (
+              <Image
+                unoptimized
+                src={publicMedia[study.thumbnail].src}
+                alt={publicMedia[study.thumbnail].alt}
+                width={640}
+                height={480}
+                priority
+              />
+            ) : study.image ? (
+              <Image
+                unoptimized
+                src={study.image.src}
+                alt={study.image.alt}
+                width={640}
+                height={480}
+                priority
+              />
+            ) : study.diagram ? (
+              <SystemDiagram kind={study.diagram} />
+            ) : null}
+          </div>
         </div>
-        <h1>{study.title}</h1>
-        <p className="case-subtitle">{study.subtitle}</p>
-        {study.company === "Vector" && (
-          <p className="case-method">
-            My personal-finance app, developed with AI assistance.
-          </p>
-        )}
-        {study.diagram && <SystemDiagram kind={study.diagram} />}
-        {study.image && (
-          <Image
-            unoptimized
-            className="case-project-image"
-            src={study.image.src}
-            alt={study.image.alt}
-            width="640"
-            height="480"
-          />
-        )}
         <dl className="case-metadata">
           {study.metadata.map((item) => (
             <div key={item.label}>
@@ -130,24 +158,21 @@ export function CaseStudyPage({
         </dl>
       </div>
       <div className="container case-body">
-        <aside className="case-sidebar">
+        <details className="case-outline">
+          <summary>In this case study</summary>
           <nav aria-label="Case study sections">
-            <p className="micro">In this study</p>
             <ol>
               {[
                 ...study.sections,
-                { id: "skills", title: "Skills Demonstrated" },
-              ].map((section, index) => (
+                { id: "skills", title: "Skills demonstrated" },
+              ].map((section) => (
                 <li key={section.id}>
-                  <a href={`#${section.id}`}>
-                    <span className="micro">0{index + 1}</span>
-                    {section.title}
-                  </a>
+                  <a href={`#${section.id}`}>{section.title}</a>
                 </li>
               ))}
             </ol>
           </nav>
-        </aside>
+        </details>
         <article
           className="case-article"
           aria-label={`${study.title} analysis`}
@@ -158,10 +183,12 @@ export function CaseStudyPage({
                 <span className="micro">0{index + 1}</span>
                 <h2>{section.title}</h2>
               </div>
-              {section.lead && <p className="section-lead">{section.lead}</p>}
-              {section.blocks.map((block, blockIndex) => (
-                <Block key={blockIndex} block={block} />
-              ))}
+              <div className="case-section-content">
+                {section.lead && <p className="section-lead">{section.lead}</p>}
+                {section.blocks.map((block, blockIndex) => (
+                  <Block key={blockIndex} block={block} />
+                ))}
+              </div>
             </section>
           ))}
           <section className="case-section" id="skills">
@@ -171,24 +198,28 @@ export function CaseStudyPage({
               </span>
               <h2>Skills Demonstrated</h2>
             </div>
-            <SkillTags skills={study.skills} />
+            <div className="case-section-content">
+              <SkillTags skills={study.skills} />
+            </div>
           </section>
         </article>
       </div>
-      <div className="next-study">
-        <div className="container">
-          <span className="micro">
-            Continue exploring / Case study {nextStudy.number}
-          </span>
-          <Link href={`/work/${nextStudy.slug}/`}>
-            <span>{nextStudy.title}</span>
-            <ArrowIcon />
-          </Link>
-          <Link href="/#work" className="text-link">
-            Back to selected work
-          </Link>
+      {nextStudy && (
+        <div className="next-study">
+          <div className="container">
+            <span className="micro">
+              Continue exploring / Case study {nextStudy.number}
+            </span>
+            <Link prefetch={false} href={`/work/${nextStudy.slug}/`}>
+              <span>{nextStudy.title}</span>
+              <ArrowIcon />
+            </Link>
+            <Link prefetch={false} href="/portfolio/" className="text-link">
+              Back to selected work
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

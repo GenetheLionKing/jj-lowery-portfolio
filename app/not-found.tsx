@@ -1,15 +1,15 @@
-import { ArrowIcon } from "@/components/icons";
-import Link from "next/link";
+import { NotFoundContent } from "@/components/not-found-content";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export default function NotFound() {
   return (
-    <section className="container not-found">
-      <p className="eyebrow">404 / Page not found</p>
-      <h1>This path doesn’t lead to a page.</h1>
-      <p>The work is still here. Let’s get you back to it.</p>
-      <Link className="button button-dark" href="/#work">
-        Explore selected work <ArrowIcon />
-      </Link>
-    </section>
+    <>
+      <SiteHeader />
+      <main id="main">
+        <NotFoundContent />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

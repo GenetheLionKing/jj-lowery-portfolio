@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-05T03:37:09.048Z",
+  "unchangedBefore": true,
+  "unchangedAfter": true,
+  "remaining": [
+    {
+      "_id": "about",
+      "_type": "about"
+    },
+    {
+      "_id": "case-bgm-budget-pacing",
+      "_type": "post"
+    },
+    {
+      "_id": "case-portfolio-design",
+      "_type": "post"
+    },
+    {
+      "_id": "case-vector-income-architecture",
+      "_type": "post"
+    },
+    {
+      "_id": "case-vector-performance-investigation",
+      "_type": "post"
+    },
+    {
+      "_id": "resume",
+      "_type": "resume"
+    }
+  ],
+  "removedIds": [
+    "cms-verification-20261005",
+    "drafts.cms-verification-20261005",
+    "image-6564f2834ab69929931f962f61c965342a0a8eca-320x320-webp"
+  ]
+}

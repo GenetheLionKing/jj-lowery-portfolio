@@ -7,16 +7,26 @@
     "build": "next build",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "next typegen && tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build",
-    "preview": "node scripts/preview.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm test:content && pnpm build && pnpm test:routes",
+    "preview": "next start --hostname 127.0.0.1",
+    "test:content": "node --import tsx --test tests/content.test.ts tests/studio.test.ts",
+    "content:seed": "node --import tsx scripts/content-seed.ts",
     "portrait:build": "node scripts/portrait.mjs",
     "portrait:shoulder": "node scripts/portrait-shoulder.mjs",
-    "assets:build": "node scripts/portrait-clean.mjs"
+    "assets:build": "node scripts/portrait-clean.mjs",
+    "test:routes": "node scripts/verify-routes.mjs"
   },
   "dependencies": {
+    "@portabletext/react": "8.0.1",
+    "@sanity/client": "8.9.0",
     "next": "16.3.4",
+    "next-sanity": "13.3.4",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "sanity": "6.17.0",
+    "server-only": "0.0.1",
+    "styled-components": "6.5.3",
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
@@ -24,10 +34,11 @@
     "@types/react-dom": "^19.2.0",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.4",
+    "tsx": "4.23.15",
     "typescript": "^5.9.3"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.12.0"
   },
   "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017"
 }

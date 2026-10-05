@@ -1,0 +1,310 @@
+[
+  {
+    "theme": "light",
+    "route": "about/",
+    "counts": {
+      "inapplicable": 48,
+      "incomplete": 0,
+      "passes": 41,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "about/story/",
+    "counts": {
+      "inapplicable": 53,
+      "incomplete": 0,
+      "passes": 36,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "learn/",
+    "counts": {
+      "inapplicable": 50,
+      "incomplete": 0,
+      "passes": 39,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "blog/",
+    "counts": {
+      "inapplicable": 50,
+      "incomplete": 0,
+      "passes": 39,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "blog/a-plan-is-not-money/",
+    "counts": {
+      "inapplicable": 52,
+      "incomplete": 0,
+      "passes": 37,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "blog/test-the-conditions-not-just-the-feature/",
+    "counts": {
+      "inapplicable": 54,
+      "incomplete": 0,
+      "passes": 35,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "blog/a-suggestion-is-not-authorization/",
+    "counts": {
+      "inapplicable": 52,
+      "incomplete": 0,
+      "passes": 37,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "portfolio/",
+    "counts": {
+      "inapplicable": 50,
+      "incomplete": 0,
+      "passes": 39,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "resume/",
+    "counts": {
+      "inapplicable": 51,
+      "incomplete": 0,
+      "passes": 38,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "studio/",
+    "counts": {
+      "inapplicable": 59,
+      "incomplete": 0,
+      "passes": 30,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "work/vector-income-architecture/",
+    "counts": {
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "work/vector-performance-investigation/",
+    "counts": {
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "work/portfolio-design/",
+    "counts": {
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "work/bgm-budget-pacing/",
+    "counts": {
+      "inapplicable": 49,
+      "incomplete": 0,
+      "passes": 40,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "about/",
+    "counts": {
+      "inapplicable": 48,
+      "incomplete": 0,
+      "passes": 41,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "about/story/",
+    "counts": {
+      "inapplicable": 53,
+      "incomplete": 0,
+      "passes": 36,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "learn/",
+    "counts": {
+      "inapplicable": 50,
+      "incomplete": 0,
+      "passes": 39,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "blog/",
+    "counts": {
+      "inapplicable": 50,
+      "incomplete": 0,
+      "passes": 39,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "blog/a-plan-is-not-money/",
+    "counts": {
+      "inapplicable": 52,
+      "incomplete": 0,
+      "passes": 37,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "blog/test-the-conditions-not-just-the-feature/",
+    "counts": {
+      "inapplicable": 54,
+      "incomplete": 0,
+      "passes": 35,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "blog/a-suggestion-is-not-authorization/",
+    "counts": {
+      "inapplicable": 52,
+      "incomplete": 0,
+      "passes": 37,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "portfolio/",
+    "counts": {
+      "inapplicable": 50,
+      "incomplete": 0,
+      "passes": 39,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "resume/",
+    "counts": {
+      "inapplicable": 51,
+      "incomplete": 0,
+      "passes": 38,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "studio/",
+    "counts": {
+      "inapplicable": 59,
+      "incomplete": 0,
+      "passes": 30,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "work/vector-income-architecture/",
+    "counts": {
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "work/vector-performance-investigation/",
+    "counts": {
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "work/portfolio-design/",
+    "counts": {
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "work/bgm-budget-pacing/",
+    "counts": {
+      "inapplicable": 49,
+      "incomplete": 0,
+      "passes": 40,
+      "violations": 0
+    },
+    "violations": []
+  }
+]

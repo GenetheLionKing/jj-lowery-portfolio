@@ -1,0 +1,391 @@
+{
+  "base": "http://127.0.0.1:3130",
+  "layouts": [
+    {
+      "name": "budget",
+      "theme": "light",
+      "status": 200,
+      "width": 320,
+      "scrollWidth": 320,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    },
+    {
+      "name": "budget",
+      "theme": "light",
+      "status": 200,
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    },
+    {
+      "name": "budget",
+      "theme": "light",
+      "status": 200,
+      "width": 768,
+      "scrollWidth": 768,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    },
+    {
+      "name": "budget",
+      "theme": "light",
+      "status": 200,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    },
+    {
+      "name": "budget",
+      "theme": "dark",
+      "status": 200,
+      "width": 320,
+      "scrollWidth": 320,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    },
+    {
+      "name": "budget",
+      "theme": "dark",
+      "status": 200,
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    },
+    {
+      "name": "budget",
+      "theme": "dark",
+      "status": 200,
+      "width": 768,
+      "scrollWidth": 768,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    },
+    {
+      "name": "budget",
+      "theme": "dark",
+      "status": 200,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "main": 1,
+      "broken": [],
+      "overlay": false,
+      "remote": []
+    }
+  ],
+  "errors": [],
+  "noJS": [
+    {
+      "name": "home",
+      "textLength": 520,
+      "broken": 0
+    },
+    {
+      "name": "about",
+      "textLength": 1401,
+      "broken": 0
+    },
+    {
+      "name": "story",
+      "textLength": 786,
+      "broken": 0
+    },
+    {
+      "name": "learn",
+      "textLength": 1397,
+      "broken": 0
+    },
+    {
+      "name": "writing",
+      "textLength": 628,
+      "broken": 0
+    },
+    {
+      "name": "article",
+      "textLength": 1667,
+      "broken": 0
+    },
+    {
+      "name": "investigation-article",
+      "textLength": 1534,
+      "broken": 0
+    },
+    {
+      "name": "authorization-article",
+      "textLength": 1232,
+      "broken": 0
+    },
+    {
+      "name": "portfolio",
+      "textLength": 331,
+      "broken": 0
+    },
+    {
+      "name": "contact",
+      "textLength": 298,
+      "broken": 0
+    },
+    {
+      "name": "resume",
+      "textLength": 2285,
+      "broken": 0
+    },
+    {
+      "name": "income",
+      "textLength": 5105,
+      "broken": 0
+    },
+    {
+      "name": "performance",
+      "textLength": 4495,
+      "broken": 0
+    },
+    {
+      "name": "design",
+      "textLength": 1846,
+      "broken": 0
+    },
+    {
+      "name": "budget",
+      "textLength": 5016,
+      "broken": 0
+    },
+    {
+      "name": "studio",
+      "textLength": 578,
+      "broken": 0
+    }
+  ],
+  "keyboard": [
+    {
+      "name": "home",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "about",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "story",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "learn",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "writing",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "article",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "investigation-article",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "authorization-article",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "portfolio",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "contact",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "resume",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "income",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "performance",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "design",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    },
+    {
+      "name": "budget",
+      "skip": {
+        "class": "skip-link",
+        "outline": "3px"
+      },
+      "main": "main"
+    }
+  ],
+  "zoom": [
+    {
+      "name": "home",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "about",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "story",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "learn",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "writing",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "article",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "investigation-article",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "authorization-article",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "portfolio",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "contact",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "resume",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "income",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "performance",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "design",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "name": "budget",
+      "width": 1440,
+      "scrollWidth": 1440
+    }
+  ],
+  "filters": [],
+  "print": true,
+  "theme": "dark",
+  "motion": {
+    "scroll": "auto",
+    "transition": "0s"
+  },
+  "externalLinks": true
+}

@@ -1,0 +1,94 @@
+
+> jj-lowery-portfolio@0.1.0 check /Users/jameslowery/Documents/Codex/2026-10-02/task-5/portfolio-publishing
+> pnpm lint && pnpm typecheck && pnpm test:content && pnpm build && pnpm test:routes
+
+
+> jj-lowery-portfolio@0.1.0 lint /Users/jameslowery/Documents/Codex/2026-10-02/task-5/portfolio-publishing
+> eslint . --max-warnings=0
+
+
+> jj-lowery-portfolio@0.1.0 typecheck /Users/jameslowery/Documents/Codex/2026-10-02/task-5/portfolio-publishing
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+
+> jj-lowery-portfolio@0.1.0 test:content /Users/jameslowery/Documents/Codex/2026-10-02/task-5/portfolio-publishing
+> node --import tsx --test tests/content.test.ts tests/studio.test.ts
+
+✔ case migration preserves every original public field and qualification (1.791417ms)
+✔ draft and release records cannot enter the public model, even in an unexpected transport response (0.637667ms)
+✔ configured empty/unpublished content remains empty rather than resurrecting seed (0.12975ms)
+✔ partial or unsafe configuration cannot switch to repository fallback (0.243667ms)
+✔ review seeds are allowed locally and in Preview but never in unconfigured Production (0.201375ms)
+✔ mock transport observes token-free published reads, and errors fail closed (12.923667ms)
+✔ migration publishes only existing public records; proposed writing/resources/About are drafts (1.753917ms)
+✔ unsafe rich text links, foreign images and duplicate/reserved section anchors are rejected (1.243417ms)
+✔ Learn is a distinct curated mix and does not feature the advertising case (0.194416ms)
+✔ one authored post uses placement tags across surfaces and retains one canonical URL (0.931708ms)
+✔ unified case post retains its existing canonical work URL and complete source text (2.265458ms)
+✔ native public image uploads match published image format and dimension limits (0.277875ms)
+✔ query-projected null images do not reject image-less unified or legacy posts (1.320584ms)
+✔ Blog selects latest published date, with display-order and canonical-slug ties, never draft records (3.1935ms)
+✔ one Post editor has unique fields and no separate article/case authoring types (0.472042ms)
+✔ actual Post validator accepts imported records and rejects unsafe native images (1.864584ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2141.182458
+
+> jj-lowery-portfolio@0.1.0 build /Users/jameslowery/Documents/Codex/2026-10-02/task-5/portfolio-publishing
+> next build
+
+▲ Next.js 16.3.4 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 15ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 958ms
+  Running TypeScript ...
+  Finished TypeScript in 1970ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/16) ...
+  Generating static pages using 7 workers (4/16)
+  Generating static pages using 7 workers (8/16)
+  Generating static pages using 7 workers (12/16)
+✓ Generating static pages using 7 workers (16/16) in 567ms
+  Finalizing page optimization ...
+
+Route (app)                                            Revalidate  Expire
+┌ ○ /                                                          1m      1y
+├ ○ /_not-found
+├ ○ /about                                                     1m      1y
+├ ○ /about/story                                               1m      1y
+├ ○ /blog                                                      1m      1y
+├ ○ /contact                                                   1m      1y
+├ ○ /icon.svg
+├ ○ /learn                                                     1m      1y
+├ ○ /portfolio                                                 1m      1y
+├ ○ /resume                                                    1m      1y
+└ ƒ /studio/[[...tool]]
+
+Route (pages)                                          Revalidate  Expire
+┌   /_app
+├ ○ /404
+├ ● /blog/[slug]
+└   /work/[slug] (1604 ms)                                     1m      1y
+  ├ ● /work/vector-performance-investigation (412 ms)
+  ├ ● /work/portfolio-design (402 ms)
+  ├ ● /work/bgm-budget-pacing (402 ms)
+  └ ● /work/vector-income-architecture (388 ms)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> jj-lowery-portfolio@0.1.0 test:routes /Users/jameslowery/Documents/Codex/2026-10-02/task-5/portfolio-publishing
+> node scripts/verify-routes.mjs
+
+Built HTTP routes: readable GET/HEAD 404s, draft-like URLs, canonical pages, shared Blog navigation and no public filters PASS

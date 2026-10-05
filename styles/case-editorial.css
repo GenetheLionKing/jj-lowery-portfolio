@@ -1,0 +1,217 @@
+/* The actual case details share the image-led, spacious portfolio identity. */
+.case-hero {
+  padding-block: 32px 0;
+}
+.case-introduction {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 56px;
+  align-items: center;
+  padding-block: 56px;
+}
+.case-heading .eyebrow {
+  color: var(--muted);
+  line-height: 1.7;
+}
+.case-heading h1 {
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  margin-top: 20px;
+}
+.case-subtitle {
+  font-size: 20px;
+  line-height: 1.55;
+  margin-top: 24px;
+}
+.case-visual {
+  background: var(--surface);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.case-visual > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.case-visual > .system-diagram {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 28px;
+}
+.case-visual .budget-loop strong {
+  font-size: 16px;
+}
+.case-metadata {
+  margin-top: 0;
+  padding-block: 28px 32px;
+  border-top: 1px solid var(--line);
+  gap: 32px;
+}
+.case-metadata dt {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.case-metadata dd {
+  font-size: 14px;
+}
+.case-body {
+  display: block;
+  padding-block: 32px 72px;
+}
+.case-outline {
+  border-bottom: 1px solid var(--line);
+  padding-block: 8px 28px;
+  margin-bottom: 56px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.case-outline summary {
+  cursor: pointer;
+  width: fit-content;
+  padding: 8px 0;
+  color: var(--ink);
+}
+.case-outline ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  list-style: none;
+  padding: 20px 0 0;
+  margin: 0;
+}
+.case-outline a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.case-article {
+  max-width: none;
+}
+.case-section {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+  padding-bottom: 56px;
+  margin-bottom: 56px;
+}
+.case-section-heading {
+  display: block;
+  align-self: start;
+}
+.case-section-heading > span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+.case-section-heading h2 {
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.case-section-content {
+  min-width: 0;
+}
+.case-section-content > .section-lead {
+  font-size: 27px;
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.case-section-content > p {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.case-section-content > * + * {
+  margin-top: 24px;
+}
+.case-section-content .evidence-list {
+  margin-top: 0;
+}
+.case-section-content .evidence-list li {
+  font-size: 16px;
+}
+.case-section-content .system-diagram {
+  margin-top: 32px;
+}
+.next-study {
+  padding-block: 48px;
+}
+.next-study .container > a:not(.text-link) {
+  font-size: 32px;
+  max-width: 850px;
+}
+@media (max-width: 1000px) {
+  .case-introduction {
+    gap: 32px;
+  }
+  .case-section {
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+@media (max-width: 750px) {
+  .case-introduction {
+    grid-template-columns: 1fr;
+    padding-block: 32px;
+    gap: 28px;
+  }
+  .case-heading h1 {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  }
+  .case-heading {
+    max-width: 640px;
+  }
+  .case-visual {
+    width: 100%;
+    max-width: 640px;
+  }
+  .case-metadata {
+    gap: 24px;
+  }
+  .case-body {
+    padding-top: 20px;
+  }
+  .case-outline {
+    margin-bottom: 32px;
+  }
+  .case-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+  }
+  .case-section-heading {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .case-section-heading > span {
+    margin: 0;
+  }
+  .case-section-heading h2 {
+    font-size: 24px;
+  }
+  .case-section-content > .section-lead {
+    font-size: 24px;
+  }
+  .case-section-content > p {
+    font-size: 16px;
+  }
+  .next-study .container > a:not(.text-link) {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 650px) {
+  .case-visual > .system-diagram {
+    padding: 24px 19px;
+  }
+  .case-visual .budget-loop strong {
+    font-size: 12px;
+  }
+}

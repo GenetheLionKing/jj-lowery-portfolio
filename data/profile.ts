@@ -21,7 +21,8 @@ export const navigation: {
 }[] = [
   { label: "About", href: "/about/" },
   { label: "Portfolio", href: "/portfolio/" },
-  { label: "Résumé", href: "/resume/" },
+  { label: "Learn", href: "/learn/" },
+  { label: "Blog", href: "/blog/" },
   { label: "Contact", href: "/contact/" },
 ];
 

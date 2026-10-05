@@ -1,0 +1,61 @@
+[
+  {
+    "phase": "initial",
+    "missingPost": 404,
+    "existingCase": 200
+  },
+  {
+    "route": "/blog/local-placement-proof/",
+    "expected": 200,
+    "requests": 24,
+    "elapsedMs": 65980
+  },
+  {
+    "route": "/about/",
+    "expected": 200,
+    "requests": 2,
+    "elapsedMs": 2082
+  },
+  {
+    "route": "/learn/",
+    "expected": 200,
+    "requests": 2,
+    "elapsedMs": 3025
+  },
+  {
+    "route": "/portfolio/",
+    "expected": 200,
+    "requests": 2,
+    "elapsedMs": 3005
+  },
+  {
+    "route": "/blog/",
+    "expected": 200,
+    "requests": 2,
+    "elapsedMs": 2071
+  },
+  {
+    "phase": "published",
+    "canonicalUrl": "/blog/local-placement-proof/",
+    "allFourSurfaces": true,
+    "draftIsolated": true
+  },
+  {
+    "route": "/blog/local-placement-proof/",
+    "expected": 404,
+    "requests": 19,
+    "elapsedMs": 49222
+  },
+  {
+    "route": "/work/vector-income-architecture/",
+    "expected": 404,
+    "requests": 2,
+    "elapsedMs": 3006
+  },
+  {
+    "phase": "unpublished",
+    "article": 404,
+    "case": 404,
+    "readableHtml": true
+  }
+]

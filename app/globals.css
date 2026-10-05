@@ -1,9 +1,12 @@
 @layer tokens, base, layout, components, responsive, accessibility;
 @import url("../styles/diagrams.css");
 @import url("../styles/case-study.css");
+@import url("../styles/case-editorial.css");
 @import url("../styles/resume.css");
 @import url("../styles/theme.css");
 @import url("../styles/pages.css");
+@import url("../styles/publishing.css");
+@import url("../styles/index-editorial.css");
 @layer tokens {
   :root {
     --paper: #fff;
@@ -22,12 +25,14 @@
   }
 }
 @layer base {
+  @media screen { body { min-height: 100dvh; } }
   *,
   *::before,
   *::after {
     box-sizing: border-box;
   }
   html {
+    background: #111315;
     scroll-behavior: smooth;
     scroll-padding-top: 24px;
   }
@@ -98,6 +103,7 @@
     background: #111315;
     color: #fff;
     padding-block: 18px;
+    padding-top: calc(18px + env(safe-area-inset-top));
   }
   .header-inner {
     display: flex;
@@ -460,6 +466,7 @@
     }
     .site-header {
       padding-block: 16px 6px;
+      padding-top: calc(16px + env(safe-area-inset-top));
     }
     .footer-inner {
       flex-wrap: wrap;
