@@ -1,9 +1,10 @@
 import { ProfileImage } from "@/components/profile-image";
-import { SelectedWorkGrid } from "@/components/selected-work-grid";
+import { PortfolioGrid } from "@/components/portfolio-grid";
 import { getPublicContent } from "@/content/public";
-import { selectedCases } from "@/content/catalog";
+import { homeItems } from "@/content/catalog";
 export default async function Home() {
-  const { cases } = await getPublicContent();
+  const { cases, articles } = await getPublicContent();
+  const items = homeItems(cases, articles);
   return (
     <>
       <section id="about" className="hero" aria-labelledby="hero-title">
@@ -28,14 +29,20 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section id="work" className="selected-work" aria-labelledby="work-title">
-        <div className="container">
-          <h2 id="work-title" className="work-heading">
-            <span>Selected work</span>
-          </h2>
-          <SelectedWorkGrid cases={selectedCases(cases).slice(0, 3)} />
-        </div>
-      </section>
+      {items.length > 0 && (
+        <section
+          id="work"
+          className="selected-work"
+          aria-labelledby="work-title"
+        >
+          <div className="container">
+            <h2 id="work-title" className="work-heading">
+              <span>Some of my work</span>
+            </h2>
+            <PortfolioGrid items={items} headingLevel="h3" />
+          </div>
+        </section>
+      )}
     </>
   );
 }

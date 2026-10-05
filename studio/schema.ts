@@ -122,25 +122,19 @@ const tags = defineField({
   name: "tags",
   title: "Tags & placement",
   description:
-    "All ordinary posts appear in Blog. Add placement tags to also show the same post in Learn, Portfolio or the About photo strip. Removing a tag removes only that listing.",
+    "Choose each page independently. Only published Posts appear on selected pages. Both layouts can appear on the homepage. Topic tags do not place a post. Uncheck a page to remove only that listing, then publish to update the public site.",
   type: "array",
-  of: [
-    {
-      type: "string",
-      options: {
-        list: Object.entries({
-          "about-gallery": "Show under About hero (image only)",
-          learn: "Show in Learn",
-          portfolio: "Show in Portfolio",
-          home: "Show on homepage (case studies)",
-          ...topicLabels,
-        }).map(([value, title]) => ({
-          value,
-          title,
-        })),
-      },
-    },
-  ],
+  of: [{ type: "string" }],
+  options: {
+    list: Object.entries({
+      home: "Show on homepage",
+      portfolio: "Show in Portfolio",
+      learn: "Show in Learn",
+      blog: "Show in Blog",
+      "about-gallery": "Show under About hero (main image required)",
+      ...topicLabels,
+    }).map(([value, title]) => ({ value, title })),
+  },
   validation: (rule) => rule.max(12).unique(),
 });
 const editorial = [
@@ -148,7 +142,8 @@ const editorial = [
     name: "order",
     title: "Display order",
     type: "number",
-    description: "Lower numbers appear first.",
+    description:
+      "Lower numbers appear first on every selected page, including the homepage. Ties use publication date, then URL slug.",
     initialValue: 10,
   }),
   tags,
@@ -533,7 +528,7 @@ export const schemaTypes = [
         },
         initialValue: "article",
         description:
-          "A blog post can appear in Portfolio using its tags; the case layout is optional. Existing cases retain their /work/ URLs. Choose before publishing and keep the layout to preserve the URL.",
+          "Both layouts can appear on any selected page using Tags & placement; the case layout is optional. Existing cases retain their /work/ URLs. Choose before publishing and keep the layout to preserve the URL.",
         readOnly: ({ document }) =>
           /^(drafts\.)?case-/.test(String(document?._id)),
         validation: (rule) => rule.required(),
@@ -547,7 +542,7 @@ export const schemaTypes = [
         type: "image",
         options: { accept: "image/jpeg,image/png,image/webp" },
         description:
-          "Public images only. Standard Sanity image URLs are public, including images attached to drafts. About gallery displays this image and links to the post; no visible caption.",
+          "Optional. Overrides existing artwork on cards and detail pages. About gallery requires this image. Add alternative text. Uploaded assets are public, including draft attachments.",
         fields: [string("alt", "Alternative text")],
       }),
       ...editorial,

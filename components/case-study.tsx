@@ -100,14 +100,26 @@ export function CaseStudyPage({
           href="/portfolio/"
           className="text-link back-link"
         >
-          <ArrowIcon direction="left" /> All selected work
+          <ArrowIcon direction="left" /> Portfolio
         </Link>
-        <div className="case-introduction">
+        <div
+          className={`case-introduction ${study.mainImage || (study.thumbnail && study.thumbnail !== "vector-validation") || study.image ? "" : "case-text-introduction"}`}
+        >
           <div className="case-heading">
             <p className="eyebrow">
               {study.company} · {study.category}
             </p>
-            <h1>{study.title}</h1>
+            <h1>
+              {study.title.split(/(\S+-\S+)/g).map((part, index) =>
+                part.includes("-") ? (
+                  <span className="case-title-term" key={index}>
+                    {part}
+                  </span>
+                ) : (
+                  part
+                ),
+              )}
+            </h1>
             <p className="case-subtitle">{study.subtitle}</p>
             {study.company === "Vector" && (
               <p className="case-method">
@@ -115,38 +127,40 @@ export function CaseStudyPage({
               </p>
             )}
           </div>
-          <div className="case-visual">
-            {study.mainImage ? (
-              <Image
-                unoptimized
-                src={sizedPublicImage(study.mainImage.src, 960)}
-                alt={study.mainImage.alt}
-                width={study.mainImage.width}
-                height={study.mainImage.height}
-                priority
-              />
-            ) : study.thumbnail ? (
-              <Image
-                unoptimized
-                src={publicMedia[study.thumbnail].src}
-                alt={publicMedia[study.thumbnail].alt}
-                width={640}
-                height={480}
-                priority
-              />
-            ) : study.image ? (
-              <Image
-                unoptimized
-                src={study.image.src}
-                alt={study.image.alt}
-                width={640}
-                height={480}
-                priority
-              />
-            ) : study.diagram ? (
-              <SystemDiagram kind={study.diagram} />
-            ) : null}
-          </div>
+          {(study.mainImage ||
+            (study.thumbnail && study.thumbnail !== "vector-validation") ||
+            study.image) && (
+            <div className="case-visual">
+              {study.mainImage ? (
+                <Image
+                  unoptimized
+                  src={sizedPublicImage(study.mainImage.src, 960)}
+                  alt={study.mainImage.alt}
+                  width={study.mainImage.width}
+                  height={study.mainImage.height}
+                  priority
+                />
+              ) : study.thumbnail && study.thumbnail !== "vector-validation" ? (
+                <Image
+                  unoptimized
+                  src={publicMedia[study.thumbnail].src}
+                  alt={publicMedia[study.thumbnail].alt}
+                  width={640}
+                  height={480}
+                  priority
+                />
+              ) : study.image ? (
+                <Image
+                  unoptimized
+                  src={study.image.src}
+                  alt={study.image.alt}
+                  width={640}
+                  height={480}
+                  priority
+                />
+              ) : null}
+            </div>
+          )}
         </div>
         <dl className="case-metadata">
           {study.metadata.map((item) => (
@@ -180,7 +194,9 @@ export function CaseStudyPage({
           {study.sections.map((section, index) => (
             <section key={section.id} id={section.id} className="case-section">
               <div className="case-section-heading">
-                <span className="micro">0{index + 1}</span>
+                <span className="micro">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <h2>{section.title}</h2>
               </div>
               <div className="case-section-content">
@@ -196,7 +212,7 @@ export function CaseStudyPage({
               <span className="micro">
                 {String(study.sections.length + 1).padStart(2, "0")}
               </span>
-              <h2>Skills Demonstrated</h2>
+              <h2>Skills demonstrated</h2>
             </div>
             <div className="case-section-content">
               <SkillTags skills={study.skills} />

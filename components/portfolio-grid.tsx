@@ -2,7 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { publicMedia, sizedPublicImage } from "@/content/media";
 import type { CatalogItem } from "@/content/catalog";
-export function PortfolioGrid({ items }: { items: CatalogItem[] }) {
+export function PortfolioGrid({
+  items,
+  headingLevel = "h2",
+}: {
+  items: CatalogItem[];
+  headingLevel?: "h2" | "h3";
+}) {
+  const Heading = headingLevel;
   return (
     <div className="work-grid">
       {items.map((item) => {
@@ -28,7 +35,7 @@ export function PortfolioGrid({ items }: { items: CatalogItem[] }) {
               </div>
             )}
             <div className="work-caption">
-              <h2>{item.title}</h2>
+              <Heading>{item.title}</Heading>
               <p>{item.summary}</p>
             </div>
           </Link>
