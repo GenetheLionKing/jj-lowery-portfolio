@@ -20,7 +20,7 @@ export default async function Page() {
       {remaining.length > 0 && (
         <section className="blog-archive" aria-labelledby="blog-archive-title">
           <h2 id="blog-archive-title">More posts</h2>
-          <PortfolioGrid items={remaining} />
+          <PortfolioGrid items={remaining} headingLevel="h3" />
         </section>
       )}
     </div>
