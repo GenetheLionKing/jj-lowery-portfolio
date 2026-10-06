@@ -635,6 +635,11 @@
       margin-top: 12px;
     }
   }
+  @container work-shell (width > 700px) {
+    .selected-work .work-grid > .work-card:only-child {
+      grid-column: 2;
+    }
+  }
   @container work-shell (max-width: 700px) {
     .work-grid {
       grid-template-columns: 1fr;
