@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio UI design"
+  short_description: "Apply and verify JJ’s editorial UI direction"
+  default_prompt: "Use $portfolio-ui-design to improve this Portfolio UI while preserving the approved direction and reviewing desktop and mobile screenshots."

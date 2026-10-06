@@ -2,6 +2,10 @@
 
 A compact portfolio with a clean central portrait, two plain-language roles, and three image-led work samples. The two Vector studies carry the systems-analysis evidence. The third describes this actual portfolio. AI-assisted development, conceptual deliverables, and helper-only performance measurements remain explicit.
 
+## Codex UI guidance
+
+[Project instructions](AGENTS.md) require consultation of the [Portfolio UI skill](.agents/skills/portfolio-ui-design/SKILL.md) before UI changes and actual desktop/mobile screenshot review. Its concise original reference includes private-book page pointers; the purchased book is not included or required for a checkout.
+
 ## Stack
 
 Next.js 16.3.4, React 19.2.8, strict TypeScript, pnpm 10.30.3, Node >=22.12, plain CSS and system fonts. This publishing Preview changes export-only output to cached Next rendering with 60-second incremental static regeneration. New published URLs and edits can appear without a rebuild hook. Indexes use published content and author placement tags; there are no visitor tag filters.
