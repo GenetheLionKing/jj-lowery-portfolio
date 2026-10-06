@@ -72,6 +72,15 @@
     border: 1px solid var(--line);
     border-radius: 5px;
   }
+  .reading-hero-square {
+    margin-bottom: 36px;
+  }
+  .reading-hero-square img {
+    width: auto;
+    max-width: 100%;
+    max-height: 240px;
+    margin-inline: auto;
+  }
   .reading-body {
     font-size: 20px;
     line-height: 1.7;
@@ -199,6 +208,12 @@
     }
     .reading-hero {
       margin-bottom: 32px;
+    }
+    .reading-hero-square {
+      margin-bottom: 28px;
+    }
+    .reading-hero-square img {
+      max-height: 200px;
     }
     .reading-body {
       font-size: 18px;

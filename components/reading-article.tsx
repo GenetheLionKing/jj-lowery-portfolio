@@ -58,7 +58,13 @@ export function ReadingArticlePage({
           </div>
         </header>
         {article.image && (
-          <figure className="reading-hero">
+          <figure
+            className={
+              article.image.width === article.image.height
+                ? "reading-hero reading-hero-square"
+                : "reading-hero"
+            }
+          >
             <Image
               unoptimized
               priority
@@ -66,7 +72,11 @@ export function ReadingArticlePage({
               alt={article.image.alt}
               width={article.image.width}
               height={article.image.height}
-              sizes="(max-width: 720px) calc(100vw - 40px), 680px"
+              sizes={
+                article.image.width === article.image.height
+                  ? "(max-width: 720px) 200px, 240px"
+                  : "(max-width: 720px) calc(100vw - 40px), 680px"
+              }
             />
           </figure>
         )}
