@@ -20,32 +20,83 @@
   border-top: 1px solid var(--line);
   padding-block: 48px 72px;
 }
-.blog-feature {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 48px;
-  width: 100%;
+.blog-index {
+  width: min(680px, calc(100% - 48px));
+  margin-inline: auto;
+  padding-block: 64px 96px;
+}
+.blog-latest > h1 {
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.blog-feature-copy {
   margin-top: 28px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
 }
 .blog-feature-copy h2 {
-  font-size: clamp(24px, 3vw, 36px);
-  line-height: 1.2;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 500;
+  line-height: 1.25;
   letter-spacing: -0.03em;
-  margin-block: 12px;
+  margin-block: 10px 14px;
+  overflow-wrap: break-word;
 }
-.blog-feature-copy > p:last-child {
-  max-width: 48ch;
+.blog-feature-summary {
   color: var(--muted);
+  font-size: 18px;
   line-height: 1.6;
+}
+.blog-feature-image {
+  display: flex;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface);
 }
 .blog-feature-image img {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: 12px;
+  height: 100%;
+  min-width: 0;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.blog-feature-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.blog-feature-author img {
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 48% 24%;
+}
+.blog-feature-author p {
+  color: var(--muted);
+  font-size: 13px;
+}
+.blog-archive {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.blog-archive > h2 {
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.blog-archive .work-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+.blog-archive .work-image img {
+  object-fit: contain;
 }
 @media (max-width: 750px) {
   .index-hero {
@@ -61,9 +112,23 @@
   .index-content {
     padding-block: 32px 48px;
   }
-  .blog-feature {
+  .blog-index {
+    width: calc(100% - 40px);
+    padding-block: 40px 64px;
+  }
+  .blog-latest > h1 {
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+  .blog-feature-copy {
+    margin-top: 24px;
+  }
+  .blog-archive {
+    margin-top: 48px;
+    padding-top: 28px;
+  }
+  .blog-archive .work-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
   }
 }
 /* Shared real post / About story reading template. */

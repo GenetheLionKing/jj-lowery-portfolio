@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PortfolioGrid } from "@/components/portfolio-grid";
-import { IndexHero } from "@/components/index-hero";
 import { getPublicContent } from "@/content/public";
 import { blogItems } from "@/content/catalog";
 import { BlogFeature } from "@/components/blog-feature";
@@ -12,23 +11,18 @@ export default async function Page() {
   const content = await getPublicContent();
   const [featured, ...remaining] = blogItems(content.articles, content.cases);
   return (
-    <>
-      <IndexHero
-        id="blog-title"
-        title="blog"
-        lead="Small observations about how systems should work."
-      >
+    <div className="blog-index">
+      <section className="blog-latest" aria-labelledby="blog-title">
+        <h1 id="blog-title">blog</h1>
         {featured && <BlogFeature item={featured} />}
-      </IndexHero>
-      <section className="portfolio-page index-content" aria-label="Blog posts">
-        <div className="container">
-          {remaining.length ? (
-            <PortfolioGrid items={remaining} />
-          ) : !featured ? (
-            <p className="catalog-empty">No published posts yet.</p>
-          ) : null}
-        </div>
+        {!featured && <p className="catalog-empty">No published posts yet.</p>}
       </section>
-    </>
+      {remaining.length > 0 && (
+        <section className="blog-archive" aria-labelledby="blog-archive-title">
+          <h2 id="blog-archive-title">More posts</h2>
+          <PortfolioGrid items={remaining} headingLevel="h3" />
+        </section>
+      )}
+    </div>
   );
 }

@@ -15,6 +15,7 @@ export type CatalogItem = {
   label: string;
   order?: number;
   publishedAt?: string;
+  updatedAt?: string;
 };
 function postItems(
   cases: PublishingCase[],
@@ -32,6 +33,7 @@ function postItems(
       tags: item.tags,
       label: "Article",
       publishedAt: item.publishedAt,
+      updatedAt: item.updatedAt,
       order: item.order,
     })),
     ...articles.map((item) => ({
@@ -58,6 +60,7 @@ function postItems(
               : "Article",
       order: item.order,
       publishedAt: item.publishedAt,
+      updatedAt: item.updatedAt,
     })),
   ];
 }
