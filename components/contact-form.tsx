@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { sendContactMessage } from "@/app/(site)/contact/actions";
-import { contactEmail, initialContactState } from "@/lib/contact-form";
+import { initialContactState } from "@/lib/contact-form";
 
 export function ContactForm() {
   const [state, action, pending] = useActionState(
@@ -117,10 +117,6 @@ export function ContactForm() {
         <button type="submit" className="button button-dark" disabled={pending}>
           {pending ? "Sending…" : "Send email"}
         </button>
-        <p>
-          Prefer your own email app?{" "}
-          <a href={`mailto:${contactEmail}`}>Email me directly</a>.
-        </p>
       </div>
     </form>
   );
