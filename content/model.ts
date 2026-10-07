@@ -84,15 +84,17 @@ const proseBlockSchema = z.object({
     .default([]),
 });
 
+const richImageSchema = postImageSchema.extend({
+  _type: z.literal("image"),
+  _key: text,
+  caption: z.string().max(12000).nullish(),
+});
+
 export const richTextSchema = z
   .array(
     z.discriminatedUnion("_type", [
       proseBlockSchema,
-      postImageSchema.extend({
-        _type: z.literal("image"),
-        _key: text,
-        caption: z.string().max(12000).nullish(),
-      }),
+      richImageSchema,
       z.object({
         _type: z.literal("systemDiagram"),
         _key: text,
@@ -101,6 +103,49 @@ export const richTextSchema = z
     ]),
   )
   .max(300);
+
+// About uses the same Portable Text contract, with prose and images only.
+export const aboutBodySchema = z
+  .array(z.discriminatedUnion("_type", [proseBlockSchema, richImageSchema]))
+  .min(1)
+  .max(300)
+  .refine(
+    (body) =>
+      body.some(
+        (block) =>
+          block._type === "image" ||
+          block.children.some((span) => span.text.trim()),
+      ),
+    "Write the section body",
+  );
+const sectionFields = { _key: text, image: postImageSchema };
+export const aboutSectionSchema = z.discriminatedUnion("_type", [
+  z.object({
+    ...sectionFields,
+    _type: z.literal("aboutImageLeft"),
+    headline: text,
+    body: aboutBodySchema,
+  }),
+  z.object({
+    ...sectionFields,
+    _type: z.literal("aboutCopyImageCopy"),
+    leftHeadline: text,
+    leftBody: aboutBodySchema,
+    rightHeadline: text,
+    rightBody: aboutBodySchema,
+  }),
+  z.object({
+    ...sectionFields,
+    _type: z.literal("aboutImageRight"),
+    headline: text,
+    body: aboutBodySchema,
+  }),
+  z.object({
+    ...sectionFields,
+    _type: z.literal("aboutImageOnly"),
+    caption: z.string().max(12000).nullish(),
+  }),
+]);
 
 export const caseSchema = z
   .object({
@@ -204,24 +249,46 @@ export const resourceSchema = z.object({
   tags,
   ...seo,
 });
-export const aboutSchema = z.object({
-  title: text,
-  lead: text,
-  introduction: texts,
-  storyTitle: text,
-  story: texts,
-  strengths: z
-    .array(z.object({ title: text, summary: text }))
-    .max(8)
-    .default([]),
-  facts: z.array(pair).max(8).default([]),
-  life: z
-    .array(z.object({ title: text, copy: text }))
-    .max(6)
-    .default([]),
-  builds: z.array(slug).max(6).default([]),
-  storyLinkLabel: text,
-});
+const legacyAboutText = z.string().trim().max(12000).default("");
+export const aboutSchema = z
+  .object({
+    title: text,
+    lead: legacyAboutText,
+    introduction: texts,
+    storyTitle: legacyAboutText,
+    story: texts,
+    strengths: z
+      .array(z.object({ title: text, summary: text }))
+      .max(8)
+      .default([]),
+    facts: z.array(pair).max(8).default([]),
+    life: z
+      .array(z.object({ title: text, copy: text }))
+      .max(6)
+      .default([]),
+    builds: z.array(slug).max(6).default([]),
+    storyLinkLabel: legacyAboutText,
+    sections: z
+      .array(aboutSectionSchema)
+      .refine(
+        (sections) =>
+          new Set(sections.map((section) => section._key)).size ===
+          sections.length,
+        "Section keys must be unique",
+      )
+      .optional(),
+  })
+  .superRefine((about, ctx) => {
+    if (about.sections !== undefined) return;
+    for (const name of ["lead", "storyTitle", "storyLinkLabel"] as const) {
+      if (!about[name])
+        ctx.addIssue({
+          code: "custom",
+          path: [name],
+          message: "Required for the existing About layout",
+        });
+    }
+  });
 export const resumeSchema = z.object({
   name: text,
   role: text,
@@ -241,6 +308,7 @@ export const resumeSchema = z.object({
 export type PublishingCase = z.infer<typeof caseSchema>;
 export type Article = z.infer<typeof articleSchema>;
 export type Resource = z.infer<typeof resourceSchema>;
+export type AboutSection = z.infer<typeof aboutSectionSchema>;
 export type About = z.infer<typeof aboutSchema>;
 export type Resume = z.infer<typeof resumeSchema>;
 export type RichText = z.infer<typeof richTextSchema>;

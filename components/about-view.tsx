@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AboutSections } from "./about-sections";
 import { ArrowIcon } from "@/components/icons";
 import { ProfileImage } from "@/components/profile-image";
 import { SelectedWorkGrid } from "@/components/selected-work-grid";
@@ -16,6 +17,17 @@ export function AboutView({
   articles: Article[];
   storyHref?: string;
 }) {
+  if (about.sections !== undefined)
+    return (
+      <>
+        <header className="container about-sections-heading">
+          <h1 id="about-title" className="page-title">
+            {about.title}
+          </h1>
+        </header>
+        <AboutSections sections={about.sections} />
+      </>
+    );
   const features = aboutGallery(articles, cases);
   const builds = about.builds.flatMap((slug) => {
     const study = cases.find((c) => c.slug === slug);
