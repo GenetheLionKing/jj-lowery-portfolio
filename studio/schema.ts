@@ -28,6 +28,13 @@ import { mediaKeys, publicMedia, topicLabels } from "../content/media";
 import { isSafeLink, isPublicImageAssetRef } from "../content/urls";
 import { nativePostData } from "../content/native-post";
 import { postCtaSchema } from "../content/post-cta";
+import { richTextField } from "./rich-text";
+import {
+  aboutSectionTypes,
+  aboutSectionsField,
+  legacyAboutField,
+} from "./about-sections";
+import { nativeAboutData } from "../content/native-about";
 
 const string = (
   name: string,
@@ -223,36 +230,61 @@ const caseBlocks = [
 
 const originalTypes = [
   ...caseBlocks,
+  ...aboutSectionTypes,
   defineType({
     name: "about",
     validation: (rule) =>
-      rule.custom((value) => validateModel(value, aboutSchema)),
+      rule.custom((value) => {
+        try {
+          return validateModel(
+            nativeAboutData((value ?? {}) as Record<string, unknown>, {
+              projectId: "validation",
+              dataset: "portfolio",
+            }),
+            aboutSchema,
+          );
+        } catch (error) {
+          return error instanceof Error ? error.message : "Invalid About image";
+        }
+      }),
     title: "About",
     type: "document",
+    fieldsets: [
+      {
+        name: "legacy",
+        title: "Existing About & story content",
+        description:
+          "Preserved content. The ordered sections replace the About page body when saved. The story page still uses these fields.",
+        options: { collapsible: true, collapsed: true },
+      },
+    ],
     fields: [
       string("title", "Page title"),
-      paragraph("lead", "Short introduction"),
-      textArray("introduction", "Opening paragraphs"),
-      string("storyTitle", "Story title"),
-      textArray("story", "Longer story"),
-      objects(
-        "strengths",
-        "Analysis and building",
-        [
-          string("title", "Title"),
-          paragraph("summary", "Evidence / description"),
-        ],
-        8,
-      ),
-      objects("facts", "At a glance", pair, 8),
-      objects(
-        "life",
-        "Outside the work",
-        [string("title", "Title"), paragraph("copy", "Text")],
-        6,
-      ),
-      textArray("builds", "Current builds — case-study URL slugs", 6),
-      string("storyLinkLabel", "Story link label"),
+      aboutSectionsField,
+      ...[
+        legacyAboutField("lead", "Short introduction", "text"),
+        textArray("introduction", "Opening paragraphs"),
+        legacyAboutField("storyTitle", "Story title"),
+        textArray("story", "Longer story"),
+        objects(
+          "strengths",
+          "Analysis and building",
+          [
+            string("title", "Title"),
+            paragraph("summary", "Evidence / description"),
+          ],
+          8,
+        ),
+        objects("facts", "At a glance", pair, 8),
+        objects(
+          "life",
+          "Outside the work",
+          [string("title", "Title"), paragraph("copy", "Text")],
+          6,
+        ),
+        textArray("builds", "Current builds — case-study URL slugs", 6),
+        legacyAboutField("storyLinkLabel", "Story link label"),
+      ].map((field) => ({ ...field, fieldset: "legacy" })),
     ],
   }),
   defineType({
@@ -382,61 +414,7 @@ const originalTypes = [
         description: "Set when you publish. No invented history.",
       }),
       ...editorial,
-      defineField({
-        name: "body",
-        title: "Article",
-        type: "array",
-        validation: (rule) => rule.required().max(300),
-        of: [
-          {
-            type: "image",
-            title: "Image",
-            options: { accept: "image/jpeg,image/png,image/webp" },
-            fields: [
-              string("alt", "Alternative text"),
-              paragraph("caption", "Caption (optional)", false),
-            ],
-          },
-          { type: "systemDiagram" },
-          {
-            type: "block",
-            styles: [
-              { title: "Paragraph", value: "normal" },
-              { title: "Heading", value: "h2" },
-              { title: "Subheading", value: "h3" },
-              { title: "Quote", value: "blockquote" },
-            ],
-            marks: {
-              decorators: [
-                { title: "Strong", value: "strong" },
-                { title: "Emphasis", value: "em" },
-              ],
-              annotations: [
-                {
-                  name: "link",
-                  type: "object",
-                  title: "Link",
-                  fields: [
-                    defineField({
-                      name: "href",
-                      title: "URL",
-                      type: "string",
-                      validation: (rule) =>
-                        rule
-                          .required()
-                          .custom((value) =>
-                            typeof value === "string" && isSafeLink(value)
-                              ? true
-                              : "Use a local path, anchor or HTTPS URL",
-                          ),
-                    }),
-                  ],
-                },
-              ],
-            },
-          },
-        ],
-      }),
+      richTextField("body", "Article"),
     ],
     preview: { select: { title: "title", subtitle: "format" } },
   }),
