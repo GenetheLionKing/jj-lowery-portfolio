@@ -17,8 +17,9 @@
     --ink: #303338;
     --muted: #60666d;
     --line: #e2e4e7;
-    --accent: #116d91;
-    --accent-light: #84d9f4;
+    --accent: #087f5b;
+    --accent-light: #64dab1;
+    --accent-selection: #d8f3e8;
     --dark: #111315;
     --sans:
       -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial,
@@ -92,7 +93,7 @@
     max-width: 100%;
   }
   ::selection {
-    background: #c5e7f3;
+    background: var(--accent-selection);
     color: #111315;
   }
 }
@@ -165,7 +166,7 @@
     height: 21px;
   }
   .social-links a:hover {
-    color: #84d9f4;
+    color: var(--accent-light);
     transform: translateY(-1px);
   }
   .site-header .theme-toggle {
@@ -175,7 +176,10 @@
     padding: 7px;
   }
   .site-header :focus-visible {
-    outline-color: #84d9f4;
+    outline-color: var(--accent-light);
+  }
+  .site-header .theme-toggle:hover {
+    color: var(--accent-light);
   }
   .site-footer {
     border-top: 1px solid var(--line);
@@ -226,7 +230,7 @@
     line-height: 1;
   }
   .brand-period {
-    color: #68c7e9;
+    color: var(--accent-light);
   }
   .button {
     display: inline-flex;
