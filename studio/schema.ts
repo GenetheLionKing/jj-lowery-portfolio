@@ -648,7 +648,7 @@ export const schemaTypes = [
           description:
             name === "ctaText"
               ? "For example: Visit Vector. Leave both button fields empty for no button. Appears after the article body when you publish."
-              : "For example: https://vectorbudget.com. Use a local path, anchor or HTTPS URL. Opens in the same tab.",
+              : "For example: https://vectorbudget.com. Use a local path, anchor or HTTPS URL. Opens in a new tab.",
           validation: (rule) =>
             rule.custom((value, context) => {
               const doc = context.document;

@@ -81,7 +81,7 @@ test("article CTA is a normal link after the body and before Recent articles; ab
   });
   assert.match(
     html,
-    /<a class="button button-dark" href="https:\/\/vectorbudget.com">Visit Vector<\/a>/,
+    /<a class="button button-dark" href="https:\/\/vectorbudget.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Vector \(opens in a new tab\)">Visit Vector<\/a>/,
   );
   assert.ok(
     html.indexOf('class="reading-body"') < html.indexOf('class="reading-cta"'),
@@ -90,7 +90,7 @@ test("article CTA is a normal link after the body and before Recent articles; ab
     html.indexOf('class="reading-cta"') <
       html.indexOf('class="reading-recent"'),
   );
-  assert.doesNotMatch(html, /role="button"|target="_blank"/);
+  assert.doesNotMatch(html, /role="button"/);
   for (const settings of [
     {},
     { ctaText: "Visit Vector" },
