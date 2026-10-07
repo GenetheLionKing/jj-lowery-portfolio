@@ -203,6 +203,10 @@
     object-fit: cover;
     border-radius: 4px;
   }
+  .story-strip a:hover,
+  .story-strip a:focus-visible {
+    border-color: var(--accent);
+  }
   .story-strip a:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 4px;

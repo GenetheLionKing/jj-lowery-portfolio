@@ -54,6 +54,10 @@
   border-radius: 5px;
   background: var(--surface);
 }
+.blog-feature-image:hover,
+.blog-feature-image:focus-visible {
+  border-color: var(--accent);
+}
 .blog-feature-image img {
   display: block;
   width: 100%;
