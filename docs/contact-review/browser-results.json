@@ -1,0 +1,251 @@
+{
+  "responsive": [
+    {
+      "controls": [
+        {
+          "height": 48,
+          "name": "name"
+        },
+        {
+          "height": 48,
+          "name": "email"
+        },
+        {
+          "height": 176,
+          "name": "message"
+        },
+        {
+          "height": 49.59375,
+          "name": "Send email"
+        }
+      ],
+      "formColumns": "520px 520px",
+      "portrait": {
+        "src": "http://127.0.0.1:3148/images/profile-shoulder-640.webp",
+        "width": 560
+      },
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "controls": [
+        {
+          "height": 48,
+          "name": "name"
+        },
+        {
+          "height": 48,
+          "name": "email"
+        },
+        {
+          "height": 176,
+          "name": "message"
+        },
+        {
+          "height": 49.59375,
+          "name": "Send email"
+        }
+      ],
+      "formColumns": "324.5px 324.5px",
+      "portrait": {
+        "src": "http://127.0.0.1:3148/images/profile-shoulder-640.webp",
+        "width": 332.5
+      },
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "controls": [
+        {
+          "height": 48,
+          "name": "name"
+        },
+        {
+          "height": 48,
+          "name": "email"
+        },
+        {
+          "height": 180,
+          "name": "message"
+        },
+        {
+          "height": 49.59375,
+          "name": "Send email"
+        }
+      ],
+      "formColumns": "335px",
+      "portrait": {
+        "src": "http://127.0.0.1:3148/images/profile-shoulder-640.webp",
+        "width": 320
+      },
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "controls": [
+        {
+          "height": 48,
+          "name": "name"
+        },
+        {
+          "height": 48,
+          "name": "email"
+        },
+        {
+          "height": 180,
+          "name": "message"
+        },
+        {
+          "height": 49.59375,
+          "name": "Send email"
+        }
+      ],
+      "formColumns": "273px",
+      "portrait": {
+        "src": "http://127.0.0.1:3148/images/profile-shoulder-640.webp",
+        "width": 273
+      },
+      "scrollWidth": 305,
+      "width": 320
+    }
+  ],
+  "screenshots": [
+    "screenshots/contact-dark-1440.jpg",
+    "screenshots/contact-dark-320.jpg",
+    "screenshots/contact-dark-390.jpg",
+    "screenshots/contact-dark-768.jpg",
+    "screenshots/contact-error-390.jpg",
+    "screenshots/contact-form-dark-320.jpg",
+    "screenshots/contact-form-light-1440.jpg",
+    "screenshots/contact-form-light-390.jpg",
+    "screenshots/contact-light-1440.jpg",
+    "screenshots/contact-light-320.jpg",
+    "screenshots/contact-light-390.jpg",
+    "screenshots/contact-light-768.jpg",
+    "screenshots/contact-reflow-720.jpg"
+  ],
+  "keyboard": [
+    {
+      "focus": "contact-email",
+      "outline": "rgb(132, 217, 244) solid 3px"
+    },
+    {
+      "focus": "contact-message",
+      "outline": "rgb(132, 217, 244) solid 3px"
+    },
+    {
+      "focus": "Send email",
+      "outline": "rgb(132, 217, 244) solid 3px"
+    },
+    {
+      "focus": "Email me directly",
+      "outline": "rgb(132, 217, 244) solid 3px"
+    }
+  ],
+  "interactions": {
+    "empty": "Name required and focused",
+    "invalidEmail": "Email type mismatch and focused",
+    "unavailable": {
+      "disabled": false,
+      "focusedNotice": true,
+      "notice": "Your message couldn’t be sent. Your text is still here. Try again or email me directly.",
+      "values": [
+        {
+          "name": "name",
+          "value": "Contact verification"
+        },
+        {
+          "name": "email",
+          "value": "<redacted>"
+        },
+        {
+          "name": "message",
+          "value": "Local verification; no provider configured."
+        }
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "accent": "#84d9f4",
+      "ink": "#f5f8fa",
+      "muted": "#b7c3cb",
+      "paper": "#141a1e",
+      "reducedMotionActive": false,
+      "surface": "#202a31",
+      "ratios": {
+        "body": 16.46,
+        "secondary": 8.13,
+        "social": 11.05,
+        "fallback": 9.19,
+        "fieldBorder": 9.77
+      }
+    },
+    {
+      "accent": "#116d91",
+      "ink": "#303338",
+      "muted": "#60666d",
+      "paper": "#fff",
+      "reducedMotionActive": false,
+      "surface": "#f6f7f8",
+      "ratios": {
+        "body": 12.68,
+        "secondary": 5.41,
+        "social": 5.8,
+        "fallback": 5.41,
+        "fieldBorder": 5.8
+      }
+    }
+  ],
+  "reflow": {
+    "formColumns": "641px",
+    "scrollWidth": 705,
+    "width": 720
+  },
+  "limits": [
+    "Browser zoom shortcuts did not change page scale; 720px reflow inspected, actual 200% zoom unverified.",
+    "Reduced-motion CSS reviewed; browser runtime preference was false and no media emulation capability available.",
+    "Live Resend delivery and Gmail receipt not verified."
+  ],
+  "route": "/contact/",
+  "browser": "User’s Codex In-app Browser",
+  "reference": {
+    "url": "https://www.adhamdannaway.com/contact",
+    "viewedPixels": true,
+    "attachmentLibraryId": "libfile_322399a708508191ae06fabed900ea48",
+    "attachmentPixelComparison": "Unverified: Library materialization failed twice; live page used with explicit source-thread approval."
+  },
+  "projectCheck": {
+    "command": "NEXT_PUBLIC_SANITY_PROJECT_ID=hi61zp16 NEXT_PUBLIC_SANITY_DATASET=portfolio NEXT_TELEMETRY_DISABLED=1 PATH=/opt/homebrew/opt/node/bin:$PATH pnpm check",
+    "node": "26.7.0",
+    "pnpm": "10.30.3",
+    "exitCode": 0,
+    "tests": 39,
+    "passed": 39,
+    "failed": 0,
+    "checks": [
+      "ESLint zero warnings",
+      "TypeScript",
+      "39 unit tests including 8 contact tests",
+      "production build",
+      "real HTTP GET/HEAD route checks",
+      "no-JavaScript contact POST validation, unavailable-provider notice and retained values"
+    ],
+    "log": "project-check.log (local, ignored by git)"
+  },
+  "delivery": {
+    "provider": "Existing owner Resend account",
+    "recipient": "jamesjoelowery@gmail.com",
+    "replyTo": "Validated visitor email",
+    "liveProviderAcceptance": "Unverified",
+    "gmailReceipt": "Unverified",
+    "requiredSetup": [
+      "Complete owner’s jjlowery.com verification in Resend",
+      "Owner-approved sending-only Resend key restricted to portfolio domain, entered securely into portfolio Vercel Preview RESEND_API_KEY",
+      "CONTACT_FROM_EMAIL set to approved bare sender address on verified domain"
+    ],
+    "noPersistentConfigurationChanges": true,
+    "vectorConfigurationUntouched": true,
+    "throttleLimit": "Five attempts per address per ten minutes within one process; not distributed across instances"
+  }
+}

@@ -29,7 +29,11 @@ const server = spawn(
     "--port",
     String(port),
   ],
-  { stdio: ["ignore", "pipe", "pipe"] },
+  {
+    stdio: ["ignore", "pipe", "pipe"],
+    // Route checks must never send real email, even in a configured environment.
+    env: { ...process.env, RESEND_API_KEY: "", CONTACT_FROM_EMAIL: "" },
+  },
 );
 let logs = "";
 server.stdout.on("data", (data) => {
@@ -90,6 +94,71 @@ try {
       route,
     );
   }
+  const contactResponse = await fetch(base + "/contact/");
+  assert.equal(contactResponse.status, 200);
+  const contactHtml = visibleHtml(await contactResponse.text());
+  assert.match(contactHtml, /<h1\b[^>]*>contact\.<\/h1>/);
+  const form = contactHtml.match(
+    /<form\b[^>]*class="contact-form"[^>]*>([\s\S]*?)<\/form>/,
+  );
+  assert.ok(form, "Contact form is present before hydration");
+  assert.match(form[0], /action="\/contact\/"/);
+  assert.match(form[0], /method="POST"/);
+  const decodeAttribute = (value) =>
+    value
+      .replace(/&quot;/g, '"')
+      .replace(/&#x27;/g, "'")
+      .replace(/&amp;/g, "&");
+  const postContact = async (values) => {
+    const data = new FormData();
+    for (const input of form[1].matchAll(/<input\b[^>]*type="hidden"[^>]*>/g)) {
+      const name = input[0].match(/name="([^"]*)"/);
+      const value = input[0].match(/value="([^"]*)"/);
+      if (name)
+        data.append(
+          decodeAttribute(name[1]),
+          decodeAttribute(value?.[1] ?? ""),
+        );
+    }
+    for (const [name, value] of Object.entries(values)) data.set(name, value);
+    const response = await fetch(base + "/contact/", {
+      method: "POST",
+      body: data,
+      headers: { Origin: base },
+    });
+    assert.equal(response.status, 200);
+    return visibleHtml(await response.text());
+  };
+  const invalidContact = await postContact({
+    name: " ",
+    email: "invalid",
+    message: " ",
+    website: "",
+  });
+  assert.match(invalidContact, /Check the fields below and try again\./);
+  assert.match(invalidContact, /Enter your name\./);
+  assert.match(invalidContact, /Enter a valid email address\./);
+  assert.match(invalidContact, /Enter a message\./);
+  assert.match(invalidContact, /aria-invalid="true"/);
+  const unavailableContact = await postContact({
+    name: "Contact verification",
+    email: "visitor@example.com",
+    message: "No-JavaScript test message",
+    website: "",
+  });
+  assert.match(
+    unavailableContact,
+    /Your message couldn’t be sent\. Your text is still here\./,
+  );
+  assert.match(unavailableContact, /value="Contact verification"/);
+  assert.match(unavailableContact, /value="visitor@example.com"/);
+  assert.match(unavailableContact, /No-JavaScript test message<\/textarea>/);
+  assert.ok(
+    !unavailableContact.includes("Thanks — your message has been sent."),
+  );
+  console.log(
+    "Contact without JavaScript: real form POST, field errors, unavailable-provider notice, retained values and no false success PASS",
+  );
   console.log(
     "Built HTTP routes: readable GET/HEAD 404s, draft-like URLs, canonical pages, shared Blog navigation and no public filters PASS",
   );
