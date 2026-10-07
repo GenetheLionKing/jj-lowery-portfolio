@@ -1,0 +1,120 @@
+{
+  "browser": "User’s Codex In-app Browser",
+  "metrics": [
+    {
+      "theme": "light",
+      "buttonRight": 1252.5,
+      "buttonWidth": 144,
+      "directEmailOptionAbsent": true,
+      "formColumns": "520px 520px",
+      "formRight": 1252.5,
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "theme": "light",
+      "buttonRight": 721,
+      "buttonWidth": 144,
+      "directEmailOptionAbsent": true,
+      "formColumns": "324.5px 324.5px",
+      "formRight": 721,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "theme": "light",
+      "buttonRight": 355,
+      "buttonWidth": 335,
+      "directEmailOptionAbsent": true,
+      "formColumns": "335px",
+      "formRight": 355,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "theme": "light",
+      "buttonRight": 289,
+      "buttonWidth": 273,
+      "directEmailOptionAbsent": true,
+      "formColumns": "273px",
+      "formRight": 289,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "theme": "dark",
+      "buttonRight": 1252.5,
+      "buttonWidth": 144,
+      "directEmailOptionAbsent": true,
+      "formColumns": "520px 520px",
+      "formRight": 1252.5,
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "theme": "dark",
+      "buttonRight": 721,
+      "buttonWidth": 144,
+      "directEmailOptionAbsent": true,
+      "formColumns": "324.5px 324.5px",
+      "formRight": 721,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "theme": "dark",
+      "buttonRight": 355,
+      "buttonWidth": 335,
+      "directEmailOptionAbsent": true,
+      "formColumns": "335px",
+      "formRight": 355,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "theme": "dark",
+      "buttonRight": 289,
+      "buttonWidth": 273,
+      "directEmailOptionAbsent": true,
+      "formColumns": "273px",
+      "formRight": 289,
+      "scrollWidth": 305,
+      "width": 320
+    }
+  ],
+  "screenshots": [
+    "screenshots/light-1440.jpg",
+    "screenshots/light-768.jpg",
+    "screenshots/light-390.jpg",
+    "screenshots/light-320.jpg",
+    "screenshots/dark-1440.jpg",
+    "screenshots/dark-768.jpg",
+    "screenshots/dark-390.jpg",
+    "screenshots/dark-320.jpg"
+  ],
+  "visuallyReviewed": true,
+  "keyboardSendFocusOutline": "3px",
+  "localProviderDisabledRetry": {
+    "directEmailOptionAbsent": true,
+    "email": "<redacted>",
+    "message": "Local delivery-disabled verification, no live email.",
+    "name": "Local verification",
+    "status": "Your message couldn’t be sent. Your text is still here. Try again in a few minutes.",
+    "statusFocused": true
+  },
+  "check": {
+    "command": "pnpm check",
+    "exitCode": 0,
+    "testsPassed": 39,
+    "realNoJsPost": true
+  },
+  "liveEmail": {
+    "testsSent": 1,
+    "marker": "ATLAS-CONTACT-20261007-192814-UTC",
+    "gmailReceiptConfirmedByUser": true
+  },
+  "limits": [
+    "Actual browser 200% zoom was unavailable; 320–1440px reflow verified",
+    "Reduced motion rule inspected; system preference not changed"
+  ]
+}

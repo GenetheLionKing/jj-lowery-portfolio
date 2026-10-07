@@ -92,11 +92,9 @@ export async function processContactSubmission(
   if (Object.keys(errors).length)
     return failure("Check the fields below and try again.");
   if (field("website"))
-    return failure("Your message couldn’t be sent. Please email me directly.");
+    return failure("Your message couldn’t be sent. Please try again.");
   if (!dependencies.allow())
-    return failure(
-      "Too many attempts. Wait a few minutes or email me directly.",
-    );
+    return failure("Too many attempts. Wait a few minutes and try again.");
   try {
     await dependencies.deliver(values, requestKey);
     return {
@@ -106,7 +104,7 @@ export async function processContactSubmission(
     };
   } catch {
     return failure(
-      "Your message couldn’t be sent. Your text is still here. Try again or email me directly.",
+      "Your message couldn’t be sent. Your text is still here. Try again in a few minutes.",
     );
   }
 }
