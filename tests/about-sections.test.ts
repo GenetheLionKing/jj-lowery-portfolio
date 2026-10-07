@@ -12,7 +12,7 @@ import {
 } from "../content/model";
 import { nativeAboutData } from "../content/native-about";
 import { decodePublishedContent, publishedQuery } from "../content/read";
-import { seedAbout, seedCases } from "../content/seed";
+import { seedAbout, seedCases, seedArticles } from "../content/seed";
 import { aboutProposal } from "../content/about-proposal";
 import { AboutSectionsInput } from "../studio/about-sections-input";
 import { schemaTypes } from "../studio/schema";
@@ -91,7 +91,7 @@ test("absent sections preserve the existing page; explicit empty stays empty inc
   const emptyHtml = render(aboutProposal(empty));
   assert.match(emptyHtml, /<h1/);
   assert.ok(
-    !emptyHtml.includes("about-layout") &&
+    emptyHtml.includes("about-layout") &&
       !emptyHtml.includes("What I’m building"),
   );
   assert.ok(!emptyHtml.includes("about-authored-section "));
@@ -105,6 +105,77 @@ test("absent sections preserve the existing page; explicit empty stays empty inc
     aboutSchema.safeParse({ title: "About", sections }).success,
     true,
   );
+});
+
+test("hero title, introduction and portrait stay identical for absent, empty and authored sections", () => {
+  const hero = (html: string) =>
+    html.match(/<section class="info-page about-page"[\s\S]*?<\/section>/)?.[0];
+  const original = structuredClone(seedAbout);
+  const legacyHero = hero(render(seedAbout));
+  assert.ok(legacyHero);
+  for (const value of [undefined, [], sections]) {
+    const about = {
+      ...seedAbout,
+      ...(value === undefined ? {} : { sections: value }),
+    };
+    const html = render(about);
+    assert.equal(hero(html), legacyHero);
+    assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
+    assert.equal((html.match(/class="profile-figure"/g) ?? []).length, 1);
+    if (value?.length) {
+      assert.ok(
+        html.indexOf("</section>") <
+          html.indexOf('class="about-authored-section '),
+      );
+      assert.ok(html.indexOf("profile-figure") < html.indexOf("First section"));
+      assert.ok(
+        !html.includes("What I’m building"),
+        "Authored sections replace the legacy lower content only",
+      );
+    }
+  }
+  assert.deepEqual(seedAbout, original);
+});
+
+test("tagged gallery remains below the hero and before authored sections; untagged posts stay out", () => {
+  const tagged = {
+    ...seedArticles[0],
+    title: "Tagged gallery story",
+    mainImage: image,
+    tags: ["about-gallery"],
+  };
+  const untagged = {
+    ...seedArticles[0],
+    slug: "untagged-gallery-story",
+    title: "Untagged gallery story",
+    mainImage: image,
+    tags: [],
+  };
+  for (const value of [undefined, [], sections]) {
+    const about = aboutSchema.parse({
+      ...seedAbout,
+      ...(value === undefined ? {} : { sections: value }),
+    });
+    const original = structuredClone(about);
+    const html = renderToStaticMarkup(
+      createElement(AboutView, {
+        about,
+        cases: seedCases,
+        articles: [tagged, untagged],
+      }),
+    );
+    const gallery = html.indexOf('aria-label="Personal stories"');
+    assert.ok(gallery > html.indexOf('class="profile-figure"'));
+    assert.ok(html.includes('aria-label="Tagged gallery story"'));
+    assert.ok(!html.includes("Untagged gallery story"));
+    if (value?.length)
+      assert.ok(gallery < html.indexOf('class="about-authored-section '));
+    assert.deepEqual(
+      about,
+      original,
+      "Rendering must preserve the authored section and every legacy field",
+    );
+  }
 });
 
 test("layouts repeat beyond six with stable keys, stored order and unchanged source", () => {
