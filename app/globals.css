@@ -140,14 +140,18 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: currentColor;
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.16s ease;
   }
   .site-navigation a:hover::after,
-  .site-navigation a:focus-visible::after {
+  .site-navigation a:focus-visible::after,
+  .site-navigation a:active::after {
     transform: scaleX(1);
+  }
+  .site-header .site-navigation a::after {
+    background: var(--accent-light);
   }
   .social-links {
     gap: 6px;
@@ -367,7 +371,7 @@
   .work-card:focus-visible {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px #0000000d;
-    border-color: #c5cbd1;
+    border-color: var(--accent);
   }
   .work-image {
     aspect-ratio: 4/3;

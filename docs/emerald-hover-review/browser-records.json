@@ -1,0 +1,2707 @@
+[
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": true,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0.78432, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(53, 67, 77)",
+        "class": "work-card",
+        "focus": false,
+        "hover": false,
+        "outline": "rgb(245, 248, 250)",
+        "outlineWidth": "3px",
+        "surface": "rgb(25, 34, 40)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-dark-nav-focus-1440.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "work-card",
+        "focus": true,
+        "hover": true,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(25, 34, 40)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-dark-card-hover-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": true,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0.903816, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(226, 228, 231)",
+        "class": "work-card",
+        "focus": false,
+        "hover": false,
+        "outline": "rgb(48, 51, 56)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-light-nav-focus-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0.0888562, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(53, 148, 120)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-light-card-focus-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": true,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0.925486, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(220, 225, 227)",
+        "class": "work-card",
+        "focus": false,
+        "hover": false,
+        "outline": "rgb(48, 51, 56)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-light-footer-focus-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(246, 247, 248)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 1440,
+    "screenshot": "blog-light-tile-focus-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(246, 247, 248)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 768,
+    "screenshot": "blog-light-tile-focus-768.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(246, 247, 248)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 390,
+    "screenshot": "blog-light-tile-focus-390.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(246, 247, 248)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 320,
+    "screenshot": "blog-light-tile-focus-320.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(32, 42, 49)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 320,
+    "screenshot": "blog-dark-tile-focus-320.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(32, 42, 49)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 390,
+    "screenshot": "blog-dark-tile-focus-390.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(32, 42, 49)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 768,
+    "screenshot": "blog-dark-tile-focus-768.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(32, 42, 49)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 1440,
+    "screenshot": "blog-dark-tile-focus-1440.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "blog-feature-image",
+        "focus": true,
+        "hover": true,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(32, 42, 49)"
+      }
+    ],
+    "url": "/blog/",
+    "width": 1440,
+    "screenshot": "blog-dark-tile-hover-1440.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(25, 34, 40)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-dark-card-focus-1440.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(25, 34, 40)"
+      }
+    ],
+    "url": "/",
+    "width": 768,
+    "screenshot": "home-dark-card-focus-768.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(25, 34, 40)"
+      }
+    ],
+    "url": "/",
+    "width": 390,
+    "screenshot": "home-dark-card-focus-390.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [
+      {
+        "border": "rgb(100, 218, 177)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(100, 218, 177)",
+        "outlineWidth": "3px",
+        "surface": "rgb(25, 34, 40)"
+      }
+    ],
+    "url": "/",
+    "width": 320,
+    "screenshot": "home-dark-card-focus-320.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 320,
+    "screenshot": "home-light-card-focus-320.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": true,
+        "label": "Contact",
+        "transform": "matrix(0.82208, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 390,
+    "screenshot": "home-light-card-focus-390.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0.0704787, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 768,
+    "screenshot": "home-light-card-focus-768.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "work-card",
+        "focus": true,
+        "hover": false,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-light-card-focus-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": true,
+        "label": "About",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [],
+    "url": "/about/",
+    "width": 1440,
+    "screenshot": "about-light-nav-hover-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": true,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [],
+    "url": "/about/",
+    "width": 390,
+    "screenshot": "about-light-nav-focus-390.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": true,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [],
+    "url": "/about/",
+    "width": 390,
+    "screenshot": "about-dark-nav-focus-390.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": true,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [],
+    "url": "/about/",
+    "width": 1440,
+    "screenshot": "about-dark-nav-focus-1440.jpg"
+  },
+  {
+    "accent": "#64dab1",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": true,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "dark",
+    "tiles": [],
+    "url": "/about/",
+    "width": 1440,
+    "screenshot": "about-dark-footer-focus-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "work-card",
+        "focus": true,
+        "hover": true,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 1440,
+    "screenshot": "home-light-card-hover-1440.jpg"
+  },
+  {
+    "accent": "#087f5b",
+    "footer": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(8, 127, 91)"
+      }
+    ],
+    "header": [
+      {
+        "focus": false,
+        "hover": false,
+        "label": "About",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Portfolio",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Learn",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Blog",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      },
+      {
+        "focus": false,
+        "hover": false,
+        "label": "Contact",
+        "transform": "matrix(0, 0, 0, 1, 0, 0)",
+        "underline": "rgb(100, 218, 177)"
+      }
+    ],
+    "height": 1000,
+    "overflow": false,
+    "reducedMotion": false,
+    "theme": "light",
+    "tiles": [
+      {
+        "border": "rgb(8, 127, 91)",
+        "class": "work-card",
+        "focus": true,
+        "hover": true,
+        "outline": "rgb(8, 127, 91)",
+        "outlineWidth": "3px",
+        "surface": "rgb(255, 255, 255)"
+      }
+    ],
+    "url": "/",
+    "width": 390,
+    "screenshot": "home-light-card-focus-visible-390.jpg"
+  }
+]
