@@ -37,14 +37,29 @@ const body: RichText = [
     "Images are optional. Publication dates appear only when their history is supplied; this fixture has no date.",
   ),
 ];
-export default function ArticleLayoutReview() {
+export default async function ArticleLayoutReview({
+  searchParams,
+}: {
+  searchParams: Promise<{ cta?: string }>;
+}) {
+  const { cta } = await searchParams;
   return (
     <ReadingArticlePage
       article={{
         title: "Article layout review",
         subtitle: "A plain reading template for future Posts.",
         body,
+        ...(cta === "none"
+          ? {}
+          : {
+              ctaText:
+                cta === "long"
+                  ? "Visit Vector and explore a clearer way to organize your budget and spending"
+                  : "Visit Vector",
+              ctaUrl: "https://vectorbudget.com",
+            }),
       }}
+      recent={[{ title: "Another article", href: "/blog/" }]}
     />
   );
 }
