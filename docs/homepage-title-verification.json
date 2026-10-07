@@ -1,0 +1,176 @@
+{
+  "base": "http://127.0.0.1:3152",
+  "checkedAt": "2026-10-07T21:37:39.307Z",
+  "result": "PASS",
+  "checks": "Homepage document/OG/Twitter title exactly JJ Lowery, no suffix; all other metadata and seven other pages unchanged",
+  "rows": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "JJ Lowery",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
+        "application-name": "JJ Lowery Portfolio",
+        "author": "James “JJ” Lowery",
+        "creator": "James “JJ” Lowery",
+        "robots": "index, follow",
+        "og:title": "JJ Lowery",
+        "og:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
+        "og:site_name": "JJ Lowery",
+        "og:locale": "en_US",
+        "og:type": "website",
+        "twitter:card": "summary",
+        "twitter:title": "JJ Lowery",
+        "twitter:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance."
+      }
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "title": "About | JJ Lowery",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "JJ Lowery’s background, systems work, current builds and life outside the screen.",
+        "application-name": "JJ Lowery Portfolio",
+        "author": "James “JJ” Lowery",
+        "creator": "James “JJ” Lowery",
+        "robots": "index, follow",
+        "og:title": "JJ Lowery — Systems analysis & software development",
+        "og:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
+        "og:site_name": "JJ Lowery",
+        "og:locale": "en_US",
+        "og:type": "website",
+        "twitter:card": "summary",
+        "twitter:title": "JJ Lowery — Systems Analyst",
+        "twitter:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance."
+      }
+    },
+    {
+      "path": "/portfolio/",
+      "status": 200,
+      "title": "Portfolio | JJ Lowery",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "Selected systems work on Vector and this site.",
+        "application-name": "JJ Lowery Portfolio",
+        "author": "James “JJ” Lowery",
+        "creator": "James “JJ” Lowery",
+        "robots": "index, follow",
+        "og:title": "JJ Lowery — Systems analysis & software development",
+        "og:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
+        "og:site_name": "JJ Lowery",
+        "og:locale": "en_US",
+        "og:type": "website",
+        "twitter:card": "summary",
+        "twitter:title": "JJ Lowery — Systems Analyst",
+        "twitter:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance."
+      }
+    },
+    {
+      "path": "/learn/",
+      "status": 200,
+      "title": "Learn | JJ Lowery",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "Notes and examples for understanding systems.",
+        "application-name": "JJ Lowery Portfolio",
+        "author": "James “JJ” Lowery",
+        "creator": "James “JJ” Lowery",
+        "robots": "index, follow",
+        "og:title": "JJ Lowery — Systems analysis & software development",
+        "og:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
+        "og:site_name": "JJ Lowery",
+        "og:locale": "en_US",
+        "og:type": "website",
+        "twitter:card": "summary",
+        "twitter:title": "JJ Lowery — Systems Analyst",
+        "twitter:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance."
+      }
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "title": "Blog | JJ Lowery",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "Small observations about how systems should work.",
+        "application-name": "JJ Lowery Portfolio",
+        "author": "James “JJ” Lowery",
+        "creator": "James “JJ” Lowery",
+        "robots": "index, follow",
+        "og:title": "JJ Lowery — Systems analysis & software development",
+        "og:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
+        "og:site_name": "JJ Lowery",
+        "og:locale": "en_US",
+        "og:type": "website",
+        "twitter:card": "summary",
+        "twitter:title": "JJ Lowery — Systems Analyst",
+        "twitter:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance."
+      }
+    },
+    {
+      "path": "/contact/",
+      "status": 200,
+      "title": "Contact | JJ Lowery",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "Get in touch with JJ Lowery on social media or send an email.",
+        "application-name": "JJ Lowery Portfolio",
+        "author": "James “JJ” Lowery",
+        "creator": "James “JJ” Lowery",
+        "robots": "index, follow",
+        "og:title": "JJ Lowery — Systems analysis & software development",
+        "og:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance.",
+        "og:site_name": "JJ Lowery",
+        "og:locale": "en_US",
+        "og:type": "website",
+        "twitter:card": "summary",
+        "twitter:title": "JJ Lowery — Systems Analyst",
+        "twitter:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance."
+      }
+    },
+    {
+      "path": "/resume/",
+      "status": 200,
+      "title": "Résumé — Systems Analyst & Business Systems Analyst | JJ Lowery",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "James (JJ) Lowery’s professional résumé: systems analysis, business rules, workflow design, automation, and application validation.",
+        "application-name": "JJ Lowery Portfolio",
+        "author": "James “JJ” Lowery",
+        "creator": "James “JJ” Lowery",
+        "robots": "index, follow",
+        "og:title": "James (JJ) Lowery — Résumé",
+        "og:description": "Systems Analyst | Business Systems Analyst · Tucson, AZ | Remote",
+        "twitter:card": "summary",
+        "twitter:title": "JJ Lowery — Systems Analyst",
+        "twitter:description": "Business experience, systems analysis, and practical work on Vector, a personal-finance app developed with AI assistance."
+      }
+    },
+    {
+      "path": "/blog/how-a-google-sheet-became-vector/",
+      "status": 200,
+      "title": "",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+        "theme-color": "#111315",
+        "description": "I wanted digital envelope budgeting I could work with throughout the month. Building it took a spreadsheet, several redesigns, and a lot of testing.",
+        "robots": "index, follow",
+        "og:title": "How a Google Sheet became Vector | JJ Lowery",
+        "og:description": "I wanted digital envelope budgeting I could work with throughout the month. Building it took a spreadsheet, several redesigns, and a lot of testing.",
+        "og:type": "article",
+        "twitter:card": "summary",
+        "twitter:title": "How a Google Sheet became Vector",
+        "twitter:description": "I wanted digital envelope budgeting I could work with throughout the month. Building it took a spreadsheet, several redesigns, and a lot of testing."
+      }
+    }
+  ]
+}
