@@ -1,7 +1,27 @@
+import type { Metadata } from "next";
 import { ProfileImage } from "@/components/profile-image";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { getPublicContent } from "@/content/public";
 import { homeItems } from "@/content/catalog";
+import { profile } from "@/data/profile";
+
+export const metadata: Metadata = {
+  title: { absolute: "JJ Lowery" },
+  description: profile.description,
+  openGraph: {
+    title: "JJ Lowery",
+    description: profile.description,
+    type: "website",
+    locale: "en_US",
+    siteName: "JJ Lowery",
+  },
+  twitter: {
+    card: "summary",
+    title: "JJ Lowery",
+    description: profile.description,
+  },
+};
+
 export default async function Home() {
   const { cases, articles } = await getPublicContent();
   const items = homeItems(cases, articles);
