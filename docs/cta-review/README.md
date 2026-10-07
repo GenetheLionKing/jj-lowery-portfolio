@@ -2,9 +2,11 @@
 
 Posts now have optional **End-of-post button text** and **Button destination URL** fields. Fill both to show one link styled with the existing site button, after the article body and before Recent articles. Example: Visit Vector → https://vectorbudget.com. Clear both to remove it. JJ chooses the Post and publishes it himself; this change performs no CMS mutation or migration and sets no default CTA.
 
-The shared article and legacy-case models retain the fields through published reads and Studio Preview. Both fields are visible with nearby validation. Partial settings fail validation, unsafe schemes/credentials/protocol-relative URLs are rejected, and empty/null/whitespace values count as unset. Text is limited to 80 characters, URL to 2048. Destinations support existing safe local paths, anchors and HTTPS links. Navigation uses an ordinary anchor in the same tab, with no button role, extra heading, promotional panel or JavaScript click handler. A defensive renderer guard suppresses malformed CTAs. The renderer uses the existing lightweight URL utility rather than importing the authoring validator.
+The shared article and legacy-case models retain the fields through published reads and Studio Preview. Both fields are visible with nearby validation. Partial settings fail validation, unsafe schemes/credentials/protocol-relative URLs are rejected, and empty/null/whitespace values count as unset. Text is limited to 80 characters, URL to 2048. Destinations support existing safe local paths, anchors and HTTPS links. Navigation uses an ordinary anchor in a new tab with `rel="noopener noreferrer"` protection and a screen-reader indication, with no button role, extra heading, promotional panel or JavaScript click handler. The visible label is unchanged. A defensive renderer guard suppresses malformed CTAs. The renderer uses the existing lightweight URL utility rather than importing the authoring validator.
 
 ## Checks and review
+
+The checks below document the original PR 12 implementation. The new-tab follow-up changes only link behavior, its accessible label, the Studio hint and the focused rendering assertion; see [its separate verification](new-tab.md).
 
 - `pnpm check` passed: lint, TypeScript, 31 tests, production build and real built HTTP route checks. `git diff --check` passed.
 - Regression coverage exercises actual Post field validators, partial/unsafe configuration, null/blank values, published and supplied-draft adapters, legacy cases, link semantics, optional omission and placement after body/before Recent articles.

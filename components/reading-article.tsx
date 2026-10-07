@@ -94,7 +94,13 @@ export function ReadingArticlePage({
         </div>
         {showCta && (
           <div className="reading-cta">
-            <a className="button button-dark" href={ctaUrl}>
+            <a
+              className="button button-dark"
+              href={ctaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${ctaText} (opens in a new tab)`}
+            >
               {ctaText}
             </a>
           </div>
