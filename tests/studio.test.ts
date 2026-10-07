@@ -3,6 +3,47 @@ import assert from "node:assert/strict";
 import { schemaTypes } from "../studio/schema";
 import { migrationDocuments } from "../content/migration";
 
+test("CTA fields identify missing counterparts and unsafe URLs next to the field", () => {
+  const post = schemaTypes.find((type) => type.name === "post")!;
+  for (const name of ["ctaText", "ctaUrl"]) {
+    const field = post.fields!.find((item) => item.name === name)!;
+    assert.ok(field);
+    let validate: (
+      value: unknown,
+      context: { document: Record<string, unknown> },
+    ) => unknown = () => false;
+    const rule = {
+      custom(fn: typeof validate) {
+        validate = fn;
+        return rule;
+      },
+    };
+    (
+      (field as { validation?: unknown }).validation as (
+        rule: unknown,
+      ) => unknown
+    )(rule);
+    const check = (document: Record<string, unknown>) =>
+      validate(document[name], { document });
+    assert.equal(check({}), true);
+    assert.equal(
+      check({ ctaText: "Visit Vector", ctaUrl: "https://vectorbudget.com" }),
+      true,
+    );
+    assert.notEqual(
+      check(
+        name === "ctaText" ? { ctaUrl: "/contact/" } : { ctaText: "Contact" },
+      ),
+      true,
+    );
+    if (name === "ctaUrl")
+      assert.notEqual(
+        check({ ctaText: "Unsafe", ctaUrl: "javascript:alert(1)" }),
+        true,
+      );
+  }
+});
+
 test("one Post editor has unique fields and no separate article/case authoring types", () => {
   const post = schemaTypes.find((type) => type.name === "post")!;
   const names = post.fields!.map((field) => field.name);

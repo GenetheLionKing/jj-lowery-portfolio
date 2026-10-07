@@ -27,6 +27,7 @@ function validateModel(value: unknown, schema: ZodType) {
 import { mediaKeys, publicMedia, topicLabels } from "../content/media";
 import { isSafeLink, isPublicImageAssetRef } from "../content/urls";
 import { nativePostData } from "../content/native-post";
+import { postCtaSchema } from "../content/post-cta";
 
 const string = (
   name: string,
@@ -636,6 +637,33 @@ export const schemaTypes = [
         hidden: ({ document }: { document?: Record<string, unknown> }) =>
           document?.kind !== "caseStudy",
       },
+      ...(["ctaText", "ctaUrl"] as const).map((name) =>
+        defineField({
+          name,
+          title:
+            name === "ctaText"
+              ? "End-of-post button text (optional)"
+              : "Button destination URL (optional)",
+          type: "string",
+          description:
+            name === "ctaText"
+              ? "For example: Visit Vector. Leave both button fields empty for no button. Appears after the article body when you publish."
+              : "For example: https://vectorbudget.com. Use a local path, anchor or HTTPS URL. Opens in the same tab.",
+          validation: (rule) =>
+            rule.custom((value, context) => {
+              const doc = context.document;
+              const result = postCtaSchema.safeParse({
+                ctaText: doc?.ctaText,
+                ctaUrl: doc?.ctaUrl,
+                [name]: value,
+              });
+              return result.success
+                ? true
+                : (result.error.issues.find((issue) => issue.path[0] === name)
+                    ?.message ?? true);
+            }),
+        }),
+      ),
       ...editorial.map((field) => ({
         ...field,
         ...(field.name !== "tags" ? { fieldset: "options" } : {}),

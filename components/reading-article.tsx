@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReadingArticle, RecentArticle } from "@/content/article";
 import { sizedPublicImage } from "@/content/media";
 import { ArticleBody } from "./article-body";
+import { isSafeLink } from "@/content/urls";
 
 const dateFormat = new Intl.DateTimeFormat("en-US", {
   month: "long",
@@ -17,6 +18,14 @@ export function ReadingArticlePage({
   article: ReadingArticle;
   recent?: RecentArticle[];
 }) {
+  const ctaText = article.ctaText?.trim();
+  const ctaUrl = article.ctaUrl?.trim();
+  const showCta =
+    ctaText &&
+    ctaText.length <= 80 &&
+    ctaUrl &&
+    ctaUrl.length <= 2048 &&
+    isSafeLink(ctaUrl);
   return (
     <div className="reading-article">
       <article>
@@ -83,6 +92,13 @@ export function ReadingArticlePage({
         <div className="reading-body">
           <ArticleBody body={article.body} />
         </div>
+        {showCta && (
+          <div className="reading-cta">
+            <a className="button button-dark" href={ctaUrl}>
+              {ctaText}
+            </a>
+          </div>
+        )}
       </article>
       {recent.length > 0 && (
         <aside

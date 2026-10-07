@@ -1,0 +1,197 @@
+{
+  "at": "2026-10-07T07:43:31.207Z",
+  "results": [
+    {
+      "viewportWidth": 320,
+      "theme": "light",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 459.15625,
+      "recentTop": 511.15625,
+      "background": "rgb(48, 51, 56)",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "viewportWidth": 320,
+      "theme": "dark",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 459.15625,
+      "recentTop": 511.15625,
+      "background": "rgb(245, 248, 250)",
+      "color": "rgb(20, 26, 30)"
+    },
+    {
+      "viewportWidth": 390,
+      "theme": "light",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 458.359375,
+      "recentTop": 510.359375,
+      "background": "rgb(48, 51, 56)",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "viewportWidth": 390,
+      "theme": "dark",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 458.359375,
+      "recentTop": 510.359375,
+      "background": "rgb(245, 248, 250)",
+      "color": "rgb(20, 26, 30)"
+    },
+    {
+      "viewportWidth": 768,
+      "theme": "light",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 566.9375,
+      "recentTop": 638.9375,
+      "background": "rgb(48, 51, 56)",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "viewportWidth": 768,
+      "theme": "dark",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 566.9375,
+      "recentTop": 638.9375,
+      "background": "rgb(245, 248, 250)",
+      "color": "rgb(20, 26, 30)"
+    },
+    {
+      "viewportWidth": 1440,
+      "theme": "light",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 602.9375,
+      "recentTop": 674.9375,
+      "background": "rgb(48, 51, 56)",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "viewportWidth": 1440,
+      "theme": "dark",
+      "overflow": false,
+      "text": "Visit Vector",
+      "href": "https://vectorbudget.com",
+      "height": 49.59375,
+      "width": 118.21875,
+      "ctaBottom": 602.9375,
+      "recentTop": 674.9375,
+      "background": "rgb(245, 248, 250)",
+      "color": "rgb(20, 26, 30)"
+    }
+  ],
+  "axeResults": [
+    {
+      "width": 320,
+      "theme": "light",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 768,
+      "theme": "light",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 768,
+      "theme": "dark",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "violations": [],
+      "incomplete": []
+    }
+  ],
+  "long": [
+    {
+      "theme": "light",
+      "overflow": false,
+      "text": "Visit Vector and explore a clearer way to organize your budget and spending",
+      "href": "https://vectorbudget.com",
+      "height": 69.1875,
+      "width": 350,
+      "ctaBottom": 468.953125,
+      "recentTop": 520.953125,
+      "background": "rgb(48, 51, 56)",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "theme": "dark",
+      "overflow": false,
+      "text": "Visit Vector and explore a clearer way to organize your budget and spending",
+      "href": "https://vectorbudget.com",
+      "height": 69.1875,
+      "width": 350,
+      "ctaBottom": 468.953125,
+      "recentTop": 520.953125,
+      "background": "rgb(245, 248, 250)",
+      "color": "rgb(20, 26, 30)"
+    }
+  ],
+  "focus": {
+    "active": true,
+    "outline": "rgb(245, 248, 250) solid 3px"
+  },
+  "reduced": "0s",
+  "noJsLink": {
+    "href": "https://vectorbudget.com/",
+    "text": "Visit Vector"
+  },
+  "clickedDestination": "https://vectorbudget.com/",
+  "errors": [],
+  "limits": "Local development fixture, not a CMS mutation. Destination response intercepted after native navigation. Equivalent 200% layout checked at 720x500; native browser zoom not driven."
+}

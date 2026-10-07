@@ -86,6 +86,14 @@
     line-height: 1.7;
     overflow-wrap: break-word;
   }
+  .reading-cta {
+    margin-top: 32px;
+  }
+  .reading-cta .button {
+    max-width: 100%;
+    min-height: 48px;
+    overflow-wrap: anywhere;
+  }
   .reading-body p {
     margin: 0 0 24px;
   }

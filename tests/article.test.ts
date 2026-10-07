@@ -6,6 +6,99 @@ import { articleSchema, richTextSchema } from "../content/model";
 import { nativePostData } from "../content/native-post";
 import { decodePublishedContent } from "../content/read";
 import { blogItems } from "../content/catalog";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { ReadingArticlePage } from "../components/reading-article";
+import { caseArticle, postArticle } from "../content/article";
+import { caseSchema } from "../content/model";
+import { previewPost } from "../content/preview-post";
+
+test("optional Post CTA survives published and draft adapters and rejects incomplete or unsafe settings", () => {
+  const cta = { ctaText: "Visit Vector", ctaUrl: "https://vectorbudget.com" };
+  const input = {
+    ...seedArticles[0],
+    ...cta,
+    _type: "post",
+    kind: "article",
+    _id: "cta-example",
+  };
+  const published = decodePublishedContent([input]).articles[0];
+  assert.equal(postArticle(published).ctaUrl, cta.ctaUrl);
+  const preview = previewPost(
+    { ...input, _id: "drafts.cta-example" },
+    { projectId: "example", dataset: "portfolio" },
+  );
+  assert.equal(preview.ctaText, cta.ctaText);
+  assert.equal(
+    caseArticle(caseSchema.parse({ ...seedCases[0], ...cta })).ctaUrl,
+    cta.ctaUrl,
+  );
+  for (const schema of [articleSchema, caseSchema]) {
+    const base = schema === articleSchema ? seedArticles[0] : seedCases[0];
+    assert.equal(schema.safeParse(base).success, true);
+    assert.equal(
+      schema.safeParse({ ...base, ctaText: " ", ctaUrl: null }).success,
+      true,
+    );
+    for (const settings of [
+      { ctaText: "Visit Vector" },
+      { ctaUrl: cta.ctaUrl },
+      { ...cta, ctaText: "x".repeat(81) },
+      ...[
+        "javascript:alert(1)",
+        "http://example.com",
+        "//example.com",
+        "https://user:pass@example.com",
+        "/\\example.com",
+        "https://exa\nmple.com/",
+      ].map((ctaUrl) => ({ ...cta, ctaUrl })),
+    ])
+      assert.equal(
+        schema.safeParse({ ...base, ...settings }).success,
+        false,
+        JSON.stringify(settings),
+      );
+    assert.equal(
+      schema.safeParse({ ...base, ctaText: "Contact", ctaUrl: "/contact/" })
+        .success,
+      true,
+    );
+  }
+});
+
+test("article CTA is a normal link after the body and before Recent articles; absent and malformed settings render no button", () => {
+  const article = postArticle(seedArticles[0]);
+  const render = (settings = {}) =>
+    renderToStaticMarkup(
+      createElement(ReadingArticlePage, {
+        article: { ...article, ...settings },
+        recent: [{ title: "Another article", href: "/blog/another/" }],
+      }),
+    );
+  const html = render({
+    ctaText: "Visit Vector",
+    ctaUrl: "https://vectorbudget.com",
+  });
+  assert.match(
+    html,
+    /<a class="button button-dark" href="https:\/\/vectorbudget.com">Visit Vector<\/a>/,
+  );
+  assert.ok(
+    html.indexOf('class="reading-body"') < html.indexOf('class="reading-cta"'),
+  );
+  assert.ok(
+    html.indexOf('class="reading-cta"') <
+      html.indexOf('class="reading-recent"'),
+  );
+  assert.doesNotMatch(html, /role="button"|target="_blank"/);
+  for (const settings of [
+    {},
+    { ctaText: "Visit Vector" },
+    { ctaUrl: "/contact/" },
+    { ctaText: "Unsafe", ctaUrl: "javascript:alert(1)" },
+  ])
+    assert.doesNotMatch(render(settings), /reading-cta/);
+});
 
 test("legacy article adapter retains every authored heading, paragraph, list, rule, formula and qualification", () => {
   const strings = (value: unknown): string[] =>

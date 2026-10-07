@@ -8,6 +8,8 @@ export type ReadingArticle = {
   image?: Article["mainImage"];
   publishedAt?: string;
   updatedAt?: string;
+  ctaText?: string;
+  ctaUrl?: string;
 };
 export type RecentArticle = { title: string; href: string };
 
@@ -113,6 +115,8 @@ export function caseArticle(study: PublishingCase): ReadingArticle {
           : undefined),
     publishedAt: study.publishedAt,
     updatedAt: study.updatedAt,
+    ctaText: study.ctaText,
+    ctaUrl: study.ctaUrl,
   };
 }
 export function postArticle(article: Article): ReadingArticle {

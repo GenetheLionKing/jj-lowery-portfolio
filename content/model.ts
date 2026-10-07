@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { isSafeLink } from "./urls";
+import { postCtaFields, validatePostCta } from "./post-cta";
 
 const text = z.string().trim().min(1).max(12000);
 const slug = z
@@ -101,56 +102,61 @@ export const richTextSchema = z
   )
   .max(300);
 
-export const caseSchema = z.object({
-  slug,
-  number: text,
-  company: text,
-  title: text,
-  subtitle: text,
-  summary: text,
-  category: text,
-  diagram: diagram.optional(),
-  image: z
-    .object({
-      src: link.refine((value) =>
-        /^\/images\/work\/[a-z0-9-]+\.webp$/.test(value),
+export const caseSchema = z
+  .object({
+    ...postCtaFields,
+    slug,
+    number: text,
+    company: text,
+    title: text,
+    subtitle: text,
+    summary: text,
+    category: text,
+    diagram: diagram.optional(),
+    image: z
+      .object({
+        src: link.refine((value) =>
+          /^\/images\/work\/[a-z0-9-]+\.webp$/.test(value),
+        ),
+        alt: text,
+      })
+      .optional(),
+    mainImage: postImageSchema.optional(),
+    body: richTextSchema.min(1).optional(),
+    publishedAt: z.iso.datetime({ offset: true }).optional(),
+    updatedAt: z.iso.datetime({ offset: true }).optional(),
+    metadata: z.array(pair).max(30).default([]),
+    skills: texts,
+    sections: z
+      .array(
+        z.object({
+          id: slug.refine((value) => value !== "skills"),
+          title: text,
+          lead: text.optional(),
+          blocks: z.array(caseBlockSchema).min(1).max(50),
+        }),
+      )
+      .min(1)
+      .max(30)
+      .refine(
+        (sections) =>
+          new Set(sections.map((s) => s.id)).size === sections.length,
+        "Section anchors must be unique",
       ),
-      alt: text,
-    })
-    .optional(),
-  mainImage: postImageSchema.optional(),
-  body: richTextSchema.min(1).optional(),
-  publishedAt: z.iso.datetime({ offset: true }).optional(),
-  updatedAt: z.iso.datetime({ offset: true }).optional(),
-  metadata: z.array(pair).max(30).default([]),
-  skills: texts,
-  sections: z
-    .array(
-      z.object({
-        id: slug.refine((value) => value !== "skills"),
-        title: text,
-        lead: text.optional(),
-        blocks: z.array(caseBlockSchema).min(1).max(50),
-      }),
-    )
-    .min(1)
-    .max(30)
-    .refine(
-      (sections) => new Set(sections.map((s) => s.id)).size === sections.length,
-      "Section anchors must be unique",
-    ),
-  order: z.number().finite().optional(),
-  cardTitle: text,
-  cardSubtitle: text,
-  thumbnail: media.optional(),
-  featured: z.boolean().default(false),
-  learn: z.boolean().default(false),
-  tags,
-  ...seo,
-});
+    order: z.number().finite().optional(),
+    cardTitle: text,
+    cardSubtitle: text,
+    thumbnail: media.optional(),
+    featured: z.boolean().default(false),
+    learn: z.boolean().default(false),
+    tags,
+    ...seo,
+  })
+  .superRefine(validatePostCta);
 
 export const articleSchema = z
   .object({
+    ...postCtaFields,
     slug,
     title: text,
     summary: text,
@@ -170,6 +176,7 @@ export const articleSchema = z
     ...seo,
   })
   .superRefine((value, ctx) => {
+    validatePostCta(value, ctx);
     if (value.destination === "article" && !value.body.length)
       ctx.addIssue({
         code: "custom",
