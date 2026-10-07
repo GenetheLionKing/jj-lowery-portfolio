@@ -1,0 +1,1116 @@
+{
+  "purpose": "Comparison only; site CSS, favicon, configuration and generated instructions are identical to merged main. Only review assets are committed.",
+  "baseCommit": "52d728b5437dc7598310af62113fdc2b3b939ee7",
+  "browser": "User\u2019s Codex In-app Browser",
+  "routes": [
+    "/",
+    "/about/",
+    "/portfolio/",
+    "/learn/",
+    "/blog/",
+    "/contact/",
+    "/resume/"
+  ],
+  "responsiveFormWidths": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "horizontalOverflowFound": false,
+  "captures": [
+    {
+      "palette": "emerald",
+      "page": "about",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-about-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "about",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-about-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "blog",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-blog-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "blog",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-blog-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "contact",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-contact-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "contact",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-contact-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-form-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(100, 218, 177) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 2
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "dark",
+      "width": 320,
+      "file": "emerald-form-dark-320.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 320,
+      "focusOutline": "rgb(100, 218, 177) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 305,
+      "scrollY": 561
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "dark",
+      "width": 390,
+      "file": "emerald-form-dark-390.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 390,
+      "focusOutline": "rgb(100, 218, 177) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 375,
+      "scrollY": 601
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "dark",
+      "width": 768,
+      "file": "emerald-form-dark-768.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 768,
+      "focusOutline": "rgb(100, 218, 177) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 753,
+      "scrollY": 61
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-form-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(8, 127, 91) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 2
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "light",
+      "width": 320,
+      "file": "emerald-form-light-320.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 320,
+      "focusOutline": "rgb(8, 127, 91) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 305,
+      "scrollY": 561
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "light",
+      "width": 390,
+      "file": "emerald-form-light-390.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 390,
+      "focusOutline": "rgb(8, 127, 91) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 375,
+      "scrollY": 601
+    },
+    {
+      "palette": "emerald",
+      "page": "form",
+      "theme": "light",
+      "width": 768,
+      "file": "emerald-form-light-768.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 768,
+      "focusOutline": "rgb(8, 127, 91) solid 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 753,
+      "scrollY": 61
+    },
+    {
+      "palette": "emerald",
+      "page": "home",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-home-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(196, 201, 207) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "home",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-home-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(196, 201, 207) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "learn",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-learn-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "learn",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-learn-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "portfolio",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-portfolio-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "portfolio",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-portfolio-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "resume",
+      "theme": "dark",
+      "width": 1440,
+      "file": "emerald-resume-dark-1440.jpg",
+      "accent": "#64dab1",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "emerald",
+      "page": "resume",
+      "theme": "light",
+      "width": 1440,
+      "file": "emerald-resume-light-1440.jpg",
+      "accent": "#087f5b",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#64dab1",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "about",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-about-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "about",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-about-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "blog",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-blog-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "blog",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-blog-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "contact",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-contact-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "contact",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-contact-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-form-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(126, 203, 164) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 2
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "dark",
+      "width": 320,
+      "file": "forest-form-dark-320.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 320,
+      "focusOutline": "rgb(126, 203, 164) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 305,
+      "scrollY": 561
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "dark",
+      "width": 390,
+      "file": "forest-form-dark-390.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 390,
+      "focusOutline": "rgb(126, 203, 164) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 375,
+      "scrollY": 601
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "dark",
+      "width": 768,
+      "file": "forest-form-dark-768.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 768,
+      "focusOutline": "rgb(126, 203, 164) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 753,
+      "scrollY": 61
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-form-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(35, 98, 68) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 2
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "light",
+      "width": 320,
+      "file": "forest-form-light-320.jpg",
+      "accent": "#236244",
+      "actualWidth": 320,
+      "focusOutline": "rgb(35, 98, 68) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 305,
+      "scrollY": 561
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "light",
+      "width": 390,
+      "file": "forest-form-light-390.jpg",
+      "accent": "#236244",
+      "actualWidth": 390,
+      "focusOutline": "rgb(35, 98, 68) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 375,
+      "scrollY": 601
+    },
+    {
+      "palette": "forest",
+      "page": "form",
+      "theme": "light",
+      "width": 768,
+      "file": "forest-form-light-768.jpg",
+      "accent": "#236244",
+      "actualWidth": 768,
+      "focusOutline": "rgb(35, 98, 68) solid 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 753,
+      "scrollY": 61
+    },
+    {
+      "palette": "forest",
+      "page": "home",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-home-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(196, 201, 207) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "home",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-home-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(196, 201, 207) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "learn",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-learn-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "learn",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-learn-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "portfolio",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-portfolio-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "portfolio",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-portfolio-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "resume",
+      "theme": "dark",
+      "width": 1440,
+      "file": "forest-resume-dark-1440.jpg",
+      "accent": "#7ecba4",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "forest",
+      "page": "resume",
+      "theme": "light",
+      "width": 1440,
+      "file": "forest-resume-light-1440.jpg",
+      "accent": "#236244",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#7ecba4",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "about",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-about-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "about",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-about-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "blog",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-blog-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "blog",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-blog-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "contact",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-contact-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "contact",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-contact-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-form-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(173, 197, 175) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 2
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "dark",
+      "width": 320,
+      "file": "sage-form-dark-320.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 320,
+      "focusOutline": "rgb(173, 197, 175) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 305,
+      "scrollY": 561
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "dark",
+      "width": 390,
+      "file": "sage-form-dark-390.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 390,
+      "focusOutline": "rgb(173, 197, 175) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 375,
+      "scrollY": 601
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "dark",
+      "width": 768,
+      "file": "sage-form-dark-768.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 768,
+      "focusOutline": "rgb(173, 197, 175) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 753,
+      "scrollY": 61
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-form-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(75, 102, 86) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 2
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "light",
+      "width": 320,
+      "file": "sage-form-light-320.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 320,
+      "focusOutline": "rgb(75, 102, 86) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 305,
+      "scrollY": 561
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "light",
+      "width": 390,
+      "file": "sage-form-light-390.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 390,
+      "focusOutline": "rgb(75, 102, 86) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 375,
+      "scrollY": 601
+    },
+    {
+      "palette": "sage",
+      "page": "form",
+      "theme": "light",
+      "width": 768,
+      "file": "sage-form-light-768.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 768,
+      "focusOutline": "rgb(75, 102, 86) solid 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 753,
+      "scrollY": 61
+    },
+    {
+      "palette": "sage",
+      "page": "home",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-home-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(196, 201, 207) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "home",
+      "theme": "dark",
+      "width": 390,
+      "file": "sage-home-dark-390.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 390,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 375,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "home",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-home-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(196, 201, 207) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "home",
+      "theme": "light",
+      "width": 390,
+      "file": "sage-home-light-390.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 390,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 375,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "learn",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-learn-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "learn",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-learn-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "portfolio",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-portfolio-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "portfolio",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-portfolio-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1440,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "resume",
+      "theme": "dark",
+      "width": 1440,
+      "file": "sage-resume-dark-1440.jpg",
+      "accent": "#adc5af",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(245, 248, 250) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    },
+    {
+      "palette": "sage",
+      "page": "resume",
+      "theme": "light",
+      "width": 1440,
+      "file": "sage-resume-light-1440.jpg",
+      "accent": "#4b6656",
+      "actualWidth": 1440,
+      "focusOutline": "rgb(48, 51, 56) none 3px",
+      "headerAccent": "#adc5af",
+      "scrollWidth": 1425,
+      "scrollY": 0
+    }
+  ],
+  "interactions": [
+    {
+      "palette": "forest",
+      "theme": "light",
+      "page": "interaction",
+      "width": 1440,
+      "buttonFocus": {
+        "outline": "rgb(35, 98, 68) solid 3px",
+        "text": "Send email"
+      },
+      "buttonHover": {
+        "background": "rgb(40, 80, 63)",
+        "color": "rgb(255, 255, 255)",
+        "emptyName": true,
+        "focusedField": "email",
+        "hover": true
+      }
+    },
+    {
+      "palette": "forest",
+      "theme": "dark",
+      "page": "interaction",
+      "width": 1440,
+      "buttonFocus": {
+        "outline": "rgb(126, 203, 164) solid 3px",
+        "text": "Send email"
+      },
+      "buttonHover": {
+        "background": "rgb(172, 221, 198)",
+        "color": "rgb(20, 26, 30)",
+        "emptyName": true,
+        "focusedField": "email",
+        "hover": true
+      }
+    },
+    {
+      "palette": "emerald",
+      "theme": "light",
+      "page": "interaction",
+      "width": 1440,
+      "buttonFocus": {
+        "outline": "rgb(8, 127, 91) solid 3px",
+        "text": "Send email"
+      },
+      "buttonHover": {
+        "background": "rgb(11, 120, 88)",
+        "color": "rgb(255, 255, 255)",
+        "emptyName": true,
+        "focusedField": "email",
+        "hover": true
+      }
+    },
+    {
+      "palette": "emerald",
+      "theme": "dark",
+      "page": "interaction",
+      "width": 1440,
+      "buttonFocus": {
+        "outline": "rgb(100, 218, 177) solid 3px",
+        "text": "Send email"
+      },
+      "buttonHover": {
+        "background": "rgb(123, 223, 189)",
+        "color": "rgb(20, 26, 30)",
+        "emptyName": true,
+        "focusedField": "email",
+        "hover": true
+      }
+    },
+    {
+      "palette": "sage",
+      "theme": "light",
+      "page": "interaction",
+      "width": 1440,
+      "buttonFocus": {
+        "outline": "rgb(75, 102, 86) solid 3px",
+        "text": "Send email"
+      },
+      "buttonHover": {
+        "background": "rgb(71, 95, 82)",
+        "color": "rgb(255, 255, 255)",
+        "emptyName": true,
+        "focusedField": "email",
+        "hover": true
+      }
+    },
+    {
+      "palette": "sage",
+      "theme": "dark",
+      "page": "interaction",
+      "width": 1440,
+      "buttonFocus": {
+        "outline": "rgb(173, 197, 175) solid 3px",
+        "text": "Send email"
+      },
+      "buttonHover": {
+        "background": "rgb(192, 210, 195)",
+        "color": "rgb(20, 26, 30)",
+        "emptyName": true,
+        "focusedField": "email",
+        "hover": true
+      }
+    }
+  ],
+  "limits": [
+    "Local development screenshots include the Next.js development indicator.",
+    "Actual 200% browser zoom was unavailable; narrow-width reflow inspected.",
+    "Reduced-motion CSS retained and inspected; OS preference not changed.",
+    "CMS content and project imagery were not changed.",
+    "Existing neutral article colors and print treatment remain intact.",
+    "Button hover color samples were taken during the CSS transition; contrast values use the final palette endpoints."
+  ],
+  "publication": {
+    "contactPr": 15,
+    "contactPrState": "MERGED",
+    "productionCommit": "52d728b5437dc7598310af62113fdc2b3b939ee7",
+    "productionDeployment": "dpl_HZL4jD6WpVoaUwZdEwF3ggECmJ71",
+    "state": "READY",
+    "directEmailOptionAbsentOnLive": true,
+    "liveMailTests": 1,
+    "gmailReceiptConfirmedByUser": true,
+    "additionalLiveMailSent": false
+  },
+  "checks": {
+    "command": "pnpm check",
+    "exitCode": 0,
+    "testsPassed": 39,
+    "eslintWarnings": 0,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "builtHttpRoutes": "PASS",
+    "noJavaScriptContact": "PASS (mail provider disabled; real POST, errors, retained values, no false success)",
+    "mailTestsInComparison": 0,
+    "paletteDuringCheck": "sage"
+  },
+  "gallery": {
+    "responsive": [
+      {
+        "images": [
+          {
+            "alt": "Forest Contact in light mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          },
+          {
+            "alt": "Forest Contact in dark mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          }
+        ],
+        "scrollWidth": 305,
+        "width": 320
+      },
+      {
+        "images": [
+          {
+            "alt": "Forest Contact in light mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          },
+          {
+            "alt": "Forest Contact in dark mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          }
+        ],
+        "scrollWidth": 375,
+        "width": 390
+      },
+      {
+        "images": [
+          {
+            "alt": "Forest Contact in light mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          },
+          {
+            "alt": "Forest Contact in dark mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          }
+        ],
+        "scrollWidth": 768,
+        "width": 768
+      },
+      {
+        "images": [
+          {
+            "alt": "Forest Contact in light mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          },
+          {
+            "alt": "Forest Contact in dark mode at 1440 pixels",
+            "complete": true,
+            "naturalWidth": 1425
+          }
+        ],
+        "scrollWidth": 1425,
+        "width": 1440
+      }
+    ],
+    "keyboard": "Tab focus shows a 3px outline; Space selects Emerald and updates aria-pressed",
+    "visualReview": "Desktop light/dark pairs reviewed for all seven routes. Responsive form screenshots reviewed at 320, 390, 768 and 1440 CSS pixels; button focus and hover captured for each palette/theme. Gallery itself reviewed at desktop and 320 pixels."
+  }
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "palette": "forest",
+    "theme": "light",
+    "page": "interaction",
+    "width": 1440,
+    "buttonFocus": {
+      "outline": "rgb(35, 98, 68) solid 3px",
+      "text": "Send email"
+    },
+    "buttonHover": {
+      "background": "rgb(40, 80, 63)",
+      "color": "rgb(255, 255, 255)",
+      "emptyName": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  },
+  {
+    "palette": "forest",
+    "theme": "dark",
+    "page": "interaction",
+    "width": 1440,
+    "buttonFocus": {
+      "outline": "rgb(126, 203, 164) solid 3px",
+      "text": "Send email"
+    },
+    "buttonHover": {
+      "background": "rgb(172, 221, 198)",
+      "color": "rgb(20, 26, 30)",
+      "emptyName": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  },
+  {
+    "palette": "emerald",
+    "theme": "light",
+    "page": "interaction",
+    "width": 1440,
+    "buttonFocus": {
+      "outline": "rgb(8, 127, 91) solid 3px",
+      "text": "Send email"
+    },
+    "buttonHover": {
+      "background": "rgb(11, 120, 88)",
+      "color": "rgb(255, 255, 255)",
+      "emptyName": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  },
+  {
+    "palette": "emerald",
+    "theme": "dark",
+    "page": "interaction",
+    "width": 1440,
+    "buttonFocus": {
+      "outline": "rgb(100, 218, 177) solid 3px",
+      "text": "Send email"
+    },
+    "buttonHover": {
+      "background": "rgb(123, 223, 189)",
+      "color": "rgb(20, 26, 30)",
+      "emptyName": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  },
+  {
+    "palette": "sage",
+    "theme": "light",
+    "page": "interaction",
+    "width": 1440,
+    "buttonFocus": {
+      "outline": "rgb(75, 102, 86) solid 3px",
+      "text": "Send email"
+    },
+    "buttonHover": {
+      "background": "rgb(71, 95, 82)",
+      "color": "rgb(255, 255, 255)",
+      "emptyName": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  },
+  {
+    "palette": "sage",
+    "theme": "dark",
+    "page": "interaction",
+    "width": 1440,
+    "buttonFocus": {
+      "outline": "rgb(173, 197, 175) solid 3px",
+      "text": "Send email"
+    },
+    "buttonHover": {
+      "background": "rgb(192, 210, 195)",
+      "color": "rgb(20, 26, 30)",
+      "emptyName": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  }
+]

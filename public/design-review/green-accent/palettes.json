@@ -1,0 +1,76 @@
+{
+  "purpose": "Comparison only; no global accent replacement is committed or published to production.",
+  "baseCommit": "52d728b5437dc7598310af62113fdc2b3b939ee7",
+  "palettes": [
+    {
+      "id": "forest",
+      "name": "Forest",
+      "accent": "#236244",
+      "accentLight": "#7ECBA4",
+      "selection": "#DCEEE3",
+      "character": "Calm, grounded green with a soft mint highlight.",
+      "tokens": {
+        "light --accent": "#236244",
+        "dark --accent": "#7ECBA4",
+        "--accent-light (header highlights)": "#7ECBA4",
+        "--accent-selection": "#DCEEE3"
+      },
+      "contrast": {
+        "light paper": 7.24,
+        "light surface": 6.75,
+        "dark paper": 9.17,
+        "dark surface": 7.63,
+        "header highlight on #111315": 9.72,
+        "selection text on tint": 15.41
+      },
+      "minimumInteractiveContrast": 6.75
+    },
+    {
+      "id": "emerald",
+      "name": "Emerald",
+      "accent": "#087F5B",
+      "accentLight": "#64DAB1",
+      "selection": "#D8F3E8",
+      "character": "Clear, brighter green with a fresh mint highlight.",
+      "tokens": {
+        "light --accent": "#087F5B",
+        "dark --accent": "#64DAB1",
+        "--accent-light (header highlights)": "#64DAB1",
+        "--accent-selection": "#D8F3E8"
+      },
+      "contrast": {
+        "light paper": 5.0,
+        "light surface": 4.66,
+        "dark paper": 10.2,
+        "dark surface": 8.49,
+        "header highlight on #111315": 10.82,
+        "selection text on tint": 15.88
+      },
+      "minimumInteractiveContrast": 4.66
+    },
+    {
+      "id": "sage",
+      "name": "Sage",
+      "accent": "#4B6656",
+      "accentLight": "#ADC5AF",
+      "selection": "#E3EBE4",
+      "character": "Muted botanical green with a quiet sage highlight.",
+      "tokens": {
+        "light --accent": "#4B6656",
+        "dark --accent": "#ADC5AF",
+        "--accent-light (header highlights)": "#ADC5AF",
+        "--accent-selection": "#E3EBE4"
+      },
+      "contrast": {
+        "light paper": 6.3,
+        "light surface": 5.87,
+        "dark paper": 9.52,
+        "dark surface": 7.92,
+        "header highlight on #111315": 10.09,
+        "selection text on tint": 15.31
+      },
+      "minimumInteractiveContrast": 5.87
+    }
+  ],
+  "scope": "Shared site accent links, social circles, brand period, hover, focus and selection. Existing project imagery, neutral buttons, article reading colors and print remain intact."
+}

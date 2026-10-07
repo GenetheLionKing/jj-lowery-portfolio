@@ -1,0 +1,13 @@
+{
+  "palette": "emerald",
+  "page": "form",
+  "theme": "light",
+  "width": 1440,
+  "file": "emerald-form-light-1440.jpg",
+  "accent": "#087f5b",
+  "actualWidth": 1440,
+  "focusOutline": "rgb(8, 127, 91) solid 3px",
+  "headerAccent": "#64dab1",
+  "scrollWidth": 1425,
+  "scrollY": 2
+}

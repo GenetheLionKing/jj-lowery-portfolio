@@ -1,0 +1,13 @@
+{
+  "palette": "sage",
+  "page": "home",
+  "theme": "light",
+  "width": 1440,
+  "file": "sage-home-light-1440.jpg",
+  "accent": "#4b6656",
+  "actualWidth": 1440,
+  "focusOutline": "rgb(196, 201, 207) none 3px",
+  "headerAccent": "#adc5af",
+  "scrollWidth": 1425,
+  "scrollY": 0
+}

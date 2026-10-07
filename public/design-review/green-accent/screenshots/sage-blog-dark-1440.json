@@ -1,0 +1,13 @@
+{
+  "palette": "sage",
+  "page": "blog",
+  "theme": "dark",
+  "width": 1440,
+  "file": "sage-blog-dark-1440.jpg",
+  "accent": "#adc5af",
+  "actualWidth": 1440,
+  "focusOutline": "rgb(245, 248, 250) none 3px",
+  "headerAccent": "#adc5af",
+  "scrollWidth": 1425,
+  "scrollY": 0
+}

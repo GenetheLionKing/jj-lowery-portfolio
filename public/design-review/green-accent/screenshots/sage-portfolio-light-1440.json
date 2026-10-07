@@ -1,0 +1,13 @@
+{
+  "palette": "sage",
+  "page": "portfolio",
+  "theme": "light",
+  "width": 1440,
+  "file": "sage-portfolio-light-1440.jpg",
+  "accent": "#4b6656",
+  "actualWidth": 1440,
+  "focusOutline": "rgb(48, 51, 56) none 3px",
+  "headerAccent": "#adc5af",
+  "scrollWidth": 1440,
+  "scrollY": 0
+}

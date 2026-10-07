@@ -1,0 +1,13 @@
+{
+  "palette": "forest",
+  "page": "contact",
+  "theme": "light",
+  "width": 1440,
+  "file": "forest-contact-light-1440.jpg",
+  "accent": "#236244",
+  "actualWidth": 1440,
+  "focusOutline": "rgb(48, 51, 56) none 3px",
+  "headerAccent": "#7ecba4",
+  "scrollWidth": 1425,
+  "scrollY": 0
+}

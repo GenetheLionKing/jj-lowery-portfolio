@@ -1,0 +1,13 @@
+{
+  "palette": "forest",
+  "page": "learn",
+  "theme": "dark",
+  "width": 1440,
+  "file": "forest-learn-dark-1440.jpg",
+  "accent": "#7ecba4",
+  "actualWidth": 1440,
+  "focusOutline": "rgb(245, 248, 250) none 3px",
+  "headerAccent": "#7ecba4",
+  "scrollWidth": 1440,
+  "scrollY": 0
+}

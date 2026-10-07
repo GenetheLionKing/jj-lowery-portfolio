@@ -1,0 +1,13 @@
+{
+  "palette": "sage",
+  "page": "form",
+  "theme": "dark",
+  "width": 390,
+  "file": "sage-form-dark-390.jpg",
+  "accent": "#adc5af",
+  "actualWidth": 390,
+  "focusOutline": "rgb(173, 197, 175) solid 3px",
+  "headerAccent": "#adc5af",
+  "scrollWidth": 375,
+  "scrollY": 601
+}

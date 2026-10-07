@@ -1,0 +1,13 @@
+{
+  "palette": "forest",
+  "page": "form",
+  "theme": "dark",
+  "width": 320,
+  "file": "forest-form-dark-320.jpg",
+  "accent": "#7ecba4",
+  "actualWidth": 320,
+  "focusOutline": "rgb(126, 203, 164) solid 3px",
+  "headerAccent": "#7ecba4",
+  "scrollWidth": 305,
+  "scrollY": 561
+}

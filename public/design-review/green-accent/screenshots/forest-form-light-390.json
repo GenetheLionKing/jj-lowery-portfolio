@@ -1,0 +1,13 @@
+{
+  "palette": "forest",
+  "page": "form",
+  "theme": "light",
+  "width": 390,
+  "file": "forest-form-light-390.jpg",
+  "accent": "#236244",
+  "actualWidth": 390,
+  "focusOutline": "rgb(35, 98, 68) solid 3px",
+  "headerAccent": "#7ecba4",
+  "scrollWidth": 375,
+  "scrollY": 601
+}
