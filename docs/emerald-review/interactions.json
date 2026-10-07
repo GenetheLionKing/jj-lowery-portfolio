@@ -1,0 +1,22 @@
+[
+  {
+    "theme": "light",
+    "buttonHover": {
+      "background": "rgb(8, 127, 91)",
+      "color": "rgb(255, 255, 255)",
+      "fieldsEmpty": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  },
+  {
+    "theme": "dark",
+    "buttonHover": {
+      "background": "rgb(100, 218, 177)",
+      "color": "rgb(20, 26, 30)",
+      "fieldsEmpty": true,
+      "focusedField": "email",
+      "hover": true
+    }
+  }
+]

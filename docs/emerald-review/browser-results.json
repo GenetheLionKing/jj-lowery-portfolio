@@ -1,0 +1,2884 @@
+[
+  {
+    "page": "contact",
+    "theme": "light",
+    "width": 1440,
+    "file": "contact-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(179, 204, 202) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "contact",
+    "theme": "dark",
+    "width": 1440,
+    "file": "contact-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "form-focus",
+    "theme": "light",
+    "width": 320,
+    "file": "form-focus-light-320.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 320,
+    "focus": "rgb(8, 127, 91) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 305,
+    "selection": "#d8f3e8",
+    "scrollY": 688
+  },
+  {
+    "page": "form-focus",
+    "theme": "dark",
+    "width": 320,
+    "file": "form-focus-dark-320.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 320,
+    "focus": "rgb(100, 218, 177) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 305,
+    "selection": "#d8f3e8",
+    "scrollY": 568
+  },
+  {
+    "page": "form-focus",
+    "theme": "light",
+    "width": 390,
+    "file": "form-focus-light-390.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(8, 127, 91) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8",
+    "scrollY": 661
+  },
+  {
+    "page": "form-focus",
+    "theme": "dark",
+    "width": 390,
+    "file": "form-focus-dark-390.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(100, 218, 177) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8",
+    "scrollY": 658
+  },
+  {
+    "page": "form-focus",
+    "theme": "light",
+    "width": 768,
+    "file": "form-focus-light-768.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 768,
+    "focus": "rgb(8, 127, 91) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 753,
+    "selection": "#d8f3e8",
+    "scrollY": 211
+  },
+  {
+    "page": "form-focus",
+    "theme": "dark",
+    "width": 768,
+    "file": "form-focus-dark-768.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 768,
+    "focus": "rgb(100, 218, 177) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 753,
+    "selection": "#d8f3e8",
+    "scrollY": 211
+  },
+  {
+    "page": "form-focus",
+    "theme": "light",
+    "width": 1440,
+    "file": "form-focus-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(8, 127, 91) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8",
+    "scrollY": 31
+  },
+  {
+    "page": "form-focus",
+    "theme": "dark",
+    "width": 1440,
+    "file": "form-focus-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) solid 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8",
+    "scrollY": 31
+  },
+  {
+    "page": "home",
+    "theme": "light",
+    "width": 1440,
+    "file": "home-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "home",
+    "theme": "dark",
+    "width": 1440,
+    "file": "home-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "about",
+    "theme": "light",
+    "width": 1440,
+    "file": "about-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1440,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "about",
+    "theme": "dark",
+    "width": 1440,
+    "file": "about-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1440,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "portfolio",
+    "theme": "light",
+    "width": 1440,
+    "file": "portfolio-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1440,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "portfolio",
+    "theme": "dark",
+    "width": 1440,
+    "file": "portfolio-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1440,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "learn",
+    "theme": "light",
+    "width": 1440,
+    "file": "learn-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1440,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "learn",
+    "theme": "dark",
+    "width": 1440,
+    "file": "learn-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1440,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "blog",
+    "theme": "light",
+    "width": 1440,
+    "file": "blog-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "blog",
+    "theme": "dark",
+    "width": 1440,
+    "file": "blog-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "resume",
+    "theme": "light",
+    "width": 1440,
+    "file": "resume-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "eyebrow",
+        "color": "rgb(8, 127, 91)",
+        "element": "P",
+        "text": "Résumé / James (JJ) Lowery"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Professional summary"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Core skills"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Selected systems work"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Professional experience"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "resume",
+    "theme": "dark",
+    "width": 1440,
+    "file": "resume-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "eyebrow",
+        "color": "rgb(100, 218, 177)",
+        "element": "P",
+        "text": "Résumé / James (JJ) Lowery"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Professional summary"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Core skills"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Selected systems work"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Professional experience"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "article",
+    "theme": "light",
+    "width": 1440,
+    "file": "article-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "article",
+    "theme": "dark",
+    "width": 1440,
+    "file": "article-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "case",
+    "theme": "light",
+    "width": 1440,
+    "file": "case-light-1440.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "case",
+    "theme": "dark",
+    "width": 1440,
+    "file": "case-dark-1440.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 1440,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 1425,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "home",
+    "theme": "light",
+    "width": 390,
+    "file": "home-light-390.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(114, 216, 181) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "home",
+    "theme": "dark",
+    "width": 390,
+    "file": "home-dark-390.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "contact",
+    "theme": "light",
+    "width": 390,
+    "file": "contact-light-390.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "sr-only",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "contact",
+    "theme": "dark",
+    "width": 390,
+    "file": "contact-dark-390.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "LinkedIn (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "X (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "A",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Instagram (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": " (opens in a new tab)"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "resume",
+    "theme": "light",
+    "width": 390,
+    "file": "resume-light-390.jpg",
+    "accent": "#087f5b",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-dark",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to dark mode"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "eyebrow",
+        "color": "rgb(8, 127, 91)",
+        "element": "P",
+        "text": "Résumé / James (JJ) Lowery"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Professional summary"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Core skills"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Selected systems work"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "",
+        "color": "rgb(8, 127, 91)",
+        "element": "H2",
+        "text": "Professional experience"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8"
+  },
+  {
+    "page": "resume",
+    "theme": "dark",
+    "width": 390,
+    "file": "resume-dark-390.jpg",
+    "accent": "#64dab1",
+    "active": "BUTTON",
+    "actualWidth": 390,
+    "focus": "rgb(100, 218, 177) none 3px",
+    "greens": [
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-toggle",
+        "color": "rgb(100, 218, 177)",
+        "element": "BUTTON",
+        "text": "Switch to light modeSwitch to dark mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "theme-to-light",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "svg",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "circle",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "path",
+        "text": ""
+      },
+      {
+        "background": "rgb(17, 19, 21)",
+        "class": "sr-only",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "Switch to light mode"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "eyebrow",
+        "color": "rgb(100, 218, 177)",
+        "element": "P",
+        "text": "Résumé / James (JJ) Lowery"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Professional summary"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Core skills"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Selected systems work"
+      },
+      {
+        "background": "rgb(25, 34, 40)",
+        "class": "",
+        "color": "rgb(100, 218, 177)",
+        "element": "H2",
+        "text": "Professional experience"
+      },
+      {
+        "background": "rgb(20, 26, 30)",
+        "class": "brand-period",
+        "color": "rgb(100, 218, 177)",
+        "element": "SPAN",
+        "text": "."
+      }
+    ],
+    "headerAccent": "#64dab1",
+    "scrollWidth": 375,
+    "selection": "#d8f3e8"
+  }
+]

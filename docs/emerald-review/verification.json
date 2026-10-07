@@ -1,0 +1,81 @@
+{
+  "change": "Approved Emerald palette sitewide; light #087F5B, dark/header #64DAB1, selection #D8F3E8",
+  "baseCommit": "52d728b5437dc7598310af62113fdc2b3b939ee7",
+  "browser": "User\u2019s Codex In-app Browser",
+  "checks": {
+    "pnpm check": "PASS",
+    "eslintWarnings": 0,
+    "typecheck": "PASS",
+    "tests": 39,
+    "passed": 39,
+    "failed": 0,
+    "productionBuild": "PASS",
+    "builtHttpRoutes": "PASS",
+    "noJavaScriptContact": "PASS: real form POST, field errors, unavailable-provider notice, retained values and no false success; mail disabled",
+    "git diff --check": "PASS"
+  },
+  "captureCount": 32,
+  "desktopRoutes": [
+    "/",
+    "/about/",
+    "/portfolio/",
+    "/learn/",
+    "/blog/",
+    "/contact/",
+    "/resume/",
+    "/blog/how-a-google-sheet-became-vector/",
+    "/work/vector-income-architecture/"
+  ],
+  "mobileRoutes": [
+    "/",
+    "/contact/",
+    "/resume/"
+  ],
+  "formWidths": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "widthsAndOverflow": "All captures: actual width equals requested width; no horizontal overflow",
+  "keyboard": "Message \u2192 Tab focuses Send email; outline 3px in the matching Emerald color at every checked width/theme",
+  "hover": "Light rgb(8,127,91) with white text; dark rgb(100,218,177) with rgb(20,26,30) text. Native empty-form validation prevents submission; no data entered.",
+  "minimumCheckedTextControlContrast": 4.66,
+  "actuallyReviewedScreenshots": [
+    "contact-light-1440.jpg",
+    "contact-dark-1440.jpg",
+    "home-light-1440.jpg",
+    "about-light-1440.jpg",
+    "portfolio-light-1440.jpg",
+    "learn-dark-1440.jpg",
+    "blog-dark-1440.jpg",
+    "resume-light-1440.jpg",
+    "article-light-1440.jpg",
+    "case-dark-1440.jpg",
+    "home-light-390.jpg",
+    "home-dark-390.jpg",
+    "contact-dark-390.jpg",
+    "resume-dark-390.jpg",
+    "form-focus-light-320.jpg",
+    "form-focus-light-390.jpg",
+    "form-focus-dark-390.jpg",
+    "form-focus-light-768.jpg",
+    "form-focus-dark-768.jpg",
+    "form-focus-light-1440.jpg",
+    "form-focus-dark-1440.jpg",
+    "button-hover-light-1440.jpg",
+    "button-hover-dark-1440.jpg"
+  ],
+  "mailTestsSentThisPass": 0,
+  "preserved": "Layout, content, approved portrait, depicted project colors, neutral article reading colors, routes, contact logic, reduced-motion rules and print layout",
+  "limits": [
+    "Actual 200% browser zoom unavailable; narrow reflow checked.",
+    "OS reduced-motion preference not changed; existing CSS suppression inspected.",
+    "Print CSS and its light-theme tokens inspected; no new rendered print PDF generated.",
+    "Review screenshots are viewport crops; remaining page content can be scrolled."
+  ]
+}

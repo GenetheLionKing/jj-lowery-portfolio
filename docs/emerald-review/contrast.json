@@ -1,0 +1,76 @@
+{
+  "method": "Relative sRGB luminance; actual rendered foreground/background colors and final control/selection token pairs",
+  "minimumTextAndControlRatio": 4.66,
+  "pairs": [
+    {
+      "foreground": "rgb(8, 127, 91)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 5.0
+    },
+    {
+      "foreground": "rgb(100, 218, 177)",
+      "background": "rgb(17, 19, 21)",
+      "ratio": 10.82
+    },
+    {
+      "foreground": "rgb(100, 218, 177)",
+      "background": "rgb(20, 26, 30)",
+      "ratio": 10.2
+    },
+    {
+      "foreground": "rgb(100, 218, 177)",
+      "background": "rgb(25, 34, 40)",
+      "ratio": 9.38
+    },
+    {
+      "foreground": "#087F5B",
+      "background": "#ffffff",
+      "ratio": 5.0
+    },
+    {
+      "foreground": "#087F5B",
+      "background": "#f6f7f8",
+      "ratio": 4.66
+    },
+    {
+      "foreground": "#64DAB1",
+      "background": "#141a1e",
+      "ratio": 10.2
+    },
+    {
+      "foreground": "#64DAB1",
+      "background": "#202a31",
+      "ratio": 8.49
+    },
+    {
+      "foreground": "#64DAB1",
+      "background": "#111315",
+      "ratio": 10.82
+    },
+    {
+      "foreground": "#111315",
+      "background": "#D8F3E8",
+      "ratio": 15.88
+    }
+  ],
+  "decorativeBrandPeriod": {
+    "note": "The tiny colored period is part of the brand logo; the accessible home-link name and legible wordmark do not depend on this decoration. Excluded from text/control minimum.",
+    "pairs": [
+      [
+        "rgb(100, 218, 177)",
+        "rgb(20, 26, 30)",
+        10.2
+      ],
+      [
+        "rgb(100, 218, 177)",
+        "rgb(17, 19, 21)",
+        10.82
+      ],
+      [
+        "rgb(100, 218, 177)",
+        "rgb(255, 255, 255)",
+        1.72
+      ]
+    ]
+  }
+}
