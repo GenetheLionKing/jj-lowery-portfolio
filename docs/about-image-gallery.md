@@ -1,4 +1,4 @@
-# About image gallery — draft PR
+# About image gallery
 
 The hero gallery now belongs to the About document. **Publish → About → Image gallery** uses Sanity's native image picker and sortable grid. Choose one to six images, add meaningful alternative text and optional captions, and drag them into the intended order. Missing, unset or explicitly empty gallery data hides the strip. Clearing the last image can safely unset the field; there is no fallback to Post selections and no initial gallery is written to existing documents.
 
@@ -8,7 +8,7 @@ Images retain their intrinsic dimensions. Thumbnails and the viewer use `object-
 
 ## Migration and release
 
-1. Review this draft PR before merging. No production release, image upload, CMS mutation or publication is performed by this work.
+1. Release the approved schema and viewer before using the field. A code release does not upload, choose or publish any gallery images, and does not modify existing About content.
 2. After the feature is approved and released, open **About → Image gallery**. Select the specific existing assets you want or upload your own images. Uploads are public even while the About document remains a draft. No images are copied from Posts or chosen automatically.
 3. Review alt text, optional captions and order in the native form. The About editor currently has no Preview tab; the existing Post Preview tab is separate. The public site continues to show only published About data.
 4. Publish the About document only when you approve its complete draft, including other pending section/text changes. This PR does not publish it. The existing public refresh interval is 60 seconds.
@@ -19,4 +19,4 @@ The old `about-gallery` Post tag and saved choices remain intact, with an explic
 
 The no-browser constraint overrides the repository's browser/screenshot workflow. Tests use the real native schema validator, published adapters, server-rendered HTML and React's in-memory component renderer. They check one to six images, reorder/serialization, null/unset/empty behavior, alt/assets/key validation, equal assets with distinct keys, Post independence, story-link preservation, full-image fallback links and the viewer's actual open/navigation/close/focus/scroll handlers. Mock element methods are ordinary JavaScript objects; they do not launch or render a browser.
 
-Actual browser focus/inert behavior, keyboard activation, responsive appearance at 320/390/768/1440 pixels, zoom, contrast and screen-reader output remain unverified. The supplementary Library screenshot was not inspected. No screenshot or visual certification is claimed. The PR remains a draft and is not merged.
+Actual browser focus/inert behavior, keyboard activation, responsive appearance at 320/390/768/1440 pixels, zoom, contrast and screen-reader output remain unverified. The supplementary Library screenshot was not inspected. No screenshot or visual certification is claimed.
