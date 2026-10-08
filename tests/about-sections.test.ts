@@ -16,6 +16,15 @@ import { seedAbout, seedCases, seedArticles } from "../content/seed";
 import { aboutProposal } from "../content/about-proposal";
 import { AboutSectionsInput } from "../studio/about-sections-input";
 import { schemaTypes } from "../studio/schema";
+import { createSchema, toMutationPatches, type Path } from "sanity";
+import {
+  AboutTextBlock,
+  aboutAlignmentPath,
+  aboutAlignmentPatches,
+} from "../studio/about-text-block";
+import { ArticleBody } from "../components/article-body";
+import { aboutBodySchema, richTextSchema } from "../content/model";
+import { blockAlignment } from "../content/about-presentation";
 
 const config = { projectId: "validation", dataset: "portfolio" };
 const image = {
@@ -605,4 +614,426 @@ test("Studio validates native section documents and keeps editor/body contracts 
     postBody.of.map((item) => item.type),
     ["image", "systemDiagram", "block"],
   );
+});
+
+test("About alignment survives native JSON and published adapters without changing rich text or section order", () => {
+  const rich = [
+    {
+      ...paragraph("Formatted paragraph", "formatted"),
+      children: [
+        {
+          _type: "span",
+          _key: "span",
+          text: "Formatted paragraph",
+          marks: ["strong", "em", "contact"],
+        },
+      ],
+      markDefs: [{ _type: "link", _key: "contact", href: "/contact/" }],
+    },
+    {
+      ...paragraph("List heading", "list"),
+      style: "h3",
+      listItem: "bullet",
+      level: 2,
+    },
+    { ...paragraph("Quote", "quote"), style: "blockquote" },
+  ];
+  const raw = {
+    _id: "about",
+    _type: "about",
+    title: "About",
+    introduction: [],
+    sections: [
+      {
+        ...sections[1],
+        image: nativeImage,
+        imageWidth: 600,
+        leftHeadlineAlignment: "center",
+        rightHeadlineAlignment: "right",
+        leftBody: rich,
+        rightBody: [paragraph("Right paragraph", "right")],
+        leftBodyAlignments: [
+          {
+            _type: "aboutTextAlignment",
+            _key: "formatted",
+            alignment: "center",
+          },
+          { _type: "aboutTextAlignment", _key: "quote", alignment: "right" },
+        ],
+        rightBodyAlignments: [
+          { _type: "aboutTextAlignment", _key: "right", alignment: "right" },
+        ],
+      },
+    ],
+  };
+  const original = structuredClone(raw);
+  const serialized = JSON.parse(JSON.stringify(raw));
+  const native = aboutSchema.parse(nativeAboutData(serialized, config));
+  const published = decodePublishedContent([
+    { ...native, _id: "about", _type: "about" },
+  ]).about!;
+  assert.deepEqual(published.sections, native.sections);
+  const triple = published.sections![0];
+  assert.equal(triple._type, "aboutCopyImageCopy");
+  if (triple._type !== "aboutCopyImageCopy") return;
+  assert.deepEqual(triple.leftBody, rich);
+  assert.equal(triple.leftHeadlineAlignment, "center");
+  assert.equal(triple.rightHeadlineAlignment, "right");
+  assert.equal(triple.imageWidth, 600);
+  assert.equal(
+    blockAlignment(triple.leftBodyAlignments, "formatted"),
+    "center",
+  );
+  assert.equal(blockAlignment(triple.rightBodyAlignments, "right"), "right");
+  assert.equal(blockAlignment(triple.leftBodyAlignments, "list"), "left");
+  assert.equal(blockAlignment(triple.leftBodyAlignments, "missing"), "left");
+  assert.deepEqual(raw, original);
+  assert.equal(
+    publishedQuery.includes("sections[]{..."),
+    true,
+    "Presentation settings stay in the existing published-only projection",
+  );
+});
+
+test("native alignment form patches touch only keyed About metadata and reset Left without replacing paragraphs", () => {
+  const nativeRequire = createRequire(
+    createRequire(import.meta.url).resolve("sanity"),
+  );
+  const { Mutation } = nativeRequire("@sanity/mutator");
+  const sectionKey = "section",
+    paragraphKey = "paragraph";
+  const path: Path = [
+    "sections",
+    { _key: sectionKey },
+    "leftBody",
+    { _key: paragraphKey },
+  ];
+  const alignmentPath = aboutAlignmentPath(path)!;
+  assert.deepEqual(alignmentPath, [
+    "sections",
+    { _key: sectionKey },
+    "leftBodyAlignments",
+  ]);
+  assert.deepEqual(
+    aboutAlignmentPath([
+      "sections",
+      { _key: sectionKey },
+      "rightBody",
+      { _key: paragraphKey },
+    ]),
+    ["sections", { _key: sectionKey }, "rightBodyAlignments"],
+  );
+  assert.deepEqual(
+    aboutAlignmentPath([
+      "sections",
+      { _key: sectionKey },
+      "body",
+      { _key: paragraphKey },
+    ]),
+    ["sections", { _key: sectionKey }, "bodyAlignments"],
+  );
+  assert.equal(aboutAlignmentPath([]), undefined);
+  assert.equal(
+    aboutAlignmentPath(["body", { _key: paragraphKey }]),
+    undefined,
+    "Never patch Blog or a root body",
+  );
+  const rich = [
+    {
+      ...paragraph("Keep this linked list", paragraphKey),
+      listItem: "number",
+      level: 2,
+      children: [
+        {
+          _type: "span",
+          _key: "span",
+          text: "Keep this linked list",
+          marks: ["strong", "contact"],
+        },
+      ],
+      markDefs: [{ _type: "link", _key: "contact", href: "/contact/" }],
+    },
+  ];
+  let doc = {
+    _id: "about",
+    _type: "about",
+    sections: [
+      {
+        _key: sectionKey,
+        leftBody: rich,
+        rightBody: [paragraph("Right", "other")],
+      },
+    ],
+  };
+  const original = structuredClone(doc);
+  const apply = (
+    alignment: "left" | "center" | "right",
+    key = paragraphKey,
+  ) => {
+    const current =
+      "leftBodyAlignments" in doc.sections[0]
+        ? doc.sections[0].leftBodyAlignments
+        : undefined;
+    const patches = aboutAlignmentPatches(
+      alignmentPath,
+      key,
+      alignment,
+      current,
+    );
+    if (patches.length)
+      doc = new Mutation({
+        mutations: toMutationPatches(patches).map((patch) => ({
+          patch: { id: "about", ...patch },
+        })),
+      }).apply(doc);
+  };
+  apply("center");
+  apply("right", "unrelated");
+  apply("right");
+  const current = doc.sections[0] as (typeof doc.sections)[0] & {
+    leftBodyAlignments: unknown;
+  };
+  assert.equal(
+    blockAlignment(current.leftBodyAlignments, paragraphKey),
+    "right",
+  );
+  apply("left");
+  const restored = doc.sections[0] as (typeof doc.sections)[0] & {
+    leftBodyAlignments: unknown;
+  };
+  assert.equal(
+    blockAlignment(restored.leftBodyAlignments, paragraphKey),
+    "left",
+  );
+  assert.equal(
+    blockAlignment(restored.leftBodyAlignments, "unrelated"),
+    "right",
+  );
+  assert.deepEqual(doc.sections[0].leftBody, original.sections[0].leftBody);
+  assert.deepEqual(doc.sections[0].rightBody, original.sections[0].rightBody);
+  assert.deepEqual(
+    aboutAlignmentPatches(alignmentPath, paragraphKey, "left", undefined),
+    [],
+  );
+  const cleanup = aboutAlignmentPatches(
+    alignmentPath,
+    paragraphKey,
+    "center",
+    [
+      { _type: "aboutTextAlignment", _key: "removed", alignment: "right" },
+      { _type: "aboutTextAlignment", _key: paragraphKey, alignment: "right" },
+    ],
+    new Set([paragraphKey]),
+  );
+  assert.equal(cleanup[0].type, "unset");
+  assert.deepEqual(cleanup[0].path, [...alignmentPath, { _key: "removed" }]);
+  assert.equal(cleanup[1].type, "set");
+});
+
+test("About renders independent alignment on paragraphs, headings, quotes and list items; Blog stays unchanged", () => {
+  const rich = aboutBodySchema.parse([
+    {
+      ...paragraph("Linked bold", "p"),
+      children: [
+        {
+          _type: "span",
+          _key: "span",
+          text: "Linked bold",
+          marks: ["strong", "link"],
+        },
+      ],
+      markDefs: [{ _type: "link", _key: "link", href: "/contact/" }],
+    },
+    { ...paragraph("Heading", "h"), style: "h2" },
+    { ...paragraph("Quote", "q"), style: "blockquote" },
+    { ...paragraph("Bullet", "b"), listItem: "bullet", level: 1 },
+    {
+      ...paragraph("Number heading", "n"),
+      style: "h3",
+      listItem: "number",
+      level: 1,
+    },
+    paragraph("Default paragraph", "default"),
+  ]);
+  const metadata = rich
+    .filter((block) => block._type === "block" && block._key !== "default")
+    .map((block) => ({
+      _type: "aboutTextAlignment" as const,
+      _key: block._key,
+      alignment: "center" as const,
+    }));
+  const triple = aboutSectionSchema.parse({
+    ...sections[1],
+    leftHeadlineAlignment: "right",
+    rightHeadlineAlignment: "center",
+    leftBody: rich,
+    leftBodyAlignments: metadata,
+  });
+  const html = renderToStaticMarkup(
+    createElement(AboutSectionsFixture, { section: triple }),
+  );
+  for (const snippet of [
+    '<h2 style="text-align:right">Left copy</h2>',
+    '<h2 style="text-align:center">Right copy</h2>',
+    '<p style="text-align:center">',
+    "<strong>Linked bold</strong>",
+    '<a href="/contact/">',
+    '<h2 style="text-align:center">Heading</h2>',
+    '<blockquote style="text-align:center">Quote</blockquote>',
+    '<li style="text-align:center">Bullet</li>',
+    '<li style="text-align:center"><h3 style="text-align:center">Number heading</h3></li>',
+    "<p>Default paragraph</p>",
+  ])
+    assert.ok(html.includes(snippet), snippet);
+  const blog = renderToStaticMarkup(
+    createElement(ArticleBody, {
+      body: richTextSchema.parse(rich),
+      blockAlignments: metadata,
+    }),
+  );
+  const alignedBody = renderToStaticMarkup(
+    createElement(ArticleBody, {
+      body: rich,
+      alignAboutBlocks: true,
+      blockAlignments: metadata,
+    }),
+  );
+  assert.equal(
+    alignedBody.replace(/ style="text-align:(center|right)"/g, ""),
+    blog,
+    "Alignment retains identical native semantic markup",
+  );
+  assert.doesNotMatch(blog, /text-align/);
+  assert.ok(blog.includes("<h2>Heading</h2>"));
+  assert.ok(blog.includes("<li>Bullet</li>"));
+  assert.equal(triple._type, "aboutCopyImageCopy");
+  if (triple._type === "aboutCopyImageCopy")
+    assert.deepEqual(triple.leftBody, rich);
+});
+
+function AboutSectionsFixture({ section }: { section: AboutSection }) {
+  return createElement(AboutView, {
+    about: aboutSchema.parse({ ...seedAbout, sections: [section] }),
+    cases: [],
+    articles: [],
+  });
+}
+
+test("Studio compiles scoped native block controls, independent headline radios and optional image width", () => {
+  const compiled = createSchema({
+    name: "alignment-regression",
+    types: schemaTypes,
+  });
+  const issues =
+    (
+      compiled as typeof compiled & {
+        _validation?: { problems: { severity: string; message: string }[] }[];
+      }
+    )._validation ?? [];
+  assert.deepEqual(
+    issues
+      .flatMap((group) => group.problems)
+      .filter((problem) => problem.severity === "error"),
+    [],
+  );
+  for (const name of [
+    "aboutImageLeft",
+    "aboutCopyImageCopy",
+    "aboutImageRight",
+    "aboutImageOnly",
+  ]) {
+    const type = schemaTypes.find((type) => type.name === name)!;
+    const width = type.fields!.find((field) => field.name === "imageWidth")!;
+    assert.equal(width.type, "number");
+    assert.equal("initialValue" in width, false);
+    for (const field of type.fields!.filter((field) =>
+      ["body", "leftBody", "rightBody"].includes(field.name),
+    )) {
+      const rich = field as typeof field & {
+        components?: unknown;
+        of: {
+          type: string;
+          components?: { block?: unknown };
+          fields?: unknown;
+        }[];
+      };
+      assert.equal(
+        rich.components,
+        undefined,
+        "Use native input, toolbar, resize and fullscreen",
+      );
+      const block = rich.of.find((member) => member.type === "block")!;
+      assert.equal(block.components?.block, AboutTextBlock);
+      assert.equal(
+        block.fields,
+        undefined,
+        "Installed Sanity rejects block field extensions",
+      );
+      assert.ok(type.fields!.find((f) => f.name === `${field.name}Alignments`));
+    }
+  }
+  const post = compiled.get("post") as {
+    fields: {
+      name: string;
+      type: { of?: { name: string; components?: unknown }[] };
+    }[];
+  };
+  const postBlock = post.fields
+    .find((field) => field.name === "body")!
+    .type.of!.find((type) => type.name === "block")!;
+  assert.equal(postBlock.components, undefined);
+});
+
+test("optional image widths preserve intrinsic dimensions and reject unsafe sizes and presentation values", () => {
+  for (const section of sections) {
+    const legacy = aboutSectionSchema.parse(section);
+    assert.equal(legacy.imageWidth, undefined);
+    const base = renderToStaticMarkup(
+      createElement(AboutSectionsFixture, { section: legacy }),
+    );
+    assert.doesNotMatch(
+      base,
+      /--about-image-width|about-authored-section--sized|text-align/,
+    );
+    for (const imageWidth of [160, 600, 800]) {
+      const sized = aboutSectionSchema.parse({ ...section, imageWidth });
+      const html = renderToStaticMarkup(
+        createElement(AboutSectionsFixture, { section: sized }),
+      );
+      assert.ok(html.includes(`--about-image-width:${imageWidth}px`));
+      assert.ok(html.includes("about-authored-section--sized"));
+      assert.ok(html.includes('width="1640" height="1294"'));
+      assert.deepEqual(sized.image, legacy.image);
+    }
+    for (const imageWidth of [0, 159, 801, 1.5, "600", Infinity])
+      assert.equal(
+        aboutSectionSchema.safeParse({ ...section, imageWidth }).success,
+        false,
+      );
+  }
+  for (const alignment of ["justify", "middle", "center;display:none"]) {
+    assert.equal(
+      aboutSectionSchema.safeParse({
+        ...sections[0],
+        headlineAlignment: alignment,
+      }).success,
+      false,
+    );
+    assert.equal(
+      aboutSectionSchema.safeParse({
+        ...sections[1],
+        rightHeadlineAlignment: alignment,
+      }).success,
+      false,
+    );
+    assert.equal(
+      aboutSectionSchema.safeParse({
+        ...sections[0],
+        bodyAlignments: [
+          { _type: "aboutTextAlignment", _key: "paragraph", alignment },
+        ],
+      }).success,
+      false,
+    );
+  }
 });

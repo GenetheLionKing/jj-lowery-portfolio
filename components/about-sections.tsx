@@ -1,15 +1,34 @@
 import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment, type CSSProperties } from "react";
 import { ArticleBody } from "./article-body";
 import { sizedPublicImage } from "@/content/media";
-import type { AboutSection, RichText } from "@/content/model";
+import type { AboutBody, AboutSection } from "@/content/model";
+import {
+  alignmentStyle,
+  type AboutBlockAlignment,
+  type TextAlignment,
+} from "@/content/about-presentation";
 
-function Copy({ headline, body }: { headline: string; body: RichText }) {
+function Copy({
+  headline,
+  headlineAlignment,
+  body,
+  bodyAlignments,
+}: {
+  headline: string;
+  headlineAlignment?: TextAlignment;
+  body: AboutBody;
+  bodyAlignments?: AboutBlockAlignment[];
+}) {
   return (
     <div className="about-section-copy">
-      <h2>{headline}</h2>
+      <h2 style={alignmentStyle(headlineAlignment)}>{headline}</h2>
       <div className="reading-body about-section-body">
-        <ArticleBody body={body} />
+        <ArticleBody
+          body={body}
+          alignAboutBlocks
+          blockAlignments={bodyAlignments}
+        />
       </div>
     </div>
   );
@@ -49,19 +68,39 @@ const sectionRenderers = {
   aboutImageLeft: ({ section }) => (
     <>
       <Media image={section.image} />
-      <Copy headline={section.headline} body={section.body} />
+      <Copy
+        headline={section.headline}
+        headlineAlignment={section.headlineAlignment}
+        body={section.body}
+        bodyAlignments={section.bodyAlignments}
+      />
     </>
   ),
   aboutCopyImageCopy: ({ section }) => (
     <>
-      <Copy headline={section.leftHeadline} body={section.leftBody} />
+      <Copy
+        headline={section.leftHeadline}
+        headlineAlignment={section.leftHeadlineAlignment}
+        body={section.leftBody}
+        bodyAlignments={section.leftBodyAlignments}
+      />
       <Media image={section.image} />
-      <Copy headline={section.rightHeadline} body={section.rightBody} />
+      <Copy
+        headline={section.rightHeadline}
+        headlineAlignment={section.rightHeadlineAlignment}
+        body={section.rightBody}
+        bodyAlignments={section.rightBodyAlignments}
+      />
     </>
   ),
   aboutImageRight: ({ section }) => (
     <>
-      <Copy headline={section.headline} body={section.body} />
+      <Copy
+        headline={section.headline}
+        headlineAlignment={section.headlineAlignment}
+        body={section.body}
+        bodyAlignments={section.bodyAlignments}
+      />
       <Media image={section.image} />
     </>
   ),
@@ -91,7 +130,14 @@ export function AboutSections({ sections }: { sections: AboutSection[] }) {
         <Fragment key={section._key}>
           <hr className="about-section-divider" aria-hidden="true" />
           <section
-            className={`about-authored-section about-authored-section--${section._type}`}
+            className={`about-authored-section about-authored-section--${section._type}${section.imageWidth !== undefined ? " about-authored-section--sized" : ""}`}
+            style={
+              section.imageWidth !== undefined
+                ? ({
+                    "--about-image-width": `${section.imageWidth}px`,
+                  } as CSSProperties)
+                : undefined
+            }
           >
             <SectionContent section={section} />
           </section>

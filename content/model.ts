@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { isSafeLink } from "./urls";
 import { postCtaFields, validatePostCta } from "./post-cta";
+import { aboutImageWidthBounds, textAlignments } from "./about-presentation";
 
 const text = z.string().trim().min(1).max(12000);
 const slug = z
@@ -105,6 +106,7 @@ export const richTextSchema = z
   .max(300);
 
 // About uses the same Portable Text contract, with prose and images only.
+const alignment = z.enum(textAlignments).optional();
 export const aboutBodySchema = z
   .array(z.discriminatedUnion("_type", [proseBlockSchema, richImageSchema]))
   .min(1)
@@ -118,27 +120,58 @@ export const aboutBodySchema = z
       ),
     "Write the section body",
   );
-const sectionFields = { _key: text, image: postImageSchema };
+const sectionFields = {
+  _key: text,
+  image: postImageSchema,
+  imageWidth: z
+    .number()
+    .int()
+    .min(aboutImageWidthBounds.min)
+    .max(aboutImageWidthBounds.max)
+    .optional(),
+};
+const blockAlignments = z
+  .array(
+    z.object({
+      _type: z.literal("aboutTextAlignment"),
+      _key: text,
+      alignment: z.enum(textAlignments),
+    }),
+  )
+  .max(300)
+  .refine(
+    (items) => new Set(items.map((item) => item._key)).size === items.length,
+    "Paragraph alignment keys must be unique",
+  )
+  .optional();
 export const aboutSectionSchema = z.discriminatedUnion("_type", [
   z.object({
     ...sectionFields,
     _type: z.literal("aboutImageLeft"),
     headline: text,
+    headlineAlignment: alignment,
     body: aboutBodySchema,
+    bodyAlignments: blockAlignments,
   }),
   z.object({
     ...sectionFields,
     _type: z.literal("aboutCopyImageCopy"),
     leftHeadline: text,
+    leftHeadlineAlignment: alignment,
     leftBody: aboutBodySchema,
+    leftBodyAlignments: blockAlignments,
     rightHeadline: text,
+    rightHeadlineAlignment: alignment,
     rightBody: aboutBodySchema,
+    rightBodyAlignments: blockAlignments,
   }),
   z.object({
     ...sectionFields,
     _type: z.literal("aboutImageRight"),
     headline: text,
+    headlineAlignment: alignment,
     body: aboutBodySchema,
+    bodyAlignments: blockAlignments,
   }),
   z.object({
     ...sectionFields,
@@ -312,6 +345,7 @@ export type AboutSection = z.infer<typeof aboutSectionSchema>;
 export type About = z.infer<typeof aboutSchema>;
 export type Resume = z.infer<typeof resumeSchema>;
 export type RichText = z.infer<typeof richTextSchema>;
+export type AboutBody = z.infer<typeof aboutBodySchema>;
 export type PublicContent = {
   mode: "seed" | "sanity";
   about: About | null;
