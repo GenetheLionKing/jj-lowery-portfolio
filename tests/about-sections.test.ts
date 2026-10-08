@@ -3,7 +3,12 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import type { ArrayOfObjectsInputProps } from "sanity";
+import type {
+  ArrayOfObjectsInputProps,
+  BlockProps,
+  ObjectInputProps,
+} from "sanity";
+import { act, create, type ReactTestRenderer } from "react-test-renderer";
 import { AboutView } from "../components/about-view";
 import {
   aboutSchema,
@@ -16,9 +21,16 @@ import { seedAbout, seedCases, seedArticles } from "../content/seed";
 import { aboutProposal } from "../content/about-proposal";
 import { AboutSectionsInput } from "../studio/about-sections-input";
 import { schemaTypes } from "../studio/schema";
-import { createSchema, toMutationPatches, type Path } from "sanity";
+import {
+  createSchema,
+  PatchEvent,
+  setIfMissing,
+  toMutationPatches,
+  type Path,
+} from "sanity";
 import {
   AboutTextBlock,
+  AboutSectionInput,
   aboutAlignmentPath,
   aboutAlignmentPatches,
 } from "../studio/about-text-block";
@@ -708,33 +720,26 @@ test("native alignment form patches touch only keyed About metadata and reset Le
     "leftBody",
     { _key: paragraphKey },
   ];
-  const alignmentPath = aboutAlignmentPath(path)!;
-  assert.deepEqual(alignmentPath, [
-    "sections",
-    { _key: sectionKey },
-    "leftBodyAlignments",
-  ]);
+  const sectionPath: Path = ["sections", { _key: sectionKey }];
+  const alignmentPath = aboutAlignmentPath(path, sectionPath)!;
+  assert.deepEqual(alignmentPath, ["leftBodyAlignments"]);
   assert.deepEqual(
-    aboutAlignmentPath([
-      "sections",
-      { _key: sectionKey },
-      "rightBody",
-      { _key: paragraphKey },
-    ]),
-    ["sections", { _key: sectionKey }, "rightBodyAlignments"],
+    aboutAlignmentPath(
+      ["sections", { _key: sectionKey }, "rightBody", { _key: paragraphKey }],
+      sectionPath,
+    ),
+    ["rightBodyAlignments"],
   );
   assert.deepEqual(
-    aboutAlignmentPath([
-      "sections",
-      { _key: sectionKey },
-      "body",
-      { _key: paragraphKey },
-    ]),
-    ["sections", { _key: sectionKey }, "bodyAlignments"],
+    aboutAlignmentPath(
+      ["sections", { _key: sectionKey }, "body", { _key: paragraphKey }],
+      sectionPath,
+    ),
+    ["bodyAlignments"],
   );
-  assert.equal(aboutAlignmentPath([]), undefined);
+  assert.equal(aboutAlignmentPath([], sectionPath), undefined);
   assert.equal(
-    aboutAlignmentPath(["body", { _key: paragraphKey }]),
+    aboutAlignmentPath(["body", { _key: paragraphKey }], sectionPath),
     undefined,
     "Never patch Blog or a root body",
   );
@@ -782,7 +787,11 @@ test("native alignment form patches touch only keyed About metadata and reset Le
     );
     if (patches.length)
       doc = new Mutation({
-        mutations: toMutationPatches(patches).map((patch) => ({
+        mutations: toMutationPatches(
+          PatchEvent.from(patches)
+            .prefixAll({ _key: sectionKey })
+            .prefixAll("sections").patches,
+        ).map((patch) => ({
           patch: { id: "about", ...patch },
         })),
       }).apply(doc);
@@ -828,6 +837,316 @@ test("native alignment form patches touch only keyed About metadata and reset Le
   assert.equal(cleanup[0].type, "unset");
   assert.deepEqual(cleanup[0].path, [...alignmentPath, { _key: "removed" }]);
   assert.equal(cleanup[1].type, "set");
+});
+
+// React's test renderer uses an in-memory tree: no DOM, browser or CMS session.
+Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
+
+test("the previous document-root path is a no-op through the native body-scoped callback", () => {
+  const nativeRequire = createRequire(
+    createRequire(import.meta.url).resolve("sanity"),
+  );
+  const { Mutation } = nativeRequire("@sanity/mutator");
+  const document = {
+    _id: "about",
+    _type: "about",
+    sections: [
+      { _type: "aboutCopyImageCopy", _key: "section", rightBody: body },
+    ],
+  };
+  const before = structuredClone(document);
+  const event = PatchEvent.from(
+    aboutAlignmentPatches(
+      ["sections", { _key: "section" }, "rightBodyAlignments"],
+      "paragraph",
+      "right",
+      undefined,
+    ),
+  )
+    .prepend(setIfMissing([]))
+    .prefixAll("rightBody")
+    .prepend(setIfMissing({ _type: "aboutCopyImageCopy", _key: "section" }))
+    .prefixAll({ _key: "section" })
+    .prepend(setIfMissing([]))
+    .prefixAll("sections");
+  assert.deepEqual(event.patches.at(-1)!.path, [
+    "sections",
+    { _key: "section" },
+    "rightBody",
+    "sections",
+    { _key: "section" },
+    "rightBodyAlignments",
+    -1,
+  ]);
+  const after = new Mutation({
+    mutations: toMutationPatches(event.patches).map((patch) => ({
+      patch: { id: "about", ...patch },
+    })),
+  }).apply(document);
+  assert.deepEqual(
+    after,
+    before,
+    "The duplicated path below the body array changes neither text nor alignment metadata",
+  );
+  assert.deepEqual(document, before);
+});
+
+test("Right's actual paragraph button emits section-relative patches and updates selected state and published markup", async () => {
+  type FixtureBlock = Omit<ReturnType<typeof paragraph>, "markDefs"> & {
+    markDefs: { _type: string; _key: string; href: string }[];
+  };
+  type FixtureSection = {
+    _type: string;
+    _key: string;
+    image: typeof nativeImage;
+    headline: string;
+    leftHeadline: string;
+    rightHeadline: string;
+    body: FixtureBlock[];
+    leftBody: FixtureBlock[];
+    rightBody: FixtureBlock[];
+  };
+  const nativeRequire = createRequire(
+    createRequire(import.meta.url).resolve("sanity"),
+  );
+  const { Mutation } = nativeRequire("@sanity/mutator");
+  const triple = sections[1];
+  assert.equal(triple._type, "aboutCopyImageCopy");
+  if (triple._type !== "aboutCopyImageCopy") return;
+  for (const bodyName of ["body", "leftBody", "rightBody"] as const) {
+    const sectionType =
+      bodyName === "body" ? "aboutImageRight" : "aboutCopyImageCopy";
+    const firstSection: FixtureSection = {
+      ...triple,
+      _type: sectionType,
+      _key: "editing",
+      image: nativeImage,
+      headline: "Single body",
+      body: [paragraph("Single body", "paragraph")],
+      leftBody: [paragraph("Left copy", "paragraph")],
+      rightBody: [
+        {
+          ...paragraph("Highlighted text", "paragraph"),
+          children: [
+            {
+              _type: "span",
+              _key: "span",
+              text: "Highlighted text",
+              marks: ["strong", "contact"],
+            },
+          ],
+          markDefs: [{ _type: "link", _key: "contact", href: "/contact/" }],
+        },
+        paragraph("Leave this paragraph alone", "other"),
+      ],
+    };
+    let document: {
+      _id: string;
+      _type: string;
+      title: string;
+      introduction: unknown[];
+      sections: FixtureSection[];
+    } = {
+      _id: "about",
+      _type: "about",
+      title: "About",
+      introduction: [],
+      sections: [firstSection, { ...firstSection, _key: "untouched" }],
+    };
+    const original = structuredClone(document);
+    const events: PatchEvent[] = [];
+    let readOnly = false;
+    let focused = true;
+    let selected = true; // Native TextBlock marks its containing block selected for a span selection.
+    let sectionPath: Path = ["sections", { _key: "editing" }];
+    let ownerEnabled = true;
+    let renderer!: ReactTestRenderer;
+    const element = () => {
+      const value = document.sections[0];
+      const block = value[bodyName][0];
+      const blockElement = createElement(AboutTextBlock, {
+        path: ["sections", { _key: "editing" }, bodyName, { _key: block._key }],
+        value: block,
+        readOnly: false,
+        focused,
+        selected,
+        renderDefault: () =>
+          createElement(
+            "p",
+            {},
+            block.children.map((span) => span.text).join(""),
+          ),
+      } as unknown as BlockProps);
+      if (!ownerEnabled) return blockElement;
+      return createElement(AboutSectionInput, {
+        path: sectionPath,
+        value,
+        readOnly,
+        onChange: (patch: Parameters<ObjectInputProps["onChange"]>[0]) => {
+          const event = PatchEvent.from(patch);
+          events.push(event);
+          // Sanity ArrayOfObjectsItem and ArrayOfObjectsField prefix exactly once.
+          const rooted = event
+            .prepend(setIfMissing({ _type: sectionType, _key: "editing" }))
+            .prefixAll({ _key: "editing" })
+            .prepend(setIfMissing([]))
+            .prefixAll("sections");
+          document = new Mutation({
+            mutations: toMutationPatches(rooted.patches).map((patch) => ({
+              patch: { id: "about", ...patch },
+            })),
+          }).apply(document);
+        },
+        renderDefault: () => blockElement,
+      } as unknown as ObjectInputProps);
+    };
+    const button = (alignment: string) =>
+      renderer.root.findByProps({
+        "aria-label": `Align paragraph ${alignment}`,
+      });
+    const click = async (alignment: string) => {
+      let prevented = false;
+      button(alignment).props.onMouseDown({
+        preventDefault: () => {
+          prevented = true;
+        },
+      });
+      assert.equal(
+        prevented,
+        true,
+        "The button must not steal the highlighted text's selection",
+      );
+      await act(async () => {
+        button(alignment).props.onClick();
+        renderer.update(element());
+      });
+    };
+    await act(async () => {
+      renderer = create(element());
+    });
+    try {
+      assert.equal(button("left").props["aria-pressed"], true);
+      await click("right");
+      assert.equal(
+        events.length,
+        1,
+        "One native patch event is emitted by the real Right handler",
+      );
+      assert.deepEqual(
+        events[0].patches.map((patch) => patch.path),
+        [[`${bodyName}Alignments`], [`${bodyName}Alignments`, -1]],
+      );
+      assert.equal(button("right").props["aria-pressed"], true);
+      assert.equal(button("right").props.style.fontWeight, 700);
+      assert.equal(button("left").props["aria-pressed"], false);
+      assert.equal(
+        renderer.root.findByType(AboutTextBlock).findByType("p").parent!.props
+          .style.textAlign,
+        "right",
+      );
+
+      const published = decodePublishedContent([
+        {
+          ...nativeAboutData(JSON.parse(JSON.stringify(document)), config),
+          _id: "about",
+          _type: "about",
+        },
+      ]).about!;
+      const html = renderToStaticMarkup(
+        createElement(AboutView, { about: published, cases: [], articles: [] }),
+      );
+      assert.ok(html.includes('style="text-align:right"'));
+      if (bodyName === "rightBody") {
+        assert.ok(
+          html.includes(
+            '<p style="text-align:right"><a href="/contact/"><strong>Highlighted text</strong></a></p>',
+          ),
+        );
+        assert.ok(html.includes("<p>Leave this paragraph alone</p>"));
+      }
+      await click("center");
+      assert.equal(button("center").props["aria-pressed"], true);
+      await click("left");
+      assert.equal(button("left").props["aria-pressed"], true);
+      assert.equal(button("right").props["aria-pressed"], false);
+      for (const field of ["body", "leftBody", "rightBody"] as const)
+        assert.deepEqual(
+          document.sections[0][field],
+          original.sections[0][field],
+          "Never replace text, marks, links, lists or neighboring bodies",
+        );
+      assert.deepEqual(document.sections[1], original.sections[1]);
+
+      // Keyboard focus on the controls keeps them visible after editor focus moves.
+      const wrapper = renderer.root
+        .findByType(AboutTextBlock)
+        .findByType("p").parent!;
+      await act(async () => {
+        wrapper.props.onFocusCapture();
+        focused = false;
+        selected = false;
+        renderer.update(element());
+      });
+      assert.equal(button("right").props.disabled, false);
+      await click("right");
+      assert.equal(button("right").props["aria-pressed"], true);
+      await act(async () => {
+        wrapper.props.onBlurCapture({
+          currentTarget: { contains: () => true },
+          relatedTarget: {},
+        });
+      });
+      assert.equal(button("right").props["aria-pressed"], true);
+      await act(async () => {
+        wrapper.props.onBlurCapture({
+          currentTarget: { contains: () => false },
+          relatedTarget: null,
+        });
+      });
+      assert.equal(renderer.root.findAllByProps({ role: "group" }).length, 0);
+
+      focused = true;
+      readOnly = true;
+      await act(async () => {
+        renderer.update(element());
+      });
+      const count = events.length;
+      assert.equal(button("right").props.disabled, true);
+      await click("center");
+      assert.equal(
+        events.length,
+        count,
+        "Read-only is enforced in the handler, including the owning input's state",
+      );
+      readOnly = false;
+      sectionPath = ["sections", { _key: "another-section" }];
+      await act(async () => {
+        renderer.update(element());
+      });
+      assert.equal(button("right").props.disabled, true);
+      await click("right");
+      assert.equal(
+        events.length,
+        count,
+        "A mismatched owning section cannot dispatch a patch",
+      );
+      ownerEnabled = false;
+      await act(async () => {
+        renderer.update(element());
+      });
+      assert.equal(button("right").props.disabled, true);
+      await click("right");
+      assert.equal(
+        events.length,
+        count,
+        "A block outside an About section cannot patch another field",
+      );
+    } finally {
+      await act(async () => {
+        renderer.unmount();
+      });
+    }
+  }
 });
 
 test("About renders independent alignment on paragraphs, headings, quotes and list items; Blog stays unchanged", () => {
@@ -943,6 +1262,11 @@ test("Studio compiles scoped native block controls, independent headline radios 
     "aboutImageOnly",
   ]) {
     const type = schemaTypes.find((type) => type.name === name)!;
+    if (name !== "aboutImageOnly")
+      assert.equal(
+        "components" in type ? type.components?.input : undefined,
+        AboutSectionInput,
+      );
     const width = type.fields!.find((field) => field.name === "imageWidth")!;
     assert.equal(width.type, "number");
     assert.equal("initialValue" in width, false);

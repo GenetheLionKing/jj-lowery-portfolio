@@ -2,6 +2,7 @@ import { defineField, defineType } from "sanity";
 import { aboutBodySchema, postImageSchema } from "../content/model";
 import { nativeImageData, nativeRichTextData } from "../content/native-media";
 import { AboutSectionsInput } from "./about-sections-input";
+import { AboutSectionInput } from "./about-text-block";
 import { richTextField } from "./rich-text";
 import {
   aboutImageWidthBounds,
@@ -141,6 +142,7 @@ export const aboutSectionTypes = [
     name: "aboutImageLeft",
     title: "Image left / copy right",
     type: "object",
+    components: { input: AboutSectionInput },
     fields: [
       image,
       imageWidth,
@@ -162,6 +164,7 @@ export const aboutSectionTypes = [
     name: "aboutCopyImageCopy",
     title: "Copy left / image / copy right",
     type: "object",
+    components: { input: AboutSectionInput },
     fields: [
       headline("leftHeadline", "Left headline"),
       headlineAlignment("leftHeadlineAlignment", "Left headline alignment"),
@@ -187,6 +190,7 @@ export const aboutSectionTypes = [
     name: "aboutImageRight",
     title: "Copy left / image right",
     type: "object",
+    components: { input: AboutSectionInput },
     fields: [
       headline(),
       headlineAlignment(),
