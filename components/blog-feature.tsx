@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import type { CatalogItem } from "@/content/catalog";
 import { contentHref } from "@/content/catalog";
-import { publicMedia, sizedPublicImage } from "@/content/media";
+import { publicMedia } from "@/content/media";
+import { imageThumbnail, postThumbnailSizes } from "@/content/image-thumbnail";
 
 const dateFormat = new Intl.DateTimeFormat("en-US", {
   month: "long",
@@ -28,10 +29,10 @@ export function BlogFeature({ item }: { item: CatalogItem }) {
         >
           <Image
             unoptimized
-            src={sizedPublicImage(image.src, 960)}
+            src={imageThumbnail(image, postThumbnailSizes.featured)}
             alt={image.alt}
-            width={image.width}
-            height={image.height}
+            width={postThumbnailSizes.featured.width}
+            height={postThumbnailSizes.featured.height}
             priority
             sizes="(max-width: 720px) calc(100vw - 40px), 680px"
           />

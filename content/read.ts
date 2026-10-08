@@ -11,7 +11,7 @@ import type { SanityPublicConfig } from "./config";
 const imageProjection = `"src": asset->url, "alt": alt, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height`;
 const bodyProjection = `[]{..., _type == "image" => {${imageProjection}, "caption": caption}}`;
 export const publishedQuery = `*[_type in ["about", "resume", "post", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc){...,
-    "mainImage": select(defined(mainImage.asset) => {"src": mainImage.asset->url, "alt": mainImage.alt, "width": mainImage.asset->metadata.dimensions.width, "height": mainImage.asset->metadata.dimensions.height}, defined(mainImage.src) => mainImage),
+    "mainImage": select(defined(mainImage.asset) => mainImage{..., ${imageProjection}}, defined(mainImage.src) => mainImage),
     "body": body${bodyProjection},
     _type == "about" && defined(gallery) => {"gallery": gallery[]{..., defined(asset) => {${imageProjection}}}},
     _type == "about" && defined(sections) => {"sections": sections[]{...,
