@@ -178,6 +178,68 @@ test("tagged gallery remains below the hero and before authored sections; untagg
   }
 });
 
+test("dividers mark each authored boundary once with no trailing or empty-page divider", () => {
+  for (const value of [undefined, [], sections.slice(0, 1), sections]) {
+    const about = {
+      ...seedAbout,
+      ...(value === undefined ? {} : { sections: value }),
+    };
+    const original = structuredClone(about);
+    const html = render(about);
+    const divider = '<hr class="about-section-divider" aria-hidden="true"/>';
+    const parts = html.split(divider);
+    assert.equal(parts.length - 1, value?.length ?? 0);
+    if (value?.length) {
+      assert.ok(parts[0].includes("profile-figure"));
+      assert.ok(parts[0].includes("</section>"));
+      for (let index = 1; index < parts.length; index++) {
+        assert.ok(
+          parts[index].startsWith('<section class="about-authored-section '),
+        );
+        assert.equal(
+          (parts[index].match(/class="about-authored-section /g) ?? []).length,
+          1,
+        );
+      }
+      assert.ok(
+        parts.at(-1)?.endsWith("</section></div>"),
+        "No divider follows the final section",
+      );
+    }
+    assert.deepEqual(about, original);
+  }
+});
+
+test("gallery separation stays independent before the first section divider and ordered rich content", () => {
+  const article = {
+    ...seedArticles[0],
+    title: "Gallery story",
+    mainImage: image,
+    tags: ["about-gallery"],
+  };
+  const about = aboutSchema.parse({ ...seedAbout, sections });
+  const original = structuredClone(about);
+  const html = renderToStaticMarkup(
+    createElement(AboutView, { about, cases: [], articles: [article] }),
+  );
+  const hero = html.indexOf("profile-figure");
+  const gallery = html.indexOf('aria-label="Personal stories"');
+  const divider = html.indexOf('class="about-section-divider"');
+  const first = html.indexOf("First section");
+  assert.ok(hero < gallery && gallery < divider && divider < first);
+  assert.equal(
+    (html.match(/class="about-section-divider"/g) ?? []).length,
+    sections.length,
+  );
+  assert.ok(
+    html.indexOf("Independent left") < html.indexOf("Independent right"),
+  );
+  assert.ok(
+    html.indexOf("Third section") < html.indexOf("Optional image caption"),
+  );
+  assert.deepEqual(about, original);
+});
+
 test("layouts repeat beyond six with stable keys, stored order and unchanged source", () => {
   const repeated = Array.from({ length: 9 }, (_, index) => ({
     ...sections[0],

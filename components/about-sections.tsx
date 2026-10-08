@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Fragment } from "react";
 import { ArticleBody } from "./article-body";
 import { sizedPublicImage } from "@/content/media";
 import type { AboutSection, RichText } from "@/content/model";
@@ -87,12 +88,14 @@ export function AboutSections({ sections }: { sections: AboutSection[] }) {
   return (
     <div className="container about-sections">
       {sections.map((section) => (
-        <section
-          key={section._key}
-          className={`about-authored-section about-authored-section--${section._type}`}
-        >
-          <SectionContent section={section} />
-        </section>
+        <Fragment key={section._key}>
+          <hr className="about-section-divider" aria-hidden="true" />
+          <section
+            className={`about-authored-section about-authored-section--${section._type}`}
+          >
+            <SectionContent section={section} />
+          </section>
+        </Fragment>
       ))}
     </div>
   );

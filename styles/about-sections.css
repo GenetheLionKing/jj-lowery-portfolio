@@ -2,15 +2,20 @@
   .about-sections {
     padding-bottom: 80px;
   }
+  .about-section-divider {
+    height: 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: clamp(28px, 4vw, 48px) 0;
+  }
+  .about-section-divider:first-child {
+    margin-top: 0;
+  }
   .about-authored-section {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     gap: 48px;
-    margin-top: 48px;
-  }
-  .about-authored-section:first-child {
-    margin-top: 0;
   }
   .about-authored-section--aboutCopyImageCopy {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -73,7 +78,6 @@
     .about-authored-section {
       grid-template-columns: minmax(0, 1fr);
       gap: 28px;
-      margin-top: 56px;
     }
     .about-section-copy > h2 {
       margin-bottom: 18px;
