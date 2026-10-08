@@ -134,7 +134,19 @@ const bodyAlignments = (bodyName = "body") =>
         ],
       },
     ],
-    validation: (rule) => rule.max(300).unique(),
+    validation: (rule) =>
+      rule.max(300).custom((value) => {
+        if (!Array.isArray(value)) return true;
+        // Sanity's unique() ignores _key, but separate paragraphs can share alignment.
+        const keys = value.map((item) =>
+          item && typeof item === "object" && "_key" in item
+            ? item._key
+            : undefined,
+        );
+        return new Set(keys).size === keys.length
+          ? true
+          : "Paragraph alignment keys must be unique";
+      }),
   });
 
 export const aboutSectionTypes = [

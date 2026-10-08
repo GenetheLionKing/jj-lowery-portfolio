@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
+import { createClient } from "@sanity/client";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import type {
@@ -59,6 +60,34 @@ const paragraph = (text: string, key = "paragraph") => ({
   markDefs: [],
 });
 const body = [paragraph("Test body")];
+
+async function validateNativeAbout(document: Record<string, unknown>): Promise<{
+  status: string;
+  markers: { code: string; level: string; message: string; path: Path }[];
+}> {
+  const nativeRequire = createRequire(
+    createRequire(import.meta.url).resolve("sanity"),
+  );
+  const { validateDocument } = nativeRequire("@sanity/validation");
+  return validateDocument({
+    document,
+    schema: createSchema({
+      name: "native-about-validation",
+      types: schemaTypes,
+    }),
+    client: createClient({
+      ...config,
+      apiVersion: "2026-10-01",
+      useCdn: false,
+      requestHandler: async () => {
+        throw new Error("Local schema validation must not contact a CMS");
+      },
+    }),
+    customValidation: true,
+    // Local fixtures use known valid asset references; no remote existence request.
+    getDocumentExists: async () => true,
+  });
+}
 const sections: AboutSection[] = [
   {
     _type: "aboutImageLeft",
@@ -705,6 +734,157 @@ test("About alignment survives native JSON and published adapters without changi
     true,
     "Presentation settings stay in the existing published-only projection",
   );
+});
+
+test("native About schema accepts the same saved alignment on six different paragraphs in every body field", async () => {
+  const nativeRequire = createRequire(
+    createRequire(import.meta.url).resolve("sanity"),
+  );
+  const { Mutation } = nativeRequire("@sanity/mutator");
+  const rich = [
+    ...[
+      "Systems Analysis",
+      "Ad Buying",
+      "Javascript (novice)",
+      "Chess",
+      "Rubik’s Cube",
+      "Philosophy",
+    ].map((text, index) => paragraph(text, `paragraph-${index}`)),
+    paragraph("", "empty-paragraph"),
+  ];
+  for (const bodyName of ["body", "leftBody", "rightBody"] as const) {
+    for (const alignment of ["center", "right"] as const) {
+      let document: Record<string, unknown> = {
+        _id: "drafts.about",
+        _type: "about",
+        title: "About",
+        introduction: [],
+        sections: [
+          {
+            _type:
+              bodyName === "body" ? "aboutImageLeft" : "aboutCopyImageCopy",
+            _key: "section",
+            image: nativeImage,
+            ...(bodyName === "body"
+              ? { headline: "Single body", body: rich }
+              : {
+                  leftHeadline: "Half Creative",
+                  rightHeadline: "Half Analyst",
+                  leftBody: rich,
+                  rightBody: rich,
+                }),
+          },
+        ],
+      };
+      const original = structuredClone(document);
+      const field = `${bodyName}Alignments`;
+      for (const block of rich.slice(0, 6)) {
+        const section = (document.sections as Record<string, unknown>[])[0];
+        const relative = aboutAlignmentPatches(
+          [field],
+          block._key,
+          alignment,
+          section[field],
+        );
+        const rooted = PatchEvent.from(relative)
+          .prefixAll({ _key: "section" })
+          .prefixAll("sections");
+        document = new Mutation({
+          mutations: toMutationPatches(rooted.patches).map((patch) => ({
+            patch: { id: "drafts.about", ...patch },
+          })),
+        }).apply(document);
+      }
+      const result = await validateNativeAbout(document);
+      assert.equal(result.status, "passed", JSON.stringify(result.markers));
+      assert.deepEqual(result.markers, []);
+      const saved = (document.sections as Record<string, unknown>[])[0];
+      assert.equal((saved[field] as unknown[]).length, 6);
+      for (const name of ["body", "leftBody", "rightBody"])
+        assert.deepEqual(
+          saved[name],
+          (original.sections as Record<string, unknown>[])[0][name],
+        );
+      const parsed = aboutSchema.parse(
+        nativeAboutData(JSON.parse(JSON.stringify(document)), config),
+      );
+      assert.deepEqual(
+        (parsed.sections![0] as unknown as Record<string, unknown>)[field],
+        saved[field],
+      );
+      const html = renderToStaticMarkup(
+        createElement(AboutView, { about: parsed, cases: [], articles: [] }),
+      );
+      assert.equal(
+        (
+          html.match(new RegExp(`<p style="text-align:${alignment}">`, "g")) ??
+          []
+        ).length,
+        6,
+      );
+      assert.ok(
+        html.includes("<p></p>"),
+        "An untouched empty native paragraph remains unchanged",
+      );
+    }
+  }
+});
+
+test("native About alignment validation still rejects duplicate paragraph keys and invalid choices", async () => {
+  const document = {
+    _id: "drafts.about",
+    _type: "about",
+    title: "About",
+    introduction: [],
+    sections: [
+      {
+        _type: "aboutCopyImageCopy",
+        _key: "section",
+        image: nativeImage,
+        leftHeadline: "Left",
+        rightHeadline: "Right",
+        leftBody: body,
+        rightBody: body,
+        rightBodyAlignments: [
+          {
+            _type: "aboutTextAlignment",
+            _key: "paragraph",
+            alignment: "right",
+          },
+          {
+            _type: "aboutTextAlignment",
+            _key: "paragraph",
+            alignment: "center",
+          },
+        ],
+      },
+    ],
+  };
+  const duplicate = await validateNativeAbout(document);
+  assert.equal(duplicate.status, "failed");
+  assert.ok(
+    duplicate.markers.some(
+      (marker) =>
+        marker.level === "error" &&
+        marker.message === "Paragraph alignment keys must be unique",
+    ),
+  );
+  const invalid = structuredClone(document);
+  invalid.sections[0].rightBodyAlignments = [
+    { _type: "aboutTextAlignment", _key: "paragraph", alignment: "justify" },
+  ];
+  const invalidResult = await validateNativeAbout(invalid);
+  assert.equal(invalidResult.status, "failed");
+  assert.ok(
+    invalidResult.markers.some(
+      (marker) =>
+        marker.level === "error" &&
+        marker.message === "Choose Left, Center or Right",
+    ),
+  );
+  const empty = structuredClone(document);
+  empty.sections[0].rightBodyAlignments = [];
+  assert.equal((await validateNativeAbout(empty)).status, "passed");
 });
 
 test("native alignment form patches touch only keyed About metadata and reset Left without replacing paragraphs", () => {
