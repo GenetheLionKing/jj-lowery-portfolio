@@ -52,3 +52,11 @@ The first saved section exposed a renderer regression: PR #19 replaced the entir
 Two focused server-rendering regressions verify identical hero markup with absent, empty and populated section lists, one page heading/portrait, hero → tagged gallery → authored section order, independent gallery placement and source preservation. No browser or CMS writes are involved. The existing section, rich-text and content regressions remain in place.
 
 The fix passes `pnpm check`: lint, TypeScript, all 50 tests, production build and built HTTP route checks, plus `git diff --check`. A server HTML check using the unchanged published About snapshot restores the hero above the user's existing first section, retains its stable key and content hash, and confirms that rendering does not mutate the snapshot. Visual layouts and live Studio controls remain unverified under the explicit no-browser constraint.
+
+## Section dividers — 2026-10-08
+
+Each authored section has one decorative horizontal rule before it: one after the hero/gallery and one between successive sections. There is no extra rule after the final section, and absent or empty section lists add none. The gallery retains its existing independent rule. A one-pixel `--line` border reuses the site's light/dark neutral tokens; fluid spacing ranges from 28 to 48 pixels on each side of interior rules. Copy, images, section keys and order are unchanged.
+
+This applies the Practical UI reference's grouping, spacing and semantic-color guidance. The three user-supplied screenshot references could not be downloaded through the supported Library route after one fresh-preparation retry; no readable image bytes were available and their pixels were not inspected. An exact match to those references is not claimed. No browser rendering or visual screenshot review was performed.
+
+Divider verification passes `pnpm check` (lint, TypeScript, 52 tests, production build and HTTP regressions) and `git diff --check`. Two boundary regressions cover zero, one and multiple authored sections, no trailing rule, hero/gallery ordering, independent gallery separation and unchanged source. Built HTML confirms the current published first section remains below the hero and its one divider. Theme-token and fluid-spacing checks inspect source only; they do not certify rendered appearance.
