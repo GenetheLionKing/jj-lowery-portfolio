@@ -3,6 +3,10 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import Image from "next/image";
 import { sizedPublicImage } from "@/content/media";
+import {
+  aboutGalleryThumbnail,
+  aboutGalleryThumbnailSize,
+} from "@/content/about-gallery-image";
 import type { AboutGalleryImage } from "@/content/model";
 
 export function AboutImageGallery({ items }: { items: AboutGalleryImage[] }) {
@@ -106,10 +110,10 @@ export function AboutImageGallery({ items }: { items: AboutGalleryImage[] }) {
             >
               <Image
                 unoptimized
-                src={sizedPublicImage(item.src, 400)}
+                src={aboutGalleryThumbnail(item)}
                 alt={item.alt}
-                width={item.width}
-                height={item.height}
+                width={aboutGalleryThumbnailSize.width}
+                height={aboutGalleryThumbnailSize.height}
                 loading="lazy"
               />
             </a>

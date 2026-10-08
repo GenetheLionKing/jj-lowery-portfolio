@@ -14,18 +14,21 @@
   }
   .about-image-gallery__thumbnails a {
     display: block;
+    position: relative;
     min-height: 44px;
-    padding: 4px;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 6px;
     background: var(--surface);
   }
   .about-image-gallery__thumbnails img {
     display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
   }
   .about-image-gallery__thumbnails a:hover,
   .about-image-viewer button:hover {
