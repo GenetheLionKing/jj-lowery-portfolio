@@ -4,7 +4,18 @@ The hero gallery now belongs to the About document. **Publish → About → Imag
 
 Thumbnails sit below the original hero and before the lower About sections. Each opens a native modal image viewer with the full image canvas, caption, Close button, position indicator and Previous/Next controls when there is more than one image. Escape closes it; left/right arrows cycle images; Tab/Shift+Tab stay within its controls. Opening focuses Close, and closing or unmounting restores the exact thumbnail opener and page scrolling. Native `showModal()` makes the background inert. Thumbnail links point to the image itself as a usable fallback without JavaScript or modal support; modified clicks keep that URL's normal behavior. No gallery thumbnail links to a Post.
 
-Images retain their intrinsic dimensions. Thumbnails and the viewer use `object-fit: contain`; the viewer fits the viewport and scrolls when a long caption needs room. The strip adapts to two, three, four or six columns, reuses the site's neutral and Emerald tokens, and adds no animation or dependencies. Caption text is rendered as plain text. Public reads resolve native asset URLs/dimensions and preserve the author’s keys, order, alt text and captions; drafts and release versions remain excluded.
+Thumbnails fill the existing 3:2 landscape frame with no inset padding. The native crop and hotspot determine which part of each Sanity image appears: Sanity's image URL builder produces a 600×400 crop that fits the requested ratio around the selected hotspot, inside the crop bounds. Images without framing metadata use a center crop. The original image URL, asset reference and dimensions remain intact; the enlarged viewer continues to show the full image with `object-fit: contain` and no crop/hotspot URL parameters. Local static image fallbacks fill the thumbnail using CSS `cover`.
+
+The viewer fits the viewport and scrolls when a long caption needs room. The strip adapts to two, three, four or six columns and reuses the site's neutral and Emerald tokens. Caption text is rendered as plain text. Public reads resolve native asset URLs/dimensions and preserve the author’s keys, order, alt text, captions, crop and hotspot; drafts and release versions remain excluded. The only added direct dependency is the already-resolved `@sanity/image-url` 2.1.1 helper. No animation is added.
+
+## Adjust thumbnail framing
+
+1. Open **Publish → About → Image gallery** and open a **Gallery image** entry.
+2. Click the image's crop icon, whose tooltip is **Crop image** (accessible label **Open image edit dialog**). The native dialog is titled **Edit hotspot and crop**; its controls are labeled **Hotspot & Crop**.
+3. Move and resize the hotspot circle over the area to keep visible, such as the face in a portrait. Adjust the crop rectangle only if you want to exclude source edges. Check the **About thumbnail (3:2)** preview. A hotspot larger than the available 3:2 crop cannot be entirely retained, so keep the important region within the preview.
+4. Close the dialog when satisfied. Native changes autosave in the About draft. Review the whole draft and publish when ready; the public site continues to use only published values. Selecting a thumbnail still opens the full original image.
+
+These labels are verified against the installed Sanity 6.17.0 source and compiled schema. Live browser interaction and appearance have not been inspected.
 
 ## Migration and release
 
@@ -17,6 +28,6 @@ The old `about-gallery` Post tag and saved choices remain intact, with an explic
 
 ## Verification
 
-The no-browser constraint overrides the repository's browser/screenshot workflow. Tests use the real native schema validator, published adapters, server-rendered HTML and React's in-memory component renderer. They check one to six images, reorder/serialization, null/unset/empty behavior, alt/assets/key validation, equal assets with distinct keys, Post independence, story-link preservation, full-image fallback links and the viewer's actual open/navigation/close/focus/scroll handlers. Mock element methods are ordinary JavaScript objects; they do not launch or render a browser.
+The no-browser constraint overrides the repository's browser/screenshot workflow. Tests use the real native schema validator, published adapters, server-rendered HTML and React's in-memory component renderer. They check one to six images, reorder/serialization, null/unset/empty behavior, alt/assets/key/framing validation, equal assets with distinct keys, Post independence, story-link preservation, crop geometry for portrait/landscape/square images, retention of a chosen hotspot, full-image fallback links and the viewer's actual open/navigation/close/focus/scroll handlers. The opened viewer is checked for its original aspect and absence of crop parameters. Mock element methods are ordinary JavaScript objects; they do not launch or render a browser.
 
-Actual browser focus/inert behavior, keyboard activation, responsive appearance at 320/390/768/1440 pixels, zoom, contrast and screen-reader output remain unverified. The supplementary Library screenshot was not inspected. No screenshot or visual certification is claimed.
+Actual browser focus/inert behavior, keyboard activation, responsive appearance at 320/390/768/1440 pixels, zoom, contrast and screen-reader output remain unverified. The earlier supplementary Library screenshot was not inspected. The thumbnail-framing screenshot also could not be retrieved on the local executor after two supported attempts; its pixels were not inspected. No screenshot or visual certification is claimed.

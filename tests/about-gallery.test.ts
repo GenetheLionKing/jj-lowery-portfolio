@@ -13,6 +13,11 @@ import { nativeAboutData } from "../content/native-about";
 import { decodePublishedContent, publishedQuery } from "../content/read";
 import { seedAbout, seedArticles } from "../content/seed";
 import { schemaTypes } from "../studio/schema";
+import {
+  aboutGalleryThumbnail,
+  aboutGalleryThumbnailRatio,
+  aboutGalleryThumbnailSize,
+} from "../content/about-gallery-image";
 
 const config = { projectId: "validation", dataset: "portfolio" };
 const images: AboutGalleryImage[] = Array.from({ length: 6 }, (_, index) => ({
@@ -75,6 +80,140 @@ test("About owns zero to six ordered images; native and published reads preserve
       aboutSchema.safeParse({ ...seedAbout, gallery }).success,
       false,
     );
+});
+
+test("gallery crop and hotspot metadata survive native/public reads without changing owner assets or old entries", () => {
+  const crop = { top: 0.1, right: 0, bottom: 0.3, left: 0 };
+  const hotspot = { x: 0.5, y: 0.15, width: 0.2, height: 0.1 };
+  const raw = {
+    ...seedAbout,
+    gallery: [
+      { ...nativeImages[0], crop, hotspot },
+      { ...nativeImages[1], crop: null, hotspot: null },
+      nativeImages[2],
+    ],
+  };
+  const original = structuredClone(raw);
+  const native = aboutSchema.parse(nativeAboutData(raw, config));
+  const published = decodePublishedContent([
+    { ...native, _id: "about", _type: "about" },
+  ]).about!;
+  assert.deepEqual(published.gallery[0].crop, crop);
+  assert.deepEqual(published.gallery[0].hotspot, hotspot);
+  assert.deepEqual(published.gallery, native.gallery);
+  assert.equal(published.gallery[1].crop, null);
+  assert.equal(published.gallery[1].hotspot, null);
+  assert.equal(published.gallery[2].crop, undefined);
+  assert.deepEqual(raw, original);
+  for (const metadata of [
+    { crop: { ...crop, top: -0.1 } },
+    { crop: { ...crop, left: 0.5, right: 0.5 } },
+    { hotspot: { ...hotspot, x: 1.1 } },
+    { hotspot: { ...hotspot, width: -0.1 } },
+  ])
+    assert.equal(
+      aboutSchema.safeParse({
+        ...seedAbout,
+        gallery: [{ ...images[0], ...metadata }],
+      }).success,
+      false,
+    );
+});
+
+test("3:2 thumbnail URLs fill portrait, wide, square and cropped images while preserving chosen hotspots", () => {
+  const fixtures = [
+    {
+      width: 1000,
+      height: 2000,
+      hotspot: { x: 0.5, y: 0.15, width: 0.2, height: 0.1 },
+    },
+    {
+      width: 1000,
+      height: 2000,
+      crop: { left: 0, right: 0, top: 0.1, bottom: 0.3 },
+      hotspot: { x: 0.5, y: 0.2, width: 0.2, height: 0.1 },
+    },
+    {
+      width: 2400,
+      height: 1000,
+      hotspot: { x: 0.85, y: 0.5, width: 0.1, height: 0.2 },
+    },
+    {
+      width: 2400,
+      height: 1000,
+      hotspot: { x: 0.15, y: 0.5, width: 0.1, height: 0.2 },
+    },
+    {
+      width: 1000,
+      height: 1000,
+      hotspot: { x: 0.5, y: 0.5, width: 0.1, height: 0.1 },
+    },
+    {
+      width: 1200,
+      height: 800,
+      hotspot: { x: 0.5, y: 0.5, width: 0.1, height: 0.1 },
+    },
+  ];
+  for (const fixture of fixtures) {
+    const image = {
+      ...images[0],
+      ...fixture,
+      src: `https://cdn.sanity.io/images/validation/portfolio/hash-${fixture.width}x${fixture.height}.jpg`,
+    };
+    const original = structuredClone(image);
+    const url = new URL(aboutGalleryThumbnail(image));
+    assert.equal(
+      url.searchParams.get("w"),
+      String(aboutGalleryThumbnailSize.width),
+    );
+    assert.equal(
+      url.searchParams.get("h"),
+      String(aboutGalleryThumbnailSize.height),
+    );
+    assert.equal(url.searchParams.get("fit"), "crop");
+    assert.equal(
+      url.searchParams.has("crop"),
+      false,
+      "An explicit crop mode would override the native hotspot",
+    );
+    const [left, top, width, height] = (
+      url.searchParams.get("rect") ?? `0,0,${image.width},${image.height}`
+    )
+      .split(",")
+      .map(Number);
+    assert.ok(Math.abs(width / height - aboutGalleryThumbnailRatio) < 0.003);
+    assert.ok(
+      left >= 0 &&
+        top >= 0 &&
+        left + width <= image.width &&
+        top + height <= image.height,
+    );
+    const hotspot = image.hotspot;
+    assert.ok(left <= (hotspot.x - hotspot.width / 2) * image.width);
+    assert.ok(left + width >= (hotspot.x + hotspot.width / 2) * image.width);
+    assert.ok(top <= (hotspot.y - hotspot.height / 2) * image.height);
+    assert.ok(top + height >= (hotspot.y + hotspot.height / 2) * image.height);
+    if (image.crop) {
+      assert.ok(top >= image.crop.top * image.height);
+      assert.ok(top + height <= (1 - image.crop.bottom) * image.height);
+    }
+    assert.deepEqual(image, original);
+  }
+  const centered = {
+    ...images[0],
+    src: "https://cdn.sanity.io/images/validation/portfolio/hash-1000x2000.jpg",
+    width: 1000,
+    height: 2000,
+  };
+  assert.equal(
+    new URL(aboutGalleryThumbnail(centered)).searchParams.get("rect"),
+    "0,667,1000,667",
+  );
+  assert.equal(
+    aboutGalleryThumbnail({ ...centered, crop: null, hotspot: null }),
+    aboutGalleryThumbnail(centered),
+  );
+  assert.equal(aboutGalleryThumbnail(images[0]), images[0].src);
 });
 
 test("missing/empty About gallery never resurrects Post thumbnails; independent story link retains its target", () => {
@@ -143,6 +282,13 @@ test("native About schema validates one to six images, duplicate assets with dis
   for (const gallery of [
     undefined,
     [],
+    [
+      {
+        ...nativeImages[0],
+        crop: { top: 0.1, bottom: 0, left: 0, right: 0 },
+        hotspot: { x: 0.5, y: 0.2, width: 0.2, height: 0.1 },
+      },
+    ],
     ...Array.from({ length: 6 }, (_, index) =>
       nativeImages.slice(0, index + 1),
     ),
@@ -156,6 +302,18 @@ test("native About schema validates one to six images, duplicate assets with dis
     [{ ...nativeImages[0], alt: "   " }],
     [{ ...nativeImages[0], asset: { _ref: "image-test-1640x1294-svg" } }],
     [nativeImages[0], nativeImages[0]],
+    [
+      {
+        ...nativeImages[0],
+        crop: { top: 0.5, bottom: 0.5, left: 0, right: 0 },
+      },
+    ],
+    [
+      {
+        ...nativeImages[0],
+        hotspot: { x: 2, y: 0.5, width: 0.2, height: 0.1 },
+      },
+    ],
   ])
     assert.equal((await validate(gallery)).status, "failed");
   const about = schemaTypes.find((type) => type.name === "about")!;
@@ -164,6 +322,17 @@ test("native About schema validates one to six images, duplicate assets with dis
   assert.deepEqual("options" in gallery ? gallery.options : undefined, {
     layout: "grid",
     sortable: true,
+  });
+  const compiledAbout = schema.get("about");
+  assert.ok(compiledAbout && "fields" in compiledAbout);
+  const compiledGallery = compiledAbout.fields.find(
+    (field) => field.name === "gallery",
+  )?.type;
+  assert.ok(compiledGallery && "of" in compiledGallery);
+  const nativeImage = compiledGallery.of[0];
+  assert.ok(nativeImage.options && "hotspot" in nativeImage.options);
+  assert.deepEqual(nativeImage.options.hotspot, {
+    previews: [{ title: "About thumbnail (3:2)", aspectRatio: 1.5 }],
   });
 });
 
@@ -186,6 +355,14 @@ test("gallery's actual handlers open, navigate, trap keyboard focus, close and r
     configurable: true,
   });
   const controls = new Map<string, { focus: () => void }>();
+  const croppedImage: AboutGalleryImage = {
+    ...images[0],
+    src: "https://cdn.sanity.io/images/validation/portfolio/hash-1000x2000.jpg",
+    width: 1000,
+    height: 2000,
+    crop: { top: 0.1, right: 0, bottom: 0.3, left: 0 },
+    hotspot: { x: 0.5, y: 0.15, width: 0.2, height: 0.1 },
+  };
   let modalOpens = 0,
     modalCloses = 0;
   const restored: number[] = [];
@@ -238,24 +415,29 @@ test("gallery's actual handlers open, navigate, trap keyboard focus, close and r
     renderer.root.findByProps({ "aria-label": label });
   try {
     await act(async () => {
-      renderer = create(createElement(AboutImageGallery, { items: images }), {
-        createNodeMock: (element) => {
-          if (element.type === "dialog") return dialog;
-          if (element.type === "button") {
-            const control = {
-              focus() {
-                documentModel.activeElement = this;
-              },
-            };
-            controls.set(
-              (element.props as { "aria-label": string })["aria-label"],
-              control,
-            );
-            return control;
-          }
-          return null;
+      renderer = create(
+        createElement(AboutImageGallery, {
+          items: [croppedImage, ...images.slice(1)],
+        }),
+        {
+          createNodeMock: (element) => {
+            if (element.type === "dialog") return dialog;
+            if (element.type === "button") {
+              const control = {
+                focus() {
+                  documentModel.activeElement = this;
+                },
+              };
+              controls.set(
+                (element.props as { "aria-label": string })["aria-label"],
+                control,
+              );
+              return control;
+            }
+            return null;
+          },
         },
-      });
+      );
     });
     assert.equal(await clickImage(0, { metaKey: true }), false);
     assert.equal(
@@ -264,6 +446,22 @@ test("gallery's actual handlers open, navigate, trap keyboard focus, close and r
       "Modified clicks retain the image URL's normal behavior",
     );
     assert.equal(await clickImage(0), true);
+    const thumbnail = renderer.root.findAllByType("img")[0].props;
+    assert.equal(thumbnail.src, aboutGalleryThumbnail(croppedImage));
+    assert.equal(thumbnail.width, 600);
+    assert.equal(thumbnail.height, 400);
+    assert.equal(
+      renderer.root.findAllByType("a")[0].props.href,
+      croppedImage.src,
+    );
+    const enlarged = renderer.root.findAllByType("img").at(-1)!.props;
+    const enlargedUrl = new URL(enlarged.src);
+    assert.equal(enlargedUrl.pathname, new URL(croppedImage.src).pathname);
+    assert.equal(enlargedUrl.searchParams.get("w"), "1800");
+    for (const parameter of ["h", "rect", "fit", "crop", "fp-x", "fp-y"])
+      assert.equal(enlargedUrl.searchParams.has(parameter), false);
+    assert.equal(enlarged.width, croppedImage.width);
+    assert.equal(enlarged.height, croppedImage.height);
     assert.equal(dialog.open, true);
     assert.equal(documentModel.body.style.overflow, "hidden");
     assert.equal(

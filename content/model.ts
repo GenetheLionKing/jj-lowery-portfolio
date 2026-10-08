@@ -283,9 +283,29 @@ export const resourceSchema = z.object({
   ...seo,
 });
 const legacyAboutText = z.string().trim().max(12000).default("");
+const imageFraction = z.number().min(0).max(1);
+const galleryCropSchema = z
+  .object({
+    top: imageFraction,
+    right: imageFraction,
+    bottom: imageFraction,
+    left: imageFraction,
+  })
+  .refine(
+    (crop) => crop.left + crop.right < 1 && crop.top + crop.bottom < 1,
+    "The crop must retain part of the image",
+  );
+const galleryHotspotSchema = z.object({
+  x: imageFraction,
+  y: imageFraction,
+  width: imageFraction,
+  height: imageFraction,
+});
 export const aboutGalleryImageSchema = postImageSchema.extend({
   _key: text,
   caption: z.string().max(12000).nullish(),
+  crop: galleryCropSchema.nullish(),
+  hotspot: galleryHotspotSchema.nullish(),
 });
 export const aboutGallerySchema = z
   .array(aboutGalleryImageSchema)
