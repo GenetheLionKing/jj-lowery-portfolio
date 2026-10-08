@@ -283,11 +283,24 @@ export const resourceSchema = z.object({
   ...seo,
 });
 const legacyAboutText = z.string().trim().max(12000).default("");
+export const aboutGalleryImageSchema = postImageSchema.extend({
+  _key: text,
+  caption: z.string().max(12000).nullish(),
+});
+export const aboutGallerySchema = z
+  .array(aboutGalleryImageSchema)
+  .max(6)
+  .refine(
+    (images) =>
+      new Set(images.map((image) => image._key)).size === images.length,
+    "Gallery image keys must be unique",
+  );
 export const aboutSchema = z
   .object({
     title: text,
     lead: legacyAboutText,
     introduction: texts,
+    gallery: aboutGallerySchema.default([]),
     storyTitle: legacyAboutText,
     story: texts,
     strengths: z
@@ -343,6 +356,7 @@ export type Article = z.infer<typeof articleSchema>;
 export type Resource = z.infer<typeof resourceSchema>;
 export type AboutSection = z.infer<typeof aboutSectionSchema>;
 export type About = z.infer<typeof aboutSchema>;
+export type AboutGalleryImage = z.infer<typeof aboutGalleryImageSchema>;
 export type Resume = z.infer<typeof resumeSchema>;
 export type RichText = z.infer<typeof richTextSchema>;
 export type AboutBody = z.infer<typeof aboutBodySchema>;

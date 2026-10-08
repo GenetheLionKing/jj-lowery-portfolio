@@ -10,6 +10,7 @@
 @import url("../styles/index-editorial.css");
 @import url("../styles/reading-article.css");
 @import url("../styles/about-sections.css");
+@import url("../styles/about-gallery.css");
 @layer tokens {
   :root {
     --paper: #fff;

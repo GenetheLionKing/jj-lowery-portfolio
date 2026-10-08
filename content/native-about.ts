@@ -7,6 +7,9 @@ export function nativeAboutData(
   config: SanityPublicConfig,
 ) {
   const data = { ...doc };
+  data.gallery = Array.isArray(doc.gallery)
+    ? doc.gallery.map((image) => nativeImageData(image, config))
+    : (doc.gallery ?? []);
   if (doc.sections == null) {
     delete data.sections;
   } else if (Array.isArray(doc.sections)) {

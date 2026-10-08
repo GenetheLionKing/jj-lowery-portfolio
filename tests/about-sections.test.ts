@@ -187,7 +187,7 @@ test("hero title, introduction and portrait stay identical for absent, empty and
   assert.deepEqual(seedAbout, original);
 });
 
-test("tagged gallery remains below the hero and before authored sections; untagged posts stay out", () => {
+test("owner image gallery stays below the hero and before sections while Post selections stay independent", () => {
   const tagged = {
     ...seedArticles[0],
     title: "Tagged gallery story",
@@ -204,6 +204,7 @@ test("tagged gallery remains below the hero and before authored sections; untagg
   for (const value of [undefined, [], sections]) {
     const about = aboutSchema.parse({
       ...seedAbout,
+      gallery: [{ ...image, _key: "owner-image", alt: "Owner selected image" }],
       ...(value === undefined ? {} : { sections: value }),
     });
     const original = structuredClone(about);
@@ -214,9 +215,12 @@ test("tagged gallery remains below the hero and before authored sections; untagg
         articles: [tagged, untagged],
       }),
     );
-    const gallery = html.indexOf('aria-label="Personal stories"');
+    const gallery = html.indexOf('aria-label="About images"');
     assert.ok(gallery > html.indexOf('class="profile-figure"'));
-    assert.ok(html.includes('aria-label="Tagged gallery story"'));
+    assert.ok(
+      html.includes('aria-label="Enlarge image: Owner selected image"'),
+    );
+    assert.ok(!html.includes("Tagged gallery story"));
     assert.ok(!html.includes("Untagged gallery story"));
     if (value?.length)
       assert.ok(gallery < html.indexOf('class="about-authored-section '));
@@ -267,13 +271,17 @@ test("gallery separation stays independent before the first section divider and 
     mainImage: image,
     tags: ["about-gallery"],
   };
-  const about = aboutSchema.parse({ ...seedAbout, sections });
+  const about = aboutSchema.parse({
+    ...seedAbout,
+    sections,
+    gallery: [{ ...image, _key: "owner-image" }],
+  });
   const original = structuredClone(about);
   const html = renderToStaticMarkup(
     createElement(AboutView, { about, cases: [], articles: [article] }),
   );
   const hero = html.indexOf("profile-figure");
-  const gallery = html.indexOf('aria-label="Personal stories"');
+  const gallery = html.indexOf('aria-label="About images"');
   const divider = html.indexOf('class="about-section-divider"');
   const first = html.indexOf("First section");
   assert.ok(hero < gallery && gallery < divider && divider < first);
