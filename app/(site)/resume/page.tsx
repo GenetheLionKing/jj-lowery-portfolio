@@ -1,3 +1,4 @@
+import { AppPageAnalytics } from "@/components/app-analytics";
 import { ArrowIcon } from "@/components/icons";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -22,6 +23,7 @@ export default async function ResumePage() {
   const { experience, skillGroups } = resume;
   return (
     <div className="container resume-page">
+      <AppPageAnalytics path="/resume/" />
       <div className="resume-toolbar">
         <Link href="/" className="text-link">
           <ArrowIcon direction="left" /> Back to portfolio

@@ -1,3 +1,4 @@
+import { AppPageAnalytics } from "@/components/app-analytics";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPublicContent } from "@/content/public";
@@ -21,6 +22,7 @@ export default async function AboutPage() {
   const review = isAboutEditorialReview();
   return (
     <>
+      <AppPageAnalytics path="/about/" />
       {review && <AboutReviewNote />}
       <AboutView
         about={review ? aboutProposal(about) : about}

@@ -1,3 +1,4 @@
+import { AppPageAnalytics } from "@/components/app-analytics";
 import { EditorialPage } from "@/components/editorial-page";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -24,6 +25,7 @@ export default async function StoryPage() {
   if (!about.story.length) notFound();
   return (
     <>
+      <AppPageAnalytics path="/about/story/" />
       {review && <AboutReviewNote />}
       <EditorialPage
         title={about.storyTitle}

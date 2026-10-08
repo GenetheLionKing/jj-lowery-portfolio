@@ -1,3 +1,4 @@
+import { AppPageAnalytics } from "@/components/app-analytics";
 import type { Metadata } from "next";
 import { ProfileImage } from "@/components/profile-image";
 import { PortfolioGrid } from "@/components/portfolio-grid";
@@ -27,6 +28,7 @@ export default async function Home() {
   const items = homeItems(cases, articles);
   return (
     <>
+      <AppPageAnalytics path="/" />
       <section id="about" className="hero" aria-labelledby="hero-title">
         <h1 id="hero-title" className="sr-only">
           JJ Lowery — business systems analyst and software builder

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { profile } from "@/data/profile";
 import { themeInitScript } from "@/data/theme";
+import { AppAnalytics } from "@/components/app-analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -42,7 +43,10 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <AppAnalytics />
+      </body>
     </html>
   );
 }
