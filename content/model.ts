@@ -30,6 +30,28 @@ export const postImageSchema = z.object({
   width: z.number().int().positive().max(20000),
   height: z.number().int().positive().max(20000),
 });
+const imageFraction = z.number().min(0).max(1);
+const imageCropSchema = z
+  .object({
+    top: imageFraction,
+    right: imageFraction,
+    bottom: imageFraction,
+    left: imageFraction,
+  })
+  .refine(
+    (crop) => crop.left + crop.right < 1 && crop.top + crop.bottom < 1,
+    "The crop must retain part of the image",
+  );
+const imageHotspotSchema = z.object({
+  x: imageFraction,
+  y: imageFraction,
+  width: imageFraction,
+  height: imageFraction,
+});
+export const framedImageSchema = postImageSchema.extend({
+  crop: imageCropSchema.nullish(),
+  hotspot: imageHotspotSchema.nullish(),
+});
 const pair = z.object({ label: text, value: text });
 const seo = { seoTitle: text.optional(), seoDescription: text.optional() };
 const comparison = z.object({ title: text, items: texts });
@@ -199,7 +221,7 @@ export const caseSchema = z
         alt: text,
       })
       .optional(),
-    mainImage: postImageSchema.optional(),
+    mainImage: framedImageSchema.optional(),
     body: richTextSchema.min(1).optional(),
     publishedAt: z.iso.datetime({ offset: true }).optional(),
     updatedAt: z.iso.datetime({ offset: true }).optional(),
@@ -243,7 +265,7 @@ export const articleSchema = z
     externalUrl: link.refine((v) => v.startsWith("https://")).optional(),
     customPage: z.enum(["/", "/about/", "/resume/", "/contact/"]).optional(),
     image: media.optional(),
-    mainImage: postImageSchema.optional(),
+    mainImage: framedImageSchema.optional(),
     tags,
     learn: z.boolean().default(true),
     featured: z.boolean().default(false),
@@ -283,29 +305,9 @@ export const resourceSchema = z.object({
   ...seo,
 });
 const legacyAboutText = z.string().trim().max(12000).default("");
-const imageFraction = z.number().min(0).max(1);
-const galleryCropSchema = z
-  .object({
-    top: imageFraction,
-    right: imageFraction,
-    bottom: imageFraction,
-    left: imageFraction,
-  })
-  .refine(
-    (crop) => crop.left + crop.right < 1 && crop.top + crop.bottom < 1,
-    "The crop must retain part of the image",
-  );
-const galleryHotspotSchema = z.object({
-  x: imageFraction,
-  y: imageFraction,
-  width: imageFraction,
-  height: imageFraction,
-});
-export const aboutGalleryImageSchema = postImageSchema.extend({
+export const aboutGalleryImageSchema = framedImageSchema.extend({
   _key: text,
   caption: z.string().max(12000).nullish(),
-  crop: galleryCropSchema.nullish(),
-  hotspot: galleryHotspotSchema.nullish(),
 });
 export const aboutGallerySchema = z
   .array(aboutGalleryImageSchema)
@@ -377,6 +379,7 @@ export type Resource = z.infer<typeof resourceSchema>;
 export type AboutSection = z.infer<typeof aboutSectionSchema>;
 export type About = z.infer<typeof aboutSchema>;
 export type AboutGalleryImage = z.infer<typeof aboutGalleryImageSchema>;
+export type FramedImage = z.infer<typeof framedImageSchema>;
 export type Resume = z.infer<typeof resumeSchema>;
 export type RichText = z.infer<typeof richTextSchema>;
 export type AboutBody = z.infer<typeof aboutBodySchema>;

@@ -1,15 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import { publicMedia, sizedPublicImage } from "@/content/media";
+import { publicMedia } from "@/content/media";
+import { imageThumbnail, postThumbnailSizes } from "@/content/image-thumbnail";
 import type { CatalogItem } from "@/content/catalog";
 export function PortfolioGrid({
   items,
   headingLevel = "h2",
+  imageFrame = "card",
 }: {
   items: CatalogItem[];
   headingLevel?: "h2" | "h3";
+  imageFrame?: "card" | "blog";
 }) {
   const Heading = headingLevel;
+  const imageSize = postThumbnailSizes[imageFrame];
   return (
     <div className="work-grid">
       {items.map((item) => {
@@ -23,13 +27,15 @@ export function PortfolioGrid({
             className="work-card"
           >
             {image && (
-              <div className="work-image">
+              <div
+                className={`work-image${imageFrame === "blog" ? " work-image--blog" : ""}`}
+              >
                 <Image
                   unoptimized
-                  src={sizedPublicImage(image.src, 640)}
+                  src={imageThumbnail(image, imageSize)}
                   alt={image.alt}
-                  width={640}
-                  height={480}
+                  width={imageSize.width}
+                  height={imageSize.height}
                   loading="lazy"
                 />
               </div>

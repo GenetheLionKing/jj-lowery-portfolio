@@ -36,6 +36,7 @@ import {
 } from "./about-sections";
 import { nativeAboutData } from "../content/native-about";
 import { aboutGalleryField } from "./about-gallery";
+import { postThumbnailPreviews } from "../content/image-thumbnail";
 
 const string = (
   name: string,
@@ -598,9 +599,12 @@ export const schemaTypes = [
         name: "mainImage",
         title: "Main image",
         type: "image",
-        options: { accept: "image/jpeg,image/png,image/webp" },
+        options: {
+          accept: "image/jpeg,image/png,image/webp",
+          hotspot: { previews: postThumbnailPreviews },
+        },
         description:
-          "Optional. Overrides existing artwork on cards and detail pages. Add alternative text. The About image gallery is managed separately in About. Uploaded assets are public, including draft attachments.",
+          "Optional. Overrides existing artwork. Use Crop image and the Blog thumbnail (16:9) preview to frame featured and archive images. Portfolio / Learn cards use the 4:3 preview. Article covers retain the original framing. Add alternative text. About's gallery is managed separately. Uploaded assets are public, including draft attachments.",
         fields: [string("alt", "Alternative text")],
       }),
       {
