@@ -6,6 +6,26 @@ import { SelectedWorkGrid } from "@/components/selected-work-grid";
 import { AboutGalleryStrip } from "@/components/about-gallery";
 import { aboutGallery } from "@/content/catalog";
 import type { About, PublishingCase, Article } from "@/content/model";
+function AboutHero({ about }: { about: About }) {
+  return (
+    <section className="info-page about-page" aria-labelledby="about-title">
+      <div className="container about-layout">
+        <div className="about-copy">
+          <h1 id="about-title" className="page-title">
+            {about.title}
+          </h1>
+          <div className="page-copy">
+            {about.introduction.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+        </div>
+        <ProfileImage sizes="(max-width: 750px) 280px, (max-width: 900px) 355px, 457px" />
+      </div>
+    </section>
+  );
+}
+
 export function AboutView({
   about,
   cases,
@@ -17,39 +37,22 @@ export function AboutView({
   articles: Article[];
   storyHref?: string;
 }) {
+  const features = aboutGallery(articles, cases);
   if (about.sections !== undefined)
     return (
       <>
-        <header className="container about-sections-heading">
-          <h1 id="about-title" className="page-title">
-            {about.title}
-          </h1>
-        </header>
+        <AboutHero about={about} />
+        <AboutGalleryStrip items={features} />
         <AboutSections sections={about.sections} />
       </>
     );
-  const features = aboutGallery(articles, cases);
   const builds = about.builds.flatMap((slug) => {
     const study = cases.find((c) => c.slug === slug);
     return study ? [study] : [];
   });
   return (
     <>
-      <section className="info-page about-page" aria-labelledby="about-title">
-        <div className="container about-layout">
-          <div className="about-copy">
-            <h1 id="about-title" className="page-title">
-              {about.title}
-            </h1>
-            <div className="page-copy">
-              {about.introduction.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </div>
-          </div>
-          <ProfileImage sizes="(max-width: 750px) 280px, (max-width: 900px) 355px, 457px" />
-        </div>
-      </section>
+      <AboutHero about={about} />
       <AboutGalleryStrip items={features} />
       {(about.strengths.length > 0 || about.facts.length > 0) && (
         <section className="about-band">

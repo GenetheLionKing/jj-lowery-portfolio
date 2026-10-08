@@ -1,7 +1,4 @@
 @layer components {
-  .about-sections-heading {
-    padding-block: 64px 32px;
-  }
   .about-sections {
     padding-bottom: 80px;
   }
@@ -70,9 +67,6 @@
 }
 @layer responsive {
   @media (max-width: 800px) {
-    .about-sections-heading {
-      padding-top: 40px;
-    }
     .about-sections {
       padding-bottom: 56px;
     }

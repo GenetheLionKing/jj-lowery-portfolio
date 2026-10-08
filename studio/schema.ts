@@ -254,7 +254,7 @@ const originalTypes = [
         name: "legacy",
         title: "Existing About & story content",
         description:
-          "Preserved content. The ordered sections replace the About page body when saved. The story page still uses these fields.",
+          "Opening paragraphs always appear in the About hero. Ordered sections replace only the content below the hero and gallery. The story page still uses these fields.",
         options: { collapsible: true, collapsed: true },
       },
     ],

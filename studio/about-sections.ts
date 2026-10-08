@@ -134,7 +134,7 @@ export const aboutSectionsField = defineField({
   title: "About sections",
   type: "array",
   description:
-    "Use Add item below to choose a section layout. Repeat any layout and drag sections into order. Removing the last section leaves the page body empty. Unset this field to restore the existing layout below.",
+    "Sections appear below the existing About hero and gallery. Use Add item below to choose a layout, repeat it and drag sections into order. Removing the last section leaves that lower content empty. Unset this field to restore the existing lower content.",
   of: aboutSectionTypes.map((type) => ({ type: type.name })),
   options: {
     sortable: true,
