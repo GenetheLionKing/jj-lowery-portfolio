@@ -24,6 +24,33 @@
   .about-authored-section--aboutImageOnly {
     grid-template-columns: minmax(0, 1fr);
   }
+  .about-authored-section--aboutImageLeft > .about-section-copy {
+    width: min(100%, 400px);
+    justify-self: center;
+  }
+  /* Custom widths resize the track as well as the full, uncropped image. */
+  .about-authored-section--sized.about-authored-section--aboutImageLeft {
+    grid-template-columns: min(
+        var(--about-image-width),
+        calc(100% - 288px)
+      ) minmax(0, 1fr);
+  }
+  .about-authored-section--sized.about-authored-section--aboutImageRight {
+    grid-template-columns: minmax(0, 1fr) min(
+        var(--about-image-width),
+        calc(100% - 288px)
+      );
+  }
+  .about-authored-section--sized.about-authored-section--aboutCopyImageCopy {
+    grid-template-columns: minmax(0, 1fr) min(
+        var(--about-image-width),
+        calc(100% - 464px)
+      ) minmax(0, 1fr);
+  }
+  .about-authored-section--sized > .about-section-media {
+    width: min(100%, var(--about-image-width));
+    justify-self: center;
+  }
   .about-section-copy,
   .about-section-media {
     min-width: 0;
@@ -78,6 +105,13 @@
     .about-authored-section {
       grid-template-columns: minmax(0, 1fr);
       gap: 28px;
+    }
+    .about-authored-section.about-authored-section--sized {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .about-authored-section--aboutImageLeft > .about-section-copy {
+      width: 100%;
+      justify-self: stretch;
     }
     .about-section-copy > h2 {
       margin-bottom: 18px;

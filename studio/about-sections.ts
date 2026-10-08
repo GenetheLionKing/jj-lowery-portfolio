@@ -3,6 +3,11 @@ import { aboutBodySchema, postImageSchema } from "../content/model";
 import { nativeImageData, nativeRichTextData } from "../content/native-media";
 import { AboutSectionsInput } from "./about-sections-input";
 import { richTextField } from "./rich-text";
+import {
+  aboutImageWidthBounds,
+  isTextAlignment,
+  textAlignments,
+} from "../content/about-presentation";
 
 const headline = (name = "headline", title = "Headline") =>
   defineField({
@@ -35,10 +40,48 @@ const image = defineField({
       }
     }),
 });
-const body = (name = "body", title = "Body") => ({
-  ...richTextField(name, title, false),
+const imageWidth = defineField({
+  name: "imageWidth",
+  title: "Image width (px)",
+  type: "number",
   description:
-    "Rich text. Resize vertically or expand the native editor for more writing space; this does not change the page layout.",
+    "Optional: 160–800 pixels. Leave blank for the existing layout. Wider images widen their column and can make the section taller. Narrow screens fit the available width; the full image and its aspect ratio stay intact.",
+  validation: (rule) =>
+    rule
+      .integer()
+      .min(aboutImageWidthBounds.min)
+      .max(aboutImageWidthBounds.max),
+});
+const headlineAlignment = (
+  name = "headlineAlignment",
+  title = "Headline alignment",
+) =>
+  defineField({
+    name,
+    title,
+    type: "string",
+    description:
+      "Independent of the body. Blank or Left keeps the existing alignment.",
+    options: {
+      layout: "radio",
+      direction: "horizontal",
+      list: textAlignments.map((value) => ({
+        title:
+          value === "left" ? "Left" : value === "center" ? "Center" : "Right",
+        value,
+      })),
+    },
+    validation: (rule) =>
+      rule.custom((value) =>
+        value == null || isTextAlignment(value)
+          ? true
+          : "Choose Left, Center or Right",
+      ),
+  });
+const body = (name = "body", title = "Body") => ({
+  ...richTextField(name, title, false, true),
+  description:
+    "Click a paragraph, heading, quote or list item to show Left / Center / Right alignment. Formatting stays in the native editor; resize or expand it for more writing space.",
   validation: (rule: import("sanity").Rule) =>
     rule
       .required()
@@ -58,13 +101,54 @@ const body = (name = "body", title = "Body") => ({
         }
       }),
 });
+const bodyAlignments = (bodyName = "body") =>
+  defineField({
+    name: `${bodyName}Alignments`,
+    title: "Paragraph alignment settings",
+    type: "array",
+    hidden: true,
+    description:
+      "Managed by the native editor's per-paragraph alignment controls.",
+    of: [
+      {
+        name: "aboutTextAlignment",
+        type: "object",
+        fields: [
+          defineField({
+            name: "alignment",
+            title: "Alignment",
+            type: "string",
+            options: {
+              list: textAlignments.map((value) => ({ title: value, value })),
+            },
+            validation: (rule) =>
+              rule
+                .required()
+                .custom((value) =>
+                  isTextAlignment(value)
+                    ? true
+                    : "Choose Left, Center or Right",
+                ),
+          }),
+        ],
+      },
+    ],
+    validation: (rule) => rule.max(300).unique(),
+  });
 
 export const aboutSectionTypes = [
   defineType({
     name: "aboutImageLeft",
     title: "Image left / copy right",
     type: "object",
-    fields: [image, headline(), body()],
+    fields: [
+      image,
+      imageWidth,
+      headline(),
+      headlineAlignment(),
+      body(),
+      bodyAlignments(),
+    ],
     preview: {
       select: { title: "headline", media: "image" },
       prepare: ({ title, media }) => ({
@@ -80,10 +164,15 @@ export const aboutSectionTypes = [
     type: "object",
     fields: [
       headline("leftHeadline", "Left headline"),
+      headlineAlignment("leftHeadlineAlignment", "Left headline alignment"),
       body("leftBody", "Left body"),
+      bodyAlignments("leftBody"),
       image,
+      imageWidth,
       headline("rightHeadline", "Right headline"),
+      headlineAlignment("rightHeadlineAlignment", "Right headline alignment"),
       body("rightBody", "Right body"),
+      bodyAlignments("rightBody"),
     ],
     preview: {
       select: { title: "leftHeadline", media: "image" },
@@ -98,7 +187,14 @@ export const aboutSectionTypes = [
     name: "aboutImageRight",
     title: "Copy left / image right",
     type: "object",
-    fields: [headline(), body(), image],
+    fields: [
+      headline(),
+      headlineAlignment(),
+      body(),
+      bodyAlignments(),
+      image,
+      imageWidth,
+    ],
     preview: {
       select: { title: "headline", media: "image" },
       prepare: ({ title, media }) => ({
@@ -114,6 +210,7 @@ export const aboutSectionTypes = [
     type: "object",
     fields: [
       image,
+      imageWidth,
       defineField({
         name: "caption",
         title: "Caption (optional)",

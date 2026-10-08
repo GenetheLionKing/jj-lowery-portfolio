@@ -1,5 +1,6 @@
 import { defineField } from "sanity";
 import { isSafeLink } from "../content/urls";
+import { AboutTextBlock } from "./about-text-block";
 
 const string = (name: string, title: string) =>
   defineField({
@@ -19,7 +20,12 @@ const paragraph = (name: string, title: string, required = true) =>
   });
 
 /** Retain Sanity's native Portable Text input, resizing and fullscreen controls. */
-export function richTextField(name: string, title: string, diagrams = true) {
+export function richTextField(
+  name: string,
+  title: string,
+  diagrams = true,
+  aboutAlignment = false,
+) {
   return defineField({
     name,
     title,
@@ -38,6 +44,11 @@ export function richTextField(name: string, title: string, diagrams = true) {
       ...(diagrams ? [{ type: "systemDiagram" }] : []),
       {
         type: "block",
+        ...(aboutAlignment
+          ? {
+              components: { block: AboutTextBlock },
+            }
+          : {}),
         styles: [
           { title: "Paragraph", value: "normal" },
           { title: "Heading", value: "h2" },
