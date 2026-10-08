@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import {
   PatchEvent,
   insert,
   set,
   setIfMissing,
   unset,
-  useFormCallbacks,
-  useFormValue,
   type BlockProps,
+  type ObjectInputProps,
   type Path,
 } from "sanity";
 import {
@@ -19,16 +18,48 @@ import {
   type TextAlignment,
 } from "../content/about-presentation";
 
-export function aboutAlignmentPath(blockPath: Path): Path | undefined {
+type SectionInput = Pick<
+  ObjectInputProps,
+  "path" | "value" | "readOnly" | "onChange"
+>;
+const AboutSectionContext = createContext<SectionInput | undefined>(undefined);
+
+/** The public input callback accepts patches relative to this section object. */
+export function AboutSectionInput(props: ObjectInputProps) {
+  const { path, value, readOnly, onChange } = props;
+  const section = useMemo(
+    () => ({ path, value, readOnly, onChange }),
+    [path, value, readOnly, onChange],
+  );
+  return (
+    <AboutSectionContext.Provider value={section}>
+      {props.renderDefault(props)}
+    </AboutSectionContext.Provider>
+  );
+}
+
+export function aboutAlignmentPath(
+  blockPath: Path,
+  sectionPath: Path,
+): Path | undefined {
   const bodyName = blockPath.at(-2);
+  const sectionKey = sectionPath[1];
+  const blockSectionKey = blockPath[1];
   if (
-    blockPath.length < 4 ||
+    blockPath.length !== 4 ||
+    sectionPath.length !== 2 ||
+    sectionPath[0] !== "sections" ||
     blockPath[0] !== "sections" ||
+    typeof sectionKey !== "object" ||
+    !("_key" in sectionKey) ||
+    typeof blockSectionKey !== "object" ||
+    !("_key" in blockSectionKey) ||
+    sectionKey._key !== blockSectionKey._key ||
     typeof bodyName !== "string" ||
     !["body", "leftBody", "rightBody"].includes(bodyName)
   )
     return undefined;
-  return [...blockPath.slice(0, -2), `${bodyName}Alignments`];
+  return [`${bodyName}Alignments`];
 }
 
 /** Target only keyed presentation metadata; never replace native rich text. */
@@ -68,11 +99,18 @@ export function aboutAlignmentPatches(
 
 /** Extend Sanity's supported block renderer; keep its native editable content. */
 export function AboutTextBlock(props: BlockProps) {
-  const { onChange } = useFormCallbacks();
+  const section = useContext(AboutSectionContext);
   const [controlsFocused, setControlsFocused] = useState(false);
-  const alignmentPath = aboutAlignmentPath(props.path);
-  const current = useFormValue(alignmentPath ?? props.path);
-  const body = useFormValue(props.path.slice(0, -1));
+  const alignmentPath = section
+    ? aboutAlignmentPath(props.path, section.path)
+    : undefined;
+  const current = alignmentPath
+    ? section?.value?.[alignmentPath[0] as string]
+    : undefined;
+  const bodyName = props.path.at(-2);
+  const body =
+    typeof bodyName === "string" ? section?.value?.[bodyName] : undefined;
+  const readOnly = props.readOnly || section?.readOnly;
   const alignment = blockAlignment(current, props.value._key);
   return (
     <div
@@ -102,10 +140,10 @@ export function AboutTextBlock(props: BlockProps) {
               type="button"
               aria-label={`Align paragraph ${value}`}
               aria-pressed={alignment === value}
-              disabled={props.readOnly || !alignmentPath}
+              disabled={readOnly || !alignmentPath}
               onMouseDown={(event) => event.preventDefault()}
               onClick={() => {
-                if (!props.readOnly && alignmentPath) {
+                if (!readOnly && alignmentPath && section) {
                   const activeKeys = Array.isArray(body)
                     ? new Set<string>(
                         body
@@ -120,7 +158,8 @@ export function AboutTextBlock(props: BlockProps) {
                     current,
                     activeKeys,
                   );
-                  if (patches.length) onChange(PatchEvent.from(patches));
+                  if (patches.length)
+                    section.onChange(PatchEvent.from(patches));
                 }
               }}
               style={{
