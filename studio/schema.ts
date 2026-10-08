@@ -35,6 +35,7 @@ import {
   legacyAboutField,
 } from "./about-sections";
 import { nativeAboutData } from "../content/native-about";
+import { aboutGalleryField } from "./about-gallery";
 
 const string = (
   name: string,
@@ -140,7 +141,8 @@ const tags = defineField({
       portfolio: "Show in Portfolio",
       learn: "Show in Learn",
       blog: "Show in Blog",
-      "about-gallery": "Show under About hero (main image required)",
+      "about-gallery":
+        "Legacy About gallery selection (retained; no longer displayed)",
       ...topicLabels,
     }).map(([value, title]) => ({ value, title })),
   },
@@ -260,6 +262,7 @@ const originalTypes = [
     ],
     fields: [
       string("title", "Page title"),
+      aboutGalleryField,
       aboutSectionsField,
       ...[
         legacyAboutField("lead", "Short introduction", "text"),
@@ -597,7 +600,7 @@ export const schemaTypes = [
         type: "image",
         options: { accept: "image/jpeg,image/png,image/webp" },
         description:
-          "Optional. Overrides existing artwork on cards and detail pages. About gallery requires this image. Add alternative text. Uploaded assets are public, including draft attachments.",
+          "Optional. Overrides existing artwork on cards and detail pages. Add alternative text. The About image gallery is managed separately in About. Uploaded assets are public, including draft attachments.",
         fields: [string("alt", "Alternative text")],
       }),
       {

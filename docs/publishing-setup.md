@@ -8,16 +8,16 @@ One **Post** editor handles ordinary articles and optional structured case studi
 
 The **Tags & placement** field controls distribution:
 
-| Tag             | Public placement                                            |
-| --------------- | ----------------------------------------------------------- |
-| `portfolio`     | Portfolio                                                   |
-| `learn`         | Learn                                                       |
-| `about-gallery` | About's linked image-only gallery, when a main image exists |
-| `home`          | Selected structured cases on Home                           |
+| Tag             | Public placement                                                   |
+| --------------- | ------------------------------------------------------------------ |
+| `portfolio`     | Portfolio                                                          |
+| `learn`         | Learn                                                              |
+| `about-gallery` | Legacy selection retained for stored Posts; no longer drives About |
+| `home`          | Selected structured cases on Home                                  |
 
 Published ordinary articles remain in Blog when placement tags are removed. Visitor-facing topic/type filters are absent. Resources remain a separate optional reference type. About and Résumé have dedicated singleton editors; Résumé is hidden from shared navigation but keeps its direct URL, singleton editor and print behavior.
 
-The About gallery uses a tagged published post's main image, title as its accessible link label and canonical URL. It contains no visible captions or arrows. Draft, unpublished and image-less posts do not appear. JJ still needs to choose personal posts/photos; no childhood history or new personal assets were invented. The gallery fixture screenshots use an existing portrait and a clearly labeled local mock post only.
+The [About image gallery](about-image-gallery.md) is managed separately in **Publish → About → Image gallery**. Choose one to six images, add alt text and optional captions, and drag to reorder. Thumbnails open an enlarged image viewer rather than linking to Posts. An empty or unconfigured gallery is hidden; existing Post tags and images are retained without copying any into About. Select and publish images only after the draft feature is approved and released.
 
 ## Owner-approved Preview setup
 

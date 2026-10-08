@@ -13,6 +13,7 @@ const bodyProjection = `[]{..., _type == "image" => {${imageProjection}, "captio
 export const publishedQuery = `*[_type in ["about", "resume", "post", "resource"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(order asc, publishedAt desc, _id asc){...,
     "mainImage": select(defined(mainImage.asset) => {"src": mainImage.asset->url, "alt": mainImage.alt, "width": mainImage.asset->metadata.dimensions.width, "height": mainImage.asset->metadata.dimensions.height}, defined(mainImage.src) => mainImage),
     "body": body${bodyProjection},
+    _type == "about" && defined(gallery) => {"gallery": gallery[]{..., defined(asset) => {${imageProjection}}}},
     _type == "about" && defined(sections) => {"sections": sections[]{...,
       "image": select(defined(image.asset) => image{${imageProjection}}, defined(image.src) => image),
       "body": body${bodyProjection}, "leftBody": leftBody${bodyProjection}, "rightBody": rightBody${bodyProjection}
@@ -57,6 +58,7 @@ export function decodePublishedContent(input: unknown): PublicContent {
     if (data.mainImage == null) delete data.mainImage;
     if (data.body == null) delete data.body;
     if (doc._type === "about" && data.sections == null) delete data.sections;
+    if (doc._type === "about" && data.gallery == null) delete data.gallery;
     if (
       doc._type === "post" &&
       doc.kind !== "article" &&

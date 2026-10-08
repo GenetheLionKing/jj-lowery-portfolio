@@ -3,8 +3,7 @@ import { AboutSections } from "./about-sections";
 import { ArrowIcon } from "@/components/icons";
 import { ProfileImage } from "@/components/profile-image";
 import { SelectedWorkGrid } from "@/components/selected-work-grid";
-import { AboutGalleryStrip } from "@/components/about-gallery";
-import { aboutGallery } from "@/content/catalog";
+import { AboutImageGallery } from "@/components/about-gallery";
 import type { About, PublishingCase, Article } from "@/content/model";
 function AboutHero({ about }: { about: About }) {
   return (
@@ -29,7 +28,6 @@ function AboutHero({ about }: { about: About }) {
 export function AboutView({
   about,
   cases,
-  articles,
   storyHref = "/about/story/",
 }: {
   about: About;
@@ -37,12 +35,11 @@ export function AboutView({
   articles: Article[];
   storyHref?: string;
 }) {
-  const features = aboutGallery(articles, cases);
   if (about.sections !== undefined)
     return (
       <>
         <AboutHero about={about} />
-        <AboutGalleryStrip items={features} />
+        <AboutImageGallery items={about.gallery} />
         <AboutSections sections={about.sections} />
       </>
     );
@@ -53,7 +50,7 @@ export function AboutView({
   return (
     <>
       <AboutHero about={about} />
-      <AboutGalleryStrip items={features} />
+      <AboutImageGallery items={about.gallery} />
       {(about.strengths.length > 0 || about.facts.length > 0) && (
         <section className="about-band">
           <div className="container about-section about-reading">
