@@ -1,3 +1,4 @@
+import { AppPageAnalytics } from "@/components/app-analytics";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { SocialIcon } from "@/components/icons";
@@ -15,6 +16,7 @@ export default function ContactPage() {
   );
   return (
     <div className="contact-page">
+      <AppPageAnalytics path="/contact/" />
       <section className="contact-hero" aria-labelledby="contact-title">
         <div className="container contact-hero-inner">
           <div className="contact-intro">

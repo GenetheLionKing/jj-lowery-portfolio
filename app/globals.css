@@ -203,6 +203,16 @@
     font-size: 15px;
     white-space: nowrap;
   }
+  .privacy-footer {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .privacy-footer a {
+    display: inline-block;
+    padding-block: 10px;
+    text-decoration: underline;
+  }
   .site-footer .site-navigation a {
     font-size: 13px;
     color: var(--muted);

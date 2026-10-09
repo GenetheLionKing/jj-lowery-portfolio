@@ -1,3 +1,4 @@
+import { AppPageAnalytics } from "@/components/app-analytics";
 import type { Metadata } from "next";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { IndexHero } from "@/components/index-hero";
@@ -12,6 +13,7 @@ export default async function Page() {
   const items = portfolioItems(content.cases, content.articles);
   return (
     <>
+      <AppPageAnalytics path="/portfolio/" />
       <IndexHero
         id="portfolio-title"
         title="portfolio"

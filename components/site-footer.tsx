@@ -15,6 +15,11 @@ export function SiteFooter() {
         <SiteNavigation label="Footer navigation" />
         <SocialLinks label="Footer social profiles" />
       </div>
+      <div className="container privacy-footer">
+        <Link href="/privacy/" prefetch={false}>
+          Privacy
+        </Link>
+      </div>
     </footer>
   );
 }

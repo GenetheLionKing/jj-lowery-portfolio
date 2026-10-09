@@ -10,7 +10,7 @@ A compact portfolio with a clean central portrait, two plain-language roles, and
 
 Next.js 16.3.4, React 19.2.8, strict TypeScript, pnpm 10.30.3, Node >=22.12, plain CSS and system fonts. This publishing Preview changes export-only output to cached Next rendering with 60-second incremental static regeneration. New published URLs and edits can appear without a rebuild hook. Indexes use published content and author placement tags; there are no visitor tag filters.
 
-Sanity Studio 6.17.0 provides editing on its own route; next-sanity 13.3.4 embeds it. The public pages use validated, published-only, token-free server reads. Portable Text renders article content on the server. No analytics, tracking, remote fonts, animation package, video or WebGL is added.
+Sanity Studio 6.17.0 provides editing on its own route; next-sanity 13.3.4 embeds it. The public pages use validated, published-only, token-free server reads. Portable Text renders article content on the server. Public production pages collect automatic GA4 page views for the owner-approved destination, with no opt-in prompt; Studio, previews and local development are excluded. See [Analytics scope and verification](docs/analytics.md). No remote fonts, animation package, video or WebGL is added.
 
 The homepage, indexes, About and résumé use App Router Server Components. Article and case-detail routes use Next Pages blocking ISR so missing/unpublished content returns a readable native 404 without JavaScript. Their content renders into initial HTML and uses normal Next hydration. The existing theme toggle and résumé print button remain. The CMS editor is isolated under `/studio/`; its runtime is not imported by public pages. Next includes its normal navigation runtime. Links disable speculative prefetching. Reading and ordinary navigation work without JavaScript.
 
@@ -58,6 +58,7 @@ See [publishing verification](docs/publishing-verification.md) for screenshots, 
 - `/work/portfolio-design/`: this portfolio's actual design and development
 - `/work/bgm-budget-pacing/`: retained historical URL, not promoted by selected work or résumé
 - `/resume/`: HTML résumé and one-page Letter print layout
+- `/privacy/`: factual Analytics disclosure, linked from the shared footer
 
 The header and footer repeat About, Portfolio, Learn, Blog and Contact. Résumé navigation is hidden by request; the direct page, singleton editor and print layout remain. Homepage anchors `/#about` and `/#work` remain usable. `content/public.ts` supplies published content to App pages; `content/detail.ts` supplies server-only static props for detail routes. Separate X, LinkedIn and Instagram icons use the owner's confirmed public URLs. The existing light/dark preference remains.
 

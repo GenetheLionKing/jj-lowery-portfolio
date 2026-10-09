@@ -1,3 +1,4 @@
+import { AppPageAnalytics } from "@/components/app-analytics";
 import type { Metadata } from "next";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { getPublicContent } from "@/content/public";
@@ -12,6 +13,7 @@ export default async function Page() {
   const [featured, ...remaining] = blogItems(content.articles, content.cases);
   return (
     <div className="blog-index">
+      <AppPageAnalytics path="/blog/" />
       <section className="blog-latest" aria-labelledby="blog-title">
         <h1 id="blog-title">blog</h1>
         {featured && <BlogFeature item={featured} />}
