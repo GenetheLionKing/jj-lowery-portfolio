@@ -1,3 +1,24 @@
+@layer tokens {
+  :root {
+    --about-image-shadow:
+      0 1px 3px rgb(17 19 21 / 0.1), 0 3px 8px rgb(17 19 21 / 0.05);
+    --about-image-shadow-active:
+      0 3px 8px rgb(17 19 21 / 0.14), 0 8px 18px rgb(17 19 21 / 0.1);
+  }
+  @media screen {
+    :root[data-theme="dark"] {
+      --about-image-shadow:
+        0 1px 3px rgb(0 0 0 / 0.32), 0 3px 8px rgb(0 0 0 / 0.24);
+      --about-image-shadow-active:
+        0 3px 8px rgb(0 0 0 / 0.4), 0 8px 18px rgb(0 0 0 / 0.32);
+    }
+  }
+}
+@layer accessibility {
+  .about-image-gallery__thumbnails a:focus-visible {
+    border-radius: 12px;
+  }
+}
 @layer components {
   .about-image-gallery {
     border-top: 1px solid var(--line);
@@ -16,10 +37,21 @@
     display: block;
     position: relative;
     min-height: 44px;
+    padding: 6px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: var(--about-image-shadow);
+    transition:
+      box-shadow 0.16s ease,
+      border-color 0.16s ease;
+  }
+  .about-image-gallery__image {
+    display: block;
+    position: relative;
     aspect-ratio: 3 / 2;
     overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 5px;
     background: var(--surface);
   }
   .about-image-gallery__thumbnails img {
@@ -30,7 +62,16 @@
     height: 100%;
     object-fit: cover;
   }
-  .about-image-gallery__thumbnails a:hover,
+  .about-image-gallery__thumbnails a:focus-visible {
+    border-color: var(--accent);
+    box-shadow: var(--about-image-shadow-active);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .about-image-gallery__thumbnails a:hover {
+      border-color: var(--accent);
+      box-shadow: var(--about-image-shadow-active);
+    }
+  }
   .about-image-viewer button:hover {
     border-color: var(--accent);
   }

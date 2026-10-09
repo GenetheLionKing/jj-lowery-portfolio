@@ -108,14 +108,16 @@ export function AboutImageGallery({ items }: { items: AboutGalleryImage[] }) {
                 setSelected(index);
               }}
             >
-              <Image
-                unoptimized
-                src={aboutGalleryThumbnail(item)}
-                alt={item.alt}
-                width={aboutGalleryThumbnailSize.width}
-                height={aboutGalleryThumbnailSize.height}
-                loading="lazy"
-              />
+              <span className="about-image-gallery__image">
+                <Image
+                  unoptimized
+                  src={aboutGalleryThumbnail(item)}
+                  alt={item.alt}
+                  width={aboutGalleryThumbnailSize.width}
+                  height={aboutGalleryThumbnailSize.height}
+                  loading="lazy"
+                />
+              </span>
             </a>
           </li>
         ))}
