@@ -18,6 +18,11 @@ import {
 } from "../content/analytics";
 import { createAnalyticsTracker } from "../content/analytics-tracker";
 import {
+  analyticsAcquisition,
+  externalReferrerOrigin,
+  type AnalyticsAcquisitionInput,
+} from "../content/analytics-acquisition";
+import {
   AnalyticsExcluded,
   AppAnalytics,
   AppPageAnalytics,
@@ -26,7 +31,20 @@ import { PagesAnalytics } from "../components/pages-analytics";
 import PrivacyPage from "../app/(site)/privacy/page";
 import { SiteFooter } from "../components/site-footer";
 
-function fixture(production = true, hostname = "www.jjlowery.com") {
+const emptyCampaign = {
+  campaign_source: "",
+  campaign_medium: "",
+  campaign_name: "",
+  campaign_id: "",
+  campaign_term: "",
+  campaign_content: "",
+};
+
+function fixture(
+  production = true,
+  hostname = "www.jjlowery.com",
+  acquisition?: () => AnalyticsAcquisitionInput,
+) {
   let pathname = "/";
   let onError: (() => void) | undefined;
   const commands: unknown[][] = [];
@@ -36,6 +54,7 @@ function fixture(production = true, hostname = "www.jjlowery.com") {
     production,
     hostname,
     pathname: () => pathname,
+    acquisition,
     command: (...args) => commands.push(args),
     disable: (value) => disabled.push(value),
     load: (failed) => {
@@ -148,7 +167,7 @@ test("automatic initial and routed page views use one tag, deduplicate repeated 
   );
 });
 
-test("payloads discard arbitrary titles/form contents and never queue URL query/hash or external referrer data", () => {
+test("payloads discard arbitrary titles/form contents and never queue URL query/hash", () => {
   const f = fixture();
   f.path("/contact/");
   f.tracker.page({
@@ -176,12 +195,14 @@ test("payloads discard arbitrary titles/form contents and never queue URL query/
   ])
     assert.equal(payload.includes(value), false);
   assert.deepEqual(f.views()[0][2], {
+    ...emptyCampaign,
     page_location: `${analyticsOrigin}/contact/`,
     page_title: "Contact",
     page_referrer: "",
     send_to: gaMeasurementId,
   });
   assert.deepEqual(f.views()[1][2], {
+    ...emptyCampaign,
     page_location: `${analyticsOrigin}/blog/public-story/`,
     page_title: "Blog article",
     page_referrer: `${analyticsOrigin}/contact/`,
@@ -208,6 +229,157 @@ test("payloads discard arbitrary titles/form contents and never queue URL query/
     safeAnalyticsPage({ path: "/about/?email=x", title: "unsafe" }),
     null,
   );
+});
+
+test("referral attribution keeps available public HTTP origins while dropping credentials and all path/query/hash data", () => {
+  assert.equal(
+    externalReferrerOrigin(
+      "https://visitor:password@www.linkedin.com/in/person?email=person@example.com#secret",
+    ),
+    "https://www.linkedin.com",
+  );
+  assert.equal(
+    externalReferrerOrigin("https://www.google.com/search?q=private"),
+    "https://www.google.com",
+  );
+  assert.equal(
+    externalReferrerOrigin("http://partner-site.com/story/?token=secret"),
+    "http://partner-site.com",
+  );
+  for (const value of [
+    "",
+    "bad URL",
+    "javascript:alert(1)",
+    "file:///private/name",
+    "data:text/plain,private",
+    "https://jjlowery.com/about/?email=private",
+    "https://www.jjlowery.com/studio/",
+    "http://localhost/",
+    "https://127.0.0.1/",
+    "https://[::1]/",
+    "https://10.0.0.1/",
+    "https://editor.internal/",
+    "https://router.home.arpa/",
+    "https://home.arpa/",
+    "https://router.lan/",
+    "https://router.home/",
+    "https://partner-site.com:8443/path/",
+    "x".repeat(4097),
+  ])
+    assert.equal(externalReferrerOrigin(value), "", value);
+});
+
+test("complete validated standard UTMs become explicit campaign fields; ambiguous, contact-like, opaque and unsupported input is excluded", () => {
+  assert.deepEqual(
+    analyticsAcquisition({
+      search:
+        "?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio%5Fshare&email=person%40example.com&gclid=secret&utm_term=private&utm_content=private&utm_id=private",
+      referrer: "https://www.linkedin.com/in/person?token=private",
+    }),
+    {
+      ...emptyCampaign,
+      referrer: "https://www.linkedin.com",
+      campaign_source: "linkedin",
+      campaign_medium: "social",
+      campaign_name: "portfolio_share",
+    },
+  );
+  assert.equal(
+    analyticsAcquisition({
+      search:
+        "?utm_source=newsletter&utm_medium=email&utm_campaign=autumn-2026",
+      referrer: "",
+    }).campaign_name,
+    "autumn-2026",
+  );
+  for (const search of [
+    "?utm_source=linkedin&utm_medium=social",
+    "?utm_source=linkedin&utm_source=google&utm_medium=social&utm_campaign=portfolio_share",
+    "?utm_source=person%40example.com&utm_medium=email&utm_campaign=portfolio_share",
+    "?utm_source=linkedin&utm_medium=Visitor_Name&utm_campaign=portfolio_share",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=user-john",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=email-person",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=token-abc",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=call-5551234567",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio%2520share",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio%00share",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=Visitor+Name",
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=" + "x".repeat(65),
+    "?" + "x".repeat(2048),
+  ]) {
+    const { referrer, ...campaign } = analyticsAcquisition({
+      search,
+      referrer: "https://www.google.com/search?q=private",
+    });
+    assert.deepEqual(campaign, emptyCampaign, search);
+    assert.equal(referrer, "https://www.google.com");
+  }
+});
+
+test("landing attribution is captured once on an eligible page and survives routed views without replaying external referrers", () => {
+  let reads = 0;
+  let search =
+    "?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio_share&token=private";
+  const f = fixture(true, "www.jjlowery.com", () => {
+    reads++;
+    return {
+      search,
+      referrer: "https://www.linkedin.com/in/private?email=person@example.com",
+    };
+  });
+  f.path("/studio/");
+  f.tracker.page(null);
+  assert.equal(reads, 0);
+  f.path("/");
+  f.tracker.page(appAnalyticsPage("/"));
+  f.tracker.page(appAnalyticsPage("/"));
+  assert.equal(reads, 1);
+  assert.equal(f.loads, 1);
+  assert.equal(f.views().length, 1);
+  assert.equal(
+    (f.views()[0][2] as Record<string, unknown>).page_referrer,
+    "https://www.linkedin.com",
+  );
+  search = "?utm_source=google&utm_medium=organic&utm_campaign=changed";
+  f.path("/about/");
+  f.tracker.page(appAnalyticsPage("/about/"));
+  assert.equal(
+    (f.views()[1][2] as Record<string, unknown>).page_referrer,
+    analyticsOrigin + "/",
+  );
+  f.path("/studio/");
+  f.tracker.page(null);
+  f.path("/about/");
+  f.tracker.page(appAnalyticsPage("/about/"));
+  assert.equal((f.views()[2][2] as Record<string, unknown>).page_referrer, "");
+  assert.equal(reads, 1);
+  for (const args of f.commands.filter(
+    (args) =>
+      args[0] === "config" ||
+      args[0] === "event" ||
+      (args[0] === "set" && typeof args[1] === "object"),
+  )) {
+    const p = (args[0] === "set" ? args[1] : args[2]) as Record<
+      string,
+      unknown
+    >;
+    assert.equal(p.campaign_source, "linkedin");
+    assert.equal(p.campaign_medium, "social");
+    assert.equal(p.campaign_name, "portfolio_share");
+    assert.equal(p.campaign_id, "");
+    assert.equal(p.campaign_term, "");
+    assert.equal(p.campaign_content, "");
+    assert.equal(String(p.page_location).includes("?"), false);
+  }
+  const payload = JSON.stringify(f.commands);
+  for (const value of [
+    "person@example.com",
+    "/in/private",
+    "token=private",
+    "changed",
+  ])
+    assert.equal(payload.includes(value), false);
 });
 
 test("location mismatch and private transitions pause collection; return to a public page counts a new view", () => {
@@ -274,6 +446,8 @@ test("actual App and Pages router adapters share one browser tag, survive Strict
     hostname: "www.jjlowery.com",
     pathname: "/about/story/",
     href: "https://www.jjlowery.com/?email=person@example.com#secret",
+    search:
+      "?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio_share&email=person%40example.com",
   };
   const fakeWindow = { location, dataLayer: [] as unknown[] };
   globalThis.window = fakeWindow as unknown as Window & typeof globalThis;
@@ -283,7 +457,8 @@ test("actual App and Pages router adapters share one browser tag, survive Strict
       appendChild: (script: Record<string, unknown>) => scripts.push(script),
     },
     title: "Visitor Name",
-    referrer: "https://external.example/?email=person@example.com",
+    referrer:
+      "https://www.linkedin.com/in/Visitor-Name?email=person@example.com#secret",
   } as unknown as Document;
   process.env.NEXT_PUBLIC_ANALYTICS_PRODUCTION = "true";
   reactGlobal.IS_REACT_ACT_ENVIRONMENT = true;
@@ -338,6 +513,14 @@ test("actual App and Pages router adapters share one browser tag, survive Strict
     await act(async () => renderer!.update(app("/")));
     assert.equal(scripts.length, 1);
     assert.equal(views().length, 1);
+    assert.equal(
+      (views()[0][2] as Record<string, unknown>).page_referrer,
+      "https://www.linkedin.com",
+    );
+    assert.equal(
+      (views()[0][2] as Record<string, unknown>).campaign_source,
+      "linkedin",
+    );
     assert.equal(
       scripts[0].src,
       `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`,
@@ -399,7 +582,7 @@ test("actual App and Pages router adapters share one browser tag, survive Strict
     for (const value of [
       "person@example.com",
       "Visitor Name",
-      "external.example",
+      "Visitor-Name",
       "?",
       "#",
     ])

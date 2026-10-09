@@ -31,9 +31,12 @@ export default function PrivacyPage() {
           </p>
           <p>
             The site sends known public page paths and general page labels. It
-            removes URL query strings and fragments and does not send external
-            referrers. Contact-form contents, visitor names and email addresses
-            are not included in these Analytics events. Advertising features and
+            removes URL query strings and fragments from page URLs. It keeps the
+            available referring site’s origin, without its credentials, path or
+            query, and validated public UTM source, medium and campaign labels.
+            Contact-form contents and arbitrary URL parameters are not included
+            in these Analytics events. Campaign links must use public labels,
+            never personal information or secrets. Advertising features and
             Google Signals are disabled in the site’s tracking configuration.
           </p>
           <p>

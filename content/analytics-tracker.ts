@@ -6,11 +6,16 @@ import {
   safeAnalyticsPage,
   type AnalyticsPage,
 } from "./analytics";
+import {
+  analyticsAcquisition,
+  type AnalyticsAcquisitionInput,
+} from "./analytics-acquisition";
 
 export type AnalyticsRuntime = {
   production: boolean;
   hostname: string;
   pathname: () => string;
+  acquisition?: () => AnalyticsAcquisitionInput;
   command: (...args: unknown[]) => void;
   disable: (disabled: boolean) => void;
   load: (failed: () => void) => void;
@@ -22,6 +27,7 @@ export function createAnalyticsTracker(runtime: AnalyticsRuntime) {
   let failed = false;
   let lastPath: string | null = null;
   let previousLocation = "";
+  let acquisition: ReturnType<typeof analyticsAcquisition> | undefined;
   return {
     page(input: AnalyticsPage | null) {
       const page = safeAnalyticsPage(input);
@@ -39,11 +45,14 @@ export function createAnalyticsTracker(runtime: AnalyticsRuntime) {
       if (failed) return;
       runtime.disable(false);
       if (page.path === lastPath) return;
+      acquisition ??= analyticsAcquisition(runtime.acquisition?.());
+      const { referrer, ...campaign } = acquisition;
       const parameters = {
+        ...campaign,
         page_location: `${analyticsOrigin}${page.path}`,
         page_title: page.title,
-        // Never read document.referrer: external paths, queries and names stay out.
-        page_referrer: previousLocation,
+        // Only the initial eligible view uses the sanitized document referrer.
+        page_referrer: previousLocation || (!initialized ? referrer : ""),
       };
       runtime.command("set", parameters);
       if (!initialized) {
