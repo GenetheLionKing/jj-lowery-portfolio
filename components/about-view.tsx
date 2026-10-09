@@ -19,7 +19,7 @@ function AboutHero({ about }: { about: About }) {
             ))}
           </div>
         </div>
-        <ProfileImage sizes="(max-width: 750px) 280px, (max-width: 900px) 355px, 457px" />
+        <ProfileImage sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 400px) calc(100vw - 40px), (max-width: 750px) 360px, (max-width: 900px) 380px, (max-width: 1080px) 50vw, 540px" />
       </div>
     </section>
   );
