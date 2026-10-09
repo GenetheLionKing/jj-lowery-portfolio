@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { createElement, Fragment, StrictMode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { act, create } from "react-test-renderer";
@@ -382,7 +383,103 @@ test("landing attribution is captured once on an eligible page and survives rout
     assert.equal(payload.includes(value), false);
 });
 
-test("location mismatch and private transitions pause collection; return to a public page counts a new view", () => {
+test("stale public markers preserve dedupe, prior referrer and acquisition in either order", () => {
+  for (const staleFirst of [false, true]) {
+    let reads = 0;
+    const f = fixture(true, "www.jjlowery.com", () => {
+      reads++;
+      return {
+        search: "?utm_source=linkedin&utm_medium=social&utm_campaign=share",
+        referrer: "https://www.linkedin.com/in/private",
+      };
+    });
+    f.tracker.page(appAnalyticsPage("/"));
+    f.path("/about/");
+    for (const path of staleFirst ? ["/", "/about/"] : ["/about/", "/"])
+      f.tracker.page(appAnalyticsPage(path));
+    const disableCalls = f.disabled.length;
+    f.tracker.page(appAnalyticsPage("/"));
+    assert.equal(f.disabled.length, disableCalls);
+    f.tracker.page(appAnalyticsPage("/about/"));
+    assert.equal(f.views().length, 2);
+    assert.equal(f.disabled.at(-1), false);
+    f.path("/learn/");
+    f.tracker.page(appAnalyticsPage("/learn/"));
+    assert.equal(
+      (f.views()[2][2] as Record<string, unknown>).page_referrer,
+      `${analyticsOrigin}/about/`,
+    );
+    assert.equal(
+      (f.views()[2][2] as Record<string, unknown>).campaign_source,
+      "linkedin",
+    );
+    assert.equal(reads, 1);
+    assert.equal(f.loads, 1);
+  }
+});
+
+test("stale callbacks cannot initialize a URL shape or undo explicit fixed/dynamic 404 pauses", () => {
+  for (const path of ["/about/", "/blog/unpublished-story/"]) {
+    const f = fixture();
+    f.path(path);
+    f.tracker.page(null);
+    f.tracker.page(appAnalyticsPage("/"));
+    assert.equal(f.loads, 0);
+    assert.equal(f.views().length, 0);
+    assert.equal(f.disabled.at(-1), true);
+  }
+  const f = fixture();
+  f.path("/about/");
+  f.tracker.page(appAnalyticsPage("/about/"));
+  f.tracker.page(null);
+  f.tracker.page(appAnalyticsPage("/"));
+  assert.equal(f.disabled.at(-1), true);
+  assert.equal(f.views().length, 1);
+  f.tracker.page(appAnalyticsPage("/about/"));
+  assert.equal(f.disabled.at(-1), false);
+  assert.equal(f.views().length, 2);
+  assert.equal((f.views()[1][2] as Record<string, unknown>).page_referrer, "");
+});
+
+test("actual private or malformed locations pause even if a public marker arrives without an exclusion callback", () => {
+  for (const path of [
+    "/studio/",
+    "/api/contact/",
+    "/design-review/about/",
+    "/unknown/",
+    "/contact?email=person@example.com",
+    "/blog/private?token=secret/",
+    "/about/#secret",
+  ]) {
+    const f = fixture();
+    f.tracker.page(appAnalyticsPage("/"));
+    f.path(path);
+    f.tracker.page(appAnalyticsPage("/"));
+    assert.equal(f.disabled.at(-1), true, path);
+    assert.equal(f.views().length, 1, path);
+    f.path("/");
+    f.tracker.page(appAnalyticsPage("/"));
+    assert.equal(f.views().length, 2, path);
+  }
+});
+
+test("back/forward visits and separate documents each count their legitimate views", () => {
+  const first = fixture();
+  for (const path of ["/", "/about/", "/", "/about/"]) {
+    first.path(path);
+    first.tracker.page(appAnalyticsPage(path));
+    first.tracker.page(appAnalyticsPage(path));
+  }
+  assert.equal(first.views().length, 4);
+  assert.equal(first.loads, 1);
+  const second = fixture();
+  second.path("/about/");
+  second.tracker.page(appAnalyticsPage("/about/"));
+  assert.equal(second.views().length, 1);
+  assert.equal(second.loads, 1);
+});
+
+test("private transitions pause collection; return to a public page counts a new view", () => {
   const f = fixture();
   f.tracker.page(appAnalyticsPage("/"));
   f.path("/studio/");
@@ -396,6 +493,31 @@ test("location mismatch and private transitions pause collection; return to a pu
   assert.equal(f.views().length, 2);
   assert.equal(f.loads, 1);
   assert.equal((f.views()[1][2] as Record<string, unknown>).page_referrer, "");
+});
+
+test("actual App adapters in production ignore stale marker order/remount and retain authoritative pauses", () => {
+  const output = execFileSync(
+    process.execPath,
+    ["--import", "tsx", "tests/fixtures/analytics-production.tsx"],
+    {
+      cwd: process.cwd(),
+      env: { ...process.env, NODE_ENV: "production" },
+      encoding: "utf8",
+      timeout: 15_000,
+    },
+  );
+  const result = JSON.parse(output) as {
+    environment: string;
+    views: number;
+    scripts: number;
+    markerOrders: number;
+  };
+  assert.deepEqual(result, {
+    environment: "production",
+    views: 6,
+    scripts: 1,
+    markerOrders: 2,
+  });
 });
 
 test("failed script loading disables future commands and never interrupts reading", () => {
