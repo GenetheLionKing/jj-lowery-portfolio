@@ -18,6 +18,10 @@ export function trackPublicPage(page: AnalyticsPage | null) {
     production: process.env.NEXT_PUBLIC_ANALYTICS_PRODUCTION === "true",
     hostname: window.location.hostname,
     pathname: () => window.location.pathname,
+    acquisition: () => ({
+      search: window.location.search,
+      referrer: document.referrer,
+    }),
     disable: (disabled) => {
       window[`ga-disable-${gaMeasurementId}`] = disabled;
     },
