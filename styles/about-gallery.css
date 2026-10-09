@@ -22,8 +22,8 @@
 @layer components {
   .about-image-gallery {
     border-top: 1px solid var(--line);
-    padding-top: 28px;
-    margin-bottom: 64px;
+    padding-block: 32px;
+    margin-bottom: 0;
   }
   .about-image-gallery__thumbnails {
     display: grid;
@@ -153,7 +153,7 @@
   }
   @media (max-width: 650px) {
     .about-image-gallery {
-      margin-bottom: 40px;
+      padding-block: 24px;
     }
     .about-image-gallery__thumbnails {
       grid-template-columns: repeat(3, minmax(0, 1fr));
