@@ -81,3 +81,10 @@ export function safeAnalyticsPage(
     ? postAnalyticsPage(match[1] as "blog" | "work", match[2])
     : null;
 }
+
+/** A recognized URL shape alone never proves a successful/published page. */
+export function isPublicAnalyticsPath(pathname: string) {
+  return (
+    safeAnalyticsPage({ path: canonicalPath(pathname), title: "" }) !== null
+  );
+}

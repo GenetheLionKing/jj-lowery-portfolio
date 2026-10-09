@@ -2,6 +2,7 @@ import {
   analyticsAllowed,
   analyticsOrigin,
   gaMeasurementId,
+  isPublicAnalyticsPath,
   pageMatchesLocation,
   safeAnalyticsPage,
   type AnalyticsPage,
@@ -31,17 +32,22 @@ export function createAnalyticsTracker(runtime: AnalyticsRuntime) {
   return {
     page(input: AnalyticsPage | null) {
       const page = safeAnalyticsPage(input);
+      const pathname = runtime.pathname();
       if (
         !/^G-[A-Z0-9]+$/.test(gaMeasurementId) ||
         !analyticsAllowed(runtime.production, runtime.hostname) ||
         !page ||
-        !pageMatchesLocation(page, runtime.pathname())
+        !isPublicAnalyticsPath(pathname)
       ) {
         runtime.disable(true);
         lastPath = null;
         previousLocation = "";
         return;
       }
+      // An old route marker is not an exclusion signal for the current page.
+      // Preserve both dedupe and an explicit 404/private pause until a matching
+      // successful marker arrives; never emit from the URL shape alone.
+      if (!pageMatchesLocation(page, pathname)) return;
       if (failed) return;
       runtime.disable(false);
       if (page.path === lastPath) return;

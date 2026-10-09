@@ -19,9 +19,8 @@ export function AppPageAnalytics({ path }: { path: string }) {
   const pathname = usePathname();
   useEffect(() => {
     const page = appAnalyticsPage(path);
-    trackPublicPage(
-      page && pathname && pageMatchesLocation(page, pathname) ? page : null,
-    );
+    if (page && pathname && pageMatchesLocation(page, pathname))
+      trackPublicPage(page);
   }, [path, pathname]);
   return null;
 }
