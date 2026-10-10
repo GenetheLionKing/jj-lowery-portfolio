@@ -11,6 +11,7 @@
 @import url("../styles/reading-article.css");
 @import url("../styles/about-sections.css");
 @import url("../styles/about-gallery.css");
+@import url("../styles/about-carousel.css");
 @layer tokens {
   :root {
     --paper: #fff;

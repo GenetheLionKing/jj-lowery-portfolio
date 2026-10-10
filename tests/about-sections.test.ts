@@ -469,7 +469,7 @@ test("native About adaptation resolves section and both body assets locally with
   assert.equal(adapted._id, "drafts.about");
   assert.deepEqual(parsed.story, seedAbout.story);
   assert.equal(
-    parsed.sections?.[0].image.src,
+    parsed.sections?.[0]._type === "aboutImageLeft" ? parsed.sections[0].image.src : undefined,
     "https://cdn.sanity.io/images/validation/portfolio/test-1640x1294.webp",
   );
   assert.equal(nativeAboutData(seedAbout, config).sections, undefined);
@@ -1499,6 +1499,7 @@ test("Studio compiles scoped native block controls, independent headline radios 
 test("optional image widths preserve intrinsic dimensions and reject unsafe sizes and presentation values", () => {
   for (const section of sections) {
     const legacy = aboutSectionSchema.parse(section);
+    assert.ok("imageWidth" in legacy || "image" in legacy);
     assert.equal(legacy.imageWidth, undefined);
     const base = renderToStaticMarkup(
       createElement(AboutSectionsFixture, { section: legacy }),
@@ -1509,6 +1510,7 @@ test("optional image widths preserve intrinsic dimensions and reject unsafe size
     );
     for (const imageWidth of [160, 600, 800]) {
       const sized = aboutSectionSchema.parse({ ...section, imageWidth });
+      assert.ok("image" in sized && "image" in legacy);
       const html = renderToStaticMarkup(
         createElement(AboutSectionsFixture, { section: sized }),
       );

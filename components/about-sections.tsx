@@ -2,7 +2,9 @@ import Image from "next/image";
 import { Fragment, type CSSProperties } from "react";
 import { ArticleBody } from "./article-body";
 import { sizedPublicImage } from "@/content/media";
-import type { AboutBody, AboutSection } from "@/content/model";
+import type { AboutBody, AboutSection, PublicImage } from "@/content/model";
+import { AboutImageCarousel } from "./about-image-carousel";
+import { AboutSkillsCarousel } from "./about-skills-carousel";
 import {
   alignmentStyle,
   type AboutBlockAlignment,
@@ -15,14 +17,14 @@ function Copy({
   body,
   bodyAlignments,
 }: {
-  headline: string;
+  headline?: string | null;
   headlineAlignment?: TextAlignment;
   body: AboutBody;
   bodyAlignments?: AboutBlockAlignment[];
 }) {
   return (
     <div className="about-section-copy">
-      <h2 style={alignmentStyle(headlineAlignment)}>{headline}</h2>
+      {headline && <h2 style={alignmentStyle(headlineAlignment)}>{headline}</h2>}
       <div className="reading-body about-section-body">
         <ArticleBody
           body={body}
@@ -38,7 +40,7 @@ function Media({
   image,
   caption,
 }: {
-  image: AboutSection["image"];
+  image: PublicImage;
   caption?: string | null;
 }) {
   return (
@@ -107,6 +109,18 @@ const sectionRenderers = {
   aboutImageOnly: ({ section }) => (
     <Media image={section.image} caption={section.caption} />
   ),
+  aboutImageCarousel: ({ section }) => (
+    <>
+      {(section.headline || section.body?.length) && <Copy headline={section.headline} headlineAlignment={section.headlineAlignment} body={section.body ?? []} bodyAlignments={section.bodyAlignments} />}
+      <AboutImageCarousel items={section.images} label={section.headline || "About image carousel"} />
+    </>
+  ),
+  aboutSkillsCarousel: ({ section }) => (
+    <>
+      <Copy headline={section.headline || "My skills"} headlineAlignment={section.headlineAlignment} body={section.body ?? []} bodyAlignments={section.bodyAlignments} />
+      <AboutSkillsCarousel trees={section.trees} label={section.headline || "My skills"} />
+    </>
+  ),
 } satisfies SectionRenderers;
 
 function SectionContent({ section }: { section: AboutSection }) {
@@ -120,19 +134,29 @@ function SectionContent({ section }: { section: AboutSection }) {
       return sectionRenderers.aboutImageRight({ section });
     case "aboutImageOnly":
       return sectionRenderers.aboutImageOnly({ section });
+    case "aboutImageCarousel":
+      return sectionRenderers.aboutImageCarousel({ section });
+    case "aboutSkillsCarousel":
+      return sectionRenderers.aboutSkillsCarousel({ section });
   }
 }
 
 export function AboutSections({ sections }: { sections: AboutSection[] }) {
+  const visible = sections.filter((section) =>
+    (section._type !== "aboutImageCarousel" || section.images.length > 0) &&
+    (section._type !== "aboutSkillsCarousel" || section.trees.some((tree) => tree.nodes.length)),
+  );
+  // Empty new sections do not reserve a divider or a padded content area.
+  if (sections.length && !visible.length) return null;
   return (
     <div className="container about-sections">
-      {sections.map((section) => (
+      {visible.map((section) => (
         <Fragment key={section._key}>
           <hr className="about-section-divider" aria-hidden="true" />
           <section
-            className={`about-authored-section about-authored-section--${section._type}${section.imageWidth !== undefined ? " about-authored-section--sized" : ""}`}
+            className={`about-authored-section about-authored-section--${section._type}${"imageWidth" in section && section.imageWidth !== undefined ? " about-authored-section--sized" : ""}`}
             style={
-              section.imageWidth !== undefined
+              "imageWidth" in section && section.imageWidth !== undefined
                 ? ({
                     "--about-image-width": `${section.imageWidth}px`,
                   } as CSSProperties)

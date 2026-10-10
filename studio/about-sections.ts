@@ -1,11 +1,20 @@
 import { defineField, defineType } from "sanity";
-import { aboutBodySchema, postImageSchema } from "../content/model";
+import {
+  aboutBodySchema,
+  aboutCarouselImagesSchema,
+  aboutOptionalBodySchema,
+  aboutSkillTreesSchema,
+  postImageSchema,
+} from "../content/model";
 import { nativeImageData, nativeRichTextData } from "../content/native-media";
 import { AboutSectionsInput } from "./about-sections-input";
 import { AboutSectionInput } from "./about-text-block";
+import { skillTreeLimits } from "../content/about-skill-tree";
+import { nativeSkillTreeData } from "../content/native-about";
 import { richTextField } from "./rich-text";
 import {
   aboutImageWidthBounds,
+  aboutCarouselImageLimit,
   isTextAlignment,
   textAlignments,
 } from "../content/about-presentation";
@@ -239,6 +248,121 @@ export const aboutSectionTypes = [
       select: { title: "caption", media: "image" },
       prepare: ({ title, media }) => ({ title: title || "Image only", media }),
     },
+  }),
+  defineType({
+    name: "aboutImageCarousel",
+    title: "Image carousel",
+    type: "object",
+    components: { input: AboutSectionInput },
+    fields: [
+      defineField({
+        name: "headline",
+        title: "Headline (optional)",
+        type: "string",
+        validation: (rule) => rule.max(12000),
+      }),
+      headlineAlignment(),
+      {
+        ...richTextField("body", "Body (optional)", false, true),
+        validation: (rule: import("sanity").Rule) =>
+          rule.max(300).custom((value) => {
+            if (value == null) return true;
+            try {
+              const result = aboutOptionalBodySchema.safeParse(
+                nativeRichTextData(value, {
+                  projectId: "validation",
+                  dataset: "portfolio",
+                }),
+              );
+              return result.success ? true : result.error.issues[0].message;
+            } catch (error) {
+              return error instanceof Error ? error.message : "Invalid body image";
+            }
+          }),
+      },
+      bodyAlignments(),
+      defineField({
+        name: "images",
+        title: "Carousel images",
+        type: "array",
+        description:
+          "Add up to 18 infographic or other images, then drag to reorder. Each image is shown whole, without cropping, and can be enlarged. Empty carousels are hidden. Upload only images intended to be public; draft attachments are also public assets.",
+        options: { layout: "grid", sortable: true },
+        of: [
+          {
+            type: "image",
+            title: "Carousel image",
+            options: { accept: "image/jpeg,image/png,image/webp" },
+            fields: [
+              headline("alt", "Alternative text"),
+              defineField({
+                name: "caption",
+                title: "Caption (optional)",
+                type: "text",
+                rows: 2,
+                validation: (rule) => rule.max(12000),
+              }),
+            ],
+            preview: {
+              select: { title: "alt", subtitle: "caption", media: "asset" },
+            },
+          },
+        ],
+        validation: (rule) =>
+          rule.max(aboutCarouselImageLimit).custom((value) => {
+            if (!Array.isArray(value)) return true;
+            try {
+              const result = aboutCarouselImagesSchema.safeParse(
+                value.map((item) =>
+                  nativeImageData(item, {
+                    projectId: "validation",
+                    dataset: "portfolio",
+                  }),
+                ),
+              );
+              return result.success ? true : result.error.issues[0].message;
+            } catch (error) {
+              return error instanceof Error ? error.message : "Invalid carousel image";
+            }
+          }),
+      }),
+    ],
+    preview: {
+      select: { title: "headline", media: "images.0" },
+      prepare: ({ title, media }) => ({
+        title: title || "Image carousel",
+        subtitle: "Full images / manual navigation",
+        media,
+      }),
+    },
+  }),
+  defineType({
+    name: "aboutSkillsCarousel",
+    title: "Interactive skills carousel",
+    type: "object",
+    components: { input: AboutSectionInput },
+    initialValue: { headline: "My skills" },
+    fields: [
+      defineField({ name: "headline", title: "Headline", type: "string", initialValue: "My skills", validation: (rule) => rule.max(12000) }),
+      headlineAlignment(),
+      {
+        ...richTextField("body", "Body (optional)", false, true),
+        validation: (rule: import("sanity").Rule) => rule.max(300).custom((value) => {
+          if (value == null) return true;
+          try { const result = aboutOptionalBodySchema.safeParse(nativeRichTextData(value, { projectId: "validation", dataset: "portfolio" })); return result.success ? true : result.error.issues[0].message; }
+          catch (error) { return error instanceof Error ? error.message : "Invalid body image"; }
+        }),
+      },
+      bodyAlignments(),
+      defineField({ name: "trees", title: "Skill trees / categories", type: "array", of: [{ type: "aboutSkillTree" }], options: { sortable: true, layout: "list" }, description: "Add up to 8 trees and drag to order the slides. Each tree groups related skills. Empty trees and an empty carousel are hidden.",
+        validation: (rule) => rule.max(skillTreeLimits.trees).custom((value) => {
+          if (!Array.isArray(value)) return true;
+          try { const result = aboutSkillTreesSchema.safeParse(value.map((tree) => nativeSkillTreeData(tree, { projectId: "validation", dataset: "portfolio" }))); return result.success ? true : result.error.issues[0].message; }
+          catch (error) { return error instanceof Error ? error.message : "Invalid skill tree"; }
+        }),
+      }),
+    ],
+    preview: { select: { title: "headline" }, prepare: ({ title }) => ({ title: title || "My skills", subtitle: "Selectable badges / manual navigation" }) },
   }),
 ];
 
