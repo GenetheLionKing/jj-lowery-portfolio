@@ -1,7 +1,12 @@
 import { z } from "zod";
 import { isSafeLink } from "./urls";
 import { postCtaFields, validatePostCta } from "./post-cta";
-import { aboutImageWidthBounds, textAlignments } from "./about-presentation";
+import { skillTreeIssue, skillTreeLimits } from "./about-skill-tree";
+import {
+  aboutCarouselImageLimit,
+  aboutImageWidthBounds,
+  textAlignments,
+} from "./about-presentation";
 
 const text = z.string().trim().min(1).max(12000);
 const slug = z
@@ -129,10 +134,11 @@ export const richTextSchema = z
 
 // About uses the same Portable Text contract, with prose and images only.
 const alignment = z.enum(textAlignments).optional();
-export const aboutBodySchema = z
+export const aboutOptionalBodySchema = z
   .array(z.discriminatedUnion("_type", [proseBlockSchema, richImageSchema]))
+  .max(300);
+export const aboutBodySchema = aboutOptionalBodySchema
   .min(1)
-  .max(300)
   .refine(
     (body) =>
       body.some(
@@ -166,6 +172,49 @@ const blockAlignments = z
     "Paragraph alignment keys must be unique",
   )
   .optional();
+export const aboutCarouselImageSchema = postImageSchema.extend({
+  _key: text,
+  caption: z.string().max(12000).nullish(),
+});
+export const aboutCarouselImagesSchema = z
+  .array(aboutCarouselImageSchema)
+  .max(aboutCarouselImageLimit)
+  .refine(
+    (images) => new Set(images.map((item) => item._key)).size === images.length,
+    "Carousel image keys must be unique",
+  );
+export const aboutSkillNodeSchema = z.object({
+  _key: text,
+  _type: z.literal("aboutSkillNode"),
+  name: z.string().trim().min(1).max(skillTreeLimits.name),
+  tier: z.number().int().min(1).max(skillTreeLimits.tiers).default(1),
+  status: z.enum(["locked", "unlocked"]),
+  currentRank: z.number().int().min(1).max(4).optional(),
+  badge: postImageSchema,
+  body: aboutBodySchema,
+  ranks: z.object({
+    _type: z.literal("aboutSkillRanks"),
+    rank1: aboutBodySchema,
+    rank2: aboutBodySchema,
+    rank3: aboutBodySchema,
+    rank4: aboutBodySchema,
+  }),
+  prerequisite: z.string().trim().max(12000).nullish(),
+});
+export const aboutSkillTreeSchema = z.object({
+  _key: text,
+  _type: z.literal("aboutSkillTree"),
+  title: z.string().trim().min(1).max(120),
+  headerColor: z.enum(["emerald", "indigo", "amber", "rose"]).default("emerald"),
+  nodes: z.array(aboutSkillNodeSchema).max(skillTreeLimits.nodes).nullish().transform((nodes) => nodes ?? []),
+}).superRefine((tree, context) => {
+  const issue = skillTreeIssue(tree.nodes);
+  if (issue) context.addIssue({ code: "custom", path: ["nodes"], message: issue });
+});
+export const aboutSkillTreesSchema = z.array(aboutSkillTreeSchema).max(skillTreeLimits.trees).refine(
+  (trees) => new Set(trees.map((tree) => tree._key)).size === trees.length,
+  "Skill tree keys must be unique",
+);
 export const aboutSectionSchema = z.discriminatedUnion("_type", [
   z.object({
     ...sectionFields,
@@ -199,6 +248,26 @@ export const aboutSectionSchema = z.discriminatedUnion("_type", [
     ...sectionFields,
     _type: z.literal("aboutImageOnly"),
     caption: z.string().max(12000).nullish(),
+  }),
+  z.object({
+    _type: z.literal("aboutImageCarousel"),
+    _key: text,
+    headline: z.string().trim().max(12000).nullish(),
+    headlineAlignment: alignment,
+    body: aboutOptionalBodySchema.nullish(),
+    bodyAlignments: blockAlignments,
+    images: aboutCarouselImagesSchema
+      .nullish()
+      .transform((images) => images ?? []),
+  }),
+  z.object({
+    _type: z.literal("aboutSkillsCarousel"),
+    _key: text,
+    headline: z.string().trim().max(12000).nullish(),
+    headlineAlignment: alignment,
+    body: aboutOptionalBodySchema.nullish(),
+    bodyAlignments: blockAlignments,
+    trees: aboutSkillTreesSchema.nullish().transform((trees) => trees ?? []),
   }),
 ]);
 
@@ -379,6 +448,10 @@ export type Resource = z.infer<typeof resourceSchema>;
 export type AboutSection = z.infer<typeof aboutSectionSchema>;
 export type About = z.infer<typeof aboutSchema>;
 export type AboutGalleryImage = z.infer<typeof aboutGalleryImageSchema>;
+export type AboutCarouselImage = z.infer<typeof aboutCarouselImageSchema>;
+export type PublicImage = z.infer<typeof postImageSchema>;
+export type AboutSkillNode = z.infer<typeof aboutSkillNodeSchema>;
+export type AboutSkillTree = z.infer<typeof aboutSkillTreeSchema>;
 export type FramedImage = z.infer<typeof framedImageSchema>;
 export type Resume = z.infer<typeof resumeSchema>;
 export type RichText = z.infer<typeof richTextSchema>;

@@ -34,6 +34,7 @@ import {
   aboutSectionsField,
   legacyAboutField,
 } from "./about-sections";
+import { aboutSkillTypes } from "./about-skills";
 import { nativeAboutData } from "../content/native-about";
 import { aboutGalleryField } from "./about-gallery";
 import { postThumbnailPreviews } from "../content/image-thumbnail";
@@ -234,6 +235,7 @@ const caseBlocks = [
 const originalTypes = [
   ...caseBlocks,
   ...aboutSectionTypes,
+  ...aboutSkillTypes,
   defineType({
     name: "about",
     validation: (rule) =>

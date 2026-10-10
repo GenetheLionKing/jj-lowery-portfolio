@@ -26,3 +26,4 @@ export function isTextAlignment(value: unknown): value is TextAlignment {
 }
 
 export const aboutImageWidthBounds = { min: 160, max: 800 } as const;
+export const aboutCarouselImageLimit = 18;

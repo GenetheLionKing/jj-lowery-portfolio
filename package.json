@@ -9,7 +9,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "check": "pnpm lint && pnpm typecheck && pnpm test:content && pnpm build && pnpm test:routes",
     "preview": "next start --hostname 127.0.0.1",
-    "test:content": "node --import tsx --test tests/content.test.ts tests/studio.test.ts tests/article.test.ts tests/contact.test.ts tests/about-sections.test.ts tests/about-gallery.test.ts tests/post-image-framing.test.ts tests/analytics.test.ts",
+    "test:content": "node --import tsx --test tests/content.test.ts tests/studio.test.ts tests/article.test.ts tests/contact.test.ts tests/about-sections.test.ts tests/about-gallery.test.ts tests/post-image-framing.test.ts tests/analytics.test.ts tests/about-carousels.test.ts",
     "content:seed": "node --import tsx scripts/content-seed.ts",
     "portrait:build": "node scripts/portrait.mjs",
     "portrait:shoulder": "node scripts/portrait-shoulder.mjs",

@@ -16,6 +16,11 @@ export const publishedQuery = `*[_type in ["about", "resume", "post", "resource"
     _type == "about" && defined(gallery) => {"gallery": gallery[]{..., defined(asset) => {${imageProjection}}}},
     _type == "about" && defined(sections) => {"sections": sections[]{...,
       "image": select(defined(image.asset) => image{${imageProjection}}, defined(image.src) => image),
+      _type == "aboutImageCarousel" => {"images": images[]{..., defined(asset) => {${imageProjection}}}},
+      _type == "aboutSkillsCarousel" => {"trees": trees[]{..., "nodes": nodes[]{...,
+        "badge": select(defined(badge.asset) => badge{${imageProjection}}, defined(badge.src) => badge), "body": body${bodyProjection},
+        "ranks": ranks{..., "rank1": rank1${bodyProjection}, "rank2": rank2${bodyProjection}, "rank3": rank3${bodyProjection}, "rank4": rank4${bodyProjection}}
+      }}},
       "body": body${bodyProjection}, "leftBody": leftBody${bodyProjection}, "rightBody": rightBody${bodyProjection}
     }}
   }`;
