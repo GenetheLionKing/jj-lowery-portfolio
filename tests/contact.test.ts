@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { verifyContactToken } from "../lib/contact-turnstile";
 import {
   ContactThrottle,
   deliverContactMessage,
@@ -41,7 +42,8 @@ test("invalid, blank, oversized and header-injection input never reaches deliver
       form(input),
       {
         deliver: async () => assert.fail("must not send"),
-        allow: () => assert.fail("must not consume throttle"),
+        verify: async () => true,
+    allow: () => assert.fail("must not consume throttle"),
       },
     );
     assert.equal(state.status, "error");
@@ -58,7 +60,8 @@ test("honeypot and throttle reject without sending or false success", async () =
   for (const data of [form({ website: "spam" }), form()]) {
     const state = await processContactSubmission(initialContactState, data, {
       deliver: async () => assert.fail("must not send"),
-      allow: () => false,
+      verify: async () => true,
+    allow: () => false,
     });
     assert.equal(state.status, "error");
     assert.deepEqual(state.values, values);
@@ -70,6 +73,7 @@ test("delivery failure preserves exact text and unchanged retries reuse the requ
     deliver: async () => {
       throw Error("unavailable");
     },
+    verify: async () => true,
     allow: () => true,
   };
   const first = await processContactSubmission(
@@ -97,6 +101,7 @@ test("success waits for confirmed provider acceptance then clears the form", asy
   });
   const submission = processContactSubmission(initialContactState, form(), {
     deliver: () => accepted,
+    verify: async () => true,
     allow: () => true,
   });
   assert.equal(
@@ -152,6 +157,27 @@ test("missing key or invalid sender fails before a network request", async () =>
   }
 });
 
+test("Vercel Preview cannot send with configured mail credentials; Production keeps delivery behavior", async () => {
+  let requests = 0;
+  const request: typeof fetch = async () => {
+    requests++;
+    return Response.json({ id: "mock-provider-acceptance" });
+  };
+  const state = await processContactSubmission(initialContactState, form(), {
+    allow: () => true,
+    verify: async () => true,
+    deliver: (input, key) => deliverContactMessage(
+      input, key, { ...environment, VERCEL_ENV: "preview" }, request,
+    ),
+  });
+  assert.equal(requests, 0);
+  assert.equal(state.status, "error");
+  assert.deepEqual(state.values, values);
+  assert.match(state.notice, /text is still here/);
+  await deliverContactMessage(values, "test", { ...environment, VERCEL_ENV: "production" }, request);
+  assert.equal(requests, 1);
+});
+
 test("Resend errors, malformed acceptance, network failures and timeouts never return success", async () => {
   for (const request of [
     async () => Response.json({ message: "rejected" }, { status: 403 }),
@@ -168,7 +194,8 @@ test("Resend errors, malformed acceptance, network failures and timeouts never r
     const state = await processContactSubmission(initialContactState, form(), {
       deliver: (input, key) =>
         deliverContactMessage(input, key, environment, request),
-      allow: () => true,
+      verify: async () => true,
+    allow: () => true,
     });
     assert.equal(state.status, "error");
     assert.deepEqual(state.values, values);
@@ -181,4 +208,125 @@ test("throttle allows five attempts per key and recovers after ten minutes", () 
   assert.equal(throttle.allow("visitor", 0), false);
   assert.equal(throttle.allow("other", 0), true);
   assert.equal(throttle.allow("visitor", 600000), true);
+});
+
+const turnstileEnvironment = {
+  TURNSTILE_SECRET_KEY: "mock-secret-not-a-credential",
+  TURNSTILE_ALLOWED_HOSTNAMES: "jjlowery.com,www.jjlowery.com",
+};
+const verified = { success: true, hostname: "www.jjlowery.com", action: "contact" };
+
+test("Turnstile checks only the token with the server secret, requires exact hostname/action and does not cache", async () => {
+  let calls = 0;
+  const request: typeof fetch = async (url, init) => {
+    calls++;
+    assert.equal(url, "https://challenges.cloudflare.com/turnstile/v0/siteverify");
+    assert.equal(init?.method, "POST");
+    assert.equal(init?.cache, "no-store");
+    assert.ok(init?.signal);
+    assert.deepEqual(JSON.parse(String(init?.body)), {
+      secret: turnstileEnvironment.TURNSTILE_SECRET_KEY,
+      response: "mock-token",
+    });
+    return Response.json(calls === 1 ? verified : {
+      success: false, "error-codes": ["timeout-or-duplicate"],
+    });
+  };
+  assert.equal(await verifyContactToken("mock-token", turnstileEnvironment, request), true);
+  assert.equal(await verifyContactToken("mock-token", turnstileEnvironment, request), false);
+  assert.equal(calls, 2);
+});
+
+test("missing/invalid configuration and missing/oversized tokens fail before any network call", async () => {
+  const request: typeof fetch = async () => assert.fail("must not request");
+  for (const env of [
+    {},
+    { TURNSTILE_SECRET_KEY: "mock" },
+    { ...turnstileEnvironment, TURNSTILE_ALLOWED_HOSTNAMES: " " },
+    { ...turnstileEnvironment, TURNSTILE_ALLOWED_HOSTNAMES: "*.jjlowery.com" },
+    { ...turnstileEnvironment, TURNSTILE_ALLOWED_HOSTNAMES: "https://jjlowery.com" },
+    ...["1", "2", "3"].flatMap((prefix) => [
+      { ...turnstileEnvironment, NODE_ENV: "production", TURNSTILE_SECRET_KEY: `${prefix}x0000000000000000000000000000000AA` },
+      { ...turnstileEnvironment, VERCEL_ENV: "preview", TURNSTILE_SECRET_KEY: `${prefix}x0000000000000000000000000000000AA` },
+    ]),
+  ]) assert.equal(await verifyContactToken("mock-token", env, request), false);
+  for (const token of ["", " ", "x".repeat(2049)])
+    assert.equal(await verifyContactToken(token, turnstileEnvironment, request), false);
+});
+
+test("all verification failures preserve text and prevent delivery, including expired/replayed tokens and outages", async () => {
+  const requests: (typeof fetch)[] = [
+    ...[
+      { success: false, "error-codes": ["invalid-input-response"] },
+      { success: false, "error-codes": ["timeout-or-duplicate"] },
+      { ...verified, hostname: "attacker.example" },
+      { ...verified, hostname: "www.jjlowery.com.attacker.example" },
+      { ...verified, action: "login" },
+      { ...verified, success: "true" },
+      { success: true }, null, [], {},
+    ].map((body) => async () => Response.json(body)),
+    async () => Response.json(verified, { status: 500 }),
+    async () => new Response("broken-json"),
+    async () => { throw Error("offline"); },
+    async () => { throw new DOMException("timeout", "TimeoutError"); },
+  ];
+  for (const request of requests) {
+    const data = form();
+    data.set("cf-turnstile-response", "mock-token");
+    const state = await processContactSubmission(initialContactState, data, {
+      allow: () => true,
+      verify: (token) => verifyContactToken(token, turnstileEnvironment, request),
+      deliver: async () => assert.fail("must not send"),
+    });
+    assert.equal(state.status, "error");
+    assert.deepEqual(state.values, values);
+    assert.match(state.notice, /Verification couldn’t be completed/);
+    assert.notEqual(state.verificationKey, initialContactState.verificationKey);
+    assert.ok(!JSON.stringify(state).includes("mock-token"));
+  }
+  const state = await processContactSubmission(initialContactState, form(), {
+    allow: () => true,
+    verify: async () => { throw Error("unexpected verifier failure"); },
+    deliver: async () => assert.fail("must not send"),
+  });
+  assert.equal(state.status, "error");
+});
+
+test("verification must finish before delivery; mail retries use new verification but the same mail idempotency key", async () => {
+  let confirm!: (value: boolean) => void;
+  const events: string[] = [];
+  const data = form();
+  data.set("cf-turnstile-response", "first-token");
+  const firstPending = processContactSubmission(initialContactState, data, {
+    allow: () => true,
+    verify: async (token) => {
+      events.push(token);
+      return new Promise<boolean>((resolve) => { confirm = resolve; });
+    },
+    deliver: async () => { events.push("delivery"); throw Error("mail outage"); },
+  });
+  assert.deepEqual(events, ["first-token"]);
+  confirm(true);
+  const first = await firstPending;
+  assert.deepEqual(events, ["first-token", "delivery"]);
+  data.set("cf-turnstile-response", "fresh-token");
+  const retry = await processContactSubmission(first, data, {
+    allow: () => true,
+    verify: async (token) => { assert.equal(token, "fresh-token"); return true; },
+    deliver: async (_, key) => { assert.equal(key, first.requestKey); throw Error("mail outage"); },
+  });
+  assert.notEqual(first.verificationKey, retry.verificationKey);
+  assert.equal(first.requestKey, retry.requestKey);
+  assert.deepEqual(retry.values, values);
+});
+
+test("validation, honeypot and throttle short-circuit verification and mail delivery", async () => {
+  for (const data of [form({ name: "" }), form({ website: "bot" }), form()]) {
+    const state = await processContactSubmission(initialContactState, data, {
+      allow: () => false,
+      verify: async () => assert.fail("must not verify"),
+      deliver: async () => assert.fail("must not send"),
+    });
+    assert.equal(state.status, "error");
+  }
 });

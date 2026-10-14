@@ -15,6 +15,10 @@ export async function deliverContactMessage(
   env: Record<string, string | undefined> = process.env,
   request: typeof fetch = fetch,
 ) {
+  // Preview reviews must never send mail, even if the project has Preview credentials.
+  if (env.VERCEL_ENV === "preview") {
+    throw new Error("Contact delivery is disabled in Preview.");
+  }
   const from = env.CONTACT_FROM_EMAIL;
   if (!env.RESEND_API_KEY || !emailAddress.safeParse(from).success) {
     throw new Error("Contact delivery configuration is incomplete.");
@@ -59,6 +63,7 @@ export async function processContactSubmission(
   dependencies: {
     deliver: (values: ContactValues, requestKey: string) => Promise<void>;
     allow: () => boolean;
+    verify: (token: string) => Promise<boolean>;
   },
 ): Promise<ContactState> {
   const field = (name: string) =>
@@ -74,6 +79,8 @@ export async function processContactSubmission(
       ? previous.requestKey
       : randomUUID();
   const errors: ContactState["errors"] = {};
+  // Remount verification after every response, including unchanged mail retries.
+  const verificationKey = randomUUID();
   if (!values.name.trim()) errors.name = "Enter your name.";
   else if (values.name.length > 100 || /[\r\n]/.test(values.name))
     errors.name = "Use a name of 100 characters or fewer.";
@@ -88,6 +95,7 @@ export async function processContactSubmission(
     errors,
     notice,
     requestKey,
+    verificationKey,
   });
   if (Object.keys(errors).length)
     return failure("Check the fields below and try again.");
@@ -96,10 +104,21 @@ export async function processContactSubmission(
   if (!dependencies.allow())
     return failure("Too many attempts. Wait a few minutes and try again.");
   try {
+    if (!await dependencies.verify(field("cf-turnstile-response")))
+      return failure(
+        "Verification couldn’t be completed. Your text is still here. Retry verification and send again, or use a social link above.",
+      );
+  } catch {
+    return failure(
+      "Verification couldn’t be completed. Your text is still here. Retry verification and send again, or use a social link above.",
+    );
+  }
+  try {
     await dependencies.deliver(values, requestKey);
     return {
       ...initialContactState,
       status: "sent",
+      verificationKey,
       notice: "Thanks — your message has been sent.",
     };
   } catch {
