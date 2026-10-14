@@ -238,20 +238,76 @@ test("Turnstile checks only the token with the server secret, requires exact hos
 });
 
 test("missing/invalid configuration and missing/oversized tokens fail before any network call", async () => {
-  const request: typeof fetch = async () => assert.fail("must not request");
+  let calls = 0;
+  const request: typeof fetch = async () => {
+    calls++;
+    return Response.json(verified);
+  };
   for (const env of [
     {},
     { TURNSTILE_SECRET_KEY: "mock" },
     { ...turnstileEnvironment, TURNSTILE_ALLOWED_HOSTNAMES: " " },
     { ...turnstileEnvironment, TURNSTILE_ALLOWED_HOSTNAMES: "*.jjlowery.com" },
     { ...turnstileEnvironment, TURNSTILE_ALLOWED_HOSTNAMES: "https://jjlowery.com" },
-    ...["1", "2", "3"].flatMap((prefix) => [
-      { ...turnstileEnvironment, NODE_ENV: "production", TURNSTILE_SECRET_KEY: `${prefix}x0000000000000000000000000000000AA` },
-      { ...turnstileEnvironment, VERCEL_ENV: "preview", TURNSTILE_SECRET_KEY: `${prefix}x0000000000000000000000000000000AA` },
-    ]),
   ]) assert.equal(await verifyContactToken("mock-token", env, request), false);
   for (const token of ["", " ", "x".repeat(2049)])
     assert.equal(await verifyContactToken(token, turnstileEnvironment, request), false);
+  assert.equal(calls, 0);
+});
+
+// Literal fixtures from https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+const publicTurnstileTestSecrets = [
+  "1x0000000000000000000000000000000AA",
+  "2x0000000000000000000000000000000AA",
+  "3x0000000000000000000000000000000AA",
+];
+
+for (const secret of publicTurnstileTestSecrets) {
+  for (const deployment of [
+    { NODE_ENV: "production" },
+    { NODE_ENV: "test", VERCEL_ENV: "production" },
+    { NODE_ENV: "test", VERCEL_ENV: "preview" },
+    { NODE_ENV: "development", VERCEL_ENV: "development" },
+  ]) {
+    test(`public Turnstile secret ${secret[0]} is blocked before requests in ${JSON.stringify(deployment)}`, async () => {
+      let calls = 0;
+      const request: typeof fetch = async () => {
+        calls++;
+        return Response.json(verified);
+      };
+      for (const configuredSecret of [secret, ` \n${secret}\t `]) {
+        const accepted = await verifyContactToken("XXXX.DUMMY.TOKEN.XXXX", {
+          ...turnstileEnvironment,
+          ...deployment,
+          TURNSTILE_SECRET_KEY: configuredSecret,
+        }, request);
+        // Assert outside the callback: the verifier deliberately catches request errors.
+        assert.equal(calls, 0);
+        assert.equal(accepted, false);
+      }
+    });
+  }
+}
+
+test("public test secrets remain usable locally and non-test secrets still verify in Production", async () => {
+  const configurations = [
+    ...publicTurnstileTestSecrets.map((secret) => ({
+      ...turnstileEnvironment,
+      NODE_ENV: "development",
+      TURNSTILE_SECRET_KEY: secret,
+    })),
+    { ...turnstileEnvironment, NODE_ENV: "production", VERCEL_ENV: "production" },
+  ];
+  for (const env of configurations) {
+    let calls = 0;
+    const request: typeof fetch = async () => {
+      calls++;
+      return Response.json(verified);
+    };
+    const accepted = await verifyContactToken("mock-token", env, request);
+    assert.equal(calls, 1);
+    assert.equal(accepted, true);
+  }
 });
 
 test("all verification failures preserve text and prevent delivery, including expired/replayed tokens and outages", async () => {
