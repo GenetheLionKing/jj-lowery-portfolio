@@ -32,7 +32,7 @@ const server = spawn(
   {
     stdio: ["ignore", "pipe", "pipe"],
     // Route checks must never send real email, even in a configured environment.
-    env: { ...process.env, RESEND_API_KEY: "", CONTACT_FROM_EMAIL: "" },
+    env: { ...process.env, RESEND_API_KEY: "", CONTACT_FROM_EMAIL: "", TURNSTILE_SECRET_KEY: "" },
   },
 );
 let logs = "";
@@ -148,7 +148,7 @@ try {
   });
   assert.match(
     unavailableContact,
-    /Your message couldn’t be sent\. Your text is still here\./,
+    /Verification couldn’t be completed\. Your text is still here\./,
   );
   assert.match(unavailableContact, /value="Contact verification"/);
   assert.match(unavailableContact, /value="visitor@example.com"/);
@@ -157,7 +157,7 @@ try {
     !unavailableContact.includes("Thanks — your message has been sent."),
   );
   console.log(
-    "Contact without JavaScript: real form POST, field errors, unavailable-provider notice, retained values and no false success PASS",
+    "Contact without JavaScript: local form POST, field errors, failed verification, retained values and no false success PASS",
   );
   console.log(
     "Built HTTP routes: readable GET/HEAD 404s, draft-like URLs, canonical pages, shared Blog navigation and no public filters PASS",

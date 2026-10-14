@@ -1,0 +1,46 @@
+# Contact form spam protection
+
+This change adds free Cloudflare Turnstile verification to the existing contact form. It retains server validation, the honeypot, the existing five-attempts-per-ten-minutes process-local throttle, and the fixed-recipient Resend flow. It does not add a paid service or a distributed limiter. The existing throttle remains a best-effort per-instance guard.
+
+## Owner setup before any deployment
+
+1. In the owner's Cloudflare account, choose Turnstile and add a **Managed** widget on the **Free** plan. Allow `jjlowery.com` (Cloudflare also allows its subdomains). No DNS or nameserver change is needed. Leave pre-clearance off; this form needs token validation, not a clearance cookie.
+2. Enter these values privately in the existing portfolio Vercel project's Production environment. Do not paste secrets into chat, source files or a pull request:
+   - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: the widget's public site key. Next.js embeds it at build time, so changing it requires a new build.
+   - `TURNSTILE_SECRET_KEY`: the matching private secret, server-only.
+   - `TURNSTILE_ALLOWED_HOSTNAMES`: exactly `jjlowery.com,www.jjlowery.com`.
+3. Keep the existing `RESEND_API_KEY` and `CONTACT_FROM_EMAIL`. This change does not require new Resend credentials or sender/DNS changes.
+4. For the authorized Preview review, use a separate widget/key pair and an exact stable Preview hostname in the Preview environment allowlist. Do not allow the shared `vercel.app` parent domain, arbitrary request headers, or localhost in Production. The project already has Preview mail credentials; the delivery function now explicitly rejects `VERCEL_ENV=preview` before reading them or requesting Resend. Existing mail settings stay unchanged. A future Preview delivery test requires separate authorization and a reviewed change to this guard.
+
+The preparation pass created no account/widget, entered no environment values, pushed no branch and made no deployment. JJ subsequently authorized publishing this branch to a mail-disabled Preview, leaving Production unchanged. Owner-supplied Preview Turnstile configuration is still required for real verification. Missing configuration intentionally blocks contact delivery. Normal site reading remains available.
+
+## Delivery gate and recovery
+
+Each submit validates fields and the honeypot, checks the existing throttle, and then verifies `cf-turnstile-response` with Cloudflare Siteverify before Resend can run. The server requires `success: true`, action `contact`, and an exact hostname from its configured allowlist. Verification requests have a ten-second timeout, are not cached, and send only the secret and token. Exceptions, bad responses, missing configuration and rejected tokens fail closed. Public testing secrets cannot authorize delivery in production builds or Vercel environments.
+
+Cloudflare enforces five-minute expiry and single use. Every server response remounts the widget, including validation and email failures, so a retry gets a fresh token. Email retries retain the existing mail idempotency key when the message is unchanged. The name, email and message stay intact on failure; verification tokens are not echoed into server state. Widget expiry/error clears the client token. A failed script can be retried without reloading the form. JavaScript-disabled or blocked visitors can use the social links already on the contact page.
+
+Managed mode with `interaction-only` appearance normally runs without a visible challenge. A compact checkbox widget appears when Cloudflare requires interaction; compact sizing fits the 288px content area at a 320px viewport. Its initial light/dark theme follows the page. The privacy page discloses Cloudflare's IP/browser signal processing without sending contact contents to Turnstile or Analytics.
+
+## Local verification and later release plan
+
+Use Node >=22.12 and pnpm 10.30.3. This work used Node 26.7.0. Unit tests use in-memory mocks, never real Cloudflare or Resend calls. The built HTTP checks clear mail and Turnstile secrets and submit only to their own loopback server. Browser review intercepts the Turnstile script with a local mock and blocks other external requests; it cannot establish real Cloudflare classification or mail delivery.
+
+Run `NEXT_TELEMETRY_DISABLED=1 pnpm check` and `git diff --check`. Tests cover invalid/missing/oversized tokens, hostname/action mismatch, expired/replayed responses, malformed responses, network/timeout errors, no delivery before verification, mail retries, client token expiry/cleanup, missing-key fallback and script recovery.
+
+After owner review and separate release authorization: privately configure the widget and environments, review an authorized Preview with email delivery disabled, verify successful real verification plus rejection/recovery and mobile/accessibility behavior, then authorize the reviewed commit for deployment. No production form submission is implied by deployment approval. A real delivery test needs separate authorization. If verification fails, keep the gate closed and use the existing social fallback while fixing configuration; do not silently bypass protection.
+
+Official references: [Managed widgets](https://developers.cloudflare.com/turnstile/concepts/widget/), [widget configuration](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/), [server validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/), [testing](https://developers.cloudflare.com/turnstile/troubleshooting/testing/), [free plan](https://developers.cloudflare.com/turnstile/plans/), [privacy addendum](https://www.cloudflare.com/turnstile-privacy-policy/).
+
+## Verification record — 2026-10-14
+
+Prepared on isolated branch `codex/contact-turnstile`, based on current `main` commit `ca32db222bdd737b0b029232e30e986bf1a4c25e`, in `/Users/jameslowery/Documents/Codex/2026-10-14/task/portfolio-turnstile`. The existing portfolio checkout and Vector work were left untouched. These are local results, not evidence of a deployed protection change.
+
+- `pnpm check`: lint, TypeScript, all 109 tests and the production build passed. The route subprocess initially could not bind loopback in the sandbox. With approved loopback access, `pnpm test:routes` reached an unchanged `/resume/` assertion that expects HTTP 200 but receives 404: this checkout has no Sanity configuration/content, and the existing résumé page calls `notFound()` when its content is absent. The full route suite therefore **did not pass**. Unrelated route expectations and content loading were not changed.
+- The final contact-focused run passed all 16 tests (13 server/delivery tests and 3 client tests). The final production build and `git diff --check` passed. Client static bundles did not contain the server secret/hostname environment names or Resend API URL.
+- Separate local checks exercised the built contact Server Action with invalid fields and missing verification; it retained text and never reported delivery. Hydrated browser checks verified failure focus, exact multiline message retention, a fresh empty verification token, expiry handling, keyboard retry and widget cleanup. All requests used loopback or an intercepted local widget mock; real Turnstile and email delivery remain untested.
+- Contact and privacy rendering were checked in light/dark themes at 320, 390, 768 and 1440 CSS pixels. The compact widget mock fits the narrowest 288px content area. Contact passed automated WCAG A/AA checks at 390px in both themes, plus reduced-motion, 200% CSS zoom and JavaScript-disabled reading/fallback checks. CSS zoom is a layout approximation, not a real-browser zoom or assistive-technology audit. The résumé/print layout was not changed.
+- Independent review found no remaining blocking issues. It identified the flexible widget's 300px minimum width at the narrowest viewport; the final implementation uses Cloudflare's compact size. It also checked the delivery gate, exact hostname/action matching, failure recovery, owner setup and privacy text. Real Cloudflare behavior and accessibility need the later authorized Preview check.
+- After JJ authorized a mail-disabled Preview, read-only Vercel metadata confirmed all three Production Turnstile variable names were saved and existing Preview mail credentials were configured. No values were decrypted or read. A new server guard rejects delivery in `VERCEL_ENV=preview` before credential access or a Resend request; the project's system-variable exposure is enabled. The new regression test covers configured Preview credentials with zero requests and unchanged Production behavior. All 110 tests, lint and TypeScript passed, and independent review found no blocking issues in this addition. No credential or project settings were changed.
+
+Local evidence is intentionally excluded from source control under `review/turnstile/`: `verify.mjs`, `results.json`, `server.log`, `contact-{light,dark}-{320,390,768,1440}.png`, `privacy-{light,dark}-{320,390,768,1440}.png`, plus failure, zoom and no-JavaScript captures. Test/build logs are in `/tmp/jj-turnstile-check.log`, `/tmp/jj-turnstile-focused-final.log`, `/tmp/jj-turnstile-build-final.log` and `/tmp/jj-turnstile-routes-final.log`. No credentials appear in these artifacts.

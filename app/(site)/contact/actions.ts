@@ -7,6 +7,7 @@ import {
   processContactSubmission,
 } from "@/lib/contact-delivery";
 import type { ContactState } from "@/lib/contact-form";
+import { verifyContactToken } from "@/lib/contact-turnstile";
 
 const throttle = new ContactThrottle();
 
@@ -22,5 +23,6 @@ export async function sendContactMessage(
   return processContactSubmission(previous, data, {
     deliver: deliverContactMessage,
     allow: () => throttle.allow(address.split(",")[0].trim()),
+    verify: verifyContactToken,
   });
 }

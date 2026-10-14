@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef } from "react";
 import { sendContactMessage } from "@/app/(site)/contact/actions";
 import { initialContactState } from "@/lib/contact-form";
+import { ContactVerification } from "./contact-verification";
 
 export function ContactForm() {
   const [state, action, pending] = useActionState(
@@ -113,6 +114,10 @@ export function ContactForm() {
           autoComplete="off"
         />
       </div>
+      <ContactVerification
+        key={state.verificationKey}
+        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}
+      />
       <div className="contact-form-actions">
         <button type="submit" className="button button-dark" disabled={pending}>
           {pending ? "Sending…" : "Send email"}

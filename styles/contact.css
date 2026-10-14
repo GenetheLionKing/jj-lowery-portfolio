@@ -157,6 +157,29 @@
     align-items: center;
     margin-top: 28px;
   }
+  .contact-verification {
+    margin-top: 24px;
+    max-width: 70ch;
+    display: grid;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .contact-verification a,
+  .contact-verification-retry {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .contact-verification-retry {
+    justify-self: start;
+    min-height: 44px;
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+  }
   .contact-form-actions .button {
     justify-content: center;
     min-width: 144px;

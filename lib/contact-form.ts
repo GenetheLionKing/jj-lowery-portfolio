@@ -8,6 +8,7 @@ export type ContactState = {
   errors: Partial<Record<ContactField, string>>;
   notice: string;
   requestKey: string;
+  verificationKey: string;
 };
 
 export const initialContactState: ContactState = {
@@ -16,4 +17,5 @@ export const initialContactState: ContactState = {
   errors: {},
   notice: "",
   requestKey: "",
+  verificationKey: "initial",
 };

@@ -58,6 +58,17 @@ export default function PrivacyPage() {
           </p>
           <h2>Messages</h2>
           <p>
+            The contact form uses Cloudflare Turnstile to help prevent spam.
+            Cloudflare processes technical signals, including IP address and
+            browser information, to detect bots and improve its protection.
+            This site does not send your name, email address or message to
+            Turnstile. Read the{" "}
+            <a href="https://www.cloudflare.com/turnstile-privacy-policy/">
+              Cloudflare Turnstile Privacy Addendum
+            </a>{" "}
+            for details.
+          </p>
+          <p>
             Information you enter in the contact form is handled separately to
             respond to your message. It is not sent to Google Analytics by this
             site. For questions about privacy,{" "}
