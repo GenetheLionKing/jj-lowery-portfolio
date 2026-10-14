@@ -1,4 +1,11 @@
 // Called only by the contact Server Action. Never import into a client component.
+// Public fixtures: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+const publicTestSecrets = new Set([
+  "1x0000000000000000000000000000000AA",
+  "2x0000000000000000000000000000000AA",
+  "3x0000000000000000000000000000000AA",
+]);
+
 export async function verifyContactToken(
   token: string,
   env: Record<string, string | undefined> = process.env,
@@ -10,7 +17,7 @@ export async function verifyContactToken(
     .map((hostname) => hostname.trim())
     .filter(Boolean);
   // Public testing secrets must never authorize delivery in a deployed build.
-  const testSecret = /^[123]x0{29}AA$/.test(secret ?? "");
+  const testSecret = publicTestSecrets.has(secret ?? "");
   if (
     !secret ||
     (testSecret && (env.NODE_ENV === "production" || !!env.VERCEL_ENV)) ||
